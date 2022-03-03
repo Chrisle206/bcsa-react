@@ -6,6 +6,7 @@ import charIcon from '../assets/images/mona-lisa-white.png'
 import cage from '../assets/images/cage-white.png'
 import beer from '../assets/images/beer-stein-white.png'
 
+
 export default function Tavern() {
     return (
         <div className="pageContainer">
