@@ -42,34 +42,39 @@
   width: 100vw;
   height: 100vh;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   font-family: 'VT323', monospace;
-  background-color: #7D6038;
 }
 .mainContainer{
   display: flex;
   flex-direction: column;
+  width: 100vw;
+  height: 1000px;
+  color: white;
+  padding: 50px 0px 100px 0px;
+  background-color: #7D6038;
+}
+.widthContainer{
   margin: 0 auto;
   width: 800px;
-  color: white;
-  /* background-color: #202124; */
-
-  padding: 50px 50px 100px 50px;
+  height: 100%;
 }
 .coinContainer{
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin: 0 50px 0 0;
-  font-size: 32px;
+  font-size: 48px;
 }
 .coinImg{
-  width: 32px;
+  width: 60px;
   margin: 10px;
 }
 .TavernMenuContainer{
   display: flex;
   justify-content: space-between;
-  margin: 80px 50px;
+  margin: 80px auto;
+  width: 800
 }
 .TavernMenuCard{
   display: flex;
@@ -79,16 +84,90 @@
 }
 .TavernMenuItem{
   width: 120px;
-  margin: 0 0 20px 0;
+  margin: 50px 0 20px 0;
 }
-.pageTitle{
+.TavernTitle{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 80px;
+  margin: 100px;
+}
+
+.TavernBeer{
+  width: 60px;
+  margin: 20px;
+}
+
+/* Character Creation Page */
+
+.creationBg{
+  background-color: #000000;
+}
+.creationContainer{
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  color: white;
+  justify-content: center;
+
+}
+.creationTitle{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
   display:flex;
   justify-content: center;
   align-items: center;
   font-size: 60px;
+  z-index: 1;
+}
+.bgContainer{
+position: relative;
+width: 100vw;
 }
 
-.TavernBeer{
-  width: 40px;
-  margin: 10px;
+.characterBg{
+  position: relative;
+  width: 100%;
+  z-index: 0;
+  height: 1000px;
+}
+.characterEmpty{
+  position: absolute;
+  height: 400px;
+  width: 440px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.choicesContainer{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0;
+  font-size: 24px;
+  text-align: center;
+  margin: 40px auto;
+  padding: 30px;
+  border: solid white 4px;
+  border-radius: 30px;
+  width: 800px;
+
+}
+.question{
+  font-size: 32px;
+  margin: 0 0 20px 0;
+}
+
+.coverBlackBar{
+  width: 100vw;
+  height: 10px;
+  background-color: #000000;
+  position: absolute;
+  bottom: 0px;
 }
