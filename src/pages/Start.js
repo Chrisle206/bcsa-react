@@ -1,19 +1,25 @@
 import React from 'react'
+import '../App.css'
+import play from '../assets/images/play-button.png'
+import wingedsword from '../assets/images/winged-sword.png'
+
 
 export default function Start() {
     return (
-        <>
-        <nav>
-            <h1>Title</h1>
-            <button>Login</button>
-            <button>Sign up</button>
-        </nav>
-        <section>Ananda balasana pose ardha chandrasana bhujangasana chakravakasana dandasana
-dolphin plank pose kapalabhati pranayama laghu vajrasana mula bandha parivrtta
-janu sirsasana parivrtta trikonasana parsvakonasana purvottanasana salamba
-sirsasana supta matsyendrasana supta virasana tolasana uddiyana bandha utthan
-pristhasana. Agnistambhasana pose ananda balasana pose anjaneyasana chaturanga</section>
-        <button>Play</button>
-        </>
+        <div className="pageContainer creationBg">
+        <div className="mainStartContainer">
+        <div className="widthContainer">
+        <h3 className="logContainer"> <button>Login</button> <button>Signup</button></h3>
+        <h1 className="TavernTitle">BCS Adventures<img className="wingedsword" src={wingedsword} alt="Sword"/></h1>
+        <div className='description'>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dapibus in erat eu vestibulum. Donec id arcu erat. Nulla viverra semper arcu, tincidunt sodales lorem vestibulum id. Sed fringilla tincidunt mollis. Suspendisse quis metus facilisis, ultricies orci ac, fringilla eros. Aliquam aliquam lectus felis, vehicula sollicitudin nisi consectetur sed. Pellentesque dui tortor, faucibus id leo vel, blandit aliquet nibh.
+            </div>
+        <div className="TavernMenuContainer">    
+            <div className="PlayCard">Play<img className="PlayButton" src={play} alt="Story"/></div>
+ 
+        </div>        
+        </div>
+        </div>
+        </div>
     )
 }
