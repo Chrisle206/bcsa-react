@@ -1,0 +1,263 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Tavern CSS */
+.pageContainer{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'VT323', monospace;
+}
+.mainContainer{
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 70vh;
+  color: white;
+  background-color: #7D6038;
+}
+.widthContainer{
+  margin: 0 auto;
+  width: 800px;
+  height: 100%;
+}
+.coinContainer{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 48px;
+}
+.coinImg{
+  width: 60px;
+  margin: 10px;
+}
+.TavernMenuContainer{
+  display: flex;
+  justify-content: space-between;
+  margin: 80px auto;
+  width: 800px;
+}
+.TavernMenuCard{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 32px;
+}
+.TavernMenuItem{
+  width: 120px;
+  margin: 50px 0 20px 0;
+}
+.TavernTitle{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+}
+
+.TavernBeer{
+  width: 40px;
+  margin: 20px;
+}
+
+/* Character Creation Page */
+
+.creationBg{
+  background-color: #000000;
+}
+.creationContainer{
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  color: white;
+  justify-content: center;
+
+}
+.creationTitle{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+  z-index: 1;
+}
+.bgContainer{
+position: relative;
+width: 100vw;
+}
+
+.characterBg{
+  position: relative;
+  width: 100%;
+  z-index: 0;
+  height: 70vh;
+}
+.characterEmpty{
+  position: absolute;
+  height: 20vh;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.choicesContainer{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0;
+  font-size: 24px;
+  text-align: center;
+  margin: 40px auto;
+  padding: 10px;
+  border: solid white 4px;
+  border-radius: 30px;
+  width: 800px;
+}
+.question{
+  font-size: 32px;
+  margin: 0 0 20px 0;
+}
+
+.coverBlackBar{
+  width: 100vw;
+  height: 10px;
+  background-color: #000000;
+  position: absolute;
+  bottom: 0px;
+}
+
+/* Battle Page */
+.MainBattleContainer{
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+  height: 70vh;
+  padding: 20px 0;
+  background: url('./assets/images/battleback3.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.battleContainer{
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  margin: 0 auto;
+}
+.enemyRow{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+}
+.enemyPic{
+  height: 25vh;
+}
+.StatBox{
+  width: 300px;
+  height: 100px;
+  border: black solid 2px;
+  background-color: white;
+  padding: 5px 20px;
+}
+.heroRow{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+}
+.heroPic{
+  height: 25vh;
+}
+
+.BattlechoicesContainer{
+  font-size: 24px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 0 0 20px 0;
+  border: solid black 4px;
+  border-radius: 30px;
+  width: 800px;
+  background-color: white;
+}
+.attackList{
+  margin: 0 200px;
+}
+.attackRow{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.statRow{
+  display: flex;
+  justify-content: space-between;
+}
+.healthBarContainer{
+  width: 300px;
+  height: 20px;
+  border: solid black 2px;
+}
+.healthBar50{
+  width: 150px;
+  height: 20px;
+  background-color: red;
+}
+.healthBar100{
+  width: 300px;
+  height: 20px;
+  background-color: green;
+  margin: 0;
+  text-align: right;
+}
+.hp{
+  margin: 0;
+  padding: 0 10px;
+  border-left: solid 2px black;
+  color: white;
+  background-color: black;
+}
