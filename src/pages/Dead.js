@@ -2,9 +2,9 @@ import React from 'react'
 
 export default function Dead() {
     return (
-        <div>
-            <h1>You Died!</h1>
-            <button>Continue?</button>
+        <div className="pageContainer creationBg">
+            <h1 className='died'>You Died!</h1>
+            <button className='diedBtn'>Continue?</button>
         </div>
     )
 }
