@@ -1,5 +1,8 @@
+// import { randomString } from "rpg-table-randomizer";
+
 class Character {
-    constructor(name, hp, atk, def) {
+    constructor(attacks, name, hp, atk, def) {
+      this.attacks = attacks;
       this.name = name;
       this.hp = hp;
       this.atk = atk;
@@ -8,7 +11,7 @@ class Character {
   
     // Method which prints all of the stats for a character
     printStats() {
-
+      console.log(`${this.name}'s current hp: ${this.hp}`);
     }
   
     // Method which determines whether or not a character's "hp" are less then zero
@@ -23,13 +26,28 @@ class Character {
   
     // Method which takes in a second object and decreases their "hp" by this character's atk
     attack(opponent) {
-      console.log(`${this.name} hit ${opponent.name} for ${this.atk}`);
-      opponent.hp -= this.atk;
+      console.log(`${this.name} used ${this.attacks[Math.floor(Math.random() * this.attacks.length)]} on ${opponent.name} for ${this.atk} damage`);
+      opponent.hp = (opponent.hp + opponent.def) - this.atk;
     }
+    
   }
-  
-  // Create unique characters using the "character" constructor
 
+
+  // Create unique characters using the "character" constructor
+  const opponent = new Character(["Room Mute",
+  "Random Name Selector",
+  "Confusing Demo",
+  "Manatee Joke",
+  "Bahamut Bash",
+  "Shiva Shank",
+  "La Croix Heal"],
+  'Boss1',
+  100,
+  55,
+  20
+  );
+
+  const player = new Character(['Attack 1', 'Attack 2', 'Attack 3', 'Attack 4'], 'player', 150, 45, 15);
   
   // This keeps track of whose turn it is
   let playerTurn = true;
