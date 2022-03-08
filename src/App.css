@@ -52,7 +52,17 @@
   width: 100vw;
   height: 70vh;
   color: white;
-  background-color: #7D6038;
+  background: url('./assets/images/tavern5.gif') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: rgb(255, 255, 255);
+  background-blend-mode: multiply;
+}
+.backgroundContainer{
+  background-color: #000000;
+  opacity: 0.5;
 }
 .widthContainer{
   margin: 0 auto;
@@ -64,6 +74,13 @@
   align-items: center;
   justify-content: flex-end;
   font-size: 48px;
+}
+.logContainer{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 48px;
+  margin: 0;
 }
 .coinImg{
   width: 60px;
@@ -80,20 +97,28 @@
   flex-direction: column;
   align-items: center;
   font-size: 32px;
+  opacity: 0.5;
+  border: solid 4px white;
+  border-radius: 20px;
+  padding: 25px 25px;
+  background-color: #000000;
+}
+.TavernMenuCard:hover{
+  opacity: 1;
 }
 .TavernMenuItem{
-  width: 120px;
-  margin: 50px 0 20px 0;
+  width: 100px;
+  margin: 0 0 20px 0;
 }
 .TavernTitle{
   display:flex;
   justify-content: center;
   align-items: center;
-  font-size: 60px;
+  font-size: 80px;
 }
 
 .TavernBeer{
-  width: 40px;
+  width: 60px;
   margin: 20px;
 }
 
@@ -103,18 +128,22 @@
   background-color: #000000;
 }
 .creationContainer{
-  display: flex;
-  flex-direction: column;
+  width: 100vw;
   margin: 0 auto;
+  height: 70vh;
+  padding: 20px 0;
   color: white;
-  justify-content: center;
+  background: url('./assets/images/ebbg2.gif') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.1);
+  background-blend-mode: multiply;
 
 }
 .creationTitle{
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
+  margin: 0 auto;
   display:flex;
   justify-content: center;
   align-items: center;
@@ -122,8 +151,12 @@
   z-index: 1;
 }
 .bgContainer{
-position: relative;
 width: 100vw;
+height: 100%;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
 }
 
 .characterBg{
@@ -133,26 +166,17 @@ width: 100vw;
   height: 70vh;
 }
 .characterEmpty{
-  position: absolute;
   height: 20vh;
-  margin: auto;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
+  margin: 0 auto;
 }
 .choicesContainer{
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 0;
   font-size: 24px;
   text-align: center;
   margin: 40px auto;
   padding: 10px;
+  background-color: black;
   border: solid white 4px;
-  border-radius: 30px;
+  border-radius: 20px;
   width: 800px;
 }
 .question{
@@ -177,11 +201,13 @@ width: 100vw;
   margin: 0 auto;
   height: 70vh;
   padding: 20px 0;
-  background: url('./assets/images/battleback3.png') no-repeat center center fixed;
+  background: url('./assets/images/battlebg1.gif') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: multiply;
 }
 .battleContainer{
   display: flex;
@@ -193,7 +219,7 @@ width: 100vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 20px;
+  margin: 20px 0;
 }
 .enemyPic{
   height: 25vh;
@@ -201,15 +227,17 @@ width: 100vw;
 .StatBox{
   width: 300px;
   height: 100px;
-  border: black solid 2px;
-  background-color: white;
+  border: white solid 4px;
+  border-radius:  10px;
+  background-color: black;
   padding: 5px 20px;
+  color: white;
 }
 .heroRow{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 20px;
+  margin: 20px 0;
 }
 .heroPic{
   height: 25vh;
@@ -219,14 +247,15 @@ width: 100vw;
   font-size: 24px;
   text-align: center;
   margin: 0 auto;
-  padding: 0 0 20px 0;
-  border: solid black 4px;
-  border-radius: 30px;
+  background-color: black;
+  border: solid white 4px;
+  border-radius: 20px;
+  color: white;
   width: 800px;
-  background-color: white;
+ 
 }
 .attackList{
-  margin: 0 200px;
+  margin: 20px 200px;
 }
 .attackRow{
   display: flex;
@@ -243,21 +272,69 @@ width: 100vw;
   border: solid black 2px;
 }
 .healthBar50{
-  width: 150px;
+  width: 300px;
   height: 20px;
   background-color: red;
+  border: solid white 2px;
 }
 .healthBar100{
   width: 300px;
   height: 20px;
   background-color: green;
+  border: solid white 2px;
   margin: 0;
   text-align: right;
 }
 .hp{
   margin: 0;
   padding: 0 10px;
-  border-left: solid 2px black;
+
   color: white;
   background-color: black;
+}
+
+/* Start Page */
+.mainStartContainer{
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 70vh;
+  color: white;
+  background: url('./assets/images/campfire3.gif') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  /* background-color: rgba(0, 0, 0, 0.3); */
+  background-blend-mode: multiply;
+}
+
+.wingedsword{
+    width: 80px;
+    margin: 20px;
+
+}
+.PlayCard{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 48px;
+  margin: 0 auto;
+  border: solid 4px white;
+  border-radius: 20px;
+  padding: 20px 30px 20px 40px;
+  background-color: #000000;
+  opacity: 0.5;
+}
+.PlayButton{
+    width: 70px;
+  margin: 0 0 0 30px;
+}
+
+.PlayCard:hover{
+  opacity:1;
+}
+
+.description{
+  font-size: 24px;
 }

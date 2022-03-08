@@ -4,15 +4,6 @@ import heroPic from '../assets/images/hero.png'
 
 export default function Battle() {
     return (
-        // <div>
-        //     <div>
-        //     <button>Move 1</button>
-        //     <button>Attack 2</button>
-        //     <button>Attack 3</button>
-        //     <button>Heal</button>
-        //     </div>
-        //     <p>Insert Boss Text</p>
-        // </div>
         <div className="pageContainer creationBg">
             <div className="MainBattleContainer">
                 <div className="battleContainer">
