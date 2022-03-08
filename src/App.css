@@ -37,6 +37,25 @@
   }
 }
 
+/*Loading CSS*/
+.loading {
+  font-size: 75px;
+  color: white;
+  align-self: center;
+}
+
+/*Dead CSS*/
+.died {
+  font-size: 75px;
+  color: red;
+  align-self: center;
+}
+
+.diedBtn {
+  width: fit-content;
+  align-self: center;
+}
+
 /* Tavern CSS */
 .pageContainer{
   width: 100vw;
