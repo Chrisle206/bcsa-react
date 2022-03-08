@@ -1,5 +1,4 @@
 import React from 'react'
-import bg from '../assets/images/creation.gif'
 import characterImg from '../assets/images/cement-shoes2.png'
 
 export default function Creation() {
