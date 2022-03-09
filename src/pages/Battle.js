@@ -140,7 +140,7 @@ setTimeout(function() {
             <div className="MainBattleContainer">
                 <div className="battleContainer">
                     <div className="enemyRow">
-                        <div className="StatBox">
+                        <div className="StatBox pixel-border">
                             <div className='statRow'>
                                 <h3>{enemy.name}</h3>
                                 <h3>Lvl: 15</h3>
@@ -160,12 +160,12 @@ setTimeout(function() {
                     </div>
                     <div className="heroRow">
                         <img className="heroPic" src={heroPic} alt="Hero" />
-                        <div className="StatBox">
+                        <div className="StatBox pixel-border">
                             <div className='statRow'>
                                 <h3>{player.name}</h3>
                                 <h3>Lvl: 10</h3>
                             </div>
-                            <div className='healthBarContainer'>
+                            <div className='healthBarContainer '>
                                 <div className='statRow'>
                                 <div className='healthcontainer'>
                                     <div className='healthBarHero'>
@@ -178,7 +178,7 @@ setTimeout(function() {
                         </div>
                     </div>
                 </div>
-                <div className="BattlechoicesContainer">
+                <div className="BattlechoicesContainer pixel-border">
                     <div className="attackList">
                         <div className="attackRow">
                             <button className="attack" onClick={atk1}>{player.attacks[0]}</button>
