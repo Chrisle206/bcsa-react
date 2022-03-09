@@ -93,15 +93,8 @@ class Character {
   ///////////////////////////////////////////////////////////////////////////////////////////////////
 var
 gameData = {}
-attackName = '',
-curAttack = {},
-randInt = 0,
 enemyAttack = {},
 characters = [],
-defendProgressInt = null,
-defendProgressComplete = 0,
-progressInt = null,
-progressComplete = 0;
 
 
 
@@ -112,13 +105,6 @@ hero: {},
 enemy: {}
 }
 
-
-
-// attack variables
-attackName = '';
-curAttack = {};
-randInt = 0;
-enemyAttack = {};
 
 // build the character UI
 function populateChar(container,character){
@@ -165,37 +151,6 @@ switch(gameData.step){
 
 function attackEnemy(){
 
-  const turnInterval = setInterval(() => {
-    // If either character is not alive, end the game
-    const input = prompt("Next move?");
-    if (!player.isAlive() || !opponent.isAlive()) {
-      clearInterval(turnInterval);
-      console.log('Game over!');
-    } else if (playerTurn) {
-      if(input === player.attacks[0]) {
-        player.attack(player.atk, player.attacks[0], opponent);
-      } else if(input === player.attacks[1]) {
-        player.attack(getRandomInt(2) * (player.atk*1.5), player.attacks[1], opponent);
-      } else if(input === player.attacks[2]) {
-        let question = questions[Math.floor(Math.random()*questions.length)];
-        input = window.prompt(question);
-        input ? player.attack(player.atk*2, player.attacks[2], opponent) : player.attack(0, "miss", opponent);
-      } else if(input === player.attacks[3]) {
-        console.log(`${player.hp} -> ${player.hp+player.def}`);
-        player.heal(player.def);
-      }
-      opponent.printStats();
-    } else {
-      opponent.attack(player);
-      player.printStats();
-    }
-  
-    // Switch turns
-    playerTurn = !playerTurn;
-  }, 2000);
-
-//animate character attacks
-};
 
 // attack enemy
 gameData.enemy.hp.current -= attackMultiplier('hero', curAttack);
