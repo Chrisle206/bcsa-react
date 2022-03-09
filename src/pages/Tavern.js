@@ -17,9 +17,9 @@ export default function Tavern() {
                     <h3 className="coinContainer"> <img className="coinImg" src={coins} alt="Coins" /> 200</h3>
                     <h1 className="TavernTitle">Tavern<img className="TavernBeer" src={beer} alt="Beer" /></h1>
                     <div className="TavernMenuContainer">
-                        <div className="TavernMenuCard"><img className="TavernMenuItem" src={charIcon} alt="Character" />Character</div>
-                        <div className="TavernMenuCard"><img className="TavernMenuItem" src={book} alt="Story" />Story</div>
-                        <div className="TavernMenuCard"><img className="TavernMenuItem" src={cage} alt="Dungeon" />Dungeon</div>
+                        <div className="TavernMenuCard pixel-border"><img className="TavernMenuItem" src={charIcon} alt="Character" />Character</div>
+                        <div className="TavernMenuCard pixel-border"><img className="TavernMenuItem" src={book} alt="Story" />Story</div>
+                        <div className="TavernMenuCard pixel-border"><img className="TavernMenuItem" src={cage} alt="Dungeon" />Dungeon</div>
                     </div>
                 </div>
 

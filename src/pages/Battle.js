@@ -141,7 +141,7 @@ export default function Battle() {
             <div className="MainBattleContainer">
                 <div className="battleContainer">
                     <div className="enemyRow">
-                        <div className="StatBox">
+                        <div className="StatBox pixel-border">
                             <div className='statRow'>
                                 <h3>{enemy.name}</h3>
                                 <h3>Lvl: 15</h3>
@@ -161,12 +161,12 @@ export default function Battle() {
                     </div>
                     <div className="heroRow">
                         <img className="heroPic" src={heroPic} alt="Hero" />
-                        <div className="StatBox">
+                        <div className="StatBox pixel-border">
                             <div className='statRow'>
                                 <h3>{player.name}</h3>
                                 <h3>Lvl: 10</h3>
                             </div>
-                            <div className='healthBarContainer'>
+                            <div className='healthBarContainer '>
                                 <div className='statRow'>
                                 <div className='healthcontainer'>
                                     <div className='healthBarHero'>
@@ -179,13 +179,13 @@ export default function Battle() {
                         </div>
                     </div>
                 </div>
-                <div className="BattlechoicesContainer">
+                <div className="BattlechoicesContainer pixel-border">
                     <div className="attackList">
-                        <div className="attackRow">
+                        <div className="attackRow1">
                             <button className="attack">{player.attacks[0]}</button>
                             <button className="attack">{player.attacks[1]}</button>
                         </div>
-                        <div className="attackRow">
+                        <div className="attackRow2">
                             <button className="attack">{player.attacks[2]} </button>
                             <button className="attack">{player.attacks[3]}</button>
                         </div>

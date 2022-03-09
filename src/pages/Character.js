@@ -7,14 +7,14 @@ export default function Character() {
         <div className="pageContainer creationBg">
             <div className="mainCharContainer">
                 <div className="widthCharContainer">
-                        <div className='charBox'>
+                        <div className='charBox pixel-border'>
                             <h1 className='boxtitle'>
                                 [Name]'s Character
                             </h1>
                             <img className="characterEmpty" src={characterImg} alt="Empty_character" />
                             <div className='statbottom'>Level: 5</div>
                         </div>
-                        <div className='charBox'>
+                        <div className='charBox pixel-border'>
                             <h1 className='boxtitle'>
                                 Statistics
                             </h1>
@@ -40,7 +40,7 @@ export default function Character() {
                                 Available Skillpoints: 4
                             </div>
                         </div>
-                        <div className='charBox'>
+                        <div className='charBox pixel-border'>
                             <h1 className='boxtitle'>
                                 Shop
                             </h1>
