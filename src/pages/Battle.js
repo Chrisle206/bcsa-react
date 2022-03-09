@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import enemyPic from '../assets/images/enemy.png'
 import heroPic from '../assets/images/hero.png'
 
@@ -50,7 +50,7 @@ export default function Battle() {
       20
       );
     
-      const player = new Character(['Attack 1', 'Attack 2', 'Attack 3', 'Attack 4'], 'player', 150, 45, 15);
+      const player = new Character(['Attack 1', 'Attack 2', 'Attack 3', 'Attack 4'], 'BCS Champ', 1000, 1000, 1000);
     
     
     return (
@@ -66,7 +66,7 @@ export default function Battle() {
                             <div className='healthBarContainer'>
                                 <div className='statRow'>
                                 <div className='healthBar50'></div>
-                                <h3 className='hp'>HP:50</h3>
+                                <h3 className='hp'>HP:{opponent.hp}</h3>
                                 </div>
                             </div>
                         </div>
@@ -76,13 +76,13 @@ export default function Battle() {
                         <img className="heroPic" src={heroPic} alt="Hero" />
                         <div className="StatBox">
                             <div className='statRow'>
-                                <h3>Username</h3>
+                                <h3>{player.name}</h3>
                                 <h3>Lvl: 10</h3>
                             </div>
                             <div className='healthBarContainer'>
                                 <div className='statRow'>
                                 <div className='healthBar100'></div>
-                                <h3 className='hp'>HP:100</h3>
+                                <h3 className='hp'>HP:{player.hp}</h3>
                                 </div>
                             </div>
                         </div>
@@ -91,12 +91,12 @@ export default function Battle() {
                 <div className="BattlechoicesContainer">
                     <div className="attackList">
                         <div className="attackRow">
-                            <div>Move 1</div>
-                            <div>Move 2</div>
+                            <div>{player.attacks[0]}</div>
+                            <div>{player.attacks[1]}</div>
                         </div>
                         <div className="attackRow">
-                            <div>Move 3</div>
-                            <div>Move 4</div>
+                            <div>{player.attacks[2]}</div>
+                            <div>{player.attacks[3]}</div>
                         </div>
                     </div>
                 </div>
