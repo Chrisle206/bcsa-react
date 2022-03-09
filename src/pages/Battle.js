@@ -46,95 +46,94 @@ export default function Battle() {
         "La Croix Heal"],
         'Boss1',
         100,
-        55,
+        200,
         20
     );
 
 
-    const player = new Character(['Attack 1', 'Attack 2', 'Attack 3', 'Attack 4'], 'BCS Champ', 1000, 1000, 1000);
+    const player = new Character(['Attack 1', 'Attack 2', 'Attack 3', 'Attack 4'], 'BCS Champ', 1000, 45, 100);
     ///////////////
      // This keeps track of whose turn it is
   let playerTurn = true;
   const questions = ["Snake-case is the preferred case style when naming databases.", "MongoDB stores data records as BSON documents."];
+  var delayInMilliseconds = 5000; //10 second
   
-  function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
-  }
+//   const turnInterval = setInterval(() => {
+//     // If either character is not alive, end the game
+//     if (!player.isAlive() || !enemy.isAlive()) {
+//       clearInterval(turnInterval);
+//       console.log('Game over!');
+//     } else if (playerTurn) {
+//       if(player.attacks[0]) {
+//         player.attack(player.atk, player.attacks[0], enemy);
+//       } else if(player.attacks[1]) {
+//         player.attack(getRandomInt(2) * (player.atk*1.5), player.attacks[1], enemy);
+//       } else if(player.attacks[2]) {
+//         let question = questions[Math.floor(Math.random()*questions.length)];
+//         let answer = true;
+//         answer ? player.attack(player.atk*2, player.attacks[2], enemy) : player.attack(0, "miss", enemy);
+//       } else if(player.attacks[3]) {
+//         console.log(`${player.hp} -> ${player.hp+player.def}`);
+//         player.heal(player.def);
+//       }
+//       enemy.printStats();
+//     } else {
+//       enemy.attack(player);
+//       player.printStats();
+//     }
   
-  const turnInterval = setInterval(() => {
-    // If either character is not alive, end the game
-    if (!player.isAlive() || !enemy.isAlive()) {
-      clearInterval(turnInterval);
-      console.log('Game over!');
-    } else if (playerTurn) {
-      if(player.attacks[0]) {
-        player.attack(player.atk, player.attacks[0], enemy);
-      } else if(player.attacks[1]) {
-        player.attack(getRandomInt(2) * (player.atk*1.5), player.attacks[1], enemy);
-      } else if(player.attacks[2]) {
-        let question = questions[Math.floor(Math.random()*questions.length)];
-        let answer = true;
-        answer ? player.attack(player.atk*2, player.attacks[2], enemy) : player.attack(0, "miss", enemy);
-      } else if(player.attacks[3]) {
-        console.log(`${player.hp} -> ${player.hp+player.def}`);
-        player.heal(player.def);
-      }
-      enemy.printStats();
-    } else {
-      enemy.attack(player);
-      player.printStats();
-    }
-  
-    // Switch turns
-    playerTurn = !playerTurn;
-  }, 2000);
+//     // Switch turns
+//     playerTurn = !playerTurn;
+//   }, 2000);
 
     const [heroHp, setHeroHp] = useState(player.hp);
     const [enemyHp, setEnemyHp] = useState(enemy.hp);
-
+    const [boolean, setBoolean] = useState(true);
 
     const atk1 = () => {
-        setEnemyHp(enemyHp - player.atk);
+        setEnemyHp((enemyHp+enemy.def) - player.atk);
+
+setTimeout(function() {
+  setHeroHp((heroHp+player.def) - enemy.atk);
+}, delayInMilliseconds);
     };
     const atk2 = () => {
-        setEnemyHp(enemyHp - player.atk);
+        let attack = Math.floor(Math.random() * (2 - 1)) + 1 * (player.atk*2);
+        setEnemyHp((enemyHp+enemy.def) - attack);
+
+setTimeout(function() {
+  setHeroHp((heroHp+player.def) - enemy.atk);
+}, delayInMilliseconds);
     };
     const atk3 = () => {
-        setEnemyHp(enemyHp - player.atk);
-    };
-    const atk4 = () => {
-        setEnemyHp(enemyHp - player.atk);
-    };
+        let question = questions[Math.floor(Math.random()*questions.length)]; //gets random questions, add to UI
+        quiz();
 
+setTimeout(function() {
+  setHeroHp((heroHp+player.def) - enemy.atk);
+}, delayInMilliseconds);
+    };
+    const quiz = () => {
+        let attack;
+        setBoolean(true);
+        boolean ? attack = player.atk*3 : attack = enemy.def;
+        setEnemyHp((enemyHp+enemy.def) - attack);
+    }
+    const heal = () => {
+        let question = questions[Math.floor(Math.random()*questions.length)];
+        quiz2();
 
-    // return (
-    //   <div className="card text-center">
-    //     <div className="card-header bg-warning text-white">
-    //       Building Temperature
-    //     </div>
-    //     <div className="card-body">
-    //       <p className="card-text">
-    //         Current temperature: {temp} degrees Fahrenheit
-    //       </p>
-    //       <button
-    //         type="button"
-    //         className="btn btn-danger"
-    //         onClick={increaseTemp}
-    //       >
-    //         Raise temperature
-    //       </button>{' '}
-    //       <button
-    //         type="button"
-    //         className="btn btn-primary"
-    //         onClick={decreaseTemp}
-    //       >
-    //         Lower temperature
-    //       </button>
-    //     </div>
-    //   </div>
-    // );
+setTimeout(function() {
+  setHeroHp((heroHp+player.def) - enemy.atk);
+}, delayInMilliseconds);
+    };
+    const quiz2 = () => {
+        let potion;
+        setBoolean(true);
+        boolean ? potion = player.hp/3 : potion = 0;
+        setHeroHp(heroHp + potion);
+    }
+
 
     return (
         <div className="pageContainer creationBg">
@@ -182,12 +181,12 @@ export default function Battle() {
                 <div className="BattlechoicesContainer">
                     <div className="attackList">
                         <div className="attackRow">
-                            <button className="attack">{player.attacks[0]}</button>
-                            <button className="attack">{player.attacks[1]}</button>
+                            <button className="attack" onClick={atk1}>{player.attacks[0]}</button>
+                            <button className="attack"onClick={atk2}>{player.attacks[1]}</button>
                         </div>
                         <div className="attackRow">
-                            <button className="attack">{player.attacks[2]} </button>
-                            <button className="attack">{player.attacks[3]}</button>
+                            <button className="attack"onClick={atk3}>{player.attacks[2]} </button>
+                            <button className="attack"onClick={heal}>{player.attacks[3]}</button>
                         </div>
                     </div>
                 </div>

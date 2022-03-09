@@ -223,8 +223,4 @@ enemyAttack = gameData.enemy.attacks[randInt];
 
 // update health value
 $('.stadium .hero .data p span').text(gameData.hero.hp.current);
-
-setTimeout(function(){
-
-
-  }, 500)};
+}}
