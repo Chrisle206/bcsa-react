@@ -231,7 +231,6 @@
   width: 100vw;
   margin: 0 auto;
   height: 70vh;
-  padding: 20px 0;
   color: white;
   background: url('./assets/images/ebbg2.gif') no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -242,7 +241,7 @@
   background-blend-mode: multiply;
 }
 .creationTitle{
-  margin: 0 auto;
+  margin: auto auto;
   display:flex;
   justify-content: center;
   align-items: center;
@@ -284,8 +283,7 @@ justify-content: space-between;
 .choicesContainer{
   font-size: 24px;
   text-align: center;
-  margin: 40px auto;
-  padding: 10px;
+  margin: auto auto;
   background-color: black;
   width: 800px;
 }
@@ -307,10 +305,8 @@ justify-content: space-between;
   display: flex;
   width: 100vw;
   flex-direction: column;
-  justify-content: space-between;
-  margin: 0 auto;
+  margin: auto;
   height: 70vh;
-  padding: 20px 0;
   background: url('./assets/images/battlebg1.gif') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -323,7 +319,7 @@ justify-content: space-between;
   display: flex;
   flex-direction: column;
   width: 800px;
-  margin: 0 auto;
+  margin: auto;
 }
 .enemyRow{
   display: flex;
@@ -332,7 +328,7 @@ justify-content: space-between;
   margin: 20px 0;
 }
 .enemyPic{
-  height: 25vh;
+  height: 20vh;
 }
 .StatBox{
   width: 300px;
@@ -340,6 +336,7 @@ justify-content: space-between;
   background-color: black;
   padding: 0 20px;
   color: white;
+  --pixel: .1rem;
 }
 .heroRow{
   display: flex;
@@ -348,12 +345,12 @@ justify-content: space-between;
   margin: 20px 0;
 }
 .heroPic{
-  height: 25vh;
+  height: 20vh;
 }
 .BattlechoicesContainer{
   font-size: 24px;
   text-align: center;
-  margin: 0 auto;
+  margin: auto auto;
   color: white;
   width: 800px;
 }
@@ -367,7 +364,7 @@ justify-content: space-between;
 .attackRow2{
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  margin: 20px 0;
 }
 .statRow{
   display: flex;
@@ -509,6 +506,7 @@ justify-content: space-between;
   border: white solid 4px;
   border-radius: 10px;;
   margin: 20px;
+
 }
 .shopitem:hover{
   background-color: white;
