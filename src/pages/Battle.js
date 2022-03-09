@@ -131,7 +131,7 @@ setTimeout(function() {
     const quiz2 = () => {
         let potion;
         setBoolean(true);
-        boolean ? potion = player.hp/3 : potion = 0;
+        boolean ? potion = player.hp/10 : potion = 0;
         setHeroHp(heroHp + potion);
     }
 
