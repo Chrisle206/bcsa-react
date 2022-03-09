@@ -51,11 +51,12 @@ export default function Battle() {
     );
 
 
-    const player = new Character(['Attack 1', 'Attack 2', 'Attack 3', 'Attack 4'], 'BCS Champ', 1000, 45, 100);
+    const player = new Character(['Basic Attack', 'Dice Attack', 'Quiz Attack', 'Quiz Heal'], 'BCS Champ', 1000, 45, 100);
     ///////////////
      // This keeps track of whose turn it is
   let playerTurn = true;
   const questions = ["Snake-case is the preferred case style when naming databases.", "MongoDB stores data records as BSON documents."];
+  let defaultQuestion = "What is your next move?"
   var delayInMilliseconds = 5000; //10 second
   
 //   const turnInterval = setInterval(() => {
@@ -179,14 +180,23 @@ setTimeout(function() {
                     </div>
                 </div>
                 <div className="BattlechoicesContainer pixel-border">
+                <p className="question">{defaultQuestion}</p>
                     <div className="attackList">
-                        <div className="attackRow">
+                        <div className="attackRow1">
                             <button className="attack" onClick={atk1}>{player.attacks[0]}</button>
                             <button className="attack"onClick={atk2}>{player.attacks[1]}</button>
                         </div>
-                        <div className="attackRow">
+                        <div className="attackRow2">
                             <button className="attack"onClick={atk3}>{player.attacks[2]} </button>
                             <button className="attack"onClick={heal}>{player.attacks[3]}</button>
+                        </div>
+                        <div className="attackRow2">
+                            <button className="attack">True </button>
+                            <button className="attack">False</button>
+                        </div>
+                        <div className="attackRow2">
+                            <button className="attack">Back </button>
+                            <button className="attack">Continue</button>
                         </div>
                     </div>
                 </div>
