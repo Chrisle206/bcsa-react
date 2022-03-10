@@ -7,7 +7,6 @@ import Creation from "./pages/Creation";
 import Dead from "./pages/Dead";
 import Loading from "./pages/Loading";
 import Battle from "./pages/Battle";
-import LevelUp from "./pages/LevelUp";
 import Introduction from "./pages/Introduction";
 
 function App() {
@@ -20,7 +19,6 @@ function App() {
         <Link className="link" to="/Creation">Creation page</Link>
         <Link className="link" to="/Dead">Dead page</Link>
         <Link className="link" to="/Introduction">Introduction page</Link>
-        <Link className="link" to="/LevelUp">LevelUp page</Link>
         <Link className="link" to="/Loading">Loading page</Link>
         <Link className="link" to="/Battle">Battle page</Link>
         <Routes>
@@ -30,7 +28,6 @@ function App() {
           <Route path="/Creation" element={<Creation />} />
           <Route path="/Dead" element={<Dead />} />
           <Route path="/Introduction" element={<Introduction />} />
-          <Route path="/LevelUp" element={<LevelUp />} />
           <Route path="/Loading" element={<Loading />} />
           <Route path="/Battle" element={<Battle />} />
         </Routes>

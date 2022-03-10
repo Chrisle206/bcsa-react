@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import back from '../assets/images/back.png'
+import speakeron from '../assets/images/speaker-on.png'
 import assassin from '../assets/images/characters/assassin.png'
 import warrior from '../assets/images/characters/warrior.png'
 import ranger from '../assets/images/characters/ranger.png'
@@ -92,6 +94,9 @@ export default function Creation() {
     return (
         <div className="pageContainer creationBg">
         <div className="creationContainer">
+        <div className="topNavContainer">
+                    <button className="backbutton"><img className='backbuttonimg'src={back} alt="Back_Button" /> Back</button>                    
+                </div>
         <div className="bgContainer">
         <h1 className="creationTitle">Create your character!</h1>
             {showChar ? (
@@ -107,7 +112,6 @@ export default function Creation() {
             ) : (
                 <>
                     <p className="question">{questions[currentIndex].question}</p>
-                    {/* Let's not use buttons to keep the style cool. We can use links and a tags instead. */}
                     <div className="attackList">
                                 <div className="attackRow1">
                                     {firstRow.map((answer) => 
@@ -124,6 +128,9 @@ export default function Creation() {
             )}
         </div>
         </div>
+        <div className="bottomNavContainer">
+                    <button className="backbutton"><img className='soundbuttonimg'src={speakeron} alt="speaker" /></button>                    
+                </div>
          </div>
         </div>
     )
