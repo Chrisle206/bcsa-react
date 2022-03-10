@@ -3,7 +3,6 @@ import "./style.css"
 import Start from "./pages/Start";
 import Tavern from "./pages/Tavern";
 import Character from "./pages/Character";
-import Character2 from "./pages/Character2";
 import Creation from "./pages/Creation";
 import Dead from "./pages/Dead";
 import Loading from "./pages/Loading";
@@ -17,7 +16,6 @@ function App() {
         <Link className="link" to="/">Start</Link>
         <Link className="link" to="/Tavern">Tavern page</Link>
         <Link className="link" to="/Character">Character page</Link>
-        <Link className="link" to="/Character2">Character2 page</Link>
         <Link className="link" to="/Creation">Creation page</Link>
         <Link className="link" to="/Dead">Dead page</Link>
         <Link className="link" to="/Introduction">Introduction page</Link>
@@ -27,7 +25,6 @@ function App() {
           <Route path="/" element={<Start />} />
           <Route path="/Tavern" element={<Tavern />} />
           <Route path="/Character" element={<Character />} />
-          <Route path="/Character2" element={<Character2 />} />
           <Route path="/Creation" element={<Creation />} />
           <Route path="/Dead" element={<Dead />} />
           <Route path="/Introduction" element={<Introduction />} />

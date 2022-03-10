@@ -332,6 +332,13 @@ justify-content: space-between;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
 }
+.characterEmpty2{
+  height: 15vh;
+  margin: auto;
+  animation: grow-and-shrink 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
 @keyframes grow-and-shrink {
   0% {
     transform: scale(1);
@@ -361,6 +368,14 @@ justify-content: space-between;
   background-color: #000000;
   position: absolute;
   bottom: 0px;
+}
+.statfont{
+  margin: 0;
+  font-size: 24px;
+}
+.statfontbig{
+  margin: 0 0 10px 0;
+  font-size: 24px;
 }
 
 /* Battle Page */
@@ -531,6 +546,7 @@ justify-content: space-between;
 
 /* Character + Store Page */
 .mainCharContainer{
+  position: relative;
   display: flex;
   justify-content: center;
   width: 100vw;
@@ -542,22 +558,25 @@ justify-content: space-between;
   -o-background-size: cover;
   background-size: cover;
 }
-.widthCharContainer{
+.widthChar2Container{
   display: flex;
   justify-content: space-between;
-  width: 90vw;
+  width: 1000px;
   margin: 0 auto;
   text-align: center;
   padding: 32px;
 }
 
 .charBox{
-  width: 25vw;
-  height: 100%;
+  width: auto;
+  min-width: 20vw;
+  height: 90%;
   background-color: #000000;
   color: white;
   display: flex;
   flex-direction: column;
+  margin: auto 40px auto;
+
 }
 .shoprow{
   display: flex;
@@ -577,22 +596,50 @@ justify-content: space-between;
   max-width: 80px;
   min-width: 80px;
   min-height: 80px;
-  border: white solid 4px;
+  border: white solid 2px;
   border-radius: 10px;;
   margin: 20px;
-
+}
+.itemdescbox{
+  height: 70%;
+  width: 300px;
+  position: absolute;
+  right: 40px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: black;
+  visibility: hidden;
+}
+.textbox{
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  margin: auto;
+  font-size: 24px;
 }
 .shopitem:hover{
   background-color: white;
   color:black;
   cursor: pointer;
 }
+.shopitem:hover > .itemdescbox{
+visibility: visible;
+}
 
 .boxtitle{
-  font-size: 40px;
+  font-size: 32px;
   border-bottom: dashed white 2px;
   padding: 30px;
   margin: 0 0 40px 0;
+}
+.statcontainer{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
 }
 .stats{
   display:flex;
@@ -600,13 +647,13 @@ justify-content: space-between;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin: 0 60px;
+  margin: 0 60px 10px;
 }
 .plus{
-  font-size: 32px;
+  font-size: 24px;
   margin: 0 0 0 30px;
   color: white;
-  padding: 0 10px;
+  padding: 0 5px;
   border: white solid 2px;
   border-radius: 10px;
   background-color: #000000;
@@ -619,11 +666,13 @@ justify-content: space-between;
 .statusbox{
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 .statbottom{
   font-size: 32px;
-  margin: auto auto 40px auto;
+  margin: auto;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -637,6 +686,8 @@ justify-content: space-between;
   display: flex;
   align-items: center;
   font-size: 32px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .coinshop{
   width: 40px;
