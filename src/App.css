@@ -54,10 +54,24 @@
 }
 /* Navigation */
 .topNavContainer{
-  width: 80vw;
+  width: 90vw;
   display: flex;
   justify-content: space-between;
   margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.bottomNavContainer{
+  width: 90vw;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 .backbutton{
   display: flex;
@@ -69,10 +83,40 @@
   font-family: inherit;
   background-color: inherit;
   color: white;
+  opacity: 0.5;
 }
 .backbuttonimg{
- width: 40px;
+ width: 60px;
+ margin: 20px 20px 0 20px;
+}
+.soundbuttonimg{
+ width: 80px;
  margin: 20px;
+}
+.backbutton:hover{
+ opacity:1;
+}
+
+.logContainer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 48px;
+  margin: 0;
+}
+.logbutton{
+  border: 0;
+  padding: 0 24px;
+  font-size: 32px;
+  margin: 20px;
+  font-family: inherit;
+  background-color: inherit;
+  color: white;
+  --pixel: 0.1rem;
+  opacity: 0.5;
+}
+.logbutton:hover{
+  opacity: 1;
 }
 /*Loading CSS*/
 .loading {
@@ -166,6 +210,7 @@
   font-family: 'VT323', monospace;
 }
 .mainContainer{
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100vw;
@@ -183,6 +228,8 @@
   opacity: 0.5;
 }
 .widthContainer{
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   width: 800px;
   height: 100%;
@@ -194,13 +241,6 @@
   font-size: 48px;
   margin:0; 
 }
-.logContainer{
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  font-size: 48px;
-  margin: 0;
-}
 .coinImg{
   width: 60px;
   margin: 10px;
@@ -208,8 +248,8 @@
 .TavernMenuContainer{
   display: flex;
   justify-content: space-between;
-  margin: 80px auto;
   width: 800px;
+  margin: auto;
 }
 .TavernMenuCard{
   display: flex;
@@ -217,7 +257,6 @@
   align-items: center;
   font-size: 32px;
   opacity: 0.7;
-  margin: auto;
   padding: 25px 40px;
   background-color: #000000;
   --pixel: .2rem;
@@ -226,6 +265,7 @@
   background: url('./assets/images/magic3.gif') no-repeat center center;
   opacity: 1;
   --pixel-border-2: goldenrod;
+  cursor: pointer; 
 }
 .TavernMenuItem{
   width: 100px;
@@ -236,6 +276,7 @@
   justify-content: center;
   align-items: center;
   font-size: 80px;
+  margin: auto auto 0 auto;
   
 }
 .TavernBeer{
@@ -249,6 +290,7 @@
   background-color: #000000;
 }
 .creationContainer{
+  position: relative;
   width: 100vw;
   margin: 0 auto;
   height: 70vh;
@@ -262,7 +304,7 @@
   background-blend-mode: multiply;
 }
 .creationTitle{
-  margin: auto auto;
+  margin: auto;
   display:flex;
   justify-content: center;
   align-items: center;
@@ -328,13 +370,12 @@ justify-content: space-between;
   flex-direction: column;
   margin: auto;
   height: 70vh;
-  background: url('./assets/images/battlebg1.gif') no-repeat center center fixed;
+  background: url('./assets/images/newbattlebg3.gif') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-color: rgba(0, 0, 0, 0.5);
-  background-blend-mode: multiply;
+  position: relative;
 }
 .battleContainer{
   display: flex;
@@ -433,6 +474,7 @@ justify-content: space-between;
 }
 /* Start Page */
 .mainStartContainer{
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100vw;
@@ -443,6 +485,15 @@ justify-content: space-between;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+.mainIntroContainer{
+  background: url('./assets/images/intro3.gif') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: rgb(0, 0, 0, 0.3);
+  background-blend-mode: multiply;
 }
 .wingedsword{
     width: 80px;
@@ -455,23 +506,27 @@ justify-content: space-between;
   justify-content: space-between;
   font-size: 48px;
   margin: 0 auto;
-  border: solid 4px white;
-  border-radius: 20px;
-  padding: 20px 30px 20px 40px;
+  padding: 0 20px 0 30px;
+  border: 0;
+  font-family: inherit;
+  color: white;
   background-color: #000000;
   opacity: 0.5;
+  z-index: 1;
 }
 .PlayButton{
     width: 70px;
-  margin: 0 0 0 30px;
+  margin: 0 0 0 10px;
 }
 
 .PlayCard:hover{
   opacity:1;
+  cursor: pointer;
 }
 
 .description{
   font-size: 24px;
+  margin: auto;
 }
 
 /* Character + Store Page */
@@ -486,8 +541,6 @@ justify-content: space-between;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-color: rgb(255, 255, 255);
-  background-blend-mode: multiply;
 }
 .widthCharContainer{
   display: flex;
@@ -532,6 +585,7 @@ justify-content: space-between;
 .shopitem:hover{
   background-color: white;
   color:black;
+  cursor: pointer;
 }
 
 .boxtitle{
@@ -560,6 +614,7 @@ justify-content: space-between;
 .plus:hover{
   background-color: white;
   color: black;
+  cursor: pointer;
 }
 .statusbox{
   display: flex;
@@ -599,4 +654,5 @@ justify-content: space-between;
 }
 .buyequip:hover{
   background-color: green;
+  cursor: pointer;
 }
