@@ -52,7 +52,28 @@
     transform: rotate(360deg);
   }
 }
-
+/* Navigation */
+.topNavContainer{
+  width: 80vw;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+}
+.backbutton{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 0;
+  padding: 0;
+  font-size: 40px;
+  font-family: inherit;
+  background-color: inherit;
+  color: white;
+}
+.backbuttonimg{
+ width: 40px;
+ margin: 20px;
+}
 /*Loading CSS*/
 .loading {
   font-size: 75px;
