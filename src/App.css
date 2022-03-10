@@ -205,6 +205,7 @@
   background: url('./assets/images/magic3.gif') no-repeat center center;
   opacity: 1;
   --pixel-border-2: goldenrod;
+  cursor: pointer; 
 }
 .TavernMenuItem{
   width: 100px;
@@ -447,6 +448,7 @@ justify-content: space-between;
 
 .PlayCard:hover{
   opacity:1;
+  cursor: pointer;
 }
 
 .description{
@@ -511,6 +513,7 @@ justify-content: space-between;
 .shopitem:hover{
   background-color: white;
   color:black;
+  cursor: pointer;
 }
 
 .boxtitle{
@@ -539,6 +542,7 @@ justify-content: space-between;
 .plus:hover{
   background-color: white;
   color: black;
+  cursor: pointer;
 }
 .statusbox{
   display: flex;
@@ -578,4 +582,5 @@ justify-content: space-between;
 }
 .buyequip:hover{
   background-color: green;
+  cursor: pointer;
 }
