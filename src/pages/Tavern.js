@@ -11,6 +11,7 @@ import beer from '../assets/images/beer-stein-white.png'
 
 export default function Tavern() {
     return (
+        
         <div className="pageContainer creationBg">
             <div className="mainContainer">
             <div className="topNavContainer">
