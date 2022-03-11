@@ -410,6 +410,23 @@ justify-content: space-between;
 .enemyPic{
   height: 20vh;
 }
+/* effect */
+.explosion{
+position: absolute;
+left:0;
+right:0;
+top:0;
+bottom:0;
+height: 20vh;
+}
+.explosion1{
+  display: none;
+}
+.effectcont
+{
+  position: relative;
+  height: 20vh;
+}
 .StatBox{
   width: 300px;
   height: 100px;
@@ -487,9 +504,19 @@ justify-content: space-between;
   background-color: inherit;
   color: white;
 }
+.attack:hover + .iconhover{
+  visibility: visible;
+}
 .attack:hover{
   color: goldenrod;
 }
+.iconhover{
+  height: 40px;
+  margin: 10px;
+  visibility: hidden;
+}
+
+
 /* Start Page */
 .mainStartContainer{
   position: relative;
