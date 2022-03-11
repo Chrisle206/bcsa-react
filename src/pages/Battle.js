@@ -192,9 +192,9 @@ export default function Battle() {
         }
         setEnemyHp((enemyHp + enemy.def) - player.atk);
         setMainText(`${player.name} dealt ${player.atk - enemy.def}`);
+        explosionFunction();
         hideAtkBtns();
         enemyIsALive();
-        explosionFunction();
     };
 
 
@@ -206,13 +206,13 @@ export default function Battle() {
             isLastHit = 1;
         }
         setMainText(`${player.name} dealt ${(player.atk*2) - enemy.def}`);
+        explosionFunction();
         setEnemyHp((enemyHp + enemy.def) - attack);
         } else {
             setMainText('Attack Missed!')
         }
         hideAtkBtns();
         enemyIsALive();
-          explosionFunction();
     };
 
 
@@ -224,7 +224,6 @@ export default function Battle() {
     const quizTrue = () => {
         bool = 1;
         quizAtk();
-        explosionFunction();
     }
 
     const quizFalse = () => {
@@ -236,6 +235,7 @@ export default function Battle() {
 
         if(bool) {
             setMainText(`${player.name} dealt ${(player.atk*2) - enemy.def}`);
+            explosionFunction();
             setEnemyHp((enemyHp + enemy.def) - (player.atk * 2));
             let dmg = ((enemyHp + enemy.def) - player.atk*2);
         if(dmg <= 0) {
