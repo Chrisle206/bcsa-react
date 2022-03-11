@@ -422,7 +422,8 @@ height: 20vh;
 .explosion1{
   display: none;
 }
-#opp{
+.effectcont
+{
   position: relative;
   height: 20vh;
 }
@@ -503,9 +504,19 @@ height: 20vh;
   background-color: inherit;
   color: white;
 }
+.attack:hover + .iconhover{
+  visibility: visible;
+}
 .attack:hover{
   color: goldenrod;
 }
+.iconhover{
+  height: 40px;
+  margin: 10px;
+  visibility: hidden;
+}
+
+
 /* Start Page */
 .mainStartContainer{
   position: relative;

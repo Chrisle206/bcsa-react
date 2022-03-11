@@ -3,6 +3,10 @@ import back from '../assets/images/back.png'
 import speakeron from '../assets/images/speaker-on.png'
 import enemyPic from '../assets/images/enemy.png'
 import heroPic from '../assets/images/hero.png'
+import quiz from '../assets/images/quiz.png'
+import sword from '../assets/images/sword.png'
+import dice from '../assets/images/dice-fire.png'
+import heal1 from '../assets/images/heal1.png'
 import explosion from '../assets/images/explosion.gif'
 
 export default function Battle() {
@@ -83,6 +87,19 @@ export default function Battle() {
     showExplosion();
     setTimeout(function () { hideExplosion() }, 500)
 }
+    // explosion
+    let explosionEffect2 = document.getElementById('explosion2');
+    const hideExplosion2 = () => {
+            explosionEffect2.classList.add("explosion1");
+    }
+    const showExplosion2 = () => {
+        explosionEffect2.classList.remove("explosion1");
+        
+    }
+    const heroExplosion = () => {
+    showExplosion2();
+    setTimeout(function () { hideExplosion2() }, 500)
+}
 
     const intro = () => {
         hideAtkBtns();
@@ -126,13 +143,14 @@ export default function Battle() {
         let num2 = Math.floor(Math.random() * (3 - 1)) + 1;
         let enemyMove = atks[Math.floor(Math.random() * atks.length)];
         if (num2 === 1) {
-            // here goes hero explosion
             setMainText(`${enemy.name} attacked with ${enemyMove} and dealt ${enemy.atk - player.def}`);
             setTimeout(function () {
                 setHeroHp((heroHp + player.def) - enemy.atk);
                 setMainText(defaultQuestion);
                 showAtkBtns();
             }, 1000);
+            // here goes hero explosion
+            heroExplosion();
         } else if (num2 === 2) {
             let taunt = taunts[Math.floor(Math.random() * taunts.length)];
             setMainText(`${enemy.name} attacked with ${enemyMove} and dealt ${enemy.atk - player.def}`);
@@ -140,6 +158,8 @@ export default function Battle() {
                 setHeroHp((heroHp + player.def) - enemy.atk);
                 setMainText(taunt);
             }, 1000);
+            //heroexplosion
+            heroExplosion();
             setTimeout(function () {
                 setMainText(defaultQuestion);
                 showAtkBtns();
@@ -307,13 +327,16 @@ export default function Battle() {
                                 </div>
                             </div>
                         </div>
-                        <div id='opp'>
+                        <div className='effectcont'>
                         <img className="enemyPic" src={enemyPic} alt="Enemy" />
                         <img className="explosion explosion1" id='explosion' src={explosion} alt="explosion" />
                         </div>
                     </div>
                     <div className="heroRow">
+                    <div className='effectcont'>
                         <img className="heroPic" src={heroPic} alt="Hero" />
+                        <img className="explosion explosion1" id='explosion2' src={explosion} alt="explosion" />
+                        </div>
                         <div className="StatBox pixel-border">
                             <div className='statRow'>
                                 <h3>{player.name}</h3>
@@ -337,11 +360,17 @@ export default function Battle() {
                     <div className="attackList">
                         <div className="attackRow1">
                             <button className="attack" id='atk1' onClick={atk1}>{player.attacks[0]}</button>
+                        <img className="iconhover" src={sword} alt="sword" />
                             <button className="attack" id='atk2' onClick={atk2}>{player.attacks[1]}</button>
+                            <img className="iconhover" src={dice} alt="dice" />
                         </div>
                         <div className="attackRow2">
-                            <button className="attack" id='atk3' onClick={atk3}>{player.attacks[2]} </button>
-                            <button className="attack" id='atk4' onClick={heal}>{player.attacks[3]}</button>
+                            <button className="attack" id='atk3' onClick={atk3}>
+                                {player.attacks[2]} </button>
+                                <img className="iconhover" src={quiz} alt="quiz" />
+                            <button className="attack" id='atk4' onClick={heal}>
+                                {player.attacks[3]}</button>
+                                <img className="iconhover" src={heal1} alt="heal" />
                         </div>
                         <div className="attackRow2">
                             <button className="attack hide" id='qT' onClick={quizTrue}>True </button>
