@@ -190,6 +190,7 @@ export default function Battle() {
         if((enemyHp + enemy.def) <= player.atk * 2) {
             opponent = 0;
         }
+        bool = 2;
         enemyIsALive();
     }
 
@@ -211,6 +212,7 @@ export default function Battle() {
 
     const healAtk = () => {
         bool ? setHeroHp(heroHp + player.hp / 10) : setMainText(`${player.name} dropped the potion`);
+        bool = 2;
         addElements2();
         if(enemyHp <= player.atk) {
             opponent = 0;
