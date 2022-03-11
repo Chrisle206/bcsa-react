@@ -3,6 +3,7 @@ import back from '../assets/images/back.png'
 import speakeron from '../assets/images/speaker-on.png'
 import enemyPic from '../assets/images/enemy.png'
 import heroPic from '../assets/images/hero.png'
+import explosion from '../assets/images/explosion.gif'
 
 export default function Battle() {
 
@@ -44,7 +45,7 @@ export default function Battle() {
     "null",
     "undefined"],
         'Bug Enemy',
-        100,
+        1000,
         200,
         20
     );
@@ -68,6 +69,20 @@ export default function Battle() {
     var bool = 2;
     const [mainText, setMainText] = useState(defaultQuestion);
     var opponent = 1;
+
+    // explosion
+    let explosionEffect = document.getElementById('explosion');
+    const hideExplosion = () => {
+            explosionEffect.classList.add("explosion1");
+    }
+    const showExplosion = () => {
+        explosionEffect.classList.remove("explosion1");
+        
+    }
+    const explosionFunction = () => {
+    showExplosion();
+    setTimeout(function () { hideExplosion() }, 500)
+}
 
     const intro = () => {
         hideAtkBtns();
@@ -111,6 +126,7 @@ export default function Battle() {
         let num2 = Math.floor(Math.random() * (3 - 1)) + 1;
         let enemyMove = atks[Math.floor(Math.random() * atks.length)];
         if (num2 === 1) {
+            // here goes hero explosion
             setMainText(`${enemy.name} attacked with ${enemyMove} and dealt ${enemy.atk - player.def}`);
             setTimeout(function () {
                 setHeroHp((heroHp + player.def) - enemy.atk);
@@ -151,6 +167,7 @@ export default function Battle() {
         }
         hideAtkBtns();
         enemyIsALive();
+        explosionFunction();
     };
 
 
@@ -158,14 +175,15 @@ export default function Battle() {
         let attack = Math.floor(Math.random() * 2) * (player.atk * 2);
         if(attack === (player.atk*2)){
         setEnemyHp((enemyHp + enemy.def) - attack);
-        } else {
-            setMainText('Attack Missed!')
-        }
-        if((enemyHp + enemy.def) <= attack) {
-            opponent = 0;
-        }
-        hideAtkBtns();
-        enemyIsALive();
+    } else {
+        setMainText('Attack Missed!')
+    }
+    if((enemyHp + enemy.def) <= attack) {
+        opponent = 0;
+    }
+    hideAtkBtns();
+    enemyIsALive();
+    explosionFunction();
     };
 
 
@@ -177,6 +195,7 @@ export default function Battle() {
     const quizTrue = () => {
         bool = 1;
         quizAtk();
+        explosionFunction();
     }
 
     const quizFalse = () => {
@@ -288,7 +307,10 @@ export default function Battle() {
                                 </div>
                             </div>
                         </div>
-                        <img className="enemyPic" id='opp' src={enemyPic} alt="Enemy" />
+                        <div id='opp'>
+                        <img className="enemyPic" src={enemyPic} alt="Enemy" />
+                        <img className="explosion explosion1" id='explosion' src={explosion} alt="explosion" />
+                        </div>
                     </div>
                     <div className="heroRow">
                         <img className="heroPic" src={heroPic} alt="Hero" />

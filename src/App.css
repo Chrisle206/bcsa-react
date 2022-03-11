@@ -410,6 +410,22 @@ justify-content: space-between;
 .enemyPic{
   height: 20vh;
 }
+/* effect */
+.explosion{
+position: absolute;
+left:0;
+right:0;
+top:0;
+bottom:0;
+height: 20vh;
+}
+.explosion1{
+  display: none;
+}
+#opp{
+  position: relative;
+  height: 20vh;
+}
 .StatBox{
   width: 300px;
   height: 100px;
