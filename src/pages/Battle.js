@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import back from '../assets/images/back.png'
+import speakeron from '../assets/images/speaker-on.png'
 import enemyPic from '../assets/images/enemy.png'
 import heroPic from '../assets/images/hero.png'
 
@@ -273,6 +275,9 @@ export default function Battle() {
     return (
         <div className="pageContainer creationBg">
             <div className="MainBattleContainer">
+            <div className="topNavContainer">
+                    <button className="backbutton"><img className='backbuttonimg'src={back} alt="Back_Button" /> Back</button>                    
+                </div>
                 <div className="battleContainer">
                     <div className="enemyRow">
                         <div className="StatBox pixel-border">
@@ -335,6 +340,9 @@ export default function Battle() {
                             <button className="attack hide" id='contBtn'>Continue</button>
                         </div>
                     </div>
+                </div>
+                <div className="bottomNavContainer">
+                    <button className="backbutton"><img className='soundbuttonimg'src={speakeron} alt="speaker" /></button>                    
                 </div>
             </div>
         </div>

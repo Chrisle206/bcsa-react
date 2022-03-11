@@ -52,6 +52,50 @@
     transform: rotate(360deg);
   }
 }
+/* Navigation */
+.topNavContainer{
+  width: 90vw;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.bottomNavContainer{
+  width: 90vw;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.backbutton{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 0;
+  padding: 0;
+  font-size: 40px;
+  font-family: inherit;
+  background-color: inherit;
+  color: white;
+  opacity: 0.5;
+}
+.backbuttonimg{
+ width: 60px;
+ margin: 20px 20px 0 20px;
+}
+.soundbuttonimg{
+ width: 80px;
+ margin: 20px;
+}
+.backbutton:hover{
+ opacity:1;
+}
 
 /*Battle Quiz CSS */
 .hide {
@@ -60,6 +104,27 @@
 
 .vis {
   visibility: hidden;
+}
+.logContainer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 48px;
+  margin: 0;
+}
+.logbutton{
+  border: 0;
+  padding: 0 24px;
+  font-size: 32px;
+  margin: 20px;
+  font-family: inherit;
+  background-color: inherit;
+  color: white;
+  --pixel: 0.1rem;
+  opacity: 0.5;
+}
+.logbutton:hover{
+  opacity: 1;
 }
 /*Loading CSS*/
 .loading {
@@ -153,6 +218,7 @@
   font-family: 'VT323', monospace;
 }
 .mainContainer{
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100vw;
@@ -170,6 +236,8 @@
   opacity: 0.5;
 }
 .widthContainer{
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   width: 800px;
   height: 100%;
@@ -181,13 +249,6 @@
   font-size: 48px;
   margin:0; 
 }
-.logContainer{
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  font-size: 48px;
-  margin: 0;
-}
 .coinImg{
   width: 60px;
   margin: 10px;
@@ -195,8 +256,8 @@
 .TavernMenuContainer{
   display: flex;
   justify-content: space-between;
-  margin: 80px auto;
   width: 800px;
+  margin: auto;
 }
 .TavernMenuCard{
   display: flex;
@@ -204,7 +265,6 @@
   align-items: center;
   font-size: 32px;
   opacity: 0.7;
-  margin: auto;
   padding: 25px 40px;
   background-color: #000000;
   --pixel: .2rem;
@@ -213,6 +273,7 @@
   background: url('./assets/images/magic3.gif') no-repeat center center;
   opacity: 1;
   --pixel-border-2: goldenrod;
+  cursor: pointer; 
 }
 .TavernMenuItem{
   width: 100px;
@@ -223,6 +284,7 @@
   justify-content: center;
   align-items: center;
   font-size: 80px;
+  margin: auto auto 0 auto;
   
 }
 .TavernBeer{
@@ -236,6 +298,7 @@
   background-color: #000000;
 }
 .creationContainer{
+  position: relative;
   width: 100vw;
   margin: 0 auto;
   height: 70vh;
@@ -249,7 +312,7 @@
   background-blend-mode: multiply;
 }
 .creationTitle{
-  margin: auto auto;
+  margin: auto;
   display:flex;
   justify-content: center;
   align-items: center;
@@ -273,6 +336,13 @@ justify-content: space-between;
 .characterEmpty{
   height: 20vh;
   margin: auto auto;
+  animation: grow-and-shrink 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+.characterEmpty2{
+  height: 15vh;
+  margin: auto;
   animation: grow-and-shrink 1000ms;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
@@ -307,6 +377,14 @@ justify-content: space-between;
   position: absolute;
   bottom: 0px;
 }
+.statfont{
+  margin: 0;
+  font-size: 24px;
+}
+.statfontbig{
+  margin: 0 0 10px 0;
+  font-size: 24px;
+}
 
 /* Battle Page */
 .MainBattleContainer{
@@ -315,13 +393,12 @@ justify-content: space-between;
   flex-direction: column;
   margin: auto;
   height: 70vh;
-  background: url('./assets/images/battlebg1.gif') no-repeat center center fixed;
+  background: url('./assets/images/newbattlebg3.gif') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-color: rgba(0, 0, 0, 0.5);
-  background-blend-mode: multiply;
+  position: relative;
 }
 .battleContainer{
   display: flex;
@@ -420,6 +497,7 @@ justify-content: space-between;
 }
 /* Start Page */
 .mainStartContainer{
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100vw;
@@ -430,6 +508,15 @@ justify-content: space-between;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+.mainIntroContainer{
+  background: url('./assets/images/intro3.gif') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: rgb(0, 0, 0, 0.3);
+  background-blend-mode: multiply;
 }
 .wingedsword{
     width: 80px;
@@ -442,27 +529,32 @@ justify-content: space-between;
   justify-content: space-between;
   font-size: 48px;
   margin: 0 auto;
-  border: solid 4px white;
-  border-radius: 20px;
-  padding: 20px 30px 20px 40px;
+  padding: 0 20px 0 30px;
+  border: 0;
+  font-family: inherit;
+  color: white;
   background-color: #000000;
   opacity: 0.5;
+  z-index: 1;
 }
 .PlayButton{
     width: 70px;
-  margin: 0 0 0 30px;
+  margin: 0 0 0 10px;
 }
 
 .PlayCard:hover{
   opacity:1;
+  cursor: pointer;
 }
 
 .description{
   font-size: 24px;
+  margin: auto;
 }
 
 /* Character + Store Page */
 .mainCharContainer{
+  position: relative;
   display: flex;
   justify-content: center;
   width: 100vw;
@@ -473,25 +565,26 @@ justify-content: space-between;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-color: rgb(255, 255, 255);
-  background-blend-mode: multiply;
 }
-.widthCharContainer{
+.widthChar2Container{
   display: flex;
   justify-content: space-between;
-  width: 90vw;
+  width: 1000px;
   margin: 0 auto;
   text-align: center;
   padding: 32px;
 }
 
 .charBox{
-  width: 25vw;
-  height: 100%;
+  width: auto;
+  min-width: 20vw;
+  height: 90%;
   background-color: #000000;
   color: white;
   display: flex;
   flex-direction: column;
+  margin: auto 40px auto;
+
 }
 .shoprow{
   display: flex;
@@ -511,21 +604,50 @@ justify-content: space-between;
   max-width: 80px;
   min-width: 80px;
   min-height: 80px;
-  border: white solid 4px;
+  border: white solid 2px;
   border-radius: 10px;;
   margin: 20px;
-
+}
+.itemdescbox{
+  height: 70%;
+  width: 300px;
+  position: absolute;
+  right: 40px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: black;
+  visibility: hidden;
+}
+.textbox{
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  margin: auto;
+  font-size: 24px;
 }
 .shopitem:hover{
   background-color: white;
   color:black;
+  cursor: pointer;
+}
+.shopitem:hover > .itemdescbox{
+visibility: visible;
 }
 
 .boxtitle{
-  font-size: 40px;
+  font-size: 32px;
   border-bottom: dashed white 2px;
   padding: 30px;
   margin: 0 0 40px 0;
+}
+.statcontainer{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
 }
 .stats{
   display:flex;
@@ -533,13 +655,13 @@ justify-content: space-between;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin: 0 60px;
+  margin: 0 60px 10px;
 }
 .plus{
-  font-size: 32px;
+  font-size: 24px;
   margin: 0 0 0 30px;
   color: white;
-  padding: 0 10px;
+  padding: 0 5px;
   border: white solid 2px;
   border-radius: 10px;
   background-color: #000000;
@@ -547,15 +669,18 @@ justify-content: space-between;
 .plus:hover{
   background-color: white;
   color: black;
+  cursor: pointer;
 }
 .statusbox{
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 .statbottom{
   font-size: 32px;
-  margin: auto auto 40px auto;
+  margin: auto;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -569,6 +694,8 @@ justify-content: space-between;
   display: flex;
   align-items: center;
   font-size: 32px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .coinshop{
   width: 40px;
@@ -586,4 +713,5 @@ justify-content: space-between;
 }
 .buyequip:hover{
   background-color: green;
+  cursor: pointer;
 }
