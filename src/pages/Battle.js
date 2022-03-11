@@ -157,6 +157,7 @@ export default function Battle() {
     const atk2 = () => {
         let attack = Math.floor(Math.random() * 2) * (player.atk * 2);
         if(attack === (player.atk*2)){
+        setMainText(`${player.name} dealt ${(player.atk*2) - enemy.def}`);
         setEnemyHp((enemyHp + enemy.def) - attack);
         } else {
             setMainText('Attack Missed!')
