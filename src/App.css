@@ -1,3 +1,19 @@
+:root {
+	--pixel-bg: black;
+	/* ↑ Inner background color */
+	
+	--pixel-border: black;
+	/* ↑ Inner border color */
+	
+	--pixel-border-2: white;
+	/* ↑ Middle border color */
+	
+	--pixel-border-3: var(--pixel-border);
+	/* ↑ Outer border color */
+	
+	--pixel: .15rem;
+	/* ↑ Pixel size */
+}
 .App {
   text-align: center;
 }
@@ -36,7 +52,72 @@
     transform: rotate(360deg);
   }
 }
+/* Navigation */
+.topNavContainer{
+  width: 90vw;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.bottomNavContainer{
+  width: 90vw;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.backbutton{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 0;
+  padding: 0;
+  font-size: 40px;
+  font-family: inherit;
+  background-color: inherit;
+  color: white;
+  opacity: 0.5;
+}
+.backbuttonimg{
+ width: 60px;
+ margin: 20px 20px 0 20px;
+}
+.soundbuttonimg{
+ width: 80px;
+ margin: 20px;
+}
+.backbutton:hover{
+ opacity:1;
+}
 
+.logContainer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 48px;
+  margin: 0;
+}
+.logbutton{
+  border: 0;
+  padding: 0 24px;
+  font-size: 32px;
+  margin: 20px;
+  font-family: inherit;
+  background-color: inherit;
+  color: white;
+  --pixel: 0.1rem;
+  opacity: 0.5;
+}
+.logbutton:hover{
+  opacity: 1;
+}
 /*Loading CSS*/
 .loading {
   font-size: 75px;
@@ -56,6 +137,69 @@
   align-self: center;
 }
 
+/* pixelated borders */
+
+.pixel-border {
+	background: var(--pixel-bg);
+	box-shadow:
+		
+	/* Inner Background Color */
+		0 calc(var(--pixel) * -3) 0 calc(var(--pixel) * -1) var(--pixel-bg),
+		0 calc(var(--pixel) * 3) 0 calc(var(--pixel) * -1) var(--pixel-bg),
+		0 calc(var(--pixel) * -6) 0 calc(var(--pixel) * -2) var(--pixel-bg),
+		0 calc(var(--pixel) * 6) 0 calc(var(--pixel) * -2) var(--pixel-bg),
+		0 calc(var(--pixel) * -9) 0 calc(var(--pixel) * -4) var(--pixel-bg),
+		0 calc(var(--pixel) * 9) 0 calc(var(--pixel) * -4) var(--pixel-bg),
+		0 calc(var(--pixel) * -12) 0 calc(var(--pixel) * -6) var(--pixel-bg),
+		0 calc(var(--pixel) * 12) 0 calc(var(--pixel) * -6) var(--pixel-bg),
+		
+	/* Pixel Border Layer 1 */
+		calc(var(--pixel) * -1) 0 0 0 var(--pixel-border),
+		var(--pixel) 0 0 0 var(--pixel-border),
+		0 calc(var(--pixel) * -2) 0 0 var(--pixel-border),
+		0 calc(var(--pixel) * 2) 0 0 var(--pixel-border),
+		0 calc(var(--pixel) * -5) 0 calc(var(--pixel) * -1) var(--pixel-border),
+		0 calc(var(--pixel) * 5) 0 calc(var(--pixel) * -1) var(--pixel-border),
+		0 calc(var(--pixel) * -7) 0 calc(var(--pixel) * -2) var(--pixel-border),
+		0 calc(var(--pixel) * 7) 0 calc(var(--pixel) * -2) var(--pixel-border),
+		0 calc(var(--pixel) * -10) 0 calc(var(--pixel) * -4) var(--pixel-border),
+		0 calc(var(--pixel) * 10) 0 calc(var(--pixel) * -4) var(--pixel-border),
+		0 calc(var(--pixel) * -13) 0 calc(var(--pixel) * -6) var(--pixel-border),
+		0 calc(var(--pixel) * 13) 0 calc(var(--pixel) * -6) var(--pixel-border),
+		
+	/* Pixel Border Layer 2 */
+		calc(var(--pixel) * -2) 0 0 0 var(--pixel-border-2),
+		calc(var(--pixel) * 2) 0 0 0 var(--pixel-border-2),
+		0 calc(var(--pixel) * -1) 0 var(--pixel) var(--pixel-border-2), 
+		0 var(--pixel) 0 var(--pixel) var(--pixel-border-2),
+		0 calc(var(--pixel) * -4) 0 0 var(--pixel-border-2),
+		0 calc(var(--pixel) * 4) 0 0 var(--pixel-border-2),
+		0 calc(var(--pixel) * -6) 0 calc(var(--pixel) * -1) var(--pixel-border-2),
+		0 calc(var(--pixel) * 6) 0 calc(var(--pixel) * -1) var(--pixel-border-2),
+		0 calc(var(--pixel) * -8) 0 calc(var(--pixel) * -2) var(--pixel-border-2),
+		0 calc(var(--pixel) * 8) 0 calc(var(--pixel) * -2) var(--pixel-border-2),
+		0 calc(var(--pixel) * -11) 0 calc(var(--pixel) * -4) var(--pixel-border-2),
+		0 calc(var(--pixel) * 11) 0 calc(var(--pixel) * -4) var(--pixel-border-2),
+		0 calc(var(--pixel) * -14) 0 calc(var(--pixel) * -6) var(--pixel-border-2),
+		0 calc(var(--pixel) * 14) 0 calc(var(--pixel) * -6) var(--pixel-border-2),
+		
+	/* Border Layer 3: --pixel-border-3 */
+		calc(var(--pixel) * -3) 0 0 0 var(--pixel-border-3),
+		calc(var(--pixel) * 3) 0 0 0 var(--pixel-border-3),
+		0 0 0 calc(var(--pixel) * 2) var(--pixel-border-3),
+		0 calc(var(--pixel) * -3) 0 var(--pixel) var(--pixel-border-3),
+		0 calc(var(--pixel) * 3) 0 var(--pixel) var(--pixel-border-3),
+		0 calc(var(--pixel) * -5) 0 0 var(--pixel-border-3),
+		0 calc(var(--pixel) * 5) 0 0 var(--pixel-border-3),
+		0 calc(var(--pixel) * -7) 0 calc(var(--pixel) * -1) var(--pixel-border-3),
+		0 calc(var(--pixel) * 7) 0 calc(var(--pixel) * -1) var(--pixel-border-3),
+		0 calc(var(--pixel) * -9) 0 calc(var(--pixel) * -2) var(--pixel-border-3), 
+		0 calc(var(--pixel) * 9) 0 calc(var(--pixel) * -2) var(--pixel-border-3),
+		0 calc(var(--pixel) * -12) 0 calc(var(--pixel) * -4) var(--pixel-border-3), 
+		0 calc(var(--pixel) * 12) 0 calc(var(--pixel) * -4) var(--pixel-border-3),
+		0 calc(var(--pixel) * -15) 0 calc(var(--pixel) * -6) var(--pixel-border-3), 
+		0 calc(var(--pixel) * 15) 0 calc(var(--pixel) * -6) var(--pixel-border-3);
+}
 /* Tavern CSS */
 .pageContainer{
   width: 100vw;
@@ -66,6 +210,7 @@
   font-family: 'VT323', monospace;
 }
 .mainContainer{
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100vw;
@@ -83,6 +228,8 @@
   opacity: 0.5;
 }
 .widthContainer{
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   width: 800px;
   height: 100%;
@@ -94,13 +241,6 @@
   font-size: 48px;
   margin:0; 
 }
-.logContainer{
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  font-size: 48px;
-  margin: 0;
-}
 .coinImg{
   width: 60px;
   margin: 10px;
@@ -108,8 +248,8 @@
 .TavernMenuContainer{
   display: flex;
   justify-content: space-between;
-  margin: 80px auto;
   width: 800px;
+  margin: auto;
 }
 .TavernMenuCard{
   display: flex;
@@ -117,15 +257,15 @@
   align-items: center;
   font-size: 32px;
   opacity: 0.7;
-  border: solid 6px white;
-  border-radius: 20px;
   padding: 25px 40px;
   background-color: #000000;
+  --pixel: .2rem;
 }
 .TavernMenuCard:hover{
   background: url('./assets/images/magic3.gif') no-repeat center center;
   opacity: 1;
-  border: solid 6px goldenrod;
+  --pixel-border-2: goldenrod;
+  cursor: pointer; 
 }
 .TavernMenuItem{
   width: 100px;
@@ -136,6 +276,7 @@
   justify-content: center;
   align-items: center;
   font-size: 80px;
+  margin: auto auto 0 auto;
   
 }
 .TavernBeer{
@@ -149,10 +290,10 @@
   background-color: #000000;
 }
 .creationContainer{
+  position: relative;
   width: 100vw;
   margin: 0 auto;
   height: 70vh;
-  padding: 20px 0;
   color: white;
   background: url('./assets/images/ebbg2.gif') no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -163,7 +304,7 @@
   background-blend-mode: multiply;
 }
 .creationTitle{
-  margin: 0 auto;
+  margin: auto;
   display:flex;
   justify-content: center;
   align-items: center;
@@ -191,6 +332,13 @@ justify-content: space-between;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
 }
+.characterEmpty2{
+  height: 15vh;
+  margin: auto;
+  animation: grow-and-shrink 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
 @keyframes grow-and-shrink {
   0% {
     transform: scale(1);
@@ -205,11 +353,8 @@ justify-content: space-between;
 .choicesContainer{
   font-size: 24px;
   text-align: center;
-  margin: 40px auto;
-  padding: 10px;
+  margin: auto auto;
   background-color: black;
-  border: solid white 4px;
-  border-radius: 20px;
   width: 800px;
 }
 .question{
@@ -224,29 +369,34 @@ justify-content: space-between;
   position: absolute;
   bottom: 0px;
 }
+.statfont{
+  margin: 0;
+  font-size: 24px;
+}
+.statfontbig{
+  margin: 0 0 10px 0;
+  font-size: 24px;
+}
 
 /* Battle Page */
 .MainBattleContainer{
   display: flex;
   width: 100vw;
   flex-direction: column;
-  justify-content: space-between;
-  margin: 0 auto;
+  margin: auto;
   height: 70vh;
-  padding: 20px 0;
-  background: url('./assets/images/battlebg1.gif') no-repeat center center fixed;
+  background: url('./assets/images/newbattlebg3.gif') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-color: rgba(0, 0, 0, 0.5);
-  background-blend-mode: multiply;
+  position: relative;
 }
 .battleContainer{
   display: flex;
   flex-direction: column;
   width: 800px;
-  margin: 0 auto;
+  margin: auto;
 }
 .enemyRow{
   display: flex;
@@ -255,16 +405,15 @@ justify-content: space-between;
   margin: 20px 0;
 }
 .enemyPic{
-  height: 25vh;
+  height: 20vh;
 }
 .StatBox{
   width: 300px;
   height: 100px;
-  border: white solid 4px;
-  border-radius:  10px;
   background-color: black;
-  padding: 5px 20px;
+  padding: 0 20px;
   color: white;
+  --pixel: .1rem;
 }
 .heroRow{
   display: flex;
@@ -273,26 +422,26 @@ justify-content: space-between;
   margin: 20px 0;
 }
 .heroPic{
-  height: 25vh;
+  height: 20vh;
 }
 .BattlechoicesContainer{
   font-size: 24px;
   text-align: center;
-  margin: 0 auto;
-  background-color: black;
-  border: solid white 4px;
-  border-radius: 20px;
+  margin: auto auto;
   color: white;
   width: 800px;
- 
 }
 .attackList{
-  margin: 20px 200px;
+  margin: 0px 200px;
 }
-.attackRow{
+.attackRow1{
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+}
+.attackRow2{
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
 }
 .statRow{
   display: flex;
@@ -303,29 +452,44 @@ justify-content: space-between;
   height: 20px;
   border: solid black 2px;
 }
-.healthBar50{
+.healthcontainer{
+  border: solid white 2px;
+  background-color: white;
   width: 300px;
+  height: 20px;
+}
+.healthBarEnemy{
+  width: 100%;
   height: 20px;
   background-color: red;
-  border: solid white 2px;
+
 }
-.healthBar100{
-  width: 300px;
+.healthBarHero{
+  width: 100%;
   height: 20px;
   background-color: green;
-  border: solid white 2px;
-  margin: 0;
-  text-align: right;
 }
 .hp{
   margin: 0;
   padding: 0 10px;
-
   color: white;
   background-color: black;
 }
+.attack{
+  /* button reset */
+  border: 0;
+  padding: 0;
+  font-size: 100%;
+  font-family: inherit;
+  background-color: inherit;
+  color: white;
+}
+.attack:hover{
+  color: goldenrod;
+}
 /* Start Page */
 .mainStartContainer{
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100vw;
@@ -336,7 +500,14 @@ justify-content: space-between;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  /* background-color: rgba(0, 0, 0, 0.3); */
+}
+.mainIntroContainer{
+  background: url('./assets/images/intro3.gif') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: rgb(0, 0, 0, 0.3);
   background-blend-mode: multiply;
 }
 .wingedsword{
@@ -350,27 +521,32 @@ justify-content: space-between;
   justify-content: space-between;
   font-size: 48px;
   margin: 0 auto;
-  border: solid 4px white;
-  border-radius: 20px;
-  padding: 20px 30px 20px 40px;
+  padding: 0 20px 0 30px;
+  border: 0;
+  font-family: inherit;
+  color: white;
   background-color: #000000;
   opacity: 0.5;
+  z-index: 1;
 }
 .PlayButton{
     width: 70px;
-  margin: 0 0 0 30px;
+  margin: 0 0 0 10px;
 }
 
 .PlayCard:hover{
   opacity:1;
+  cursor: pointer;
 }
 
 .description{
   font-size: 24px;
+  margin: auto;
 }
 
 /* Character + Store Page */
 .mainCharContainer{
+  position: relative;
   display: flex;
   justify-content: center;
   width: 100vw;
@@ -381,27 +557,26 @@ justify-content: space-between;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-color: rgb(255, 255, 255);
-  background-blend-mode: multiply;
 }
-.widthCharContainer{
+.widthChar2Container{
   display: flex;
   justify-content: space-between;
-  width: 90vw;
+  width: 1000px;
   margin: 0 auto;
   text-align: center;
   padding: 32px;
 }
 
 .charBox{
-  width: 25vw;
-  height: 100%;
+  width: auto;
+  min-width: 20vw;
+  height: 90%;
   background-color: #000000;
   color: white;
-  border: white solid 4px;
-  border-radius: 20px;
   display: flex;
   flex-direction: column;
+  margin: auto 40px auto;
+
 }
 .shoprow{
   display: flex;
@@ -421,20 +596,50 @@ justify-content: space-between;
   max-width: 80px;
   min-width: 80px;
   min-height: 80px;
-  border: white solid 4px;
+  border: white solid 2px;
   border-radius: 10px;;
   margin: 20px;
+}
+.itemdescbox{
+  height: 70%;
+  width: 300px;
+  position: absolute;
+  right: 40px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: black;
+  visibility: hidden;
+}
+.textbox{
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  margin: auto;
+  font-size: 24px;
 }
 .shopitem:hover{
   background-color: white;
   color:black;
+  cursor: pointer;
+}
+.shopitem:hover > .itemdescbox{
+visibility: visible;
 }
 
 .boxtitle{
-  font-size: 40px;
+  font-size: 32px;
   border-bottom: dashed white 2px;
   padding: 30px;
   margin: 0 0 40px 0;
+}
+.statcontainer{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
 }
 .stats{
   display:flex;
@@ -442,13 +647,13 @@ justify-content: space-between;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin: 0 60px;
+  margin: 0 60px 10px;
 }
 .plus{
-  font-size: 32px;
+  font-size: 24px;
   margin: 0 0 0 30px;
   color: white;
-  padding: 0 10px;
+  padding: 0 5px;
   border: white solid 2px;
   border-radius: 10px;
   background-color: #000000;
@@ -456,15 +661,18 @@ justify-content: space-between;
 .plus:hover{
   background-color: white;
   color: black;
+  cursor: pointer;
 }
 .statusbox{
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 .statbottom{
   font-size: 32px;
-  margin: auto auto 40px auto;
+  margin: auto;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -478,6 +686,8 @@ justify-content: space-between;
   display: flex;
   align-items: center;
   font-size: 32px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .coinshop{
   width: 40px;
@@ -495,4 +705,5 @@ justify-content: space-between;
 }
 .buyequip:hover{
   background-color: green;
+  cursor: pointer;
 }
