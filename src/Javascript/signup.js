@@ -2,8 +2,6 @@
 
 import React, { useState } from 'react';
 
-//TODO: Signup page should be converted into a component at some point. It's a page for now for simplicity's sake
-
 function Signup() {
     //Logic
     const [token, setToken] = useState("");

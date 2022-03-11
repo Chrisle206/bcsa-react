@@ -5,12 +5,15 @@ import React, { useState } from 'react';
 function Signup() {
     //Logic
     const [token, setToken] = useState("");
+
+    //State for handling a user's data
     const [userData, setUserData] = useState({
       username:"",
       id:0,
       characters: []
     });
   
+    //State for handling form submissions
     const [formState, setFormState] = useState({
         username:'',
         password:''
@@ -18,7 +21,7 @@ function Signup() {
     
     const signupHandler = async function(e) {
         e.preventDefault();
-        const baseurl = 'http://localhost:3001'
+        const baseurl = 'https://bcsa-api.herokuapp.com'
       
         const response = await fetch(`${baseurl}/user/signup`, {
           method: 'POST',
@@ -36,16 +39,29 @@ function Signup() {
             id:newUser._id,
           })
     };
+
+        //Logout entails deletion of JWT and character ID from local storage. Without token, there will be no userData.username state. Use this state to create conditional rendering on pages where login/signup/logout buttons should be hidden/shown.
+    const logout = e=>{
+        localStorage.removeItem("token");
+        setToken("");
+        setUserData({
+          username:"",
+          id:0,
+          characters:[]
+        })
+    };
     
     //Form, needs CSS
     return (
         <>
-        <form onSubmit={signupHandler}>
-            <input name="username" value={formState.username} onChange={e => setFormState({ ...formState, username: e.target.value })} />
-            <input name="password" type="password" value={formState.password} onChange={e => setFormState({ ...formState, password: e.target.value })} />
-            <button>SignUp</button>
-        </form>
-        {userData.username ? (
+            <h2>This page is for demonstration of functionality only. Logic should be copied and pasted where necessary.</h2>
+
+            <form onSubmit={signupHandler}>
+                <input name="username" value={formState.username} onChange={e => setFormState({ ...formState, username: e.target.value })} />
+                <input name="password" type="password" value={formState.password} onChange={e => setFormState({ ...formState, password: e.target.value })} />
+                <button>SignUp</button>
+            </form>
+            {userData.username ? (
                 <>
                     <h3>Welcome, {userData.username}</h3>
                     <button onClick={logout}>Logout</button>
