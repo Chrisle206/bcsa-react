@@ -103,7 +103,6 @@ export default function Battle() {
                 option1();
                 break;
             case 5:
-                hideAtkBtns();
                 let idle = idles[Math.floor(Math.random() * idles.length)];
                 setTimeout(function () {
                     setMainText(idle);
@@ -119,7 +118,6 @@ export default function Battle() {
     }
 
     const option1 = () => {
-        hideAtkBtns();
         let num2 = Math.floor(Math.random() * (3 - 1)) + 1;
         let enemyMove = atks[Math.floor(Math.random() * atks.length)];
         if (num2 === 1) {
@@ -144,25 +142,39 @@ export default function Battle() {
     }
     const enemyIsALive = () => {
             !opponent ? document.getElementById('opp').classList.add('hide') : setTimeout(function () { enemyTurn() }, 500);
+            //when enemy dies
+            if(!opponent) {
+                setEnemyHp(0);
+                setMainText('Enemy Felled!');
+                hideAtkBtns();
+                document.getElementById('backBtn').classList.remove('hide');
+                document.getElementById('contBtn').classList.remove('hide');
+
+            }
     }
 
     const atk1 = () => {
         setEnemyHp((enemyHp + enemy.def) - player.atk);
         setMainText(`${player.name} dealt ${player.atk - enemy.def}`);
-        if(enemyHp <= 0) {
+        if(enemyHp <= player.atk) {
             opponent = 0;
         }
+        hideAtkBtns();
         enemyIsALive();
     };
 
 
     const atk2 = () => {
-        let attack = Math.floor(Math.random() * (2 - 1)) + 1 * (player.atk * 2);
+        let attack = Math.floor(Math.random() * 2) * (player.atk * 2);
+        if(attack === (player.atk*2)){
         setEnemyHp((enemyHp + enemy.def) - attack);
-        setMainText(`${player.name} dealt ${attack - enemy.def}`)
-        if(enemyHp <= 0) {
+        } else {
+            setMainText('Attack Missed!')
+        }
+        if((enemyHp + enemy.def) <= attack) {
             opponent = 0;
         }
+        hideAtkBtns();
         enemyIsALive();
     };
 
@@ -185,9 +197,10 @@ export default function Battle() {
     const quizAtk = () => {
         bool ? setEnemyHp((enemyHp + enemy.def) - (player.atk * 2)) : setMainText('Attack Missed!');
         addElements();
-        setTimeout(function () {
-            enemyTurn();
-        }, 1000);
+        if((enemyHp + enemy.def) <= player.atk * 2) {
+            opponent = 0;
+        }
+        enemyIsALive();
     }
 
 
@@ -209,9 +222,10 @@ export default function Battle() {
     const healAtk = () => {
         bool ? setHeroHp(heroHp + player.hp / 10) : setMainText(`${player.name} dropped the potion`);
         addElements2();
-        setTimeout(function () {
-            enemyTurn();
-        }, 1000);
+        if(enemyHp <= player.atk) {
+            opponent = 0;
+        }
+        enemyIsALive();
     }
     const removeElements = () => {
         let element = document.getElementById('qT');
@@ -322,8 +336,8 @@ export default function Battle() {
                             <button className="attack hide" id='hT1' onClick={quiz2False}>False</button>
                         </div>
                         <div className="attackRow2">
-                            <button className="attack">Back </button>
-                            <button className="attack">Continue</button>
+                            <button className="attack hide" id='backBtn'>Back </button>
+                            <button className="attack hide" id='contBtn'>Continue</button>
                         </div>
                     </div>
                 </div>

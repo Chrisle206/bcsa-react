@@ -97,6 +97,14 @@
  opacity:1;
 }
 
+/*Battle Quiz CSS */
+.hide {
+  display: none;
+}
+
+.vis {
+  visibility: hidden;
+}
 .logContainer{
   display: flex;
   align-items: center;

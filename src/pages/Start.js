@@ -8,6 +8,7 @@ import speakeroff from '../assets/images/speaker-off.png'
 
 
 export default function Start() {
+    document.title = 'BCS Adventures';
     return (
         <div className="pageContainer creationBg">
             <div className="mainStartContainer">
