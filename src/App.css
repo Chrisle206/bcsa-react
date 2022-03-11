@@ -53,6 +53,14 @@
   }
 }
 
+/*Battle Quiz CSS */
+.hide {
+  display: none;
+}
+
+.vis {
+  visibility: hidden;
+}
 /*Loading CSS*/
 .loading {
   font-size: 75px;

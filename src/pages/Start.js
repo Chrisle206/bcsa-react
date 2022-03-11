@@ -5,6 +5,7 @@ import wingedsword from '../assets/images/winged-sword.png'
 
 
 export default function Start() {
+    document.title = 'BCS Adventures';
     return (
         <div className="pageContainer creationBg">
         <div className="mainStartContainer">
