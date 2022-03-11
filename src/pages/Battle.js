@@ -5,6 +5,7 @@ import enemyPic from '../assets/images/enemy.png'
 import heroPic from '../assets/images/hero.png'
 
 export default function Battle() {
+
     class Character {
         constructor(attacks, name, hp, atk, def) {
             this.attacks = attacks;
@@ -51,93 +52,212 @@ export default function Battle() {
         200,
         20
     );
-
-
+    const idles = ["Joe is busy trying to get his cat off of the keyboard.",
+        "Joe seems to be daydreaming about manatees.",
+        "Joe seems too preoccupied with playing Stardew Valley to attack."];
+    const taunts = ["Class participation is mandatory!",
+        "You should know this stuff already!",
+        "How do fish unlock their houses? With their manakeys!",]
+    const atks = ["Room Mute",
+        "Random Name Selector",
+        "Confusing Demo",
+        "Manatee Joke",
+        "Bahamut Bash",
+        "Shiva Shank",
+        "La Croix Heal"
+    ]
     const player = new Character(['Basic Attack', 'Dice Attack', 'Quiz Attack', 'Quiz Heal'], 'BCS Champ', 1000, 45, 100);
     ///////////////
-     // This keeps track of whose turn it is
-  let playerTurn = true;
-  const questions = ["Snake-case is the preferred case style when naming databases.", "MongoDB stores data records as BSON documents."];
-  let defaultQuestion = "What is your next move?"
-  var delayInMilliseconds = 5000; //10 second
-  
-//   const turnInterval = setInterval(() => {
-//     // If either character is not alive, end the game
-//     if (!player.isAlive() || !enemy.isAlive()) {
-//       clearInterval(turnInterval);
-//       console.log('Game over!');
-//     } else if (playerTurn) {
-//       if(player.attacks[0]) {
-//         player.attack(player.atk, player.attacks[0], enemy);
-//       } else if(player.attacks[1]) {
-//         player.attack(getRandomInt(2) * (player.atk*1.5), player.attacks[1], enemy);
-//       } else if(player.attacks[2]) {
-//         let question = questions[Math.floor(Math.random()*questions.length)];
-//         let answer = true;
-//         answer ? player.attack(player.atk*2, player.attacks[2], enemy) : player.attack(0, "miss", enemy);
-//       } else if(player.attacks[3]) {
-//         console.log(`${player.hp} -> ${player.hp+player.def}`);
-//         player.heal(player.def);
-//       }
-//       enemy.printStats();
-//     } else {
-//       enemy.attack(player);
-//       player.printStats();
-//     }
-  
-//     // Switch turns
-//     playerTurn = !playerTurn;
-//   }, 2000);
+    // This keeps track of whose turn it is
+    const questions = ["Snake-case is the preferred case style when naming databases.", "MongoDB stores data records as BSON documents."];
+    let defaultQuestion = "What is your next move?"
+    var delayInMilliseconds = 3000;
 
     const [heroHp, setHeroHp] = useState(player.hp);
     const [enemyHp, setEnemyHp] = useState(enemy.hp);
-    const [boolean, setBoolean] = useState(true);
+    var bool = 2;
+    const [mainText, setMainText] = useState(defaultQuestion);
+    var opponent = 1;
+
+    const intro = () => {
+        hideAtkBtns();
+        setMainText('intro');
+        setTimeout(function () {
+            setMainText(defaultQuestion);
+            showAtkBtns();
+        }, 1000);
+    }
+    const enemyTurn = () => {
+        let num = Math.floor(Math.random() * (6 - 1)) + 1;
+        switch (num) {
+            case 1:
+                option1();
+                break;
+            case 2:
+                option1();
+                break;
+            case 3:
+                option1();
+                break;
+            case 4:
+                option1();
+                break;
+            case 5:
+                hideAtkBtns();
+                let idle = idles[Math.floor(Math.random() * idles.length)];
+                setTimeout(function () {
+                    setMainText(idle);
+                }, 1000);
+                setTimeout(function () {
+                    setMainText(defaultQuestion);
+                    showAtkBtns();
+                }, delayInMilliseconds);
+                break;
+            default:
+                setMainText(defaultQuestion);
+        }
+    }
+
+    const option1 = () => {
+        hideAtkBtns();
+        let num2 = Math.floor(Math.random() * (3 - 1)) + 1;
+        let enemyMove = atks[Math.floor(Math.random() * atks.length)];
+        if (num2 === 1) {
+            setMainText(`${enemy.name} attacked with ${enemyMove} and dealt ${enemy.atk - player.def}`);
+            setTimeout(function () {
+                setHeroHp((heroHp + player.def) - enemy.atk);
+                setMainText(defaultQuestion);
+                showAtkBtns();
+            }, 1000);
+        } else if (num2 === 2) {
+            let taunt = taunts[Math.floor(Math.random() * taunts.length)];
+            setMainText(`${enemy.name} attacked with ${enemyMove} and dealt ${enemy.atk - player.def}`);
+            setTimeout(function () {
+                setHeroHp((heroHp + player.def) - enemy.atk);
+                setMainText(taunt);
+            }, 1000);
+            setTimeout(function () {
+                setMainText(defaultQuestion);
+                showAtkBtns();
+            }, delayInMilliseconds);
+        }
+    }
+    const enemyIsALive = () => {
+            !opponent ? document.getElementById('opp').classList.add('hide') : setTimeout(function () { enemyTurn() }, 500);
+    }
 
     const atk1 = () => {
-        setEnemyHp((enemyHp+enemy.def) - player.atk);
-
-setTimeout(function() {
-  setHeroHp((heroHp+player.def) - enemy.atk);
-}, delayInMilliseconds);
+        setEnemyHp((enemyHp + enemy.def) - player.atk);
+        setMainText(`${player.name} dealt ${player.atk - enemy.def}`);
+        if(enemyHp <= 0) {
+            opponent = 0;
+        }
+        enemyIsALive();
     };
+
+
     const atk2 = () => {
-        let attack = Math.floor(Math.random() * (2 - 1)) + 1 * (player.atk*2);
-        setEnemyHp((enemyHp+enemy.def) - attack);
-
-setTimeout(function() {
-  setHeroHp((heroHp+player.def) - enemy.atk);
-}, delayInMilliseconds);
+        let attack = Math.floor(Math.random() * (2 - 1)) + 1 * (player.atk * 2);
+        setEnemyHp((enemyHp + enemy.def) - attack);
+        setMainText(`${player.name} dealt ${attack - enemy.def}`)
+        if(enemyHp <= 0) {
+            opponent = 0;
+        }
+        enemyIsALive();
     };
+
+
     const atk3 = () => {
-        let question = questions[Math.floor(Math.random()*questions.length)]; //gets random questions, add to UI
-        quiz();
-
-setTimeout(function() {
-  setHeroHp((heroHp+player.def) - enemy.atk);
-}, delayInMilliseconds);
+        let question = questions[Math.floor(Math.random() * questions.length)]; //gets random questions, add to UI
+        setMainText(question);
+        removeElements();
     };
-    const quiz = () => {
-        let attack;
-        setBoolean(true);
-        boolean ? attack = player.atk*3 : attack = enemy.def;
-        setEnemyHp((enemyHp+enemy.def) - attack);
+    const quizTrue = () => {
+        bool = 1;
+        quizAtk();
     }
+
+    const quizFalse = () => {
+        bool = 0;
+        quizAtk();
+    }
+
+    const quizAtk = () => {
+        bool ? setEnemyHp((enemyHp + enemy.def) - (player.atk * 2)) : setMainText('Attack Missed!');
+        addElements();
+        setTimeout(function () {
+            enemyTurn();
+        }, 1000);
+    }
+
+
     const heal = () => {
-        let question = questions[Math.floor(Math.random()*questions.length)];
-        quiz2();
-
-setTimeout(function() {
-  setHeroHp((heroHp+player.def) - enemy.atk);
-}, delayInMilliseconds);
+        let question = questions[Math.floor(Math.random() * questions.length)];
+        setMainText(question);
+        removeElements2();
     };
-    const quiz2 = () => {
-        let potion;
-        setBoolean(true);
-        boolean ? potion = player.hp/10 : potion = 0;
-        setHeroHp(heroHp + potion);
+    const quiz2True = () => {
+        bool = 1;
+        setMainText(`${player.name} healed ${player.hp / 10} hp`);
+        healAtk();
+    }
+    const quiz2False = () => {
+        bool = 0;
+        healAtk();
+    }
+
+    const healAtk = () => {
+        bool ? setHeroHp(heroHp + player.hp / 10) : setMainText(`${player.name} dropped the potion`);
+        addElements2();
+        setTimeout(function () {
+            enemyTurn();
+        }, 1000);
+    }
+    const removeElements = () => {
+        let element = document.getElementById('qT');
+        element.classList.remove('hide');
+        element = document.getElementById('qT1');
+        element.classList.remove('hide');
+
+        hideAtkBtns();
+    }
+    const addElements = () => {
+        let element = document.getElementById('qT');
+        element.classList.add('hide');
+        element = document.getElementById('qT1');
+        element.classList.add('hide');
+    }
+    const addElements2 = () => {
+        let element = document.getElementById('hT');
+        element.classList.add('hide');
+        element = document.getElementById('hT1');
+        element.classList.add('hide');
+    }
+    const removeElements2 = () => {
+        let element = document.getElementById('hT');
+        element.classList.remove('hide');
+        element = document.getElementById('hT1');
+        element.classList.remove('hide');
+
+        hideAtkBtns();
+    }
+
+    const hideAtkBtns = () => {
+        for (let i = 1; i < 5; i++) {
+            let element = document.getElementById(`atk${i}`);
+            element.classList.add('hide');
+        }
+    }
+
+    const showAtkBtns = () => {
+        for (let i = 1; i < 5; i++) {
+            let element = document.getElementById(`atk${i}`);
+            element.classList.remove('hide');
+        }
     }
 
 
+    // intro();
     return (
         <div className="pageContainer creationBg">
             <div className="MainBattleContainer">
@@ -154,15 +274,15 @@ setTimeout(function() {
                             <div className='healthBarContainer'>
                                 <div className='statRow'>
                                     <div className='healthcontainer'>
-                                    <div className='healthBarEnemy'>
+                                        <div className='healthBarEnemy'>
 
-                                    </div>
                                         </div>
+                                    </div>
                                     <h3 className='hp'>HP:{enemyHp}/{enemy.hp}</h3>
                                 </div>
                             </div>
                         </div>
-                        <img className="enemyPic" src={enemyPic} alt="Enemy" />
+                        <img className="enemyPic" id='opp' src={enemyPic} alt="Enemy" />
                     </div>
                     <div className="heroRow">
                         <img className="heroPic" src={heroPic} alt="Hero" />
@@ -173,10 +293,10 @@ setTimeout(function() {
                             </div>
                             <div className='healthBarContainer '>
                                 <div className='statRow'>
-                                <div className='healthcontainer'>
-                                    <div className='healthBarHero'>
+                                    <div className='healthcontainer'>
+                                        <div className='healthBarHero'>
 
-                                    </div>
+                                        </div>
                                     </div>
                                     <h3 className='hp'>HP:{heroHp}/{player.hp}</h3>
                                 </div>
@@ -185,19 +305,21 @@ setTimeout(function() {
                     </div>
                 </div>
                 <div className="BattlechoicesContainer pixel-border">
-                <p className="question">{defaultQuestion}</p>
+                    <p className="question">{mainText}</p>
                     <div className="attackList">
                         <div className="attackRow1">
-                            <button className="attack" onClick={atk1}>{player.attacks[0]}</button>
-                            <button className="attack"onClick={atk2}>{player.attacks[1]}</button>
+                            <button className="attack" id='atk1' onClick={atk1}>{player.attacks[0]}</button>
+                            <button className="attack" id='atk2' onClick={atk2}>{player.attacks[1]}</button>
                         </div>
                         <div className="attackRow2">
-                            <button className="attack"onClick={atk3}>{player.attacks[2]} </button>
-                            <button className="attack"onClick={heal}>{player.attacks[3]}</button>
+                            <button className="attack" id='atk3' onClick={atk3}>{player.attacks[2]} </button>
+                            <button className="attack" id='atk4' onClick={heal}>{player.attacks[3]}</button>
                         </div>
                         <div className="attackRow2">
-                            <button className="attack">True </button>
-                            <button className="attack">False</button>
+                            <button className="attack hide" id='qT' onClick={quizTrue}>True </button>
+                            <button className="attack hide" id='qT1' onClick={quizFalse}>False</button>
+                            <button className="attack hide" id='hT' onClick={quiz2True}>True </button>
+                            <button className="attack hide" id='hT1' onClick={quiz2False}>False</button>
                         </div>
                         <div className="attackRow2">
                             <button className="attack">Back </button>
