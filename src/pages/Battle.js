@@ -67,8 +67,8 @@ export default function Battle() {
     const [enemyHp, setEnemyHp] = useState(enemy.hp);
     var bool = 2;
     const [mainText, setMainText] = useState(defaultQuestion);
-    var opponent = 1;
-
+    var isLastHit = 0;
+    var enemyAtk = enemy.atk;
     const intro = () => {
         hideAtkBtns();
         setMainText('intro');
@@ -100,6 +100,7 @@ export default function Battle() {
                 setTimeout(function () {
                     setMainText(defaultQuestion);
                     showAtkBtns();
+                    enemy.atk = enemyAtk;
                 }, delayInMilliseconds);
                 break;
             default:
@@ -111,44 +112,47 @@ export default function Battle() {
         let num2 = Math.floor(Math.random() * (3 - 1)) + 1;
         let enemyMove = atks[Math.floor(Math.random() * atks.length)];
         if (num2 === 1) {
-            setMainText(`${enemy.name} attacked with ${enemyMove} and dealt ${enemy.atk - player.def}`);
+            setMainText(`${enemy.name} attacked with ${enemyMove} and dealt ${enemyAtk - player.def}`);
             setTimeout(function () {
-                setHeroHp((heroHp + player.def) - enemy.atk);
+                setHeroHp(heroHp + (player.def - enemy.atk));
                 setMainText(defaultQuestion);
                 showAtkBtns();
+                enemy.atk = enemyAtk;
             }, 1000);
         } else if (num2 === 2) {
             let taunt = taunts[Math.floor(Math.random() * taunts.length)];
-            setMainText(`${enemy.name} attacked with ${enemyMove} and dealt ${enemy.atk - player.def}`);
+            setMainText(`${enemy.name} attacked with ${enemyMove} and dealt ${enemyAtk - player.def}`);
             setTimeout(function () {
-                setHeroHp((heroHp + player.def) - enemy.atk);
+                setHeroHp(heroHp + (player.def - enemy.atk));
                 setMainText(taunt);
             }, 1000);
             setTimeout(function () {
                 setMainText(defaultQuestion);
                 showAtkBtns();
-            }, delayInMilliseconds);
+                enemy.atk = enemyAtk;
+            }, 2000);
         }
     }
     const enemyIsALive = () => {
-            !opponent ? document.getElementById('opp').classList.add('hide') : setTimeout(function () { enemyTurn() }, 500);
-            //when enemy dies
-            if(!opponent) {
+            if(isLastHit) {
+                document.getElementById('opp').classList.add('hide')
                 setEnemyHp(0);
                 setMainText('Enemy Felled!');
                 hideAtkBtns();
                 document.getElementById('backBtn').classList.remove('hide');
-                document.getElementById('contBtn').classList.remove('hide');
-
+                document.getElementById('contBtn').classList.remove('hide'); 
+            } else {
+                setTimeout(function () { enemyTurn() }, 500);
             }
     }
 
     const atk1 = () => {
+        let dmg = ((enemyHp + enemy.def) - player.atk);
+        if(dmg <= 0) {
+            isLastHit = 1;
+        }
         setEnemyHp((enemyHp + enemy.def) - player.atk);
         setMainText(`${player.name} dealt ${player.atk - enemy.def}`);
-        if(enemyHp <= player.atk) {
-            opponent = 0;
-        }
         hideAtkBtns();
         enemyIsALive();
     };
@@ -157,13 +161,15 @@ export default function Battle() {
     const atk2 = () => {
         let attack = Math.floor(Math.random() * 2) * (player.atk * 2);
         if(attack === (player.atk*2)){
+            let dmg = ((enemyHp + enemy.def) - player.atk*2);
+        if(dmg <= 0) {
+            isLastHit = 1;
+        }
         setMainText(`${player.name} dealt ${(player.atk*2) - enemy.def}`);
         setEnemyHp((enemyHp + enemy.def) - attack);
+        
         } else {
             setMainText('Attack Missed!')
-        }
-        if((enemyHp + enemy.def) <= attack) {
-            opponent = 0;
         }
         hideAtkBtns();
         enemyIsALive();
@@ -186,11 +192,18 @@ export default function Battle() {
     }
 
     const quizAtk = () => {
-        bool ? setEnemyHp((enemyHp + enemy.def) - (player.atk * 2)) : setMainText('Attack Missed!');
-        addElements();
-        if((enemyHp + enemy.def) <= player.atk * 2) {
-            opponent = 0;
+
+        if(bool) {
+            setMainText(`${player.name} dealt ${(player.atk*2) - enemy.def}`);
+            setEnemyHp((enemyHp + enemy.def) - (player.atk * 2));
+            let dmg = ((enemyHp + enemy.def) - player.atk*2);
+        if(dmg <= 0) {
+            isLastHit = 1;
         }
+        } else {
+            setMainText('Attack Missed!');
+        }
+        addElements();
         bool = 2;
         enemyIsALive();
     }
@@ -203,7 +216,6 @@ export default function Battle() {
     };
     const quiz2True = () => {
         bool = 1;
-        setMainText(`${player.name} healed ${player.hp / 10} hp`);
         healAtk();
     }
     const quiz2False = () => {
@@ -212,12 +224,15 @@ export default function Battle() {
     }
 
     const healAtk = () => {
-        bool ? setHeroHp(heroHp + player.hp / 10) : setMainText(`${player.name} dropped the potion`);
+        if(bool) {
+            setMainText(`${player.name} healed ${player.hp / 5} hp`);
+            setHeroHp(heroHp + (player.hp / 5));
+            enemy.atk = enemy.atk/2;
+        } else {
+            setMainText(`${player.name} dropped the potion`);
+        }
         bool = 2;
         addElements2();
-        if(enemyHp <= player.atk) {
-            opponent = 0;
-        }
         enemyIsALive();
     }
     const removeElements = () => {
