@@ -40,31 +40,21 @@ export default function Battle() {
 
 
     // Create unique characters using the "character" constructor
-    const enemy = new Character(["Room Mute",
-        "Random Name Selector",
-        "Confusing Demo",
-        "Manatee Joke",
-        "Bahamut Bash",
-        "Shiva Shank",
-        "La Croix Heal"],
-        'Boss1',
+    const enemy = new Character(["Console Crash",
+    "null",
+    "undefined"],
+        'Bug Enemy',
         100,
         200,
         20
     );
-    const idles = ["Joe is busy trying to get his cat off of the keyboard.",
-        "Joe seems to be daydreaming about manatees.",
-        "Joe seems too preoccupied with playing Stardew Valley to attack."];
-    const taunts = ["Class participation is mandatory!",
-        "You should know this stuff already!",
-        "How do fish unlock their houses? With their manakeys!",]
-    const atks = ["Room Mute",
-        "Random Name Selector",
-        "Confusing Demo",
-        "Manatee Joke",
-        "Bahamut Bash",
-        "Shiva Shank",
-        "La Croix Heal"
+    const idles = ["The bug looks like it's hiding something.",
+    "The bug is shouting in a red-colored font.",
+    "The bug seems to jitter about.",];
+    const taunts = [ "Tzzt!"]
+    const atks = ["Console Crash",
+    "null",
+    "undefined"
     ]
     const player = new Character(['Basic Attack', 'Dice Attack', 'Quiz Attack', 'Quiz Heal'], 'BCS Champ', 1000, 45, 100);
     ///////////////
@@ -200,6 +190,7 @@ export default function Battle() {
         if((enemyHp + enemy.def) <= player.atk * 2) {
             opponent = 0;
         }
+        bool = 2;
         enemyIsALive();
     }
 
@@ -221,6 +212,7 @@ export default function Battle() {
 
     const healAtk = () => {
         bool ? setHeroHp(heroHp + player.hp / 10) : setMainText(`${player.name} dropped the potion`);
+        bool = 2;
         addElements2();
         if(enemyHp <= player.atk) {
             opponent = 0;
