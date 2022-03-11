@@ -14,13 +14,6 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 
 function App() {
-  //Login/Signup stuff, must be at top level
-  const [token, setToken] = useState("")
-  const [userData, setUserData] = useState({
-    username:"",
-    id:0,
-    characters: []
-  });
 
   return (
     <>
@@ -38,8 +31,8 @@ function App() {
         <Link className="link" to="/Battle">Battle page</Link>
         <Routes>
           <Route path="/" element={<Start />} />
-          <Route path="/Signup" element={<Signup token={token} setToken={setToken} userData={userData} setUserData={setUserData} />} />
-          <Route path="/Login" element={<Login token={token} setToken={setToken} userData={userData} setUserData={setUserData} />} />
+          <Route path="/Signup" element={<Signup />} />
+          <Route path="/Login" element={<Login />} />
           <Route path="/Tavern" element={<Tavern />} />
           <Route path="/Character" element={<Character />} />
           <Route path="/Creation" element={<Creation />} />

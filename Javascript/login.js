@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-//TODO: Signup page should be converted into a component at some point. It's a page for now for simplicity's sake
-
 function Login() {
     //Logic
     const [token, setToken] = useState("");
@@ -37,23 +35,6 @@ function Login() {
             characters:user.characters,
           })
     };
-    
-    //Form, needs CSS
-    return (
-        <>
-            <form onSubmit={loginHandler}>
-                <input name="username" value={formState.username} onChange={e => setFormState({ ...formState, username: e.target.value })} />
-                <input name="password" type="password" value={formState.password} onChange={e => setFormState({ ...formState, password: e.target.value })} />
-                <button>Login</button>
-            </form>
-            {userData.username ? (
-                <>
-                    <h3>Welcome, {userData.username}</h3>
-                    <button onClick={logout}>Logout</button>
-                </>
-            ) : null}
-        </>
-    );
 }
 
-export default Login;
+export {Login};
