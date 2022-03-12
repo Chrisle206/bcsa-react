@@ -69,6 +69,6 @@ function Signup() {
             ) : null}
         </>
     );
-}
+};
 
 export default Signup;

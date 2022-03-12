@@ -1,41 +1,41 @@
-//TODO: update baseurl on deploy
+// import React, { useState } from 'react';
 
-import React, { useState } from 'react';
+// const signupHandler = async function(e) {
+//     e.preventDefault();
 
-function Signup() {
-    //Logic
-    const [token, setToken] = useState("");
-    const [userData, setUserData] = useState({
-      username:"",
-      id:0,
-      characters: []
-    });
+//   //Logic
+//   // const [token, setToken] = useState("");
+
+//   // //State for handling a user's data
+//   // const [userData, setUserData] = useState({
+//   //   username:"",
+//   //   id:0,
+//   //   characters: []
+//   // });
+
+//   // //State for handling form submissions
+//   // const [formState, setFormState] = useState({
+//   //     username:'',
+//   //     password:''
+//   // });
   
-    const [formState, setFormState] = useState({
-        username:'',
-        password:''
-    });
+//       const baseurl = 'https://bcsa-api.herokuapp.com'
     
-    const signupHandler = async function(e) {
-        e.preventDefault();
-        const baseurl = 'http://localhost:3001'
-      
-        const response = await fetch(`${baseurl}/user/signup`, {
-          method: 'POST',
-          body: JSON.stringify(formState),
-          headers: { 'Content-Type': 'application/json' },
-        });
-    
-        const newUser = await response.json();
-        console.log(newUser);
+//       const response = await fetch(`${baseurl}/user/signup`, {
+//         method: 'POST',
+//         body: JSON.stringify(formState),
+//         headers: { 'Content-Type': 'application/json' },
+//       });
+  
+//       const newUser = await response.json();
+//       console.log(newUser);
 
-        setToken(newUser.token);
-        localStorage.setItem("token", newUser.token);
-        setUserData({
-            username:newUser.username,
-            id:newUser._id,
-          })
-    };
-}
+//       setToken(newUser.token);
+//       localStorage.setItem("token", newUser.token);
+//       setUserData({
+//           username:newUser.username,
+//           id:newUser._id,
+//         })
+// };
 
-export { Signup };
+// export { signupHandler };
