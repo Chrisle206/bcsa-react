@@ -12,6 +12,7 @@ const getCharacter = async ()=>{
   try {
       const data = await response.json();
       console.log(data);
+      //TODO: Add 'class' field
       const { characterName, currency, def, exp, hp, level, items, atk, image } = data
       setcharData({
           atk,
@@ -24,7 +25,7 @@ const getCharacter = async ()=>{
           level,
           image
       });
-
+      return data;
   } catch (err) {
       console.log('Catch triggered')
       console.log(err);

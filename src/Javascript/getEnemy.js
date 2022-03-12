@@ -26,6 +26,7 @@ const getEnemy = async ()=>{
             level,
             taunts
         });
+        return data;
   
     } catch (err) {
         console.log('Catch triggered')
