@@ -13,8 +13,19 @@ import explosion from '../assets/images/explosion.gif'
 import getCharacter from '../Javascript/getCharacter.js';
 
 
-export default function Battle() {
+getCharacter().then(function (result) {
+    console.log(result);
+    // setcharData(result)
+    return result;
+}).then(function(newResult) {
+    console.log(newResult);
+    return newResult
+})
 
+
+
+export default function Battle(newResult) {
+    console.log(newResult);
     const [charData, setcharData] = useState({
         characterName: "",
     });
@@ -22,6 +33,7 @@ export default function Battle() {
     // getCharacter().then(function (result) {
     //     console.log(result);
     //     setcharData(result)
+    //     return;
     // });
     // const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = data
     // console.log(userChar);
