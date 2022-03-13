@@ -59,7 +59,7 @@ export default function Start() {
                 <div className="widthContainer">
                     <h1 className="TavernTitle">BCS Adventures<img className="wingedsword" src={wingedsword} alt="Sword" /></h1>
                     <div className='description'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dapibus in erat eu vestibulum. Donec id arcu erat. Nulla viverra semper arcu, tincidunt sodales lorem vestibulum id. Sed fringilla tincidunt mollis. Suspendisse quis metus facilisis, ultricies orci ac, fringilla eros. Aliquam aliquam lectus felis, vehicula sollicitudin nisi consectetur sed. Pellentesque dui tortor, faucibus id leo vel, blandit aliquet nibh.
+                    Welcome to BCS Adventures! You are about to embark on an epic journey, filled with fierce battle, self-doubt, evil bugs, but most importantly, triumph! Face off against fierce enemies from the savage world of coding and beyond as you master the skills necessary to become a certified Fullstack Developer! 
                     </div>
                     <div className="TavernMenuContainer">
                         <button className="PlayCard pixel-border">Play<img className="PlayButton" src={play} alt="Story" /></button>
