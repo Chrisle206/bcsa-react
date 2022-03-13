@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { Link } from 'react-router-dom'
 import song from '../assets/sounds/battle.wav'
 import back from '../assets/images/back.png'
 import speakeron from '../assets/images/speaker-on.png'
@@ -10,10 +11,13 @@ import sword from '../assets/images/sword.png'
 import dice from '../assets/images/dice-fire.png'
 import heal1 from '../assets/images/heal1.png'
 import explosion from '../assets/images/explosion.gif'
+import getCharacter from '../Javascript/getCharacter.js';
+
 
 
 export default function Battle() {
 
+<<<<<<< HEAD
     const getCharacter = async ()=>{
         const token = localStorage.getItem("token");
         const characterId = localStorage.getItem("characterId");
@@ -50,6 +54,20 @@ export default function Battle() {
       };
       /////////////////////
       const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = getCharacter();
+=======
+    const [charData, setcharData] = useState({
+        characterName: "",
+    });
+
+    // getCharacter().then(function (result) {
+    //     console.log(result);
+    //     setcharData(result)
+    // });
+    // const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = data
+    // console.log(userChar);
+    
+
+>>>>>>> dev
     const [speaker, setStatus] = useState(false)
     const audioRef = useRef()
 
@@ -68,6 +86,7 @@ export default function Battle() {
             setStatus(false)
         }
     }
+
 
     class Character {
         constructor(attacks, name, level, hp, atk, def) {
@@ -97,8 +116,15 @@ export default function Battle() {
     const atks = ["Console Crash",
     "null",
     "undefined"
+<<<<<<< HEAD
     ]
     const player = new Character(['Basic Attack', 'Dice Attack', 'Quiz Attack', 'Quiz Heal'], characterName, level, hp, atk, def);
+=======
+    ];
+
+    //TODO: Inputs from GET go here
+    const player = new Character(['Basic Attack', 'Dice Attack', 'Quiz Attack', 'Quiz Heal'], charData.characterName, 1000, 45, 100);
+>>>>>>> dev
     ///////////////
     // This keeps track of whose turn it is
     const questions = ["Snake-case is the preferred case style when naming databases.", "MongoDB stores data records as BSON documents."];
@@ -362,7 +388,8 @@ export default function Battle() {
         <div className="pageContainer creationBg">
             <div className="MainBattleContainer">
             <div className="topNavContainer">
-                    <button className="backbutton"><img className='backbuttonimg'src={back} alt="Back_Button" /> Back</button>                    
+                    {/* TODO: When battle is over, display a continue button. During battle display escape option, which prompts user that battle will not have rewards.*/}
+                    <Link to='/Tavern' style={{textDecoration: 'none', color: 'white'}} className="backbutton"><img className='backbuttonimg'src={back} alt="Back_Button" /> Back</Link>                    
                 </div>
                 <div className="battleContainer">
                     <div className="enemyRow">
