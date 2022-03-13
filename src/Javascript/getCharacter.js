@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // import { useState } from "react";
 
 // const getCharacter = async ()=>{
@@ -37,7 +36,6 @@
 // };
 
 // export default getCharacter;
-=======
 //Logic for acquiring character data, used on shop screen, battle screen, etc.
 const getCharacter = async () => {
   const token = localStorage.getItem("token");
@@ -79,4 +77,3 @@ const getCharacter = async () => {
 };
 
 module.exports = getCharacter;
->>>>>>> dev

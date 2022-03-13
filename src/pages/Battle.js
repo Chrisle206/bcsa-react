@@ -17,7 +17,6 @@ import getCharacter from '../Javascript/getCharacter.js';
 
 export default function Battle() {
 
-<<<<<<< HEAD
     const getCharacter = async ()=>{
         const token = localStorage.getItem("token");
         const characterId = localStorage.getItem("characterId");
@@ -54,7 +53,6 @@ export default function Battle() {
       };
       /////////////////////
       const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = getCharacter();
-=======
     const [charData, setcharData] = useState({
         characterName: "",
     });
@@ -67,7 +65,6 @@ export default function Battle() {
     // console.log(userChar);
     
 
->>>>>>> dev
     const [speaker, setStatus] = useState(false)
     const audioRef = useRef()
 
@@ -116,15 +113,8 @@ export default function Battle() {
     const atks = ["Console Crash",
     "null",
     "undefined"
-<<<<<<< HEAD
     ]
     const player = new Character(['Basic Attack', 'Dice Attack', 'Quiz Attack', 'Quiz Heal'], characterName, level, hp, atk, def);
-=======
-    ];
-
-    //TODO: Inputs from GET go here
-    const player = new Character(['Basic Attack', 'Dice Attack', 'Quiz Attack', 'Quiz Heal'], charData.characterName, 1000, 45, 100);
->>>>>>> dev
     ///////////////
     // This keeps track of whose turn it is
     const questions = ["Snake-case is the preferred case style when naming databases.", "MongoDB stores data records as BSON documents."];
