@@ -10,8 +10,22 @@ import sword from '../assets/images/sword.png'
 import dice from '../assets/images/dice-fire.png'
 import heal1 from '../assets/images/heal1.png'
 import explosion from '../assets/images/explosion.gif'
+import getCharacter from '../Javascript/getCharacter.js';
+
 
 export default function Battle() {
+
+    const [charData, setcharData] = useState({
+        characterName: "",
+    });
+
+    // getCharacter().then(function (result) {
+    //     console.log(result);
+    //     setcharData(result)
+    // });
+    // const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = data
+    // console.log(userChar);
+    
 
     const [speaker, setStatus] = useState(false)
     const audioRef = useRef()
@@ -31,6 +45,7 @@ export default function Battle() {
             setStatus(false)
         }
     }
+
 
     class Character {
         constructor(attacks, name, hp, atk, def) {
@@ -81,8 +96,10 @@ export default function Battle() {
     const atks = ["Console Crash",
     "null",
     "undefined"
-    ]
-    const player = new Character(['Basic Attack', 'Dice Attack', 'Quiz Attack', 'Quiz Heal'], 'BCS Champ', 1000, 45, 100);
+    ];
+
+    //TODO: Inputs from GET go here
+    const player = new Character(['Basic Attack', 'Dice Attack', 'Quiz Attack', 'Quiz Heal'], charData.characterName, 1000, 45, 100);
     ///////////////
     // This keeps track of whose turn it is
     const questions = ["Snake-case is the preferred case style when naming databases.", "MongoDB stores data records as BSON documents."];
