@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import track from '../assets/sounds/creation.wav'
 import back from '../assets/images/back.png'
 import speakeron from '../assets/images/speaker-on.png'
@@ -320,7 +321,7 @@ export default function Creation() {
         <div className="pageContainer creationBg">
             <div className="creationContainer">
                 <div className="topNavContainer">
-                    <button className="backbutton"><img className='backbuttonimg' src={back} alt="Back_Button" /> Back</button>
+                    <Link to={'/'} style={{textDecoration: 'none', color: 'inherit'}}className="backbutton"><img className='backbuttonimg' src={back} alt="Back_Button" /> Back</Link>
                 </div>
                 <div className="bgContainer">
                     <h1 className="creationTitle">Create your character!</h1>
@@ -333,7 +334,12 @@ export default function Creation() {
                     )}
                     <div className="choicesContainer pixel-border">
                         {showChar ? (
-                            <div className="question">Your character is {choice}</div>
+                            <>
+                                <div className="question">Your character is {choice}</div>
+                                <div className="attackList">
+                                    <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'inherit'}} className='logbutton attack'>Continue</Link>
+                                </div>
+                            </>
                         ) : (
                             <>
                                 <p className="question">{questions[currentIndex].question}</p>
