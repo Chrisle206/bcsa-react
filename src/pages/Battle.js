@@ -20,15 +20,15 @@ export default function Battle() {
         characterName: "",
     });
 
-useEffect(() => {
-    getCharacter().then(function (result) {
-        console.log(result);
-        setcharData(result)
-        return;
-    });
-},[])
+    useEffect(() => {
+        getCharacter().then(function (result) {
+            console.log(result);
+            setcharData(result)
+            return;
+        });
+    }, [])
 
-const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = charData
+    const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = charData
 
     const [speaker, setStatus] = useState(false)
     const audioRef = useRef()
