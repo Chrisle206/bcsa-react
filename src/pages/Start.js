@@ -6,6 +6,9 @@ import wingedsword from '../assets/images/winged-sword.png'
 import back from '../assets/images/back.png'
 import speakeron from '../assets/images/speaker-on.png'
 import speakeroff from '../assets/images/speaker-off.png'
+// import { loginHandler } from '../Javascript/login'
+// import { signupHandler } from '../Javascript/signup'
+
 
 
 export default function Start() {
@@ -30,6 +33,22 @@ export default function Start() {
     }
 
     document.title = 'BCS Adventures';
+    //Token for logging in, token is required to access certain routes
+    const [token, setToken] = useState("");
+
+    //State for handling a user's data
+    const [userData, setUserData] = useState({
+      username:"",
+      id:0,
+      characters: []
+    });
+  
+    //State for handling form submissions
+    const [formState, setFormState] = useState({
+        username:'',
+        password:''
+    });
+  
     return (
         <div className="pageContainer creationBg">
             <div className="mainStartContainer">

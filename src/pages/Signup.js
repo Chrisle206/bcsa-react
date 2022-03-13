@@ -34,6 +34,7 @@ function Signup() {
 
         setToken(newUser.token);
         localStorage.setItem("token", newUser.token);
+        localStorage.setItem("id", newUser.id);
         setUserData({
             username:newUser.username,
             id:newUser._id,
@@ -69,6 +70,6 @@ function Signup() {
             ) : null}
         </>
     );
-}
+};
 
 export default Signup;
