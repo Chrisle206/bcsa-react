@@ -81,7 +81,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
     const taunts = [ "Tzzt!"]
     const atks = ["Console Crash",
     "null",
-    "undefined"
+    "undefined"];
 
     const player = new Character(['Basic Attack', 'Dice Attack', 'Quiz Attack', 'Quiz Heal'], characterName, hp, atk, def);
 
