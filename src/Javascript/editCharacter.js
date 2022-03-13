@@ -7,9 +7,12 @@ const editCharacter = async ()=>{
         characterName: "",
     });
 
+    //Character edits go here
+    var sendToAPI = {};
+
     const response = await fetch(`https://bcsa-api.herokuapp.com/user/charupdate/${characterId}`, {
         method: "PUT",
-        body: JSON.stringify(charData),
+        body: JSON.stringify(sendToAPI),
         headers: {
           "Content-Type":"application/json",
           "authorization":`Bearer ${token}`
@@ -37,6 +40,6 @@ const editCharacter = async ()=>{
         console.log('Catch triggered')
         console.log(err);
     }
-  };
+};
   
   export default editCharacter;

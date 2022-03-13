@@ -36,6 +36,7 @@ function Login() {
         });
     
         const user = await response.json();
+        // console.log(`This is a console.log of the userData state: ${userData}`);
         console.log(user);
 
         setToken(user.token);
