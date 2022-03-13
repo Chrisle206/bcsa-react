@@ -25,7 +25,7 @@ export default function Dead() {
     return (
         <div className="pageContainer creationBg">
             <h1 className='died'>You Died!</h1>
-            <div className="PlayCard pixel-border">Continue</div>
+            <button className="diedBtn pixel-border">Continue</button>
             <div className="bottomNavContainer">
             <>
                         <audio autoPlay loop ref={audioRef} src={track}/>

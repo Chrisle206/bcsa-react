@@ -344,16 +344,16 @@ export default function Creation() {
                             <>
                                 <p className="question">{questions[currentIndex].question}</p>
                                 <div className="attackList">
-                                    <div className="attackRow1">
+                                   
                                         {firstRow.map((answer) =>
                                             <button className="attack" onClick={() => answerClick(answer.relation)} key={answer.answer.toString()}>{answer.answer}</button>
                                         )}
-                                    </div>
-                                    <div className="attackRow2">
                                         {secondRow.map((answer) =>
                                             <button className="attack" onClick={() => answerClick(answer.relation)} key={answer.answer.toString()}>{answer.answer}</button>
                                         )}
-                                    </div>
+                              
+                                  
+                                    
                                 </div>
                             </>
                         )}
