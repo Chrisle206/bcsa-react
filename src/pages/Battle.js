@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import song from '../assets/sounds/battle.wav'
 import back from '../assets/images/back.png'
 import speakeron from '../assets/images/speaker-on.png'
@@ -13,31 +13,22 @@ import explosion from '../assets/images/explosion.gif'
 import getCharacter from '../Javascript/getCharacter.js';
 
 
-getCharacter().then(function (result) {
-    console.log(result);
-    // setcharData(result)
-    return result;
-}).then(function(newResult) {
-    console.log(newResult);
-    return newResult
-})
+export default function Battle() {
+    // console.log(data);
 
-
-
-export default function Battle(newResult) {
-    console.log(newResult);
     const [charData, setcharData] = useState({
         characterName: "",
     });
 
-    // getCharacter().then(function (result) {
-    //     console.log(result);
-    //     setcharData(result)
-    //     return;
-    // });
-    // const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = data
-    // console.log(userChar);
-    
+useEffect(() => {
+    getCharacter().then(function (result) {
+        console.log(result);
+        setcharData(result)
+        return;
+    });
+},[])
+
+const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = charData
 
     const [speaker, setStatus] = useState(false)
     const audioRef = useRef()
@@ -111,13 +102,14 @@ export default function Battle(newResult) {
     ];
 
     //TODO: Inputs from GET go here
-    const player = new Character(['Basic Attack', 'Dice Attack', 'Quiz Attack', 'Quiz Heal'], charData.characterName, 1000, 45, 100);
+    const player = new Character(['Basic Attack', 'Dice Attack', 'Quiz Attack', 'Quiz Heal'], characterName, hp, atk, def);
     ///////////////
     // This keeps track of whose turn it is
     const questions = ["Snake-case is the preferred case style when naming databases.", "MongoDB stores data records as BSON documents."];
     let defaultQuestion = "What is your next move?"
     var delayInMilliseconds = 3000;
 
+    console.log(player.hp);
     const [heroHp, setHeroHp] = useState(player.hp);
     const [enemyHp, setEnemyHp] = useState(enemy.hp);
     var bool = 2;
@@ -408,7 +400,7 @@ export default function Battle(newResult) {
                         <div className="StatBox pixel-border">
                             <div className='statRow'>
                                 <h3>{player.name}</h3>
-                                <h3>Lvl: 10</h3>
+                                <h3>Lvl: {charData.level}</h3>
                             </div>
                             <div className='healthBarContainer '>
                                 <div className='statRow'>
