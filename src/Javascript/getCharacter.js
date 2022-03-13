@@ -1,7 +1,7 @@
 const getCharacter = async ()=>{
   const token = localStorage.getItem("token");
   const characterId = localStorage.getItem("characterId");
-
+  var sendToApi = {};
   const response = await fetch(`https://bcsa-api.herokuapp.com/user/char/${characterId}`, {
       method: "GET",
       headers: {
@@ -14,7 +14,7 @@ const getCharacter = async ()=>{
       console.log(data);
       //TODO: Add 'class' field
       const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = data
-      setcharData({
+      sendToApi = {
           atk,
           characterName,
           characterClass,
@@ -25,7 +25,7 @@ const getCharacter = async ()=>{
           items,
           level,
           image
-      });
+      };
       return data;
   } catch (err) {
       console.log('Catch triggered')
