@@ -1,5 +1,7 @@
-import React, { useState, useRef } from 'react';
+
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom'
+
 import song from '../assets/sounds/battle.wav'
 import back from '../assets/images/back.png'
 import speakeron from '../assets/images/speaker-on.png'
@@ -16,58 +18,22 @@ import getCharacter from '../Javascript/getCharacter.js';
 
 
 export default function Battle() {
+    // console.log(data);
 
-<<<<<<< HEAD
-    const getCharacter = async ()=>{
-        const token = localStorage.getItem("token");
-        const characterId = localStorage.getItem("characterId");
-        let obj = {};
-        const response = await fetch(`https://bcsa-api.herokuapp.com/user/char/${characterId}`, {
-            method: "GET",
-            headers: {
-              "Content-Type":"application/json",
-              "authorization":`Bearer ${token}`
-            }
-        })
-        try {
-            const data = await response.json();
-            console.log(data);
-            //TODO: Add 'class' field
-            const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = data
-            obj = {
-                atk: atk,
-                characterName : characterName,
-                characterClass: characterClass,
-                currency : currency,
-                def: def,
-                exp:exp,
-                hp:hp,
-                items:items,
-                level:level,
-                image:image
-            };
-            return data;
-        } catch (err) {
-            console.log('Catch triggered')
-            console.log(err);
-        }
-      };
-      /////////////////////
-      const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = getCharacter();
-=======
     const [charData, setcharData] = useState({
         characterName: "",
     });
 
-    // getCharacter().then(function (result) {
-    //     console.log(result);
-    //     setcharData(result)
-    // });
-    // const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = data
-    // console.log(userChar);
-    
+useEffect(() => {
+    getCharacter().then(function (result) {
+        console.log(result);
+        setcharData(result)
+        return;
+    });
+},[])
 
->>>>>>> dev
+const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = charData
+
     const [speaker, setStatus] = useState(false)
     const audioRef = useRef()
 
@@ -116,21 +82,16 @@ export default function Battle() {
     const atks = ["Console Crash",
     "null",
     "undefined"
-<<<<<<< HEAD
-    ]
-    const player = new Character(['Basic Attack', 'Dice Attack', 'Quiz Attack', 'Quiz Heal'], characterName, level, hp, atk, def);
-=======
-    ];
 
-    //TODO: Inputs from GET go here
-    const player = new Character(['Basic Attack', 'Dice Attack', 'Quiz Attack', 'Quiz Heal'], charData.characterName, 1000, 45, 100);
->>>>>>> dev
+    const player = new Character(['Basic Attack', 'Dice Attack', 'Quiz Attack', 'Quiz Heal'], characterName, hp, atk, def);
+
     ///////////////
     // This keeps track of whose turn it is
     const questions = ["Snake-case is the preferred case style when naming databases.", "MongoDB stores data records as BSON documents."];
     let defaultQuestion = "What is your next move?"
     var delayInMilliseconds = 3000;
 
+    console.log(player.hp);
     const [heroHp, setHeroHp] = useState(player.hp);
     const [enemyHp, setEnemyHp] = useState(enemy.hp);
     var bool = 2;
@@ -422,7 +383,7 @@ export default function Battle() {
                         <div className="StatBox pixel-border">
                             <div className='statRow'>
                                 <h3>{player.name}</h3>
-                                <h3>Lvl: 10</h3>
+                                <h3>Lvl: {charData.level}</h3>
                             </div>
                             <div className='healthBarContainer '>
                                 <div className='statRow'>
