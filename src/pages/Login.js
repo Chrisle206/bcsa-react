@@ -36,6 +36,7 @@ function Login() {
         });
     
         const user = await response.json();
+        // console.log(`This is a console.log of the userData state: ${userData}`);
         console.log(user);
 
         setToken(user.token);
@@ -76,10 +77,12 @@ function Login() {
         try {
             const data = await response.json();
             console.log(data);
-            const { characterName, currency, def, exp, hp, level, items, atk } = data
+            //TODO: Add 'class' field
+            const { characterName, characterClass, currency, def, exp, hp, level, items, atk } = data
             setcharData({
                 atk,
                 characterName,
+                characterClass,
                 currency,
                 def,
                 exp,
