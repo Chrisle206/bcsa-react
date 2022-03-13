@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import coins from '../assets/images/coins.png'
 import track from '../assets/sounds/character.wav'
 import characterImg from '../assets/images/cement-shoes2.png'
@@ -31,7 +32,7 @@ export default function Character() {
         <div className="pageContainer creationBg">
             <div className="mainCharContainer">
                 <div className="topNavContainer">
-                    <button className="backbutton"><img className='backbuttonimg' src={back} alt="Back_Button" /> Back</button>
+                    <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'white'}} className="backbutton"><img className='backbuttonimg' src={back} alt="Back_Button" /> Back</Link>
                 </div>
                 <div className="widthChar2Container">
                     <div className='charBox pixel-border'>

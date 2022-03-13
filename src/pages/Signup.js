@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'
 
 //TODO: Signup page should be converted into a component at some point. It's a page for now for simplicity's sake
 
@@ -62,6 +63,10 @@ function Signup() {
                 <input name="password" type="password" value={formState.password} onChange={e => setFormState({ ...formState, password: e.target.value })} />
                 <button>SignUp</button>
             </form>
+            {/* TODO: temporarily using 'Link' to get to '/'. When implementing Login.js logic remove below. */}
+            <div>
+                <Link to='/'>Back</Link>
+            </div>
             {userData.username ? (
                 <>
                     <h3>Welcome, {userData.username}</h3>
