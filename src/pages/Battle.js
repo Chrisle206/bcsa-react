@@ -1,10 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import song from '../assets/sounds/battle.wav'
 import back from '../assets/images/back.png'
 import speakeron from '../assets/images/speaker-on.png'
+import speakeroff from  '../assets/images/speaker-off.png'
 import enemyPic from '../assets/images/enemy.png'
 import heroPic from '../assets/images/hero.png'
 
 export default function Battle() {
+
+    const [speaker, setStatus] = useState(false)
+    const audioRef = useRef()
+
+    function volOff() {
+        if (useState !== false) {
+            audioRef.current.pause()
+            console.log('muting')
+            setStatus(true)
+        }
+    }
+
+    function volOn() {
+        if (useState !== true) {
+            audioRef.current.play()
+            console.log('unmuting')
+            setStatus(false)
+        }
+    }
 
     class Character {
         constructor(attacks, name, hp, atk, def) {
@@ -334,7 +355,16 @@ export default function Battle() {
                     </div>
                 </div>
                 <div className="bottomNavContainer">
-                    <button className="backbutton"><img className='soundbuttonimg'src={speakeron} alt="speaker" /></button>                    
+                    <>
+                        <audio autoPlay loop ref={audioRef} src={song}/>
+                        {speaker ? (
+                                <button onClick={volOn} className="backbutton"><img className='soundbuttonimg'src={speakeroff} alt="speaker" /></button>                    
+                            ) : (
+                                <>
+                                <button onClick={volOff} className="backbutton"><img className='soundbuttonimg'src={speakeron} alt="speaker" /></button> 
+                                </>
+                        )}                   
+                    </>
                 </div>
             </div>
         </div>
