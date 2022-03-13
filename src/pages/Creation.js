@@ -1,23 +1,35 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
+import track from '../assets/sounds/creation.wav'
 import back from '../assets/images/back.png'
 import speakeron from '../assets/images/speaker-on.png'
+import speakeroff from  '../assets/images/speaker-off.png'
 import assassin from '../assets/images/characters/assassin.png'
 import warrior from '../assets/images/characters/warrior.png'
 import ranger from '../assets/images/characters/ranger.png'
-import routeMaster from '../assets/images/characters/routeMaster.png'
+import master from '../assets/images/characters/routeMaster.png'
+
+const mongoose = require('mongoose')
+
+const schema = new mongoose.Schema({ name: 'string', size: 'string' })
+const Character = mongoose.model('character', schema)
+
+let choice
+let chosenChar
+
+let values = [
+    {id: 'assassin', val: 0},
+    {id: 'master', val: 0},
+    {id: 'ranger', val: 0},
+    {id: 'warrior', val: 0}
+]
 
 export default function Creation() {
 
     //TODO: Allow user to set a name for their character
     //TODO: New characters start with 5000 currency for testing purposes, change later
-    const characters = [assassin, routeMaster, ranger, warrior]
+    const characters = [assassin, master, ranger, warrior]
 
     const character = characters[Math.floor(Math.random()*characters.length)]
-
-    let assassinCount = 0;
-    let masterCount = 0;
-    let rangerCount = 0;
-    let warriorCount = 0;
 
     const questions = [
         {
@@ -72,132 +84,122 @@ export default function Creation() {
         }
     ]
 
+    const [speaker, setStatus] = useState(false)
+    const audioRef = useRef()
+
+    function volOff() {
+        if (useState !== false) {
+            audioRef.current.pause()
+            console.log('muting')
+            setStatus(true)
+        }
+    }
+
+    function volOn() {
+        if (useState !== true) {
+            audioRef.current.play()
+            console.log('unmuting')
+            setStatus(false)
+        }
+    }
+
     const [currentIndex, setIndex] = useState(0)
+
 
     const [showChar, setChar] = useState(false)
 
-    const [charData, setcharData] = useState({
-        characterName:"",
-      });
-  
-
-    //Assemble inputs and decide class and base stats here
-    //TODO: Base stats are not being set 
-    const selectClass = () => {
-        let quizResult;
-
-        switch (true) {
-            case (assassinCount > masterCount && rangerCount && warriorCount):
-                quizResult = "CSS Assassin"
-                setcharData({
-                    atk: 105,
-                    characterName: "CSS Assassin",
-                    characterClass: "CSS Assassin",
-                    currency:5000,
-                    def:15,
-                    exp:0,
-                    hp:80,
-                    items:[],
-                    level:1,
-                    image: assassin
-                });        
-                break;
-                
-            case (masterCount > assassinCount && rangerCount && warriorCount):
-                quizResult = "Route Master"
-                setcharData({
-                    atk: 40,
-                    characterName: "Route Master",
-                    characterClass: "Route Master",
-                    currency:5000,
-                    def:30,
-                    exp:0,
-                    hp:120,
-                    items:[],
-                    level:1,
-                    image: routeMaster
-                });        
-                break;
-
-            case (rangerCount > assassinCount && masterCount && warriorCount):
-                quizResult = "React Ranger"
-                setcharData({
-                    atk: 60,
-                    characterName: "React Ranger",
-                    characterClass: "React Ranger",
-                    currency:5000,
-                    def:40,
-                    exp:0,
-                    hp:100,
-                    items:[],
-                    level:1,
-                    image: ranger
-                });        
-                break;
-
-            case (warriorCount > assassinCount && masterCount && rangerCount):
-                quizResult = "Keyboard Warrior"
-                setcharData({
-                    atk: 60,
-                    characterName: "Keyboard Warrior",
-                    characterClass: "Keyboard Warrior",
-                    currency:5000,
-                    def:30,
-                    exp:0,
-                    hp:110,
-                    items:[],
-                    level:1,
-                    image: warrior
-                });        
-                break;
-
-            default:
-                console.log("Default case reached, class will be selected randomly");
-                quizResult = character
-                break;
-        }
-
-        return quizResult;
-    }
-
-    // const createCharacter = async (data) => {
-    //     const token = localStorage.getItem("token");
-    //     const userId = "WORK IN PROGRESS CHANGE LATER"
-
-    //     const response = await fetch(`https://bcsa-api.herokuapp.com/user/newchar/${userId}`, {
-    //         method: "POST",
-    //         body: JSON.stringify(charData),
-    //         headers: {
-    //           "Content-Type":"application/json",
-    //           "authorization":`Bearer ${token}`
-    //         }
-    //     })
-
-    // }
-
+    let 
+    [assRel, setAssRel] = useState(0),
+    [masRel, setMasRel] = useState(0),
+    [ranRel, setRanRel] = useState(0),
+    [warRel, setWarRel] = useState(0)
+    
     const answerClick = (relation) =>{
 
-        if(relation === 'assassin'){
-            assassinCount = assassinCount++
-            console.log(assassinCount);
-            alert('this button is related to assassin')
-        } else if(relation === 'master'){
-            masterCount = masterCount++
-            console.log(masterCount);
-            alert('this button is related to master')
-        } else if(relation === 'ranger') {
-            rangerCount = rangerCount++
-            console.log(rangerCount);
-            alert('this button is related to ranger')
-        } else if(relation === 'warrior'){
-            warriorCount = warriorCount++
-            console.log(warriorCount);
-            alert('this button is related to warrior')
+        if (relation === 'assassin') {
+            const plusOne = assRel + 1
+            setAssRel(plusOne)
+
+            for (const val of values) {
+                if (val.id === 'assassin') {
+                    val.val = plusOne
+
+                    break
+                }
+            }
+
+
+        } else if (relation === 'master') {
+            const plusOne = masRel + 1
+            setMasRel(plusOne)
+
+            for (const val of values) {
+                if (val.id === 'master') {
+                    val.val = plusOne
+
+                    break
+                }
+            }
+
+        } else if (relation === 'ranger') {
+            const plusOne = ranRel + 1
+            setRanRel(plusOne)
+
+            for (const val of values) {
+                if (val.id === 'ranger') {
+                    val.val = plusOne
+
+                    break
+                }
+            }
+
+        } else if (relation === 'warrior') {
+            const plusOne = warRel + 1
+            setWarRel(plusOne)
+
+            for (const val of values) {
+                if (val.id === 'warrior') {
+                    val.val = plusOne
+
+                    break
+                }
+            }
+
         }
+        
+        function check() {
 
-/*         const classChoice = [
+            const vals = []
+            values.forEach((val) => {
+                
+                vals.push(val.val)
+            })
+            const max = Math.max(...vals)
+            
+            values.forEach((val) => {
+                if (max !== val.val) {
+                    return
+                } else {
+                    choice = val.id
+                }
+            })
 
-        ] */
+            if (choice === 'assassin') {
+                chosenChar = characters[0]
+            } else if (choice === 'master') {
+                chosenChar = characters[1]
+            } else if (choice === 'ranger') {
+                chosenChar = characters[2]
+            } else if (choice === 'warrior') {
+                chosenChar = characters[3]
+            }
+
+            //Assign state here?
+            console.log(chosenChar)
+            console.log(choice)
+
+            
+        }
 
         const nextQuestion = currentIndex + 1
         if(nextQuestion < questions.length) {
@@ -209,6 +211,7 @@ export default function Creation() {
             //Uncomment this function once data is confirmed to be formatted properly.
             // createCharacter(data);
             setChar(true)
+            check()
         }
     }
 
@@ -218,7 +221,6 @@ export default function Creation() {
 
     const firstRow = questions[currentIndex].answers.slice(2)
     const secondRow = questions[currentIndex].answers.slice(0,2)
-    console.log(firstRow, secondRow)
         
     return (
         <div className="pageContainer creationBg">
@@ -229,7 +231,7 @@ export default function Creation() {
         <div className="bgContainer">
         <h1 className="creationTitle">Create your character!</h1>
             {showChar ? (
-                <img className="characterEmpty" src={character} alt="Empty_character"/>  
+                <img className="characterEmpty" src={chosenChar} alt="Empty_character"/>  
             ) : (
                 <>
                     <img className="characterEmpty" style={darkChar} src={character} alt="select_character"></img>
@@ -237,7 +239,7 @@ export default function Creation() {
             )}
         <div className="choicesContainer pixel-border">
             {showChar ? (
-                <div className="question">Your character is *enter char here*</div>
+                <div className="question">Your character is {choice}</div>
             ) : (
                 <>
                     <p className="question">{questions[currentIndex].question}</p>
@@ -258,7 +260,16 @@ export default function Creation() {
         </div>
         </div>
         <div className="bottomNavContainer">
-                    <button className="backbutton"><img className='soundbuttonimg'src={speakeron} alt="speaker" /></button>                    
+            <>
+                <audio autoPlay loop ref={audioRef} src={track}/>
+                    {speaker ? (
+                            <button onClick={volOn} className="backbutton"><img className='soundbuttonimg'src={speakeroff} alt="speaker" /></button>                    
+                        ) : (
+                            <>
+                            <button onClick={volOff} className="backbutton"><img className='soundbuttonimg'src={speakeron} alt="speaker" /></button> 
+                            </>
+                    )}                   
+            </>
                 </div>
          </div>
         </div>

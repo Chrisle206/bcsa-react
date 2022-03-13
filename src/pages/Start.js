@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react'
 import '../App.css'
 import play from '../assets/images/play-button.png'
+import track from '../assets/sounds/start.wav'
 import wingedsword from '../assets/images/winged-sword.png'
 import back from '../assets/images/back.png'
 import speakeron from '../assets/images/speaker-on.png'
@@ -11,6 +12,26 @@ import speakeroff from '../assets/images/speaker-off.png'
 
 
 export default function Start() {
+
+    const [speaker, setStatus] = useState(false)
+    const audioRef = useRef()
+
+    function volOff() {
+        if (useState !== false) {
+            audioRef.current.pause()
+            console.log('muting')
+            setStatus(true)
+        }
+    }
+
+    function volOn() {
+        if (useState !== true) {
+            audioRef.current.play()
+            console.log('unmuting')
+            setStatus(false)
+        }
+    }
+
     document.title = 'BCS Adventures';
     //Token for logging in, token is required to access certain routes
     const [token, setToken] = useState("");
@@ -46,7 +67,16 @@ export default function Start() {
                     </div>
                 </div>
                 <div className="bottomNavContainer">
-                    <button className="backbutton"><img className='soundbuttonimg'src={speakeron} alt="speaker" /></button>                    
+                <>
+                        <audio autoPlay loop ref={audioRef} src={track}/>
+                        {speaker ? (
+                                <button onClick={volOn} className="backbutton"><img className='soundbuttonimg'src={speakeroff} alt="speaker" /></button>                    
+                            ) : (
+                                <>
+                                <button onClick={volOff} className="backbutton"><img className='soundbuttonimg'src={speakeron} alt="speaker" /></button> 
+                                </>
+                        )}                   
+                    </> 
                 </div>
             </div>
         </div>
