@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { Link } from 'react-router-dom'
 import song from '../assets/sounds/battle.wav'
 import back from '../assets/images/back.png'
 import speakeron from '../assets/images/speaker-on.png'
@@ -346,7 +347,8 @@ export default function Battle() {
         <div className="pageContainer creationBg">
             <div className="MainBattleContainer">
             <div className="topNavContainer">
-                    <button className="backbutton"><img className='backbuttonimg'src={back} alt="Back_Button" /> Back</button>                    
+                    {/* TODO: When battle is over, display a continue button. During battle display escape option, which prompts user that battle will not have rewards.*/}
+                    <Link to='/Tavern' style={{textDecoration: 'none', color: 'white'}} className="backbutton"><img className='backbuttonimg'src={back} alt="Back_Button" /> Back</Link>                    
                 </div>
                 <div className="battleContainer">
                     <div className="enemyRow">

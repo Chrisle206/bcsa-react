@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import '../App.css'
 import play from '../assets/images/play-button.png'
 import track from '../assets/sounds/introduction.wav'
@@ -30,7 +31,7 @@ export default function Introduction() {
         <div className="pageContainer creationBg">
             <div className="mainStartContainer mainIntroContainer">
                 <div className="topNavContainer">
-                    <button className="backbutton"><img className='backbuttonimg'src={back} alt="Back_Button" /> Back</button>                    
+                    <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'inherit'}} className="backbutton"><img className='backbuttonimg'src={back} alt="Back_Button" /> Back</Link>                    
                 </div>
                 <div className="widthContainer">
                     <h1 className="TavernTitle">Long ago...</h1>
@@ -38,7 +39,7 @@ export default function Introduction() {
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dapibus in erat eu vestibulum. Donec id arcu erat. Nulla viverra semper arcu, tincidunt sodales lorem vestibulum id. Sed fringilla tincidunt mollis. Suspendisse quis metus facilisis, ultricies orci ac, fringilla eros. Aliquam aliquam lectus felis, vehicula sollicitudin nisi consectetur sed. Pellentesque dui tortor, faucibus id leo vel, blandit aliquet nibh.
                     </div>
                     <div className="TavernMenuContainer">
-                        <div className="PlayCard pixel-border">Continue<img className="PlayButton" src={play} alt="Story" /></div>
+                        <Link to={'/Battle'} style={{textDecoration: 'none', color: 'inherit'}} className="PlayCard pixel-border">Continue<img className="PlayButton" src={play} alt="Story" /></Link>
 
                     </div>
                 </div>
