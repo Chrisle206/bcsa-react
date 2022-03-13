@@ -42,9 +42,9 @@ export default function Tavern() {
                 <div className="widthContainer">
                     <h1 className="TavernTitle">Tavern<img className="TavernBeer" src={beer} alt="Beer" /></h1>
                     <div className="TavernMenuContainer">
-                        <Link to={'/character'} style={{textDecoration: 'none', color: 'inherit'}} className="TavernMenuCard pixel-border"><img className="TavernMenuItem" src={charIcon} alt="Character" />Character</Link>
-                        <Link to={'/Introduction'} style={{textDecoration: 'none', color: 'inherit'}} className="TavernMenuCard pixel-border"><img className="TavernMenuItem" src={book} alt="Story" />Story</Link>
-                        <div className="TavernMenuCard pixel-border"><img className="TavernMenuItem" src={cage} alt="Dungeon" />Dungeon</div>
+                        <Link to={'/character'} style={{textDecoration: 'none', color: 'inherit'}} className="TavernMenuCard pixel-border charCard"><img className="TavernMenuItem" src={charIcon} alt="Character" />Character <h2 className="chardesc">View your character, update your stats, and shop for items.</h2></Link>
+                        <Link to={'/Introduction'} style={{textDecoration: 'none', color: 'inherit'}} className="TavernMenuCard pixel-border storyCard"><img className="TavernMenuItem" src={book} alt="Story" />Story <h2 className='storydesc'>Take on a gauntlet of bosses and try to reach the end!</h2></Link>
+                        <div className="TavernMenuCard pixel-border dungeonCard"><img className="TavernMenuItem" src={cage} alt="Dungeon" />Dungeon <h2 className='dungeondesc'>Face random enemies and grind for currency and exp!</h2></div>
                     </div>
                 </div>
                 <div className="bottomNavContainer">
