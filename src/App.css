@@ -53,6 +53,16 @@
   }
 }
 /* Navigation */
+.logNavCont{
+  display: flex;
+  justify-content: flex-end;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 5vw;
+  right: 5vw;
+}
+
 .topNavContainer{
   display: flex;
   justify-content: space-between;

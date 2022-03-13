@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import coins from '../assets/images/coins.png'
 import track from '../assets/sounds/character.wav'
 import characterImg from '../assets/images/cement-shoes2.png'
@@ -26,12 +27,38 @@ export default function Character() {
             setStatus(false)
         }
     }
+    ///////////////////////////////////////////////////////////////////////////////////
+    const arr = [];
+    let stat = [0,0,0,0];
+    let shopItem = '';
+    let itemCost = '';
+    let obj = {};
+    const [currCoins, setCurrCoins] = useState(500);
+    
+
+    function addItem() {
+        if(parseInt(obj.itemCost) < currCoins) {
+            arr.push(obj.shopItem);
+            setCurrCoins(currCoins-obj.itemCost);
+        }
+        console.log(arr);
+        console.log(stat);
+
+    }
+    function currentItem() {
+        let element = document.getElementById('shopitem1');
+        let element2 = document.getElementById('cost');
+        shopItem = element.textContent;
+        itemCost = element2.textContent;
+        obj = {shopItem, itemCost};
+    }
+    ///////////////////////////////////////////////////////////////////////////////////
 
     return (
         <div className="pageContainer creationBg">
             <div className="mainCharContainer">
                 <div className="topNavContainer">
-                    <button className="backbutton"><img className='backbuttonimg' src={back} alt="Back_Button" /> Back</button>
+                    <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'white'}} className="backbutton"><img className='backbuttonimg' src={back} alt="Back_Button" /> Back</Link>
                 </div>
                 <div className="widthChar2Container">
                     <div className='charBox pixel-border'>
@@ -68,7 +95,20 @@ export default function Character() {
                         </h1>
                         <div className='shoprow'>
 
-                            <div className='shopitem'>Item 1
+                            <div className='shopitem' onClick={currentItem}>Sword
+                                <div className='itemdescbox pixel-border'>
+                                    <div className='textbox'>
+                                        <h4 id='shopitem1'>Sword</h4>
+                                        <h4>You're not exactly sure what this does but you feel like you should have it anyways.</h4>
+                                        <h4>Defense: +1</h4>
+                                        <div className='coinrow'>
+                                            <img className="coinshop" src={coins} alt="Coins" />
+                                            <div className='row' id='cost'>20</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='shopitem' onClick={currentItem}>Shield
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>MIT License</h4>
@@ -81,20 +121,7 @@ export default function Character() {
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Item 2
-                                <div className='itemdescbox pixel-border'>
-                                    <div className='textbox'>
-                                        <h4>MIT License</h4>
-                                        <h4>You're not exactly sure what this does but you feel like you should have it anyways.</h4>
-                                        <h4>Defense: +1</h4>
-                                        <div className='coinrow'>
-                                            <img className="coinshop" src={coins} alt="Coins" />
-                                            <div className='row'>20</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='shopitem'>Item 3
+                            <div className='shopitem' onClick={currentItem}>Bow
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>MIT License</h4>
@@ -191,10 +218,10 @@ export default function Character() {
                         <div className='shopbottom'>
                             <div className='coinrow'>
                                 <img className="coinshop" src={coins} alt="Coins" />
-                                <div className='row'>200</div>
+                                <div className='row'>{currCoins}</div>
                             </div>
                             {/* If click on unbought item the the button is Buy, if clicked on bought item then the button is equip */}
-                            <div className='buyequip'>Buy</div>
+                            <div className='buyequip' onClick={addItem}>Buy</div>
                         </div>
                     </div>
 

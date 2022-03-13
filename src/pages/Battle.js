@@ -1,4 +1,7 @@
+
 import React, { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom'
+
 import song from '../assets/sounds/battle.wav'
 import back from '../assets/images/back.png'
 import speakeron from '../assets/images/speaker-on.png'
@@ -11,6 +14,7 @@ import dice from '../assets/images/dice-fire.png'
 import heal1 from '../assets/images/heal1.png'
 import explosion from '../assets/images/explosion.gif'
 import getCharacter from '../Javascript/getCharacter.js';
+
 
 
 export default function Battle() {
@@ -51,37 +55,16 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
 
 
     class Character {
-        constructor(attacks, name, hp, atk, def) {
+        constructor(attacks, name, level, hp, atk, def) {
             this.attacks = attacks;
             this.name = name;
+            this.level = level;
             this.hp = hp;
             this.atk = atk;
             this.def = def;
         }
 
-        // Method which prints all of the stats for a character
-        printStats() {
-            console.log(`${this.name}'s current hp: ${this.hp}`);
-        }
-
-        // Method which determines whether or not a character's "hp" are less then zero
-        // Returns true or false depending upon the outcome
-        isAlive() {
-            if (this.hp <= 0) {
-                console.log(`${this.name} has been defeated!`);
-                return false;
-            }
-            return true;
-        }
-
-        // Method which takes in a second object and decreases their "hp" by this character's atk
-        attack(opponent) {
-            console.log(`${this.name} used ${this.attacks[Math.floor(Math.random() * this.attacks.length)]} on ${opponent.name} for ${this.atk} damage`);
-            opponent.hp = (opponent.hp + opponent.def) - this.atk;
-        }
-
     }
-
 
     // Create unique characters using the "character" constructor
     const enemy = new Character(["Console Crash",
@@ -99,10 +82,9 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
     const atks = ["Console Crash",
     "null",
     "undefined"
-    ];
 
-    //TODO: Inputs from GET go here
     const player = new Character(['Basic Attack', 'Dice Attack', 'Quiz Attack', 'Quiz Heal'], characterName, hp, atk, def);
+
     ///////////////
     // This keeps track of whose turn it is
     const questions = ["Snake-case is the preferred case style when naming databases.", "MongoDB stores data records as BSON documents."];
@@ -367,7 +349,8 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
         <div className="pageContainer creationBg">
             <div className="MainBattleContainer">
             <div className="topNavContainer">
-                    <button className="backbutton"><img className='backbuttonimg'src={back} alt="Back_Button" /> Back</button>                    
+                    {/* TODO: When battle is over, display a continue button. During battle display escape option, which prompts user that battle will not have rewards.*/}
+                    <Link to='/Tavern' style={{textDecoration: 'none', color: 'white'}} className="backbutton"><img className='backbuttonimg'src={back} alt="Back_Button" /> Back</Link>                    
                 </div>
                 <div className="battleContainer">
                     <div className="enemyRow">
