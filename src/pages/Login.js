@@ -77,10 +77,11 @@ function Login() {
             const data = await response.json();
             console.log(data);
             //TODO: Add 'class' field
-            const { characterName, currency, def, exp, hp, level, items, atk } = data
+            const { characterName, characterClass, currency, def, exp, hp, level, items, atk } = data
             setcharData({
                 atk,
                 characterName,
+                characterClass,
                 currency,
                 def,
                 exp,

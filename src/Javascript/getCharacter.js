@@ -13,10 +13,11 @@ const getCharacter = async ()=>{
       const data = await response.json();
       console.log(data);
       //TODO: Add 'class' field
-      const { characterName, currency, def, exp, hp, level, items, atk, image } = data
+      const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = data
       setcharData({
           atk,
           characterName,
+          characterClass,
           currency,
           def,
           exp,
