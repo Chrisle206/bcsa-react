@@ -117,6 +117,13 @@
   font-size: 48px;
   margin: 0;
 }
+.modal{
+  color: black;
+  margin: auto;
+}
+.modal-footer{
+  border: none;
+}
 .logbutton{
   border: 0;
   padding: 0 24px;
@@ -289,12 +296,46 @@
   justify-content: center;
   align-items: center;
   font-size: 80px;
-  margin: auto auto 0 auto;
+  margin-top: 80px;
+
   
 }
 .TavernBeer{
   width: 60px;
   margin: 20px;
+}
+.charCard:hover > .chardesc{
+visibility: visible;
+}
+.storyCard:hover > .storydesc{
+  visibility: visible;
+}
+.dungeonCard:hover > .dungeondesc{
+  visibility: visible;
+}
+.chardesc{
+  position:absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  visibility: hidden;
+}
+.storydesc{
+  position:absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  visibility: hidden;
+}
+.dungeondesc{
+  position:absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  visibility: hidden;
 }
 
 /* Character Creation Page */
