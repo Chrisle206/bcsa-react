@@ -14,8 +14,47 @@ import explosion from '../assets/images/explosion.gif'
 import getCharacter from '../Javascript/getCharacter.js';
 
 
+
 export default function Battle() {
 
+<<<<<<< HEAD
+    const getCharacter = async ()=>{
+        const token = localStorage.getItem("token");
+        const characterId = localStorage.getItem("characterId");
+        let obj = {};
+        const response = await fetch(`https://bcsa-api.herokuapp.com/user/char/${characterId}`, {
+            method: "GET",
+            headers: {
+              "Content-Type":"application/json",
+              "authorization":`Bearer ${token}`
+            }
+        })
+        try {
+            const data = await response.json();
+            console.log(data);
+            //TODO: Add 'class' field
+            const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = data
+            obj = {
+                atk: atk,
+                characterName : characterName,
+                characterClass: characterClass,
+                currency : currency,
+                def: def,
+                exp:exp,
+                hp:hp,
+                items:items,
+                level:level,
+                image:image
+            };
+            return data;
+        } catch (err) {
+            console.log('Catch triggered')
+            console.log(err);
+        }
+      };
+      /////////////////////
+      const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = getCharacter();
+=======
     const [charData, setcharData] = useState({
         characterName: "",
     });
@@ -28,6 +67,7 @@ export default function Battle() {
     // console.log(userChar);
     
 
+>>>>>>> dev
     const [speaker, setStatus] = useState(false)
     const audioRef = useRef()
 
@@ -49,37 +89,16 @@ export default function Battle() {
 
 
     class Character {
-        constructor(attacks, name, hp, atk, def) {
+        constructor(attacks, name, level, hp, atk, def) {
             this.attacks = attacks;
             this.name = name;
+            this.level = level;
             this.hp = hp;
             this.atk = atk;
             this.def = def;
         }
 
-        // Method which prints all of the stats for a character
-        printStats() {
-            console.log(`${this.name}'s current hp: ${this.hp}`);
-        }
-
-        // Method which determines whether or not a character's "hp" are less then zero
-        // Returns true or false depending upon the outcome
-        isAlive() {
-            if (this.hp <= 0) {
-                console.log(`${this.name} has been defeated!`);
-                return false;
-            }
-            return true;
-        }
-
-        // Method which takes in a second object and decreases their "hp" by this character's atk
-        attack(opponent) {
-            console.log(`${this.name} used ${this.attacks[Math.floor(Math.random() * this.attacks.length)]} on ${opponent.name} for ${this.atk} damage`);
-            opponent.hp = (opponent.hp + opponent.def) - this.atk;
-        }
-
     }
-
 
     // Create unique characters using the "character" constructor
     const enemy = new Character(["Console Crash",
@@ -97,10 +116,15 @@ export default function Battle() {
     const atks = ["Console Crash",
     "null",
     "undefined"
+<<<<<<< HEAD
+    ]
+    const player = new Character(['Basic Attack', 'Dice Attack', 'Quiz Attack', 'Quiz Heal'], characterName, level, hp, atk, def);
+=======
     ];
 
     //TODO: Inputs from GET go here
     const player = new Character(['Basic Attack', 'Dice Attack', 'Quiz Attack', 'Quiz Heal'], charData.characterName, 1000, 45, 100);
+>>>>>>> dev
     ///////////////
     // This keeps track of whose turn it is
     const questions = ["Snake-case is the preferred case style when naming databases.", "MongoDB stores data records as BSON documents."];
