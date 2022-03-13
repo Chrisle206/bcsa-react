@@ -155,8 +155,14 @@
 .diedBtn {
   width: fit-content;
   align-self: center;
+  color: white;
+  border: 0;
+  padding: 0 20px;
+  margin: 50px;
 }
+.diedBtn:hover{
 
+}
 /* pixelated borders */
 
 .pixel-border {
@@ -404,6 +410,64 @@ justify-content: space-between;
     transform: scale(1);
   }
 }
+
+.loadingchar1{
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  transform-origin: bottom;
+  margin-left: 30px;
+}
+.loadingchar2{
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  animation-delay: 0.4s;
+  transform-origin: bottom;
+}
+.loadingchar3{
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  animation-delay: 0.8s;
+  transform-origin: bottom;
+}
+.bounce-7 {
+  animation-name: bounce-7;
+  animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+}
+@keyframes bounce-7 {
+  0%   { transform: scale(1,1)      translateY(0); }
+  10%  { transform: scale(1.1,.9)   translateY(0); }
+  30%  { transform: scale(.9,1.1)   translateY(-100px); }
+  50%  { transform: scale(1.05,.95) translateY(0); }
+  57%  { transform: scale(1,1)      translateY(-7px); }
+  64%  { transform: scale(1,1)      translateY(0); }
+  100% { transform: scale(1,1)      translateY(0); }
+}
+.bounce-8 {
+  animation-name: bounce-8;
+  animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+}
+@keyframes bounce-8 {
+  0%   { transform: scale(1,1)      translateY(0); }
+  10%  { transform: scale(1.1,.9)   translateY(0); }
+  30%  { transform: scale(.9,1.1)   translateY(-100px); }
+  50%  { transform: scale(1.05,.95) translateY(0); }
+  57%  { transform: scale(1,1)      translateY(-7px); }
+  64%  { transform: scale(1,1)      translateY(0); }
+  100% { transform: scale(1,1)      translateY(0); }
+}
+.bounce-9 {
+  animation-name: bounce-9;
+  animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+}
+@keyframes bounce-9 {
+  0%   { transform: scale(1,1)      translateY(0); }
+  10%  { transform: scale(1.1,.9)   translateY(0); }
+  30%  { transform: scale(.9,1.1)   translateY(-100px); }
+  50%  { transform: scale(1.05,.95) translateY(0); }
+  57%  { transform: scale(1,1)      translateY(-7px); }
+  64%  { transform: scale(1,1)      translateY(0); }
+  100% { transform: scale(1,1)      translateY(0); }
+}
 .choicesContainer{
   font-size: 24px;
   text-align: center;
@@ -503,7 +567,9 @@ height: 20vh;
   width: 800px;
 }
 .attackList{
-  margin: 0px 200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 .attackRow1{
   display: flex;
@@ -633,7 +699,7 @@ height: 20vh;
   width: 100vw;
   height: 70vh;
   color: black;
-  background: url('./assets/images/ebbg4.gif') no-repeat center center fixed;
+  background: url('./assets/images/char7.gif') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

@@ -38,4 +38,4 @@ const getCharacter = async () => {
   }
 };
 
-module.exports = getCharacter;
+export default getCharacter;
