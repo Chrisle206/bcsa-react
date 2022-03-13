@@ -6,8 +6,8 @@ import song from '../assets/sounds/battle.wav'
 import back from '../assets/images/back.png'
 import speakeron from '../assets/images/speaker-on.png'
 import speakeroff from  '../assets/images/speaker-off.png'
-import enemyPic from '../assets/images/enemy.png'
-import heroPic from '../assets/images/hero.png'
+import enemyPic from '../assets/images/characters/frantz.png'
+import heroPic from '../assets/images/characters/warrior.png'
 import quiz from '../assets/images/quiz.png'
 import sword from '../assets/images/sword.png'
 import dice from '../assets/images/dice-fire.png'
@@ -24,15 +24,15 @@ export default function Battle() {
         characterName: "",
     });
 
-    useEffect(() => {
-        getCharacter().then(function (result) {
-            console.log(result);
-            setcharData(result)
-            return;
-        });
-    }, [])
+useEffect(() => {
+    getCharacter().then(function (result) {
+        console.log(result);
+        setcharData(result)
+        return;
+    });
+},[]);
 
-    const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = charData
+const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = charData
 
     const [speaker, setStatus] = useState(false)
     const audioRef = useRef()
@@ -70,30 +70,27 @@ export default function Battle() {
     const enemy = new Character(["Console Crash",
     "null",
     "undefined"],
-        'Bug Enemy',
+        'Frantz',
+        level,
         1000,
         200,
         20
     );
-    const idles = ["The bug looks like it's hiding something.",
-    "The bug is shouting in a red-colored font.",
-    "The bug seems to jitter about.",];
-    const taunts = [ "Tzzt!"]
-    const atks = ["Console Crash",
-    "null",
-    "undefined"];
+    const idles = ['insert idle'];
+    const taunts = [ "insert taunt"]
+    const atks = ["insert attack"];
+  
 
-    const player = new Character(['Basic Attack', 'Dice Attack', 'Quiz Attack', 'Quiz Heal'], characterName, hp, atk, def);
+    const player = new Character(['Basic Attack', 'Dice Attack', 'Quiz Attack', 'Quiz Heal'], characterName, level, hp, atk, def);
+    console.log(charData.atk);
+    console.log(charData.def);
+    console.log(charData.hp);
+    const [heroHp, setHeroHp] = useState(0);
+    const [enemyHp, setEnemyHp] = useState(enemy.hp);
 
-    ///////////////
-    // This keeps track of whose turn it is
     const questions = ["Snake-case is the preferred case style when naming databases.", "MongoDB stores data records as BSON documents."];
     let defaultQuestion = "What is your next move?"
     var delayInMilliseconds = 3000;
-
-    console.log(player.hp);
-    const [heroHp, setHeroHp] = useState(player.hp);
-    const [enemyHp, setEnemyHp] = useState(enemy.hp);
     var bool = 2;
     const [mainText, setMainText] = useState(defaultQuestion);
 
@@ -126,9 +123,10 @@ export default function Battle() {
     showExplosion2();
     setTimeout(function () { hideExplosion2() }, 500)
 }
-
+///////////////////////////////////////////////////////
 
     const intro = () => {
+        setHeroHp(player.hp);
         hideAtkBtns();
         setMainText('intro');
         setTimeout(function () {
@@ -136,6 +134,8 @@ export default function Battle() {
             showAtkBtns();
         }, 1000);
     }
+
+    // Enemy's turn, 20% chance to idle, 80% chance to attack
     const enemyTurn = () => {
         let num = Math.floor(Math.random() * (6 - 1)) + 1;
         switch (num) {
@@ -166,7 +166,7 @@ export default function Battle() {
                 setMainText(defaultQuestion);
         }
     }
-
+    // If enemy attacks hero, attack only or attack and taunt
     const option1 = () => {
         let num2 = Math.floor(Math.random() * (3 - 1)) + 1;
         let enemyMove = atks[Math.floor(Math.random() * atks.length)];
@@ -196,6 +196,8 @@ export default function Battle() {
             }, 2000);
         }
     }
+    
+    // Check if enemy is alive, if true enemy's turn, if false derender enemy and set hp to 0
     const enemyIsALive = () => {
             if(isLastHit) {
                 document.getElementById('opp').classList.add('hide')
@@ -208,7 +210,7 @@ export default function Battle() {
                 setTimeout(function () { enemyTurn() }, 500);
             }
     }
-
+    /////////////////////////////////////////// ATTACK1 FUNCTIONALITY
     const atk1 = () => {
         let dmg = ((enemyHp + enemy.def) - player.atk);
         if(dmg <= 0) {
@@ -220,8 +222,9 @@ export default function Battle() {
         hideAtkBtns();
         enemyIsALive();
     };
+    ///////////////////////////////////////////
 
-
+    /////////////////////////////////////////// ATTACK2 FUNCTIONALITY
     const atk2 = () => {
         let attack = Math.floor(Math.random() * 2) * (player.atk * 2);
         if(attack === (player.atk*2)){
@@ -238,8 +241,10 @@ export default function Battle() {
         hideAtkBtns();
         enemyIsALive();
     };
+    /////////////////////////////////////////// 
 
 
+    /////////////////////////////////////////// QUIZ ATTACK FUNCTIONALITY
     const atk3 = () => {
         let question = questions[Math.floor(Math.random() * questions.length)]; //gets random questions, add to UI
         setMainText(question);
@@ -272,8 +277,9 @@ export default function Battle() {
         bool = 2;
         enemyIsALive();
     }
+    /////////////////////////////////////////// 
 
-
+    /////////////////////////////////////////// HEAL FUNCTIONALITY
     const heal = () => {
         let question = questions[Math.floor(Math.random() * questions.length)];
         setMainText(question);
@@ -300,6 +306,9 @@ export default function Battle() {
         addElements2();
         enemyIsALive();
     }
+    ///////////////////////////////////////////
+
+    /////////////////////////////////////////// HIDE/SHOW FUNCTIONS
     const removeElements = () => {
         let element = document.getElementById('qT');
         element.classList.remove('hide');
@@ -342,7 +351,7 @@ export default function Battle() {
             element.classList.remove('hide');
         }
     }
-
+/////////////////////////////////////////////////////////////////
 
     // intro();
     return (
@@ -357,7 +366,7 @@ export default function Battle() {
                         <div className="StatBox pixel-border">
                             <div className='statRow'>
                                 <h3>{enemy.name}</h3>
-                                <h3>Lvl: 15</h3>
+                                <h3>Lvl: {enemy.level}</h3>
                             </div>
                             <div className='healthBarContainer'>
                                 <div className='statRow'>
@@ -383,7 +392,7 @@ export default function Battle() {
                         <div className="StatBox pixel-border">
                             <div className='statRow'>
                                 <h3>{player.name}</h3>
-                                <h3>Lvl: {charData.level}</h3>
+                                <h3>Lvl: {player.level}</h3>
                             </div>
                             <div className='healthBarContainer '>
                                 <div className='statRow'>

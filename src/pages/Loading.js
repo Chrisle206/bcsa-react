@@ -6,9 +6,9 @@ export default function Loading() {
     return (
         <div className="pageContainer creationBg">
             <h1 className='loading'>...Loading
-            <img src={assassin} className="characterEmpty"></img>
-            <img src={ranger} className="characterEmpty"></img>
-            <img src={routeMaster} className="characterEmpty"></img>
+            <img src={assassin} className="loadingchar1 bounce-7"></img>
+            <img src={ranger} className="loadingchar2 bounce-7"></img>
+            <img src={routeMaster} className="loadingchar3 bounce-7"></img>
             </h1>
         </div>
     )
