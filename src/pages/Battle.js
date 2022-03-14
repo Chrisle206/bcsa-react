@@ -16,8 +16,9 @@ import explosion from '../assets/images/explosion.gif'
 import healgif from '../assets/images/heal.gif'
 import getCharacter from '../Javascript/getCharacter.js';
 
-
-
+var isLastHit = 0;
+var delayInMilliseconds = 3000;
+var bool = 2;
 export default function Battle() {
     // console.log(data);
 
@@ -80,22 +81,18 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
     const idles = ['insert idle'];
     const taunts = [ "insert taunt"]
     const atks = ["insert attack"];
+    const introEnemy = "enemy intro";
+    const outroEnemy = "enemy outro";
   
 
     const player = new Character(['Basic Attack', 'Dice Attack', 'Quiz Attack', 'Quiz Heal'], characterName, level, hp, atk, def);
-    console.log(charData.atk);
-    console.log(charData.def);
-    console.log(charData.hp);
     const [heroHp, setHeroHp] = useState(0);
     const [enemyHp, setEnemyHp] = useState(enemy.hp);
 
     const questions = ["Snake-case is the preferred case style when naming databases.", "MongoDB stores data records as BSON documents."];
     let defaultQuestion = "What is your next move?"
-    var delayInMilliseconds = 3000;
-    var bool = 2;
-    const [mainText, setMainText] = useState(defaultQuestion);
+    const [mainText, setMainText] = useState();
 
-    var isLastHit = 0;
     var enemyAtk = enemy.atk;
 
     // explosion
@@ -127,13 +124,15 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
 ///////////////////////////////////////////////////////
 
     const intro = () => {
+        document.getElementById('start').classList.add('hide');
+        setMainText(introEnemy);
         setHeroHp(player.hp);
-        hideAtkBtns();
-        setMainText('intro');
-        setTimeout(function () {
-            setMainText(defaultQuestion);
-            showAtkBtns();
-        }, 1000);
+
+        setTimeout(function () { 
+        showAtkBtns();
+        setMainText(defaultQuestion);
+         }, 2000)
+    
     }
 
     // Enemy's turn, 20% chance to idle, 80% chance to attack
@@ -153,15 +152,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                 option1();
                 break;
             case 5:
-                let idle = idles[Math.floor(Math.random() * idles.length)];
-                setTimeout(function () {
-                    setMainText(idle);
-                }, 1000);
-                setTimeout(function () {
-                    setMainText(defaultQuestion);
-                    showAtkBtns();
-                    enemy.atk = enemyAtk;
-                }, delayInMilliseconds);
+                option2();
                 break;
             default:
                 setMainText(defaultQuestion);
@@ -197,16 +188,33 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
             }, 2000);
         }
     }
+
+    const option2 = () => {
+        let idle = idles[Math.floor(Math.random() * idles.length)];
+                setTimeout(function () {
+                    setMainText(idle);
+                }, 1000);
+                setTimeout(function () {
+                    setMainText(defaultQuestion);
+                    showAtkBtns();
+                    enemy.atk = enemyAtk;
+                }, delayInMilliseconds);
+    }
     
     // Check if enemy is alive, if true enemy's turn, if false derender enemy and set hp to 0
     const enemyIsALive = () => {
+        console.log(isLastHit);
             if(isLastHit) {
-                document.getElementById('opp').classList.add('hide')
+                setMainText(outroEnemy);
                 setEnemyHp(0);
-                setMainText('Enemy Felled!');
                 hideAtkBtns();
+
+                setTimeout(function () {
+                document.getElementById('opp').classList.add('hide');
+                setMainText('Enemy Felled!');
                 document.getElementById('backBtn').classList.remove('hide');
                 document.getElementById('contBtn').classList.remove('hide'); 
+                }, 1500);
             } else {
                 setTimeout(function () { enemyTurn() }, 500);
             }
@@ -305,7 +313,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
         }
         bool = 2;
         addElements2();
-        enemyIsALive();
+        option2();
     }
     ///////////////////////////////////////////
 
@@ -354,7 +362,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
     }
 /////////////////////////////////////////////////////////////////
 
-    // intro();
+
     return (
         <div className="pageContainer creationBg">
             <div className="MainBattleContainer">
@@ -379,7 +387,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                             </div>
                         </div>
                         <div className='effectcont'>
-                        <img className="enemyPic" src={enemyPic} alt="Enemy" />
+                        <img className="enemyPic" src={enemyPic} id='opp' alt="Enemy" />
                         <img className="explosion explosion1" id='explosion' src={explosion} alt="explosion" />
                         </div>
                     </div>
@@ -410,16 +418,16 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                     <p className="question">{mainText}</p>
                     <div className="attackList">
                         <div className="attackRow1">
-                            <button className="attack" id='atk1' onClick={atk1}><img className="iconhover" src={sword} alt="sword" />{player.attacks[0]}</button>
-                        
-                            <button className="attack" id='atk2' onClick={atk2}><img className="iconhover" src={dice} alt="dice" />{player.attacks[1]}</button>
+                            <button className="attack hide" id='atk1' onClick={atk1}><img className="iconhover" src={sword} alt="sword" />{player.attacks[0]}</button>
+                            <button className='attack' id='start' onClick={intro}>Start</button>
+                            <button className="attack hide" id='atk2' onClick={atk2}><img className="iconhover" src={dice} alt="dice" />{player.attacks[1]}</button>
                             
                         </div>
                         <div className="attackRow2">
-                            <button className="attack" id='atk3' onClick={atk3}>
+                            <button className="attack hide" id='atk3' onClick={atk3}>
                                 <img className="iconhover" src={quiz} alt="quiz" />
                                 {player.attacks[2]} </button>
-                            <button className="attack" id='atk4' onClick={heal}>
+                            <button className="attack hide" id='atk4' onClick={heal}>
                                 <img className="iconhover" src={heal1} alt="heal" />
                                 {player.attacks[3]}</button>
                         </div>
