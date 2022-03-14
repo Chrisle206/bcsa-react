@@ -8,6 +8,16 @@ import speakeron from '../assets/images/speaker-on.png'
 import speakeroff from '../assets/images/speaker-off.png'
 import getCharacter from '../Javascript/getCharacter.js'
 
+import bloodysword from '../assets/images/bloody-sword.png'
+import rosashield from '../assets/images/rosa-shield.png'
+import crossbow from '../assets/images/crossbow.png'
+import up from '../assets/images/hp.png'
+import flask from '../assets/images/flask.png'
+import portal from '../assets/images/portal.png'
+import arrow from '../assets/images/arrow.png'
+import smith from '../assets/images/smith.png'
+import staff from '../assets/images/staff.png'
+import syringe from '../assets/images/syringe.png'
 
 export default function Character() {
 
@@ -92,15 +102,15 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                             <div className='statcontainer'>
                                 <div className='stats'>
                                     <h3 className='statfont'> Health: {hp}</h3>
-                                    <button className='plus'>+</button>
+                                    <button className='plus'><img className="up" src={up} alt="up" /></button>
                                 </div >
                                 <div className='stats'>
                                     <h3 className='statfont'>Attack: {atk}</h3>
-                                    <button className='plus'>+</button>
+                                    <button className='plus'><img className="up" src={up} alt="up" /></button>
                                 </div >
                                 <div className='stats'>
                                     <h3 className='statfont'> Defense: {def}</h3>
-                                    <button className='plus'>+</button>
+                                    <button className='plus'><img className="up" src={up} alt="up" /></button>
                                 </div >
                             </div>
                         </div>
@@ -112,7 +122,20 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                         </h1>
                         <div className='shoprow'>
 
-                            <div className='shopitem' onClick={currentItem}>Round Pebble
+                            <div className='shopitem' onClick={currentItem}><img className="itemimg" src={flask} alt="Flask" />
+                                <div className='itemdescbox pixel-border'>
+                                    <div className='textbox'>
+                                        <h4>Potion of Postponement</h4>
+                                        <h4>The label says "For emergency deadline extensions only." It seems to be sealed with a magic riddle.</h4>
+                                        <h4>Unlock Heal option!</h4>
+                                        <div className='coinrow'>
+                                            <img className="coinshop" src={coins} alt="Coins" />
+                                            <div className='row'>50</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='shopitem' onClick={currentItem}><img className="itemimg" src={bloodysword} alt="Sword" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4 id='shopitem1'>Round Pebble</h4>
@@ -125,7 +148,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem' onClick={currentItem}>101 Manatee Jokes
+                            <div className='shopitem' onClick={currentItem}><img className="itemimg" src={rosashield} alt="Shield" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>101 Manatee Jokes</h4>
@@ -151,7 +174,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem' onClick={currentItem}>La Croix
+                            <div className='shopitem' onClick={currentItem}><img className="itemimg" src={crossbow} alt="Crossbow" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>La Croix</h4>
@@ -164,7 +187,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem' onClick={currentItem}>Shiva's Fang
+                            <div className='shopitem' onClick={currentItem}><img className="itemimg" src={syringe} alt="syringe" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Shiva's Fang</h4>
@@ -190,7 +213,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem' onClick={currentItem}>DOM Map
+                            <div className='shopitem' onClick={currentItem}><img className="itemimg" src={portal} alt="Portal" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Dom Map</h4>
@@ -203,7 +226,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem' onClick={currentItem}>MIT License
+                            <div className='shopitem' onClick={currentItem}><img className="itemimg" src={arrow} alt="Arrow" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>MIT License</h4>
@@ -216,7 +239,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem' onClick={currentItem}>UDEMY Course Coupon
+                            <div className='shopitem' onClick={currentItem}><img className="itemimg" src={smith} alt="Smith" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>UDEMY Course Coupon</h4>
@@ -229,7 +252,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem' onClick={currentItem}>Best Practices Handbook
+                            <div className='shopitem' onClick={currentItem}><img className="itemimg" src={staff} alt="Staff" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Best Practices Handbook</h4>
@@ -511,7 +534,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                 <div className='row'>{currCoins}</div>
                             </div>
                             {/* If click on unbought item the the button is Buy, if clicked on bought item then the button is equip */}
-                            <div className='buyequip' onClick={addItem}>Buy</div>
+                            <button className='buyequip' onClick={addItem}>Buy</button>
                         </div>
                     </div>
 
