@@ -36,7 +36,6 @@ export default function Start() {
 
     //State for handling a user's data
     const [userData, setUserData] = useState({
-        username: "",
         id: 0,
     });
 
@@ -190,6 +189,8 @@ export default function Start() {
                     Welcome to BCS Adventures! You are about to embark on an epic journey filled with fierce battle, internal strife, evil bugs and, most importantly, triumph! Face off against evil TA's, peacock-ish devs and intelligent AI from the savage world of coding as you master the skills necessary to become a certified Fullstack Developer!
 
                     </div>
+                {userData.username ? (
+
                     <div className="TavernMenuContainer">
                         {userData.characters ? (
                             <Link to={'./Tavern'} style={{ textDecoration: 'none', color: 'inherit' }} className="PlayCard pixel-border">Play<img className="PlayButton" src={play} alt="Story" /></Link>
@@ -199,6 +200,9 @@ export default function Start() {
 
                         ) }
                     </div>
+                ) : (
+                        <Link to={'./Start'} data-bs-toggle="modal" data-bs-target="#signupModal" style={{ textDecoration: 'none', color: 'inherit' }} className="PlayCard pixel-border">Play<img className="PlayButton" src={play} alt="Story" /></Link>
+                ) }
                 </div>
                 <div className="bottomNavContainer">
                     <>
