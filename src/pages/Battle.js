@@ -366,17 +366,16 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                     <div className="enemyRow">
                         <div className="StatBox pixel-border">
                             <div className='statRow'>
-                                <h3>{enemy.name}</h3>
-                                <h3>Lvl: {enemy.level}</h3>
+                                <h3 className='smallFont'>{enemy.name}</h3>
+                                <h3 className='smallFont'>Lvl: {enemy.level}</h3>
                             </div>
                          
                                     <div className='healthcontainer'>
                                         <div className='healthBarEnemy'>
 
                                         </div>
-                               
-                                    <h3 className='hp'>HP:{enemyHp}/{enemy.hp}</h3>
                             </div>
+                                    <h3 className='hp smallFont'>HP:{enemyHp}/{enemy.hp}</h3>
                         </div>
                         <div className='effectcont'>
                         <img className="enemyPic" src={enemyPic} alt="Enemy" />
@@ -390,8 +389,8 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                         </div>
                         <div className="StatBox pixel-border">
                             <div className='statRow'>
-                                <h3>{player.name}</h3>
-                                <h3 className='heroLvl'>Lvl: {player.level}</h3>
+                                <h3 className='smallFont'>{player.name}</h3>
+                                <h3 className='heroLvl smallFont'>Lvl: {player.level}</h3>
                             </div>
                             
                                
@@ -401,7 +400,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                         </div>
                                     </div>
                                 
-                                    <h3 className='hp'>HP:{heroHp}/{player.hp}</h3>
+                                    <h3 className='hp smallFont'>HP:{heroHp}/{player.hp}</h3>
                             
                         </div>
                     </div>
