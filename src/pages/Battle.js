@@ -13,6 +13,7 @@ import sword from '../assets/images/sword.png'
 import dice from '../assets/images/dice-fire.png'
 import heal1 from '../assets/images/heal1.png'
 import explosion from '../assets/images/explosion.gif'
+import healgif from '../assets/images/heal.gif'
 import getCharacter from '../Javascript/getCharacter.js';
 
 
@@ -390,7 +391,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                         <div className="StatBox pixel-border">
                             <div className='statRow'>
                                 <h3>{player.name}</h3>
-                                <h3>Lvl: {player.level}</h3>
+                                <h3 className='heroLvl'>Lvl: {player.level}</h3>
                             </div>
                             
                                

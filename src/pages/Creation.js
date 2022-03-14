@@ -336,6 +336,22 @@ export default function Creation() {
                         {showChar ? (
                             <>
                                 <div className="question">Your character is {choice}</div>
+
+                                <div className='statcontainer'>
+                                <div className='stats'>
+                                    <h3 className='statfont'> Health: 100</h3>
+                                    <button className='plus'></button>
+                                </div >
+                                <div className='stats'>
+                                    <h3 className='statfont'>Attack: 50</h3>
+                                    <button className='plus'></button>
+                                </div >
+                                <div className='stats'>
+                                    <h3 className='statfont'> Defense: 60</h3>
+                                    <button className='plus'></button>
+                                </div >
+                            </div>
+
                                 <div className="attackList">
                                     <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'inherit'}} className='logbutton attack'>Continue</Link>
                                 </div>

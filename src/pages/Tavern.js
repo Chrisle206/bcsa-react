@@ -47,8 +47,8 @@ export default function Tavern() {
         
         <div className="pageContainer creationBg">
             <div className="mainContainer">
-            <div className="logNavCont">
-                <button onClick={logout}>Logout</button>                   
+            <div className="topNavContainer">
+                <button className="logbutton"onClick={logout}>Logout</button>                   
                     <h3 className="coinContainer"> <img className="coinImg" src={coins} alt="Coins" /> 200</h3>
                 </div>
                 <div className="widthContainer">
