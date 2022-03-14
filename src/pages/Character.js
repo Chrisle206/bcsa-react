@@ -7,7 +7,7 @@ import back from '../assets/images/back.png'
 import speakeron from '../assets/images/speaker-on.png'
 import speakeroff from '../assets/images/speaker-off.png'
 import getCharacter from '../Javascript/getCharacter.js'
-
+/////////////////
 import bloodysword from '../assets/images/bloody-sword.png'
 import rosashield from '../assets/images/rosa-shield.png'
 import crossbow from '../assets/images/crossbow.png'
