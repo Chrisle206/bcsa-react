@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../App.css'
 import play from '../assets/images/play-button.png'
 import track from '../assets/sounds/start.wav'
@@ -7,7 +7,9 @@ import wingedsword from '../assets/images/winged-sword.png'
 import speakeron from '../assets/images/speaker-on.png'
 import speakeroff from '../assets/images/speaker-off.png'
 
+
 export default function Start() {
+    // let history = useNavigate();
 
     const [speaker, setStatus] = useState(false)
     const audioRef = useRef()
@@ -125,7 +127,12 @@ export default function Start() {
                                             </div>
                                             <div className="modal-footer">
                                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" className="btn btn-primary">Submit</button>
+                                                {userData.username ? (
+                                                    <>
+                                                        <h3>Welcome, {userData.username}! Click 'Play' to begin.</h3>
+                                                        <Link to={'./Tavern'} data-bs-dismiss="modal" style={{ textDecoration: 'none', color: 'inherit' }} className='logbutton pixel-border'>Play</Link>
+                                                    </>
+                                                ) : <button type="submit" className="btn btn-primary">Submit</button>}
                                             </div>
                                         </form>
                                     </div>
@@ -153,15 +160,16 @@ export default function Start() {
                                                 <h5 for="signupPassword" class="form-label">Password</h5>
                                                 <input type="password" class="form-control" id="signupPassword" value={formState.password} onChange={e => setFormState({ ...formState, password: e.target.value })} />
                                             </div>
-                                            {userData.username ? (
-                                                
-                                                    <h3>Welcome, {userData.username}! Close this box and click 'Play' to begin.</h3>
-                                               
-                                            ) : null}
-
                                             <div className="modal-footer">
                                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" className="btn btn-primary">Submit</button>
+                                                {userData.username ? (
+                                                    <>
+                                                        <h3>Welcome, {userData.username}! Click 'Play' to begin.</h3>
+                                                        <Link to={'./Creation'} style={{ textDecoration: 'none', color: 'inherit' }} className='logbutton pixel-border'>Play</Link>
+                                                    </>
+                                                ) : <button type="submit" className="btn btn-primary">Submit</button>}
+
+
                                             </div>
                                         </form>
                                     </div>
@@ -178,7 +186,6 @@ export default function Start() {
                     </div>
                     <div className="TavernMenuContainer">
                         <Link to={'./Creation'} style={{ textDecoration: 'none', color: 'inherit' }} className="PlayCard pixel-border">Play<img className="PlayButton" src={play} alt="Story" /></Link>
-
                     </div>
                 </div>
                 <div className="bottomNavContainer">
