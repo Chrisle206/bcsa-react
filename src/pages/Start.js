@@ -127,7 +127,12 @@ export default function Start() {
                                             </div>
                                             <div className="modal-footer">
                                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" className="btn btn-primary">Submit</button>
+                                                {userData.username ? (
+                                                    <>
+                                                        <h3>Welcome, {userData.username}! Click 'Play' to begin.</h3>
+                                                        <Link to={'./Tavern'} data-bs-dismiss="modal" style={{ textDecoration: 'none', color: 'inherit' }} className='logbutton pixel-border'>Play</Link>
+                                                    </>
+                                                ) : <button type="submit" className="btn btn-primary">Submit</button>}
                                             </div>
                                         </form>
                                     </div>

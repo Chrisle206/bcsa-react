@@ -15,6 +15,9 @@ export default function Tavern() {
 
     const [speaker, setStatus] = useState(false)
     const audioRef = useRef()
+    const [token, setToken] = useState(localStorage.getItem("token"));
+    // const token = localStorage.getItem("token");
+
 
     function volOff() {
         if (useState !== false) {
@@ -32,11 +35,20 @@ export default function Tavern() {
         }
     }
 
+    //Logout should redirect to Start page
+    const logout = () =>{
+        localStorage.removeItem("token");
+        setToken("");
+        document.location.replace('/');
+    }
+    
+
     return (
         
         <div className="pageContainer creationBg">
             <div className="mainContainer">
-            <div className="logNavCont">                   
+            <div className="logNavCont">
+                <button onClick={logout}>Logout</button>                   
                     <h3 className="coinContainer"> <img className="coinImg" src={coins} alt="Coins" /> 200</h3>
                 </div>
                 <div className="widthContainer">
