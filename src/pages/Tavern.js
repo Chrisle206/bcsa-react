@@ -38,6 +38,7 @@ export default function Tavern() {
     //Logout should redirect to Start page
     const logout = () =>{
         localStorage.removeItem("token");
+        localStorage.removeItem("characterId");
         setToken("");
         document.location.replace('/');
     }

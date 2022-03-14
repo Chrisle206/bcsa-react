@@ -204,7 +204,7 @@ export default function Creation() {
                     currency: 5000,
                     exp: 0,
                     items: [],
-                    image: assassin,
+                    image: 'assassin',
                     hp: 80,
                     characterName: "CSS Assassin",
                     atk: 105,
@@ -225,7 +225,7 @@ export default function Creation() {
                     hp: 120,
                     items: [],
                     level: 1,
-                    image: master
+                    image: 'master'
                 };
                 // setdisplayChar(sendToAPI);
                 chosenChar = characters[1];
@@ -242,7 +242,7 @@ export default function Creation() {
                     hp: 100,
                     items: [],
                     level: 1,
-                    image: ranger
+                    image: 'ranger'
                 };
                 // setdisplayChar(sendToAPI);
                 chosenChar = characters[2];
@@ -259,7 +259,7 @@ export default function Creation() {
                     hp: 110,
                     items: [],
                     level: 1,
-                    image: warrior
+                    image: 'warrior'
                 };
                 // setdisplayChar(sendToAPI);
                 chosenChar = characters[3];
