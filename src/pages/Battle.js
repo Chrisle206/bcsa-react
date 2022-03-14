@@ -390,7 +390,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                         <div className="StatBox pixel-border">
                             <div className='statRow'>
                                 <h3>{player.name}</h3>
-                                <h3>Lvl: {player.level}</h3>
+                                <h3 className='heroLvl'>Lvl: {player.level}</h3>
                             </div>
                             
                                

@@ -326,6 +326,7 @@ visibility: visible;
   right: 0;
   text-align: center;
   visibility: hidden;
+  color: goldenrod
 }
 .storydesc{
   position:absolute;
@@ -334,6 +335,7 @@ visibility: visible;
   right: 0;
   text-align: center;
   visibility: hidden;
+  color: goldenrod
 }
 .dungeondesc{
   position:absolute;
@@ -342,6 +344,7 @@ visibility: visible;
   right: 0;
   text-align: center;
   visibility: hidden;
+  color: goldenrod
 }
 
 /* Character Creation Page */
@@ -560,6 +563,9 @@ height: 20vh;
 .heroPic{
   height: 20vh;
 }
+.heroLvl{
+  color: goldenrod
+}
 .BattlechoicesContainer{
   font-size: 24px;
   text-align: center;
@@ -739,6 +745,7 @@ height: 20vh;
   border: white solid 2px;
   border-radius: 10px;;
   margin: 20px;
+  background-color: inherit;
 }
 .itemimg{
   width: 40px
@@ -768,14 +775,18 @@ height: 20vh;
   border: solid 2px goldenrod;
   cursor: pointer;
 }
-.shopitem:active{
+
+.shopitem:focus{
   border: solid 2px goldenrod;
   cursor: pointer;
+  background-color: goldenrod;
 }
 .shopitem:hover > .itemdescbox{
 visibility: visible;
 }
-
+.shopitem:focus > .itemdescbox{
+visibility: visible;
+}
 .boxtitle{
   font-size: 32px;
   border-bottom: dashed white 2px;
@@ -792,7 +803,7 @@ visibility: visible;
   font-size: 24px;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin: 0 60px 10px;
 }
 .plus{
