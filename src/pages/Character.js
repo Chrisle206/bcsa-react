@@ -151,7 +151,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>La Croix
+                            <div className='shopitem' onClick={currentItem}>La Croix
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>La Croix</h4>
@@ -164,7 +164,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Shiva's Fang
+                            <div className='shopitem' onClick={currentItem}>Shiva's Fang
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Shiva's Fang</h4>
@@ -177,7 +177,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Bahamut's Box
+                            <div className='shopitem' onClick={currentItem}>Bahamut's Box
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Bahamut's Box</h4>
@@ -190,7 +190,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>DOM Map
+                            <div className='shopitem' onClick={currentItem}>DOM Map
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Dom Map</h4>
@@ -203,7 +203,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>MIT License
+                            <div className='shopitem' onClick={currentItem}>MIT License
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>MIT License</h4>
@@ -216,7 +216,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>UDEMY Course Coupon
+                            <div className='shopitem' onClick={currentItem}>UDEMY Course Coupon
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>UDEMY Course Coupon</h4>
@@ -229,7 +229,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Best Practices Handbook
+                            <div className='shopitem' onClick={currentItem}>Best Practices Handbook
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Best Practices Handbook</h4>
@@ -242,7 +242,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Mongo's Compass
+                            <div className='shopitem' onClick={currentItem}>Mongo's Compass
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Mongo's Compass</h4>
@@ -255,7 +255,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Flexbox Froggy
+                            <div className='shopitem' onClick={currentItem}>Flexbox Froggy
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Flexbox Froggy</h4>
@@ -268,7 +268,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Magic Keyboard
+                            <div className='shopitem' onClick={currentItem}>Magic Keyboard
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Magic Keyboard</h4>
@@ -281,7 +281,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Callback Quiver
+                            <div className='shopitem' onClick={currentItem}>Callback Quiver
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Callback Quiver</h4>
@@ -294,7 +294,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Orb of OOP
+                            <div className='shopitem' onClick={currentItem}>Orb of OOP
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Orb of OOP</h4>
@@ -307,7 +307,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Wand of Recursion
+                            <div className='shopitem' onClick={currentItem}>Wand of Recursion
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Wand of Recursion</h4>
@@ -320,7 +320,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Bootstrap Dagger
+                            <div className='shopitem' onClick={currentItem}>Bootstrap Dagger
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Bootstrap Dagger</h4>
@@ -333,7 +333,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Ring of Regex
+                            <div className='shopitem' onClick={currentItem}>Ring of Regex
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Ring of Regex</h4>
@@ -346,7 +346,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Paradigm-Padded Armor
+                            <div className='shopitem' onClick={currentItem}>Paradigm-Padded Armor
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Paradigm-Padded Armor</h4>
@@ -359,7 +359,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Excalidraw
+                            <div className='shopitem' onClick={currentItem}>Excalidraw
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Excalidraw</h4>
@@ -372,7 +372,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Nodemon Dagger
+                            <div className='shopitem' onClick={currentItem}>Nodemon Dagger
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Nodemon Dagger</h4>
@@ -385,7 +385,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>HashSync Shield
+                            <div className='shopitem' onClick={currentItem}>HashSync Shield
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>HashSync Shield</h4>
@@ -398,7 +398,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Arcane Config
+                            <div className='shopitem' onClick={currentItem}>Arcane Config
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Arcane Config</h4>
@@ -411,7 +411,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>API Skeleton Key
+                            <div className='shopitem' onClick={currentItem}>API Skeleton Key
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>API Skeleton Key</h4>
@@ -424,7 +424,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Ronnel's Memoir
+                            <div className='shopitem' onClick={currentItem}>Ronnel's Memoir
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Ronnel's Memoir</h4>
@@ -437,7 +437,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Brett's Skis
+                            <div className='shopitem' onClick={currentItem}>Brett's Skis
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Brett's Skis</h4>
@@ -450,7 +450,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Louis' Sunglasses
+                            <div className='shopitem' onClick={currentItem}>Louis' Sunglasses
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Louis' Sunglasses</h4>
@@ -463,7 +463,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Sword of Sequelize
+                            <div className='shopitem' onClick={currentItem}>Sword of Sequelize
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Sword of Sequelize</h4>
@@ -476,7 +476,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Hu-Mongo Mallet
+                            <div className='shopitem' onClick={currentItem}>Hu-Mongo Mallet
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Hu-Mongo Mallet</h4>
@@ -489,7 +489,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Tutor In-A-Bottle
+                            <div className='shopitem' onClick={currentItem}>Tutor In-A-Bottle
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Tutor In-A-Bottle</h4>
