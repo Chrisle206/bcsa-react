@@ -38,7 +38,6 @@ export default function Start() {
     const [userData, setUserData] = useState({
         username: "",
         id: 0,
-        characters: []
     });
 
     //State for handling form submissions
@@ -88,6 +87,7 @@ export default function Start() {
     
           setToken(newUser.token);
           localStorage.setItem("token", newUser.token);
+          localStorage.setItem("id", newUser.id);
           setUserData({
               username:newUser.username,
               id:newUser._id,
@@ -129,8 +129,7 @@ export default function Start() {
                                                 {userData.username ? (
                                                     <>
                                                         <h3>Welcome, {userData.username}! Click 'Play' to begin.</h3>
-                                                        <Link to={'./Tavern'} data-bs-dismiss="modal" style={{ textDecoration: 'none' }} className='modalBTN pixel-border'>Play</Link>
-                                                    </>
+                                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>                                                    </>
                                                 ) : <>
                                                 <button type="button" className="btn btn-secondary modalBTN" data-bs-dismiss="modal">Close</button>
                                                 <button type="submit" className="btn btn-primary modalBTN">Submit</button>
@@ -168,8 +167,7 @@ export default function Start() {
                                                 {userData.username ? (
                                                     <>
                                                         <h3>Welcome, {userData.username}! Click 'Play' to begin.</h3>
-                                                        <Link to={'./Creation'} style={{ textDecoration: 'none'}} className='modalBTN pixel-border'>Play</Link>
-                                                    </>
+                                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>                                                    </>
                                                 ) : 
                                                 <>
                                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -193,7 +191,13 @@ export default function Start() {
 
                     </div>
                     <div className="TavernMenuContainer">
-                        <Link to={'./Creation'} style={{ textDecoration: 'none', color: 'inherit' }} className="PlayCard pixel-border">Play<img className="PlayButton" src={play} alt="Story" /></Link>
+                        {userData.characters ? (
+                            <Link to={'./Tavern'} style={{ textDecoration: 'none', color: 'inherit' }} className="PlayCard pixel-border">Play<img className="PlayButton" src={play} alt="Story" /></Link>
+
+                        ) : (
+                            <Link to={'./Creation'} style={{ textDecoration: 'none', color: 'inherit' }} className="PlayCard pixel-border">Play<img className="PlayButton" src={play} alt="Story" /></Link>
+
+                        ) }
                     </div>
                 </div>
                 <div className="bottomNavContainer">
