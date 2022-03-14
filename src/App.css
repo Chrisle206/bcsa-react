@@ -522,10 +522,45 @@ height: 20vh;
 .explosion1{
   display: none;
 }
-.effectcont
+.effectcont, .effectcont1
 {
   position: relative;
   height: 20vh;
+}
+.moveup{
+  animation: movechar1 500ms;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+}
+@keyframes movechar1 {
+  0% {
+    left:0px; bottom:0px;
+  }
+  50% {
+    left:500px; bottom:100px;
+    
+  }
+  100% {
+    left:0px; bottom:0px;
+  }
+}
+.moveup2
+{
+  animation: movechar 500ms;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+}
+@keyframes movechar {
+  0% {
+    right:0px; top:0px;
+  }
+  50% {
+    right:500px; top:100px;
+    
+  }
+  100% {
+    right:0px; top:0px;
+  }
 }
 .StatBox{
   width: 300px;
