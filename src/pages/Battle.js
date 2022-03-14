@@ -13,6 +13,7 @@ import sword from '../assets/images/sword.png'
 import dice from '../assets/images/dice-fire.png'
 import heal1 from '../assets/images/heal1.png'
 import explosion from '../assets/images/explosion.gif'
+import healgif from '../assets/images/heal.gif'
 import getCharacter from '../Javascript/getCharacter.js';
 
 

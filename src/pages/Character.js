@@ -9,15 +9,41 @@ import speakeroff from '../assets/images/speaker-off.png'
 import getCharacter from '../Javascript/getCharacter.js'
 /////////////////
 import bloodysword from '../assets/images/bloody-sword.png'
-import rosashield from '../assets/images/rosa-shield.png'
-import crossbow from '../assets/images/crossbow.png'
+import shield from '../assets/images/rosa-shield.png'
+import diploma from '../assets/images/diploma.png'
 import up from '../assets/images/hp.png'
 import flask from '../assets/images/flask.png'
-import portal from '../assets/images/portal.png'
-import arrow from '../assets/images/arrow.png'
-import smith from '../assets/images/smith.png'
-import staff from '../assets/images/staff.png'
-import syringe from '../assets/images/syringe.png'
+// import portal from '../assets/images/portal.png'
+// import arrow from '../assets/images/arrow.png'
+import scroll2 from '../assets/images/scroll2.png'
+// import staff from '../assets/images/staff.png'
+// import syringe from '../assets/images/syringe.png'
+import bug from '../assets/images/bug.png'
+import box from '../assets/images/box.png'
+import keyboard from '../assets/images/keyboard.png'
+import frog from '../assets/images/frog.png'
+import quiver from '../assets/images/quiver.png'
+import compass from '../assets/images/compass.png'
+import orb from '../assets/images/orb.png'
+import wand from '../assets/images/wand.png'
+import dagger from '../assets/images/dagger.png'
+import ring from '../assets/images/ring.png'
+import armor from '../assets/images/armor.png'
+import pen from '../assets/images/pen.png'
+import dagger2 from '../assets/images/dagger2.png'
+import cog from '../assets/images/cog.png'
+import key from '../assets/images/key.png'
+import book from '../assets/images/book.png'
+import skis from '../assets/images/skis.png'
+import sunglasses from '../assets/images/sunglasses.png'
+import mallet from '../assets/images/mallet.png'
+import bottle from '../assets/images/bottle.png'
+import rock from '../assets/images/rock.png'
+import scroll from '../assets/images/scroll.png'
+import fangs from '../assets/images/fangs.png'
+import soda from '../assets/images/soda.png'
+import map from '../assets/images/map.png'
+import book2 from '../assets/images/book2.png'
 
 export default function Character() {
 
@@ -134,7 +160,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={bloodysword} alt="Sword" />
+                            {/* <button className='shopitem' onClick={currentItem}><img className="itemimg" src={rock} alt="rock" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4 id='shopitem1'>Round Pebble</h4>
@@ -146,8 +172,8 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                         </div>
                                     </div>
                                 </div>
-                            </button>
-                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={rosashield} alt="Shield" />
+                            </button> */}
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={scroll} alt="scroll" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>101 Manatee Jokes</h4>
@@ -160,7 +186,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}>Bug Squisher
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={bug} alt="bug" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Bug Squisher</h4>
@@ -173,7 +199,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={crossbow} alt="Crossbow" />
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={soda} alt="soda" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>La Croix</h4>
@@ -186,7 +212,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={syringe} alt="syringe" />
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={fangs} alt="fangs" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Shiva's Fang</h4>
@@ -199,7 +225,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}>Bahamut's Box
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={box} alt="box" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Bahamut's Box</h4>
@@ -212,7 +238,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={portal} alt="Portal" />
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={map} alt="map" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Dom Map</h4>
@@ -225,7 +251,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={arrow} alt="Arrow" />
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={diploma} alt="diploma" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>MIT License</h4>
@@ -238,7 +264,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={smith} alt="Smith" />
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={scroll2} alt="scroll2" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>UDEMY Course Coupon</h4>
@@ -251,7 +277,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={staff} alt="Staff" />
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={book2} alt="book2" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Best Practices Handbook</h4>
@@ -264,7 +290,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}>Mongo's Compass
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={compass} alt="compass" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Mongo's Compass</h4>
@@ -277,7 +303,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}>Flexbox Froggy
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={frog} alt="frog" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Flexbox Froggy</h4>
@@ -290,7 +316,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}>Magic Keyboard
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={keyboard} alt="keyboard" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Magic Keyboard</h4>
@@ -303,7 +329,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}>Callback Quiver
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={quiver} alt="quiver" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Callback Quiver</h4>
@@ -316,7 +342,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}>Orb of OOP
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={orb} alt="orb" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Orb of OOP</h4>
@@ -329,7 +355,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}>Wand of Recursion
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={wand} alt="wand" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Wand of Recursion</h4>
@@ -342,7 +368,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}>Bootstrap Dagger
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={dagger} alt="dagger" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Bootstrap Dagger</h4>
@@ -355,7 +381,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}>Ring of Regex
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={ring} alt="ring" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Ring of Regex</h4>
@@ -368,7 +394,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}>Paradigm-Padded Armor
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={armor} alt="armor" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Paradigm-Padded Armor</h4>
@@ -381,7 +407,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}>Excalidraw
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={pen} alt="pen" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Excalidraw</h4>
@@ -394,7 +420,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}>Nodemon Dagger
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={dagger2} alt="dagger2" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Nodemon Dagger</h4>
@@ -407,7 +433,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}>HashSync Shield
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={shield} alt="shield" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>HashSync Shield</h4>
@@ -420,7 +446,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}>Arcane Config
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={cog} alt="cog" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Arcane Config</h4>
@@ -433,7 +459,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}>API Skeleton Key
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={key} alt="key" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>API Skeleton Key</h4>
@@ -446,7 +472,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}>Ronnel's Memoir
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={book} alt="book" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Ronnel's Memoir</h4>
@@ -459,7 +485,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}>Brett's Skis
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={skis} alt="skis" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Brett's Skis</h4>
@@ -472,7 +498,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}>Louis' Sunglasses
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={sunglasses} alt="sunglasses" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Louis' Sunglasses</h4>
@@ -485,7 +511,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}>Sword of Sequelize
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={bloodysword} alt="Sword" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Sword of Sequelize</h4>
@@ -498,7 +524,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}>Hu-Mongo Mallet
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={mallet} alt="mallet" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Hu-Mongo Mallet</h4>
@@ -511,7 +537,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                     </div>
                                 </div>
                             </button>
-                            <button className='shopitem' onClick={currentItem}>Tutor In-A-Bottle
+                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={bottle} alt="bottle" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>Tutor In-A-Bottle</h4>
