@@ -326,6 +326,7 @@ visibility: visible;
   right: 0;
   text-align: center;
   visibility: hidden;
+  color: goldenrod
 }
 .storydesc{
   position:absolute;
@@ -334,6 +335,7 @@ visibility: visible;
   right: 0;
   text-align: center;
   visibility: hidden;
+  color: goldenrod
 }
 .dungeondesc{
   position:absolute;
@@ -342,6 +344,7 @@ visibility: visible;
   right: 0;
   text-align: center;
   visibility: hidden;
+  color: goldenrod
 }
 
 /* Character Creation Page */
@@ -515,6 +518,7 @@ justify-content: space-between;
   flex-direction: column;
   width: 800px;
   margin: auto;
+  z-index: 1;
 }
 .enemyRow{
   display: flex;
@@ -559,6 +563,23 @@ height: 20vh;
 .heroPic{
   height: 20vh;
 }
+.heroLvl{
+  color: goldenrod;
+  animation-duration: 1.7s;
+  animation-iteration-count: 5;
+  transform-origin: bottom;
+  animation-name: bounce-10;
+  animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+}
+@keyframes bounce-10 {
+  0%   { transform: scale(1,1)      translateY(0); }
+  10%  { transform: scale(1.1,.9)   translateY(0); }
+  30%  { transform: scale(.9,1.1)   translateY(-60px); }
+  50%  { transform: scale(1.05,.95) translateY(0); }
+  57%  { transform: scale(1,1)      translateY(-7px); }
+  64%  { transform: scale(1,1)      translateY(0); }
+  100% { transform: scale(1,1)      translateY(0); }
+}
 .BattlechoicesContainer{
   font-size: 24px;
   text-align: center;
@@ -567,7 +588,7 @@ height: 20vh;
   width: 800px;
 }
 .attackList{
-  margin: 0 auto;
+  margin: 0 240px 0 200px;
   display: flex;
   flex-direction: column;
 }
@@ -578,21 +599,16 @@ height: 20vh;
 .attackRow2{
   display: flex;
   justify-content: space-between;
-  margin: 20px 0;
 }
 .statRow{
   display: flex;
   justify-content: space-between;
 }
-.healthBarContainer{
-  width: 300px;
-  height: 20px;
-  border: solid black 2px;
-}
+
 .healthcontainer{
   border: solid white 2px;
   background-color: white;
-  width: 300px;
+  width: 100%;
   height: 20px;
 }
 .healthBarEnemy{
@@ -607,10 +623,7 @@ height: 20vh;
   background-color: green;
 }
 .hp{
-  margin: 0;
-  padding: 0 10px;
   color: white;
-  background-color: black;
 }
 .attack{
   /* button reset */
@@ -621,7 +634,7 @@ height: 20vh;
   background-color: inherit;
   color: white;
 }
-.attack:hover + .iconhover{
+.attack:hover > .iconhover{
   visibility: visible;
 }
 .attack:hover{
@@ -746,6 +759,11 @@ height: 20vh;
   border: white solid 2px;
   border-radius: 10px;;
   margin: 20px;
+  background-color: inherit;
+  color: white;
+}
+.itemimg{
+  width: 40px
 }
 .itemdescbox{
   height: 70%;
@@ -769,14 +787,21 @@ height: 20vh;
   font-size: 24px;
 }
 .shopitem:hover{
-  background-color: white;
-  color:black;
+  border: solid 2px goldenrod;
   cursor: pointer;
+}
+
+.shopitem:focus{
+  border: solid 2px goldenrod;
+  cursor: pointer;
+  background-color: goldenrod;
 }
 .shopitem:hover > .itemdescbox{
 visibility: visible;
 }
-
+.shopitem:focus > .itemdescbox{
+visibility: visible;
+}
 .boxtitle{
   font-size: 32px;
   border-bottom: dashed white 2px;
@@ -793,22 +818,40 @@ visibility: visible;
   font-size: 24px;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin: 0 60px 10px;
 }
 .plus{
   font-size: 24px;
   margin: 0 0 0 30px;
   color: white;
-  padding: 0 5px;
-  border: white solid 2px;
+  padding: 0;
+  border: none;
   border-radius: 10px;
-  background-color: #000000;
+  background-color: inherit;
+}
+.up{
+  width: 25px;
 }
 .plus:hover{
-  background-color: white;
-  color: black;
   cursor: pointer;
+}
+.plus:hover > .up{
+  animation: grow-and-shrink2 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+
+}
+@keyframes grow-and-shrink2 {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 .statusbox{
   display: flex;
@@ -827,7 +870,7 @@ visibility: visible;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: auto 30px;
+  margin: 30px 30px 0;
 }
 .coinrow{
   display: flex;
@@ -838,7 +881,7 @@ visibility: visible;
 }
 .coinshop{
   width: 40px;
-  margin: 0 10px 0 0;
+  margin: 0 20px 0 0;
 }
 .buyequip{
   display: flex;
@@ -846,11 +889,15 @@ visibility: visible;
   justify-content: center;
   width: 150px;
   height: 40px;
-  border: solid white 4px;
+  border: solid white 2px;
+  background-color: inherit;;
+  color: white;
+  padding: 25px 0;
   border-radius: 10px;
   font-size: 28px;
 }
 .buyequip:hover{
   background-color: green;
+  border: solid green 2px;
   cursor: pointer;
 }

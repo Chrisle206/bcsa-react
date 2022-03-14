@@ -10,18 +10,18 @@ const editCharacter = async ()=>{
     });
 
     //Character edits go here
-    var sendToAPI = {
-        atk: null,
-        characterName:null,
-        characterClass:null,
-        currency:null,
-        def:null,
-        exp:null,
-        hp:null,
-        items:null,
-        level:null,
-        image: null
-    };
+    // var sendToAPI = {
+    //     atk: null,
+    //     characterName:null,
+    //     characterClass:null,
+    //     currency:null,
+    //     def:null,
+    //     exp:null,
+    //     hp:null,
+    //     items:null,
+    //     level:null,
+    //     image: null
+    // };
 
     const response = await fetch(`https://bcsa-api.herokuapp.com/user/charupdate/${characterId}`, {
         method: "PUT",
@@ -35,19 +35,19 @@ const editCharacter = async ()=>{
     try {
         const data = await response.json();
         console.log(data);
-        const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = data
-        setcharData({
-            atk,
-            characterName,
-            characterClass,
-            currency,
-            def,
-            exp,
-            hp,
-            items,
-            level,
-            image
-        });
+        // const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = data
+        // setcharData({
+        //     atk,
+        //     characterName,
+        //     characterClass,
+        //     currency,
+        //     def,
+        //     exp,
+        //     hp,
+        //     items,
+        //     level,
+        //     image
+        // });
         return data;
     } catch (err) {
         console.log('Catch triggered')
@@ -55,4 +55,4 @@ const editCharacter = async ()=>{
     }
 };
   
-  export default editCharacter;
+  module.exports = editCharacter;

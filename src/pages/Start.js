@@ -1,17 +1,15 @@
 import React, { useState, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../App.css'
 import play from '../assets/images/play-button.png'
 import track from '../assets/sounds/start.wav'
 import wingedsword from '../assets/images/winged-sword.png'
 import speakeron from '../assets/images/speaker-on.png'
 import speakeroff from '../assets/images/speaker-off.png'
-// import { loginHandler } from '../Javascript/login'
-// import { signupHandler } from '../Javascript/signup'
-
 
 
 export default function Start() {
+    // let history = useNavigate();
 
     const [speaker, setStatus] = useState(false)
     const audioRef = useRef()
@@ -49,6 +47,54 @@ export default function Start() {
         password: ''
     });
 
+    const loginHandler = async function(e) {
+        e.preventDefault();
+        
+          const baseurl = 'https://bcsa-api.herokuapp.com'
+        
+          const response = await fetch(`${baseurl}/user/login`, {
+            method: 'POST',
+            body: JSON.stringify(formState),
+            headers: { 'Content-Type': 'application/json' },
+          });
+      
+          const user = await response.json();
+          console.log(user);
+    
+          setToken(user.token);
+          localStorage.setItem("token", user.token);
+          localStorage.setItem("characterId", user.characters[0]._id);
+          setUserData({
+              username:user.username,
+              id:user._id,
+              characters:user.characters,
+            });
+    
+    };    
+
+    const signupHandler = async function(e) {
+        e.preventDefault();
+          
+          const baseurl = 'https://bcsa-api.herokuapp.com'
+        
+          const response = await fetch(`${baseurl}/user/signup`, {
+            method: 'POST',
+            body: JSON.stringify(formState),
+            headers: { 'Content-Type': 'application/json' },
+          });
+      
+          const newUser = await response.json();
+          console.log(newUser);
+    
+          setToken(newUser.token);
+          localStorage.setItem("token", newUser.token);
+          setUserData({
+              username:newUser.username,
+              id:newUser._id,
+            })
+    };
+    
+
     return (
         <div className="pageContainer creationBg">
             <div className="mainStartContainer">
@@ -70,18 +116,23 @@ export default function Start() {
                                     </div>
                                     <div className="modal-body">
                                         {/* Form */}
-                                        <form>
+                                        <form onSubmit={loginHandler}>
                                             <div class="mb-3">
-                                                <h5 for="logEmail" class="form-label">Email address</h5>
-                                                <input type="email" class="form-control" id="logEmail" aria-describedby="emailHelp" />
+                                                <h5 for="logEmail" class="form-label">Username</h5>
+                                                <input type="username" class="form-control" id="logEmail" aria-describedby="emailHelp" value={formState.username} onChange={e => setFormState({ ...formState, username: e.target.value })}/>
                                             </div>
                                             <div class="mb-3">
                                                 <h5 for="logPassword" class="form-label">Password</h5>
-                                                <input type="password" class="form-control" id="logPassword" />
+                                                <input type="password" class="form-control" id="logPassword" value={formState.password} onChange={e => setFormState({ ...formState, password: e.target.value })} />
                                             </div>
                                             <div className="modal-footer">
                                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" className="btn btn-primary">Submit</button>
+                                                {userData.username ? (
+                                                    <>
+                                                        <h3>Welcome, {userData.username}! Click 'Play' to begin.</h3>
+                                                        <Link to={'./Tavern'} data-bs-dismiss="modal" style={{ textDecoration: 'none', color: 'inherit' }} className='logbutton pixel-border'>Play</Link>
+                                                    </>
+                                                ) : <button type="submit" className="btn btn-primary">Submit</button>}
                                             </div>
                                         </form>
                                     </div>
@@ -100,22 +151,25 @@ export default function Start() {
                                     </div>
                                     <div className="modal-body">
                                         {/* Form */}
-                                        <form>
-                                            <div class="mb-3">
-                                                <h5 for="signupEmail" class="form-label">Email address</h5>
-                                                <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp" />
-                                            </div>
+                                        <form onSubmit={signupHandler}>
                                             <div class="mb-3">
                                                 <h5 for="signupUser" class="form-label">Username</h5>
-                                                <input type="email" class="form-control" id="signupUser" aria-describedby="emailHelp" />
+                                                <input type="username" class="form-control" id="signupUser" aria-describedby="emailHelp" value={formState.username} onChange={e => setFormState({ ...formState, username: e.target.value })} />
                                             </div>
                                             <div class="mb-3">
                                                 <h5 for="signupPassword" class="form-label">Password</h5>
-                                                <input type="password" class="form-control" id="signupPassword" />
+                                                <input type="password" class="form-control" id="signupPassword" value={formState.password} onChange={e => setFormState({ ...formState, password: e.target.value })} />
                                             </div>
                                             <div className="modal-footer">
                                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" className="btn btn-primary">Submit</button>
+                                                {userData.username ? (
+                                                    <>
+                                                        <h3>Welcome, {userData.username}! Click 'Play' to begin.</h3>
+                                                        <Link to={'./Creation'} style={{ textDecoration: 'none', color: 'inherit' }} className='logbutton pixel-border'>Play</Link>
+                                                    </>
+                                                ) : <button type="submit" className="btn btn-primary">Submit</button>}
+
+
                                             </div>
                                         </form>
                                     </div>
@@ -127,11 +181,11 @@ export default function Start() {
                 <div className="widthContainer">
                     <h1 className="TavernTitle">BCS Adventures<img className="wingedsword" src={wingedsword} alt="Sword" /></h1>
                     <div className='description'>
-                        Welcome to BCS Adventures! You are about to embark on an epic journey, filled with fierce battle, self-doubt, evil bugs, but most importantly, triumph! Face off against fierce enemies from the savage world of coding and beyond as you master the skills necessary to become a certified Fullstack Developer!
+                    Welcome to BCS Adventures! You are about to embark on an epic journey filled with fierce battle, internal strife, evil bugs and, most importantly, triumph! Face off against evil TA's, peacock-ish devs and intelligent AI from the savage world of coding as you master the skills necessary to become a certified Fullstack Developer!
+
                     </div>
                     <div className="TavernMenuContainer">
                         <Link to={'./Creation'} style={{ textDecoration: 'none', color: 'inherit' }} className="PlayCard pixel-border">Play<img className="PlayButton" src={play} alt="Story" /></Link>
-
                     </div>
                 </div>
                 <div className="bottomNavContainer">
