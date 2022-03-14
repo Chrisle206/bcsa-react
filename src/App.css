@@ -84,7 +84,7 @@
   align-items: center;
   border: 0;
   padding: 0;
-  font-size: 40px;
+  font-size: 24px;
   font-family: inherit;
   background-color: inherit;
   color: white;
@@ -685,7 +685,15 @@ height: 20vh;
   font-size: 24px;
   margin: auto;
 }
-
+.modalBTN{
+  color: white;
+  background-color: black;
+  font-size: 24px;
+  width: 100px;
+  text-align: center;
+  border: none;
+  padding: none;
+}
 /* Character + Store Page */
 .mainCharContainer{
   position: relative;
