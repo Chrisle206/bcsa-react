@@ -305,8 +305,6 @@
   align-items: center;
   font-size: 80px;
   margin-top: 80px;
-
-  
 }
 .TavernBeer{
   width: 60px;
@@ -321,25 +319,7 @@ visibility: visible;
 .dungeonCard:hover > .dungeondesc{
   visibility: visible;
 }
-.chardesc{
-  position:absolute;
-  bottom: 20px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  visibility: hidden;
-  color: goldenrod
-}
-.storydesc{
-  position:absolute;
-  bottom: 20px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  visibility: hidden;
-  color: goldenrod
-}
-.dungeondesc{
+.chardesc, .dungeondesc, .storydesc{
   position:absolute;
   bottom: 20px;
   left: 0;
@@ -481,8 +461,8 @@ justify-content: space-between;
   width: 800px;
 }
 .question{
-  font-size: 32px;
-  margin: 0 0 20px 0;
+  font-size: 24px;
+  margin: 0 0 10px;
 }
 
 .coverBlackBar{
@@ -514,14 +494,12 @@ justify-content: space-between;
   -o-background-size: cover;
   background-size: cover;
   position: relative;
-  z-index: 1;
 }
 .battleContainer{
   display: flex;
   flex-direction: column;
   width: 800px;
   margin: auto;
-  z-index: 1;
 }
 .enemyRow{
   display: flex;
@@ -586,7 +564,7 @@ height: 20vh;
 .BattlechoicesContainer{
   font-size: 24px;
   text-align: center;
-  margin: auto auto;
+  margin: 0 auto 30px;
   color: white;
   width: 800px;
 }
@@ -627,12 +605,13 @@ height: 20vh;
 }
 .hp{
   color: white;
+  margin: 0;
 }
 .attack{
   /* button reset */
   border: 0;
   padding: 0;
-  font-size: 100%;
+  font-size: 20px;
   font-family: inherit;
   background-color: inherit;
   color: white;
@@ -644,8 +623,8 @@ height: 20vh;
   color: goldenrod;
 }
 .iconhover{
-  height: 40px;
-  margin: 10px;
+  height: 30px;
+  margin: 0px 10px;
   visibility: hidden;
 }
 
@@ -915,9 +894,12 @@ visibility: visible;
 @media screen and (max-width: 1024px) {
   .topNavContainer{
     position: fixed;
+    justify-content: flex-end;
+    right: 0;
   }
   .bottomNavContainer{
     position: fixed;
+    bottom: 20px;
   }
 /* start */
 .mainStartContainer{
@@ -938,16 +920,17 @@ visibility: visible;
 .description{
   font-size: 18px;
   max-width: 80vw;
+  margin-bottom: 40px;
 }
 .PlayCard{
-  font-size: 32px;
+  font-size: 24px;
   margin-bottom: 30px
 }
 .PlayButton{
-  width: 40px;
+  width: 32px;
 }
 .soundbuttonimg{
-  width: 60px;
+  width: 40px;
 }
 /* Tavern */
 
@@ -956,6 +939,7 @@ visibility: visible;
 }
 .coinContainer{
   font-size: 32px;
+  margin-right: 30px;
 }
 .coinImg{
   width: 32px;
@@ -965,6 +949,7 @@ visibility: visible;
 }
 .TavernMenuContainer{
   max-width: 65vw;
+  margin-bottom: 60px;
 }
 .TavernMenuCard{
   font-size: 24px;
@@ -973,6 +958,16 @@ visibility: visible;
 }
 .TavernMenuItem{
   width: 60px;
+}
+.chardesc,.storydesc, .dungeondesc{
+  position:absolute;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  visibility: hidden;
+  color: goldenrod;
+  font-size: 18px;
 }
 /* character/shop */
 .mainCharContainer{
@@ -1036,5 +1031,65 @@ display: block;
   right: 1vw;
   height: fit-content;
 }
+.buyequip{
+  font-size: 24px;
+}
+
+/* Battle */
+.MainBattleContainer{
+  height: 100vh;
+}
+.BattlechoicesContainer{
+  font-size: 18px;
+
+}
+.question{
+  font-size: 24px;
+  margin: 0;
+}
+.iconhover{
+  display: none;
+}
+.smallFont,.attack {
+  font-size: 18px;
+}
+.StatBox{
+  height: auto;
+}
+.effectcont{
+  display: flex;
+  width: 30vw;
+  justify-content: center;
+  align-items: center;
+}
+.enemyPic, .heroPic{
+  height: 30vh;
+}
+
+.healthcontainer,.healthBarHero,.healthBarEnemy{
+  height: 10px;
+}
+
+/* creation */
+.creationContainer{
+  height: 100vh;
+}
+.creationTitle{
+  font-size: 32px;
+}
+.stats{
+  margin: 0;
+}
+.statfont{
+  font-size: 18px;
+}
+/* Loading */
+.loading{
+  font-size: 32px;
+}
+.died{
+  font-size: 48px;
+}
+
 /* end */
 }
