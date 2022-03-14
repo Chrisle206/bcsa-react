@@ -81,16 +81,23 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
         }
     }
     /////////////////////////////////////////////////////////////////////////////////// SHOP LOGIC
-    const [currHp, setCurrHp] = useState(1000);
-    const [currAtk, setCurrAtk] = useState(250);
-    const [currDef, setCurrDef] = useState(200);
-    const [currCoins, setCurrCoins] = useState(500);
+    const [currHp, setCurrHp] = useState();
+    const [currAtk, setCurrAtk] = useState();
+    const [currDef, setCurrDef] = useState();
+    const [currCoins, setCurrCoins] = useState();
     // setCurrAtk(atk);
     // setCurrDef(def);
     // setCurrCoins(currency);
     let shopItem = '';
     let itemCost = '';
     let obj = {};
+/////////////////// RENDERS STATS TO PAGE
+    function refresh() {
+        setCurrHp(hp);
+        setCurrAtk(atk);
+        setCurrDef(def);
+        setCurrCoins(currency);
+    }
 
 /////////////////// ADDS ITEMS STATS TO PLAYER STATS
     function addToStat(item) {
@@ -410,7 +417,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                     <div className='charBox pixel-border'>
 
                         <h1 className='boxtitle'>
-                            {characterName}'s Stats
+                            {characterName}'s Stats <button onClick={refresh}>refresh</button>
                         </h1>
                         <div className='statusbox'>
                             <div className='statbottom'>
