@@ -121,6 +121,23 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
     showExplosion2();
     setTimeout(function () { hideExplosion2() }, 500)
 }
+    // explosion
+    let healEffect = document.getElementById('healExp');
+    const hideHeal = () => {
+            healEffect.classList.add("explosion1");
+    }
+    const showHeal = () => {
+        healEffect.classList.remove("explosion1");
+        
+    }
+    const heroHeal = () => {
+    showHeal();
+    setTimeout(function () { hideHeal() }, 1000)
+}
+let moveE = document.querySelector(".effectcont");
+const moveEffect =() =>{
+    moveE.classList.add("moveup");
+} 
 ///////////////////////////////////////////////////////
 
     const intro = () => {
@@ -171,6 +188,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                 enemy.atk = enemyAtk;
             }, 1000);
             // here goes hero explosion
+            moveEffect();;
             heroExplosion();
         } else if (num2 === 2) {
             let taunt = taunts[Math.floor(Math.random() * taunts.length)];
@@ -180,6 +198,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                 setMainText(taunt);
             }, 1000);
             //heroexplosion
+            moveEffect();
             heroExplosion();
             setTimeout(function () {
                 setMainText(defaultQuestion);
@@ -308,6 +327,8 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
             setMainText(`${player.name} healed ${player.hp / 5} hp`);
             setHeroHp(heroHp + (player.hp / 5));
             enemy.atk = enemy.atk/2;
+            // heal function gif here
+            heroHeal();
         } else {
             setMainText(`${player.name} dropped the potion`);
         }
@@ -385,7 +406,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                             </div>
                                     <h3 className='hp smallFont'>HP:{enemyHp}/{enemy.hp}</h3>
                         </div>
-                        <div className='effectcont'>
+                        <div className='effectcont1'>
                         <img className="enemyPic" src={enemyPic} id='opp' alt="Enemy" />
                         <img className="explosion explosion1" id='explosion' src={explosion} alt="explosion" />
                         </div>
@@ -394,6 +415,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                     <div className='effectcont'>
                         <img className="heroPic" src={heroPic} alt="Hero" />
                         <img className="explosion explosion1" id='explosion2' src={explosion} alt="explosion" />
+                        <img className="explosion explosion1" id='healExp' src={healgif} alt="heal" />
                         </div>
                         <div className="StatBox pixel-border">
                             <div className='statRow'>
