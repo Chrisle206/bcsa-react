@@ -368,15 +368,13 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                 <h3>{enemy.name}</h3>
                                 <h3>Lvl: {enemy.level}</h3>
                             </div>
-                            <div className='healthBarContainer'>
-                                <div className='statRow'>
+                         
                                     <div className='healthcontainer'>
                                         <div className='healthBarEnemy'>
 
                                         </div>
-                                    </div>
+                               
                                     <h3 className='hp'>HP:{enemyHp}/{enemy.hp}</h3>
-                                </div>
                             </div>
                         </div>
                         <div className='effectcont'>
@@ -394,16 +392,16 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                                 <h3>{player.name}</h3>
                                 <h3>Lvl: {player.level}</h3>
                             </div>
-                            <div className='healthBarContainer '>
-                                <div className='statRow'>
+                            
+                               
                                     <div className='healthcontainer'>
                                         <div className='healthBarHero'>
 
                                         </div>
                                     </div>
+                                
                                     <h3 className='hp'>HP:{heroHp}/{player.hp}</h3>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -411,18 +409,18 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                     <p className="question">{mainText}</p>
                     <div className="attackList">
                         <div className="attackRow1">
-                            <button className="attack" id='atk1' onClick={atk1}>{player.attacks[0]}</button>
-                        <img className="iconhover" src={sword} alt="sword" />
-                            <button className="attack" id='atk2' onClick={atk2}>{player.attacks[1]}</button>
-                            <img className="iconhover" src={dice} alt="dice" />
+                            <button className="attack" id='atk1' onClick={atk1}><img className="iconhover" src={sword} alt="sword" />{player.attacks[0]}</button>
+                        
+                            <button className="attack" id='atk2' onClick={atk2}><img className="iconhover" src={dice} alt="dice" />{player.attacks[1]}</button>
+                            
                         </div>
                         <div className="attackRow2">
                             <button className="attack" id='atk3' onClick={atk3}>
-                                {player.attacks[2]} </button>
                                 <img className="iconhover" src={quiz} alt="quiz" />
+                                {player.attacks[2]} </button>
                             <button className="attack" id='atk4' onClick={heal}>
-                                {player.attacks[3]}</button>
                                 <img className="iconhover" src={heal1} alt="heal" />
+                                {player.attacks[3]}</button>
                         </div>
                         <div className="attackRow2">
                             <button className="attack hide" id='qT' onClick={quizTrue}>True </button>

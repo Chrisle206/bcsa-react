@@ -6,6 +6,16 @@ import characterImg from '../assets/images/cement-shoes2.png'
 import back from '../assets/images/back.png'
 import speakeron from '../assets/images/speaker-on.png'
 import speakeroff from '../assets/images/speaker-off.png'
+import bloodysword from '../assets/images/bloody-sword.png'
+import rosashield from '../assets/images/rosa-shield.png'
+import crossbow from '../assets/images/crossbow.png'
+import up from '../assets/images/hp.png'
+import flask from '../assets/images/flask.png'
+import portal from '../assets/images/portal.png'
+import arrow from '../assets/images/arrow.png'
+import smith from '../assets/images/smith.png'
+import staff from '../assets/images/staff.png'
+import syringe from '../assets/images/syringe.png'
 
 export default function Character() {
 
@@ -75,15 +85,15 @@ export default function Character() {
                             <div className='statcontainer'>
                                 <div className='stats'>
                                     <h3 className='statfont'> Health: 100</h3>
-                                    <button className='plus'>+</button>
+                                    <button className='plus'><img className="up" src={up} alt="up" /></button>
                                 </div >
                                 <div className='stats'>
                                     <h3 className='statfont'>Attack: 50</h3>
-                                    <button className='plus'>+</button>
+                                    <button className='plus'><img className="up" src={up} alt="up" /></button>
                                 </div >
                                 <div className='stats'>
                                     <h3 className='statfont'> Defense: 60</h3>
-                                    <button className='plus'>+</button>
+                                    <button className='plus'><img className="up" src={up} alt="up" /></button>
                                 </div >
                             </div>
                         </div>
@@ -95,7 +105,7 @@ export default function Character() {
                         </h1>
                         <div className='shoprow'>
 
-                            <div className='shopitem' onClick={currentItem}>Sword
+                            <div className='shopitem' onClick={currentItem}><img className="itemimg" src={bloodysword} alt="Sword" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4 id='shopitem1'>Sword</h4>
@@ -108,7 +118,7 @@ export default function Character() {
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem' onClick={currentItem}>Shield
+                            <div className='shopitem' onClick={currentItem}><img className="itemimg" src={rosashield} alt="Shield" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>MIT License</h4>
@@ -121,7 +131,7 @@ export default function Character() {
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem' onClick={currentItem}>Bow
+                            <div className='shopitem' onClick={currentItem}><img className="itemimg" src={crossbow} alt="Crossbow" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>MIT License</h4>
@@ -134,7 +144,7 @@ export default function Character() {
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Item 4
+                            <div className='shopitem' onClick={currentItem}><img className="itemimg" src={syringe} alt="syringe" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>MIT License</h4>
@@ -147,7 +157,7 @@ export default function Character() {
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Item 5
+                            <div className='shopitem' onClick={currentItem}><img className="itemimg" src={flask} alt="Flask" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>MIT License</h4>
@@ -160,7 +170,7 @@ export default function Character() {
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Item 6
+                            <div className='shopitem' onClick={currentItem}><img className="itemimg" src={portal} alt="Portal" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>MIT License</h4>
@@ -173,7 +183,7 @@ export default function Character() {
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Item 7
+                            <div className='shopitem' onClick={currentItem}><img className="itemimg" src={arrow} alt="Arrow" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>MIT License</h4>
@@ -186,7 +196,7 @@ export default function Character() {
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Item 8
+                            <div className='shopitem' onClick={currentItem}><img className="itemimg" src={smith} alt="Smith" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>MIT License</h4>
@@ -199,7 +209,7 @@ export default function Character() {
                                     </div>
                                 </div>
                             </div>
-                            <div className='shopitem'>Item 9
+                            <div className='shopitem' onClick={currentItem}><img className="itemimg" src={staff} alt="Staff" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4>MIT License</h4>
@@ -221,7 +231,7 @@ export default function Character() {
                                 <div className='row'>{currCoins}</div>
                             </div>
                             {/* If click on unbought item the the button is Buy, if clicked on bought item then the button is equip */}
-                            <div className='buyequip' onClick={addItem}>Buy</div>
+                            <button className='buyequip' onClick={addItem}>Buy</button>
                         </div>
                     </div>
 
