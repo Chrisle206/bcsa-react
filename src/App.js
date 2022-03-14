@@ -17,7 +17,7 @@ function App() {
   return (
     <>
       <Router>
-        <Link className="link" to="/">Start</Link>
+        {/* <Link className="link" to="/">Start</Link>
         <Link className="link" to="/Signup">Signup</Link>
         <Link className="link" to="/Login">Login</Link>
         <Link className="link" to="/Tavern">Tavern page</Link>
@@ -26,7 +26,7 @@ function App() {
         <Link className="link" to="/Dead">Dead page</Link>
         <Link className="link" to="/Introduction">Introduction page</Link>
         <Link className="link" to="/Loading">Loading page</Link>
-        <Link className="link" to="/Battle">Battle page</Link>
+        <Link className="link" to="/Battle">Battle page</Link> */}
         <Routes>
           <Route path="/" element={<Start />} />
           <Route path="/Signup" element={<Signup />} />

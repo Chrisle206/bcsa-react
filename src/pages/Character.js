@@ -114,6 +114,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                     <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'white'}} className="backbutton"><img className='backbuttonimg' src={back} alt="Back_Button" /> Back</Link>
                 </div>
                 <div className="widthChar2Container">
+                <div className="charboxContainer">
                     <div className='charBox pixel-border'>
 
                         <h1 className='boxtitle'>
@@ -561,6 +562,8 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                             {/* If click on unbought item the the button is Buy, if clicked on bought item then the button is equip */}
                             <button className='buyequip' onClick={addItem}>Buy</button>
                         </div>
+                        </div>
+                        <div className='paddingbottom'></div> 
                     </div>
 
                 </div>
