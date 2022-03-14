@@ -39,6 +39,8 @@ export default function Tavern() {
     const logout = () =>{
         localStorage.removeItem("token");
         localStorage.removeItem("characterId");
+        localStorage.removeItem("id");
+        localStorage.removeItem("username");
         setToken("");
         document.location.replace('/');
     }
