@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import '../App.css'
-import track from '../assets/sounds/tavern.wav'
+import track from '../assets/sounds/tavern.mp3'
 import speakeron from '../assets/images/speaker-on.png'
 import speakeroff from '../assets/images/speaker-off.png'
 import coins from '../assets/images/coins.png'

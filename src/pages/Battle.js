@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 
-import song from '../assets/sounds/battle.wav'
+import song from '../assets/sounds/battle.mp3'
 import back from '../assets/images/back.png'
 import speakeron from '../assets/images/speaker-on.png'
 import speakeroff from  '../assets/images/speaker-off.png'
