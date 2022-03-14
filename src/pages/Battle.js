@@ -32,7 +32,7 @@ useEffect(() => {
     });
 },[]);
 
-const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = charData
+const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = charData;
 
     const [speaker, setStatus] = useState(false)
     const audioRef = useRef()
