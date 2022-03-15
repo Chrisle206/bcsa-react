@@ -43,7 +43,7 @@ export default function StoryOne() {
                     <div className='line4'>You press on, but it is not long before you encounter a new foe...</div>
                     </div>
                     <div className="TavernMenuContainer">
-                        <Link to={'/Battle'} style={{textDecoration: 'none', color: 'inherit'}} className="PlayCard pixel-border">Continue<img className="PlayButton" src={play} alt="Story" /></Link>
+                        <Link to={'/BattleB'} style={{textDecoration: 'none', color: 'inherit'}} className="PlayCard pixel-border">Continue<img className="PlayButton" src={play} alt="Story" /></Link>
 
                     </div>
                 </div>
