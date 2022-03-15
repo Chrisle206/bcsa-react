@@ -7,7 +7,10 @@ import back from '../assets/images/back.png'
 import speakeron from '../assets/images/speaker-on.png'
 import speakeroff from  '../assets/images/speaker-off.png'
 import enemyPic from '../assets/images/characters/frantz.png'
-import heroPic from '../assets/images/characters/warrior.png'
+import Warrior from '../assets/images/characters/warrior.png'
+import Assassin from '../assets/images/characters/assassin.png'
+import Master from '../assets/images/characters/routeMaster.png'
+import Ranger from '../assets/images/characters/ranger.png'
 import quiz from '../assets/images/quiz.png'
 import sword from '../assets/images/sword.png'
 import dice from '../assets/images/dice-fire.png'
@@ -15,6 +18,7 @@ import heal1 from '../assets/images/heal1.png'
 import explosion from '../assets/images/explosion.gif'
 import healgif from '../assets/images/heal.gif'
 import getCharacter from '../Javascript/getCharacter.js';
+import LoadingScreen from './Loading'
 
 var isLastHit = 0;
 var delayInMilliseconds = 3000;
@@ -22,6 +26,12 @@ var bool = 2;
 var boss = 3;
 export default function Battle() {
     // console.log(data);
+
+    const [loading, isLoading] = useState(true)
+
+    useEffect(() => {
+        setTimeout(() => isLoading(false), 2000)
+    }, [])
 
     const [charData, setcharData] = useState({
         characterName: "",
@@ -75,6 +85,25 @@ const getEnemy = async ()=>{
 
 
 const { characterName, characterClass, currency, def, hp, level, atk, image } = charData;
+
+    const [currChar, setCurrChar] = useState();
+
+    function renderChar() {
+        if (image === 'assassin') {
+            setCurrChar(Assassin)
+        } else if (image === 'master') {
+            setCurrChar(Master)
+        } else if (image === 'ranger') {
+            setCurrChar(Ranger)
+        } else if (image === 'warrior') {
+            setCurrChar(Warrior)
+        }
+        console.log(image)
+    }
+
+    useEffect(() => {
+        renderChar()
+    })
 
     const [speaker, setStatus] = useState(false)
     const audioRef = useRef()
@@ -182,21 +211,29 @@ const moveEffect =() =>{
 } 
 ///////////////////////////////////////////////////////
 
-    const intro = () => {
-        document.getElementById('start').classList.add('hide');
-        setMainText(enemy.intro);
+    function startBat() {
+        console.log('starting...')
+        setMainText(introEnemy);
         setHeroHp(player.hp);
 
+        intro()
+    }
+
+    function intro() {
         setTimeout(function () { 
+            console.log('timeout')
         showAtkBtns();
         setMainText(defaultQuestion);
-         }, 2000)
+         }, 4000)
     
     }
 
     const continueGame = () => {
         boss--;
     }
+    useEffect(() => {
+        startBat()
+    }, [])
 
     // Enemy's turn, 20% chance to idle, 80% chance to attack
     const enemyTurn = () => {
@@ -431,6 +468,8 @@ const moveEffect =() =>{
 
 
     return (
+        <>
+    {loading === false ? (
         <div className="pageContainer creationBg">
             <div className="MainBattleContainer">
             <div className="topNavContainer">
@@ -459,7 +498,7 @@ const moveEffect =() =>{
                     </div>
                     <div className="heroRow">
                     <div className='effectcont'>
-                        <img className="heroPic" src={heroPic} alt="Hero" />
+                        <img className="heroPic" src={currChar} alt="Hero" />
                         <img className="explosion explosion1" id='explosion2' src={explosion} alt="explosion" />
                         <img className="explosion explosion1" id='healExp' src={healgif} alt="heal" />
                         </div>
@@ -486,7 +525,6 @@ const moveEffect =() =>{
                     <div className="attackList">
                         <div className="attackRow1">
                             <button className="attack hide" id='atk1' onClick={atk1}><img className="iconhover" src={sword} alt="sword" />{player.attacks[0]}</button>
-                            <button className='attack' id='start' onClick={intro}>Start</button>
                             <button className="attack hide" id='atk2' onClick={atk2}><img className="iconhover" src={dice} alt="dice" />{player.attacks[1]}</button>
                             
                         </div>
@@ -524,5 +562,9 @@ const moveEffect =() =>{
                 </div>
             </div>
         </div>
+    ) : (
+        <LoadingScreen />
+    )}        
+        </>
     )
 }
