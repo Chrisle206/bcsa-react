@@ -729,6 +729,49 @@ height: 20vh;
   border: none;
   padding: none;
 }
+.line1{
+animation: slide-in 3s 1 forwards;
+opacity: 0;
+display: block;
+}
+.line2{
+animation: slide-in 3s 1 forwards;
+animation-delay: 3s;
+opacity: 0;
+}
+.line3{
+animation: slide-in 3s 1 forwards;
+animation-delay: 6s;
+opacity: 0;
+}
+.line4{
+animation: slide-in 3s 1 forwards;
+animation-delay: 9s;
+opacity: 0;
+}
+.line5{
+animation: slide-in 3s 1 forwards;
+animation-delay: 12s;
+opacity: 0;
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-30%);
+    display: none;
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+    display: block;
+  }
+}
+
+/* ...and then apply it: */
+.box {
+  animation: slide-in 1000ms;
+}
 /* Character + Store Page */
 .mainCharContainer{
   position: relative;
@@ -865,10 +908,10 @@ visibility: visible;
 .bought{
   background-color: gray;
   border: solid 2px gray;
-  opacity: 0.5;
 }
 .bought:hover{
   border: solid 2px gray;
+  cursor: default;
 }
 .bought:focus{
   border: solid 2px gray;
