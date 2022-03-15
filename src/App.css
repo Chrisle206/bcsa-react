@@ -484,7 +484,7 @@ justify-content: space-between;
 }
 .question{
   font-size: 24px;
-  margin: 0 0 10px;
+  margin: 0 0 10px 40px;
 }
 
 .coverBlackBar{
@@ -495,6 +495,7 @@ justify-content: space-between;
   bottom: 0px;
 }
 .statfont{
+  display:flex;
   margin: 0;
   font-size: 24px;
 }
@@ -511,6 +512,47 @@ justify-content: space-between;
   margin: auto;
   height: 70vh;
   background: url('./assets/images/newbattlebg3.gif') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+}
+.MainBattleContainer2{
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  margin: auto;
+  height: 70vh;
+  background: url('./assets/images/bg2.gif') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+}
+.MainBattleContainer3{
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  margin: auto;
+  height: 70vh;
+  background: url('./assets/images/blossom.gif') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: rgb(0, 0, 0, 0.4);
+  background-blend-mode: multiply;
+  position: relative;
+}
+.MainBattleContainer4{
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  margin: auto;
+  height: 70vh;
+  background: url('./assets/images/matrix2.gif') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -626,7 +668,7 @@ height: 20vh;
   width: 800px;
 }
 .attackList{
-  margin: 0 240px 0 200px;
+  margin: 0 200px 0 200px;
   display: flex;
   flex-direction: column;
 }
@@ -810,6 +852,8 @@ opacity: 0;
 .charboxContainer{
   display: flex;
   max-height: 65vh;
+  justify-content: center;
+  align-items: center;
 }
 .paddingbottom{
   display: none;
@@ -905,15 +949,39 @@ visibility: visible;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 90%;
-  margin: 0 60px 10px;
+  margin: 0 auto;
 }
 .statfont{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   font-size: 18px;
-  width: 50%;
+}
+#statBtn{
+  height: 150px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: white;
+  background-color: black;
+  border: none;
+  padding: none;
+  z-index: 1;
+}
+#statusscreen{
+  visibility: hidden;
+}
+#shopBtn{
+  font-size: 32px;
+  color: white;
+  background-color: inherit;
+  border: none;
+  padding: none;
+  z-index: 1;
+}
+#shopscreen{
+  visibility: hidden;
 }
 .plus{
   font-size: 24px;
@@ -1041,7 +1109,7 @@ visibility: visible;
     transform: scale(1);
   }
   }
-  .mainContainer, .creationContainerm, .mainCharContainer,.mainStartContainer,.MainBattleContainer,.loading,.creationContainer{
+  .mainContainer, .creationContainerm, .mainCharContainer,.mainStartContainer,.MainBattleContainer,.loading,.creationContainer,.MainBattleContainer2,.MainBattleContainer3,.MainBattleContainer4{
     display: none;
   }
 }
@@ -1176,10 +1244,12 @@ width: 100vw;
 display: block;
 }
 .charboxContainer{
+  display: flex;
   height: 100vh;
   max-width: 90vw;
   margin: 0 auto;
   justify-content: space-between;
+  align-items: center;
   flex-direction: column;
 }
 .itemdescbox{
@@ -1196,13 +1266,22 @@ display: block;
 .MainBattleContainer{
   height: 100vh;
 }
+.MainBattleContainer2{
+  height: 100vh;
+}
+.MainBattleContainer3{
+  height: 100vh;
+}
+.MainBattleContainer4{
+  height: 100vh;
+}
 .BattlechoicesContainer{
   font-size: 18px;
 
 }
 .question{
   font-size: 24px;
-  margin: 0;
+  margin: 0 40px;
 }
 .iconhover{
   display: none;

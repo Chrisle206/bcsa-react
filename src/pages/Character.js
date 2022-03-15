@@ -135,6 +135,13 @@ export default function Character() {
     /////////////////// RENDERS STATS TO PAGE
     function refresh() {
         document.getElementById('statBtn').classList.add('hide');
+        const status = document.querySelector('#statusscreen');
+        status.style.visibility = "visible";
+        const shopscreen = document.querySelector('#shopscreen');
+        shopscreen.style.visibility = "visible";
+        const statBtn = document.querySelector('#statBtn');
+        statBtn.style.visibility = "hidden";
+
         setCurrHp(hp);
         setCurrAtk(atk);
         setCurrDef(def);
@@ -503,11 +510,12 @@ export default function Character() {
                         </div>
                         <div className="widthChar2Container">
                             <div className="charboxContainer">
-                                <div className='charBox pixel-border'>
-
-                                    <h1 className='boxtitle'>
-                                        {characterName}'s Stats <button id='statBtn' onClick={refresh}>Show Stats</button>
-                                    </h1>
+                                <button className='pixel-border logbutton' id='statBtn' onClick={refresh}>Open Shop</button> 
+                                <div className='charBox pixel-border' id='statusscreen' >
+                                    <div className='boxtitle'>
+                                    
+                                    {characterName}'s Stats
+                                    </div>
                                     <div className='statusbox'>
                                         <div className='statbottom'>
                                             <h3 className='statfontbig'>Level: {level}</h3>
@@ -515,6 +523,7 @@ export default function Character() {
                                         </div>
                                         <img className="characterEmpty2" src={currChar} alt="Empty_character" />
                                         <div className='statcontainer'>
+                                            
                                             <div className='stats'>
                                                 <h3 className='statfont'> Health: {currHp}</h3>
 
@@ -531,7 +540,8 @@ export default function Character() {
                                     </div>
 
                                 </div>
-                                <div className='charBox pixel-border'>
+        
+                                <div className='charBox pixel-border' id='shopscreen'>
                                     <h1 className='boxtitle'>
                                         Shop
                                     </h1>

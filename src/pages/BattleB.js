@@ -146,36 +146,32 @@ export default function Battle() {
 
         const myPercentage = myHealth / 10
 
-        console.log(myPercentage)
-        if (enemyHealth >= currEnemy.hp) {
+        console.log(`My %: ${myPercentage}, Enemy %: ${enemyPercentage}`)
+        if (enemyHp >= currEnemy.hp) {
             enemyHpBar = {
                 backgroundColor: 'green',
                 width: `100%`,
                 height: '20px'
             }
-        } else if (enemyHealth > (currEnemy.hp / 2)) {
-            console.log('enemy health is high')
+        } else if (enemyHp > (currEnemy.hp / 2)) {
             enemyHpBar = {
                 backgroundColor: 'green',
                 width: `${enemyPercentage}%`,
                 height: '20px'
             }
-        } else if (enemyHealth > (currEnemy.hp / 4) && enemyHealth < (currEnemy.hp / 2)) {
-            console.log('enemy health is middle')
+        } else if (enemyHp > (currEnemy.hp / 4) && enemyHp < (currEnemy.hp / 2)) {
             enemyHpBar = {
                 backgroundColor: 'yellow',
                 width: `${enemyPercentage}%`,
                 height: '20px'
             }
-        } else if (enemyHealth < (currEnemy.hp / 4) || enemyHealth <= 0) {
-            console.log('enemy health is low')
+        } else if (enemyHp < (currEnemy.hp / 4) || enemyHp <= 0) {
             enemyHpBar = {
                 backgroundColor: 'red',
                 width: `${enemyPercentage}%`,
                 height: '20px'
             }
-        } else if (enemyHealth <= 0) {
-            console.log('I have fainted')
+        } else if (enemyHp <= 0) {
             heroHpBar = {
                 backgroundColor: 'red',
                 width: `'0px'`,
@@ -183,42 +179,37 @@ export default function Battle() {
             }
         } 
 
-        if (myHealth >= player.hp) {
+        if (heroHp >= player.hp) {
             heroHpBar = {
                 backgroundColor: 'green',
                 width: `100%`,
                 height: '20px'
             }
-        } else if (myHealth > (player.hp / 2)) {
-            console.log('my health is high')
+        } else if (heroHp > (player.hp / 2)) {
             heroHpBar = {
                 backgroundColor: 'green',
                 width: `${myPercentage}%`,
                 height: '20px'
             }
-        } else if (myHealth > (player.hp / 4) && enemyHealth < (player.hp / 2)) {
-            console.log('my health is middle')
+        } else if (heroHp > (player.hp / 4) && heroHp < (player.hp / 2)) {
             heroHpBar = {
                 backgroundColor: 'yellow',
                 width: `${myPercentage}%`,
                 height: '20px'
             }
-        } else if (myHealth < (player.hp / 4) && myHealth > 0) {
-            console.log('my health is low')
+        } else if (heroHp < (player.hp / 4) && heroHp > 0) {
             heroHpBar = {
                 backgroundColor: 'red',
-                width: `'${myPercentage}%'`,
+                width: `${myPercentage}%`,
                 height: '20px'
             }
-        } else if (myHealth <= 0) {
-            console.log('I have fainted')
+        } else if (heroHp <= 0) {
             heroHpBar = {
                 backgroundColor: 'red',
                 width: `'0px'`,
                 height: '0px'
             }
         }
-        console.log('checking health...')
     }
 
 
@@ -549,7 +540,7 @@ export default function Battle() {
             {loading === false ? (
                 <div className="pageContainer creationBg">
                     <div className='rotate'>Rotate to play</div>
-                    <div className="MainBattleContainer">
+                    <div className="MainBattleContainer2">
                         <div className="topNavContainer">
                             {/* TODO: When battle is over, display a continue button. During battle display escape option, which prompts user that battle will not have rewards.*/}
                             <Link to='/Tavern' style={{ textDecoration: 'none', color: 'white' }} className="backbutton"><img className='backbuttonimg' src={back} alt="Back_Button" /> Back</Link>
@@ -583,7 +574,7 @@ export default function Battle() {
                                 <div className="StatBox pixel-border">
                                     <div className='statRow'>
                                         <h3 className='smallFont'>{player.name}</h3>
-                                        <h3 className='heroLvl smallFont'>Lvl: {player.level}</h3>
+                                        <h3 className='smallFont'>Lvl: {player.level}</h3>
                                     </div>
 
 
@@ -623,7 +614,7 @@ export default function Battle() {
                                 <div className="attackRow2">
                                     <button className='attack start' id='start' onClick={startBat}>Begin Battle</button>
                                     <Link to={'/Tavern'} style={{ textDecoration: 'none', color: 'white' }} className="attack hide" id='backBtn'>Back </Link>
-                                    <Link to={'/Story2'} className="attack hide" id='contBtn' >Continue</Link>
+                                    <Link to={'/Story2'} style={{ textDecoration: 'none', color: 'white' }} className="attack hide" id='contBtn' >Continue</Link>
                                 </div>
                             </div>
                         </div>
