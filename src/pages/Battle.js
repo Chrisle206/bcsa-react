@@ -147,7 +147,7 @@ export default function Battle() {
         const myPercentage = myHealth / 10
 
         console.log(myPercentage)
-        if (enemyHealth === currEnemy.hp) {
+        if (enemyHealth >= currEnemy.hp) {
             enemyHpBar = {
                 backgroundColor: 'green',
                 width: `100%`,
@@ -183,8 +183,8 @@ export default function Battle() {
             }
         } 
 
-        if (enemyHealth === currEnemy.hp) {
-            enemyHpBar = {
+        if (myHealth >= player.hp) {
+            heroHpBar = {
                 backgroundColor: 'green',
                 width: `100%`,
                 height: '20px'
