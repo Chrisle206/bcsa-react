@@ -137,7 +137,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
         
         const myPercentage = myHealth / 10
 
-        console.log(myHealth)
+        console.log(myPercentage)
         if (enemyHealth === enemy.hp) {
             enemyHpBar = {
                 backgroundColor: 'green',
@@ -174,18 +174,24 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
             }
         }
 
-        if (myHealth > (player.hp / 2)) {
+        if (enemyHealth === enemy.hp) {
+            enemyHpBar = {
+                backgroundColor: 'green',
+                width: `100%`,
+                height: '20px'
+            }
+        } else if (myHealth > (player.hp / 2)) {
             console.log('my health is high')
             heroHpBar = {
                 backgroundColor: 'green',
-                width: `${myPercentage}`,
+                width: `${myPercentage}%`,
                 height: '20px'
             }
         } else if (myHealth > (player.hp / 4) && enemyHealth <(player.hp / 2)) {
             console.log('my health is middle')
             heroHpBar = {
                 backgroundColor: 'yellow',
-                width: `${myPercentage}`,
+                width: `${myPercentage}%`,
                 height: '20px'
             }
         } else if (myHealth < (player.hp / 4) && myHealth > 0) {
@@ -288,23 +294,18 @@ const moveEffect =() =>{
         switch (num) {
             case 1:
                 option1();
-                healthBar()
                 break;
             case 2:
                 option1();
-                healthBar()
                 break;
             case 3:
                 option1();
-                healthBar()
                 break;
             case 4:
                 option1();
-                healthBar()
                 break;
             case 5:
                 option2();
-                healthBar()
                 break;
             default:
                 setMainText(defaultQuestion);
@@ -321,6 +322,7 @@ const moveEffect =() =>{
                 setMainText(defaultQuestion);
                 showAtkBtns();
                 enemy.atk = enemyAtk;
+                healthBar()
             }, 1000);
             // here goes hero explosion
             moveEffect();;
@@ -331,6 +333,7 @@ const moveEffect =() =>{
             setTimeout(function () {
                 setHeroHp(heroHp + (player.def - enemy.atk));
                 setMainText(taunt);
+                healthBar()
             }, 1000);
             //heroexplosion
             moveEffect();
@@ -347,6 +350,7 @@ const moveEffect =() =>{
         let idle = idles[Math.floor(Math.random() * idles.length)];
                 setTimeout(function () {
                     setMainText(idle);
+                    healthBar()
                 }, 1000);
                 setTimeout(function () {
                     setMainText(defaultQuestion);
@@ -600,7 +604,7 @@ const moveEffect =() =>{
                             <button className="attack hide" id='hT1' onClick={quiz2False}>False</button>
                         </div>
                         <div className="attackRow2">
-                            <button className="attack hide" id='backBtn'>Back </button>
+                            <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'white'}} className="attack hide" id='backBtn'>Back </Link>
                             <button className="attack hide" id='contBtn'>Continue</button>
                         </div>
                     </div>
