@@ -44,8 +44,22 @@ import fangs from '../assets/images/fangs.png'
 import soda from '../assets/images/soda.png'
 import map from '../assets/images/map.png'
 import book2 from '../assets/images/book2.png'
+import LoadingScreen from './Loading'
+
+//characters
+import Assassin from '../assets/images/characters/assassin.png'
+import Master from '../assets/images/characters/routeMaster.png'
+import Ranger from '../assets/images/characters/ranger.png'
+import Warrior from '../assets/images/characters/warrior.png'
+
 var arr = [];
 export default function Character() {
+
+    const [loading, isLoading] = useState(true)
+
+    useEffect(() => {
+        setTimeout(() => isLoading(false), 2000)
+    }, [])
 
     const [charData, setcharData] = useState({
         characterName: "",
@@ -85,20 +99,40 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
     const [currAtk, setCurrAtk] = useState();
     const [currDef, setCurrDef] = useState();
     const [currCoins, setCurrCoins] = useState();
+    const [currChar, setCurrChar] = useState();
     // setCurrAtk(atk);
     // setCurrDef(def);
     // setCurrCoins(currency);
     let shopItem = '';
     let itemCost = '';
     let obj = {};
+//////////////////// Renders Char to page
+    function renderChar() {
+        if (image === 'assassin') {
+            setCurrChar(Assassin)
+        } else if (image === 'master') {
+            setCurrChar(Master)
+        } else if (image === 'ranger') {
+            setCurrChar(Ranger)
+        } else if (image === 'warrior') {
+            setCurrChar(Warrior)
+        }
+        console.log(image)
+    }
+
 /////////////////// RENDERS STATS TO PAGE
     function refresh() {
         setCurrHp(hp);
         setCurrAtk(atk);
         setCurrDef(def);
         setCurrCoins(currency);
+        renderChar()
     }
 
+    useEffect(() => {
+        refresh()
+    })
+    
 /////////////////// ADDS ITEMS STATS TO PLAYER STATS
     function addToStat(item) {
         if(item === 'Potion of Postponement') {
@@ -407,6 +441,9 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
     ///////////////////////////////////////////////////////////////////////////////////
 
     return (
+        <>
+        {loading === false ? (
+
         <div className="pageContainer creationBg">
             <div className="mainCharContainer">
                 <div className="topNavContainer">
@@ -417,14 +454,14 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                     <div className='charBox pixel-border'>
 
                         <h1 className='boxtitle'>
-                            {characterName}'s Stats <button onClick={refresh}>refresh</button>
+                            {characterName}'s Stats
                         </h1>
                         <div className='statusbox'>
                             <div className='statbottom'>
                                 <h3 className='statfontbig'>Level: {level}</h3>
                                 <h3 className='statfontbig'>Available Skillpoints: 4</h3>
                             </div>
-                            <img className="characterEmpty2" src={image} alt="Empty_character" />
+                            <img className="characterEmpty2" src={currChar} alt="Empty_character" />
                             <div className='statcontainer'>
                                 <div className='stats'>
                                     <h3 className='statfont'> Health: {currHp}</h3>
@@ -868,5 +905,9 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                 </div>
             </div>
         </div>
+        ) : (
+            <LoadingScreen />
+        )}
+        </>
     )
 }
