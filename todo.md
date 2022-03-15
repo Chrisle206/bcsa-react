@@ -23,3 +23,5 @@ rip
 # money on tavern screen should show user's actual money instead of just 200
 
 or we could just remove it so we don't have to deal with another asynchronous get request
+
+# we need a favicon

@@ -62,6 +62,7 @@ export default function Start() {
           setToken(user.token);
           localStorage.setItem("token", user.token);
           localStorage.setItem("characterId", user.characters[0]._id);
+          localStorage.setItem("username", user.username);
           setUserData({
               username:user.username,
               id:user._id,

@@ -8,9 +8,10 @@ import speakeron from '../assets/images/speaker-on.png'
 import speakeroff from '../assets/images/speaker-off.png'
 
 
-export default function Introduction() {
+export default function StoryFour() {
     const [speaker, setStatus] = useState(false)
     const audioRef = useRef()
+    const username = localStorage.getItem("username");
 
     function volOff() {
         if (useState !== false) {
@@ -37,13 +38,13 @@ export default function Introduction() {
                 <div className="widthContainer">
                     <h1 className="TavernTitle">Long ago...</h1>
                     <div className='description'>
-                    <div className='line1'>Once upon a time, many cohorts ago…</div>
-                    <div className='line2'>A group of four ambitious students set out to create the ultimate coding bootcamp application…</div>
-                    <div className='line3'>Little did they know… the path ahead… would be fraught with danger.</div>
-                    <div className='line4'>Behold, the story of BCS Adventures!</div>
+                    <div className='line1'>"So it ends like this... the student surpasses the master... Pretty cool, pretty cool..."</div>
+                    <div className='line2'>Joe's parting words are filled with contempt as his soul is shredded into binary data by the infinite JavaScript loop...</div>
+                    <div className='line3'>You hear a voice booming from above... The BCS Gods seek communion...</div>
+                    <div className='line4'>"{username}, YOU HAVE LIBERATED THE LAND OF CODE FROM JOE'S VIOLENT TYRANNY. TAKE THIS CERTIFICATE OF COMPLETION, AND CONTINUE TO PURIFY THESE LANDS."</div>
                     </div>
                     <div className="TavernMenuContainer">
-                        <Link to={'/Battle'} style={{textDecoration: 'none', color: 'inherit'}} className="PlayCard pixel-border">Continue<img className="PlayButton" src={play} alt="Story" /></Link>
+                        <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'inherit'}} className="PlayCard pixel-border">Continue<img className="PlayButton" src={play} alt="Story" /></Link>
 
                     </div>
                 </div>
@@ -62,4 +63,4 @@ export default function Introduction() {
             </div>
         </div>
     )
-}
+};
