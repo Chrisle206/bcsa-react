@@ -583,7 +583,7 @@ export default function Battle() {
                                 <div className="StatBox pixel-border">
                                     <div className='statRow'>
                                         <h3 className='smallFont'>{player.name}</h3>
-                                        <h3 className='heroLvl smallFont'>Lvl: {player.level}</h3>
+                                        <h3 className='smallFont'>Lvl: {player.level}</h3>
                                     </div>
 
 
