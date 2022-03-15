@@ -36,7 +36,7 @@ let heroHpBar= {
     height: '20px'
 }
 export default function Battle() {
-
+    var isLastHit = 0;
 
     // console.log(data);
 
@@ -235,9 +235,11 @@ const { characterName, currency, def, hp, level, atk, image } = charData;
     let explosionEffect = document.getElementById('explosion');
     const hideExplosion = () => {
             explosionEffect.classList.add("explosion1");
+            moveE.classList.remove("moveup");
     }
     const showExplosion = () => {
         explosionEffect.classList.remove("explosion1");
+        moveEffect();
         
     }
     const explosionFunction = () => {
@@ -248,6 +250,7 @@ const { characterName, currency, def, hp, level, atk, image } = charData;
     let explosionEffect2 = document.getElementById('explosion2');
     const hideExplosion2 = () => {
             explosionEffect2.classList.add("explosion1");
+            moveA.classList.remove("moveup2");
     }
     const showExplosion2 = () => {
         explosionEffect2.classList.remove("explosion1");
@@ -255,6 +258,7 @@ const { characterName, currency, def, hp, level, atk, image } = charData;
     }
     const heroExplosion = () => {
     showExplosion2();
+    moveEffectEnemy();
     setTimeout(function () { hideExplosion2() }, 500)
 }
     // explosion
@@ -273,6 +277,10 @@ const { characterName, currency, def, hp, level, atk, image } = charData;
 let moveE = document.querySelector(".effectcont");
 const moveEffect =() =>{
     moveE.classList.add("moveup");
+} 
+let moveA = document.querySelector(".effectcont1");
+const moveEffectEnemy =() =>{
+    moveA.classList.add("moveup2");
 } 
 ///////////////////////////////////////////////////////
 
@@ -324,9 +332,8 @@ function startBat() {
     }
     // If enemy attacks hero, attack only or attack and taunt
     const option1 = () => {
-        let num2 = Math.floor(Math.random() * (3 - 1)) + 1;
         let enemyMove = currEnemy.attacks[Math.floor(Math.random() * currEnemy.attacks.length)];
-        if (num2 === 1) {
+            let taunt = currEnemy.taunts[Math.floor(Math.random() * currEnemy.taunts.length)];
             setTimeout(function () {
                 setMainText(`${currEnemy.enemyName} attacked with ${enemyMove} and dealt ${enemyAtk - player.def}`);
                 heroExplosion();
@@ -334,28 +341,17 @@ function startBat() {
                 healthBar()
             }, 2000);
             setTimeout(function () {
-                setMainText(defaultQuestion);
-                showAtkBtns();
-                currEnemy.atk = enemyAtk;
-            }, 2000);
-            
-        } else if (num2 === 2) {
-            let taunt = currEnemy.taunts[Math.floor(Math.random() * currEnemy.taunts.length)];
-            setMainText(`${currEnemy.enemyName} attacked with ${enemyMove} and dealt ${enemyAtk - player.def}`);
-            setTimeout(function () {
-                heroExplosion();
-                setHeroHp(heroHp + (player.def - currEnemy.atk));
                 setMainText(taunt);
-                healthBar()
-            }, 2000);
+
+            },4000)
             
             setTimeout(function () {
                 setMainText(defaultQuestion);
                 showAtkBtns();
                 currEnemy.atk = enemyAtk;
-            }, 2000);
+            }, 6000);
         }
-    }
+    
 
     const option2 = () => {
         let idle = currEnemy.idles[Math.floor(Math.random() * currEnemy.idles.length)];
@@ -384,7 +380,7 @@ function startBat() {
                 document.getElementById('contBtn').classList.remove('hide'); 
                 }, 1500);
             } else {
-                setTimeout(function () { enemyTurn() }, 500);
+                setTimeout(function () { enemyTurn() }, 1000);
                 <button className='attack' id='start' onClick={intro}>Start</button>
             }
     }
@@ -397,7 +393,6 @@ function startBat() {
         }
         setEnemyHp((enemyHp + currEnemy.def) - player.atk);
         setMainText(`${player.name} dealt ${player.atk - currEnemy.def}`);
-        moveEffect();
         explosionFunction();
         hideAtkBtns();
         enemyIsALive();
@@ -414,7 +409,6 @@ function startBat() {
             isLastHit = 1;
         }
         setMainText(`${player.name} dealt ${(player.atk*2) - currEnemy.def}`);
-        moveEffect();
         explosionFunction();
         setEnemyHp((enemyHp + currEnemy.def) - attack);
         } else {
@@ -447,7 +441,6 @@ function startBat() {
 
         if(bool) {
             setMainText(`${player.name} dealt ${(player.atk*2) - currEnemy.def}`);
-            moveEffect();
             explosionFunction();
             setEnemyHp((enemyHp + currEnemy.def) - (player.atk * 2));
             let dmg = ((enemyHp + currEnemy.def) - player.atk*2);
