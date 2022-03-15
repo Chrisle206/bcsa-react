@@ -22,6 +22,16 @@ import LoadingScreen from './Loading'
 var isLastHit = 0;
 var delayInMilliseconds = 3000;
 var bool = 2;
+let enemyHpBar= {
+    backgroundColor: 'green',
+    width: '100%',
+    height: '20px'
+}
+let heroHpBar= {
+    backgroundColor: 'green',
+    width: '100%',
+    height: '20px'
+}
 export default function Battle() {
     // console.log(data);
 
@@ -116,6 +126,75 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
     const [heroHp, setHeroHp] = useState(0);
     const [enemyHp, setEnemyHp] = useState(enemy.hp);
 
+    //hp styling effect
+    function healthBar() {
+        const enemyHealth = 1000 * (enemyHp / enemy.hp)
+        
+        const enemyPercentage =  enemyHealth / 10
+
+        const myHealth = 1000 * (heroHp / player.hp)
+        
+        const myPercentage = myHealth / 10
+
+        console.log(enemy.hp / 8)
+        if (enemyHealth === enemy.hp) {
+            enemyHpBar = {
+                backgroundColor: 'green',
+                width: `100%`,
+                height: '20px'
+            }
+        } else if (enemyHealth > (enemy.hp / 2)) {
+            console.log('enemy health is high')
+            enemyHpBar = {
+                backgroundColor: 'green',
+                width: `${enemyPercentage}%`,
+                height: '20px'
+            }
+        } else if (enemyHealth > (enemy.hp / 4) && enemyHealth <(enemy.hp / 2)) {
+            console.log('enemy health is middle')
+            enemyHpBar = {
+                backgroundColor: 'yellow',
+                width: `${enemyPercentage}%`,
+                height: '20px'
+            }
+        } else if (enemyHealth < (enemy.hp / 4)) {
+            console.log('enemy health is low')
+            enemyHpBar = {
+                backgroundColor: 'red',
+                width: `${enemyPercentage}%`,
+                height: '20px'
+            }
+        }
+
+        if (myHealth > (player.hp / 2)) {
+            console.log('enemy health is high')
+            heroHpBar = {
+                backgroundColor: 'green',
+                width: `${myPercentage}`,
+                height: '20px'
+            }
+        } else if (myHealth > (player.hp / 4) && enemyHealth <(player.hp / 2)) {
+            console.log('enemy health is middle')
+            heroHpBar = {
+                backgroundColor: 'yellow',
+                width: `${myPercentage}`,
+                height: '20px'
+            }
+        } else if (myHealth < (player.hp / 4)) {
+            console.log('enemy health is low')
+            heroHpBar = {
+                backgroundColor: 'red',
+                width: `'${myPercentage}%'`,
+                height: '20px'
+            }
+        }
+        console.log('checking health...')
+    }
+
+    useEffect(() => {
+        healthBar()
+    })
+
     const questions = ["Snake-case is the preferred case style when naming databases.", "MongoDB stores data records as BSON documents."];
     let defaultQuestion = "What is your next move?"
     const [mainText, setMainText] = useState();
@@ -170,7 +249,6 @@ const moveEffect =() =>{
     function startBat() {
         console.log('starting...')
         setMainText(introEnemy);
-        
 
         intro()
     }
@@ -178,12 +256,18 @@ const moveEffect =() =>{
     function intro() {
         setTimeout(function () { 
             console.log('timeout')
-            setHeroHp(player.hp);
         showAtkBtns();
         setMainText(defaultQuestion);
          }, 4000)
     
     }
+    function refresh() {
+        setHeroHp(player.hp);
+    }
+
+    useEffect(() => {
+        refresh()
+    })
 
     useEffect(() => {
         startBat()
@@ -267,12 +351,13 @@ const moveEffect =() =>{
 
                 setTimeout(function () {
                 document.getElementById('opp').classList.add('hide');
-                setMainText('Enemy Felled!');
+                setMainText(`${enemy.name} has fallen!`);
                 document.getElementById('backBtn').classList.remove('hide');
                 document.getElementById('contBtn').classList.remove('hide'); 
                 }, 1500);
             } else {
                 setTimeout(function () { enemyTurn() }, 500);
+                <button className='attack' id='start' onClick={intro}>Start</button>
             }
     }
     /////////////////////////////////////////// ATTACK1 FUNCTIONALITY
@@ -439,7 +524,7 @@ const moveEffect =() =>{
                             </div>
                          
                                     <div className='healthcontainer'>
-                                        <div className='healthBarEnemy'>
+                                        <div style={enemyHpBar}>
 
                                         </div>
                             </div>
@@ -464,7 +549,7 @@ const moveEffect =() =>{
                             
                                
                                     <div className='healthcontainer'>
-                                        <div className='healthBarHero'>
+                                        <div style={heroHpBar}>
 
                                         </div>
                                     </div>
@@ -497,6 +582,7 @@ const moveEffect =() =>{
                             <button className="attack hide" id='hT1' onClick={quiz2False}>False</button>
                         </div>
                         <div className="attackRow2">
+                            <button className="attack" id='startBtn'>Start </button>
                             <button className="attack hide" id='backBtn'>Back </button>
                             <button className="attack hide" id='contBtn'>Continue</button>
                         </div>
