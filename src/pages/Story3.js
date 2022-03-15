@@ -44,7 +44,7 @@ export default function StoryThree() {
                     <div className='line5'>As you draw near, you begin to hear cats meowing... There is the faint but familiar voice of a certain manatee enthusiast around the corner...</div>
                     </div>
                     <div className="TavernMenuContainer">
-                        <Link to={'/Battle'} style={{textDecoration: 'none', color: 'inherit'}} className="PlayCard pixel-border">Continue<img className="PlayButton" src={play} alt="Story" /></Link>
+                        <Link to={'/BattleJ'} style={{textDecoration: 'none', color: 'inherit'}} className="PlayCard pixel-border">Continue<img className="PlayButton" src={play} alt="Story" /></Link>
 
                     </div>
                 </div>

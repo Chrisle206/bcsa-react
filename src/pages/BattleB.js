@@ -5,7 +5,7 @@ import song from '../assets/sounds/battle.mp3'
 import back from '../assets/images/back.png'
 import speakeron from '../assets/images/speaker-on.png'
 import speakeroff from '../assets/images/speaker-off.png'
-import enemyPic from '../assets/images/characters/lewis.png'
+import enemyPic from '../assets/images/characters/brett.png'
 import Warrior from '../assets/images/characters/warrior.png'
 import Assassin from '../assets/images/characters/assassin.png'
 import Master from '../assets/images/characters/routeMaster.png'
@@ -63,7 +63,7 @@ export default function Battle() {
     );
     let currEnemy = enemyData;
     useEffect(() => {
-        getEnemy('6230e474b4cc7f2ae25129b9').then(function (result) {
+        getEnemy('6230e474b4cc7f2ae25129b7').then(function (result) {
             console.log(result);
             setenemyData(result)
             return;
@@ -623,7 +623,7 @@ export default function Battle() {
                                 <div className="attackRow2">
                                     <button className='attack start' id='start' onClick={startBat}>Begin Battle</button>
                                     <Link to={'/Tavern'} style={{ textDecoration: 'none', color: 'white' }} className="attack hide" id='backBtn'>Back </Link>
-                                    <Link to={'/Story1'} className="attack hide" id='contBtn' >Continue</Link>
+                                    <Link to={'/Story2'} className="attack hide" id='contBtn' >Continue</Link>
                                 </div>
                             </div>
                         </div>

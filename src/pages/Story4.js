@@ -38,7 +38,7 @@ export default function StoryFour() {
                 <div className="widthContainer">
                     <h1 className="TavernTitle">Long ago...</h1>
                     <div className='description'>
-                    <div className='line1'>"So it ends like this... the student surpasses the master... Pretty cool, pretty cool..."</div>
+                    <div className='line1'>"So it ends like this... the student surpasses the master... Pretty, pretty cool..."</div>
                     <div className='line2'>Joe's parting words are filled with contempt as his soul is shredded into binary data by the infinite JavaScript loop...</div>
                     <div className='line3'>You hear a voice booming from above... The BCS Gods seek communion...</div>
                     <div className='line4'>"{username}, YOU HAVE LIBERATED THE LAND OF CODE FROM JOE'S VIOLENT TYRANNY. TAKE THIS CERTIFICATE OF COMPLETION, AND CONTINUE TO PURIFY THESE LANDS."</div>
