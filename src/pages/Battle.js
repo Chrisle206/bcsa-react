@@ -23,7 +23,6 @@ import LoadingScreen from './Loading'
 var isLastHit = 0;
 var delayInMilliseconds = 3000;
 var bool = 2;
-var boss = 3;
 export default function Battle() {
     // console.log(data);
 
@@ -36,55 +35,16 @@ export default function Battle() {
     const [charData, setcharData] = useState({
         characterName: "",
     });
-    const [enemyData, setenemyData] = useState(
-        []
-    );
-
 
 useEffect(() => {
     getCharacter().then(function (result) {
         console.log(result);
-        setcharData(result);
+        setcharData(result)
         return;
     });
 },[]);
 
-useEffect(() => {
-    getEnemy().then(function (result) {
-        console.log(result);
-        setenemyData(result);
-        return;
-    });
-},[]);
-
-
-
-const getEnemy = async ()=>{
-    const token = localStorage.getItem("token");
-    //Replace 'null' with whatever is grabbing the input for the request. You can get enemy ID's by going to https://bcsa-api.herokuapp.com/api/enemies
-  
-    const response = await fetch(`https://bcsa-api.herokuapp.com/api/enemies`, {
-        method: "GET",
-        headers: {
-          "Content-Type":"application/json",
-          "authorization":`Bearer ${token}`
-        }
-    })
-    try {
-        const data = await response.json();
-        console.log(data);
-
-        return data;
-  
-    } catch (err) {
-        console.log('Catch triggered')
-        console.log(err);
-    }
-  };
-  console.log(enemyData);
-
-
-const { characterName, characterClass, currency, def, hp, level, atk, image } = charData;
+const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = charData;
 
     const [currChar, setCurrChar] = useState();
 
@@ -126,35 +86,32 @@ const { characterName, characterClass, currency, def, hp, level, atk, image } = 
 
 
     class Character {
-        constructor(attacks, name, level, hp, atk, def, idles, taunts, enemyIntro, enemyOutro) {
+        constructor(attacks, name, level, hp, atk, def) {
             this.attacks = attacks;
             this.name = name;
             this.level = level;
             this.hp = hp;
             this.atk = atk;
             this.def = def;
-            this.idles = idles;
-            this.taunts = taunts;
-            this.intro = enemyIntro;
-            this.outro = enemyOutro;
         }
 
     }
 
     // Create unique characters using the "character" constructor
-    const enemy = new Character(enemyData[boss].attacks,
-        enemyData[boss].enemyName,
-        enemyData[boss].level,
-        enemyData[boss].hp,
-        enemyData[boss].atk,
-        enemyData[boss].def,
-        ['insert idle'],
-        [ "insert taunt"],
-        "enemy intro",
-        "enemy outro"
+    const enemy = new Character(["Console Crash",
+    "null",
+    "undefined"],
+        'Frantz',
+        level,
+        1000,
+        200,
+        20
     );
-
-  
+    const idles = ['insert idle'];
+    const taunts = [ "insert taunt"]
+    const atks = ["insert attack"];
+    const introEnemy = "enemy intro";
+    const outroEnemy = "enemy outro";
 
     const player = new Character(['Basic Attack', 'Dice Attack', 'Quiz Attack', 'Quiz Heal'], characterName, level, hp, atk, def);
     const [heroHp, setHeroHp] = useState(0);
@@ -228,9 +185,6 @@ const moveEffect =() =>{
     
     }
 
-    const continueGame = () => {
-        boss--;
-    }
     useEffect(() => {
         startBat()
     }, [])
@@ -261,7 +215,7 @@ const moveEffect =() =>{
     // If enemy attacks hero, attack only or attack and taunt
     const option1 = () => {
         let num2 = Math.floor(Math.random() * (3 - 1)) + 1;
-        let enemyMove = enemy.attacks[Math.floor(Math.random() * enemy.attacks.length)];
+        let enemyMove = atks[Math.floor(Math.random() * atks.length)];
         if (num2 === 1) {
             setMainText(`${enemy.name} attacked with ${enemyMove} and dealt ${enemyAtk - player.def}`);
             setTimeout(function () {
@@ -274,7 +228,7 @@ const moveEffect =() =>{
             moveEffect();;
             heroExplosion();
         } else if (num2 === 2) {
-            let taunt = enemy.taunts[Math.floor(Math.random() * enemy.taunts.length)];
+            let taunt = taunts[Math.floor(Math.random() * taunts.length)];
             setMainText(`${enemy.name} attacked with ${enemyMove} and dealt ${enemyAtk - player.def}`);
             setTimeout(function () {
                 setHeroHp(heroHp + (player.def - enemy.atk));
@@ -292,7 +246,7 @@ const moveEffect =() =>{
     }
 
     const option2 = () => {
-        let idle = enemy.idles[Math.floor(Math.random() * enemy.idles.length)];
+        let idle = idles[Math.floor(Math.random() * idles.length)];
                 setTimeout(function () {
                     setMainText(idle);
                 }, 1000);
@@ -307,7 +261,7 @@ const moveEffect =() =>{
     const enemyIsALive = () => {
         console.log(isLastHit);
             if(isLastHit) {
-                setMainText(enemy.outro);
+                setMainText(outroEnemy);
                 setEnemyHp(0);
                 hideAtkBtns();
 
