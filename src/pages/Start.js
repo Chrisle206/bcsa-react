@@ -188,11 +188,11 @@ export default function Start() {
                                                 {userData.username ? (
                                                     <>
                                                         <h3>Welcome, {userData.username}! Click 'Play' to begin.</h3>
-                                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>                                                    </>
+                                                        <button type="button" className="btn btn-secondary modalBTN" data-bs-dismiss="modal">Close</button>                                                    </>
                                                 ) : 
                                                 <>
-                                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" className="btn btn-primary">Submit</button>
+                                                <button type="button" className="btn btn-secondary modalBTN" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" className="btn btn-primary modalBTN">Submit</button>
                                                 </>
                                                 }
 
