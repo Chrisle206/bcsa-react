@@ -44,6 +44,7 @@ import fangs from '../assets/images/fangs.png'
 import soda from '../assets/images/soda.png'
 import map from '../assets/images/map.png'
 import book2 from '../assets/images/book2.png'
+
 import LoadingScreen from './Loading'
 
 //characters
@@ -51,7 +52,7 @@ import Assassin from '../assets/images/characters/assassin.png'
 import Master from '../assets/images/characters/routeMaster.png'
 import Ranger from '../assets/images/characters/ranger.png'
 import Warrior from '../assets/images/characters/warrior.png'
-
+var sendToAPI = {};
 var arr = [];
 export default function Character() {
 
@@ -72,6 +73,33 @@ export default function Character() {
             return;
         });
     }, []);
+
+const editCharacter = async (sendToAPI)=>{
+
+    const token = localStorage.getItem("token");
+    const characterId = localStorage.getItem("characterId");
+
+
+    const response = await fetch(`https://bcsa-api.herokuapp.com/user/charupdate/${characterId}`, {
+        method: "PUT",
+        body: JSON.stringify(sendToAPI),
+        headers: {
+          "Content-Type":"application/json",
+          "authorization":`Bearer ${token}`
+        }
+    });
+
+    try {
+        const data = await response.json();
+        console.log(data);
+
+        return data;
+    } catch (err) {
+        console.log('Catch triggered')
+        console.log(err);
+    }
+};
+
 
 const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = charData
 
@@ -217,15 +245,26 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
     }
     
 /////////////////// ADD ITEM TO INVENTORY
-    function addItem() {
-        if(!arr.includes(shopItem) && parseInt(obj.itemCost) < currCoins) {
-            arr.push(obj.shopItem);
+     function addItem() {
+        if(!items.includes(shopItem) && parseInt(obj.itemCost) < currCoins) {
+            items.push(obj.shopItem);
             setCurrCoins(currCoins-obj.itemCost);
             addToStat(shopItem);
         }
-        console.log(arr);
-
+        console.log(items);
     }
+    function apiSend() {
+        sendToAPI = {
+            atk: currAtk,
+            def: currDef,
+            currency: currCoins,
+            hp: currHp,
+            items: items
+        }
+        editCharacter(sendToAPI); 
+    }
+
+
 
 ////////////////// SELECT ITEM 1 of 30
     function currentItem() {
@@ -447,7 +486,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
         <div className="pageContainer creationBg">
             <div className="mainCharContainer">
                 <div className="topNavContainer">
-                    <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'white'}} className="backbutton"><img className='backbuttonimg' src={back} alt="Back_Button" /> Back</Link>
+                    <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'white'}} className="backbutton" onClick={apiSend}><img className='backbuttonimg' src={back} alt="Back_Button" /> Back</Link>
                 </div>
                 <div className="widthChar2Container">
                 <div className="charboxContainer">
