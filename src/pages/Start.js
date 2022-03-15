@@ -97,6 +97,7 @@ export default function Start() {
 
     return (
         <div className="pageContainer creationBg">
+            <div className='rotate'>Rotate to play</div>
             <div className="mainStartContainer">
                 <div className="logNavCont">
                     <h3 className="logContainer">

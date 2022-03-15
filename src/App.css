@@ -862,6 +862,18 @@ visibility: visible;
   border-radius: 10px;
   background-color: inherit;
 }
+.bought{
+  background-color: gray;
+  border: solid 2px gray;
+  opacity: 0.5;
+}
+.bought:hover{
+  border: solid 2px gray;
+}
+.bought:focus{
+  border: solid 2px gray;
+  background-color: gray;
+}
 .up{
   width: 25px;
 }
@@ -955,7 +967,6 @@ visibility: visible;
     animation: grow-and-shrink3 2000ms;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
-
 }
 @keyframes grow-and-shrink3 {
   0% {
@@ -968,7 +979,7 @@ visibility: visible;
     transform: scale(1);
   }
   }
-  .mainContainer{
+  .mainContainer, .creationContainerm, .mainCharContainer,.mainStartContainer,.MainBattleContainer,.loading,.creationContainer{
     display: none;
   }
 }
