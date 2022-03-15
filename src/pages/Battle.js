@@ -170,7 +170,7 @@ const moveEffect =() =>{
     function startBat() {
         console.log('starting...')
         setMainText(introEnemy);
-        setHeroHp(player.hp);
+        
 
         intro()
     }
@@ -178,6 +178,7 @@ const moveEffect =() =>{
     function intro() {
         setTimeout(function () { 
             console.log('timeout')
+            setHeroHp(player.hp);
         showAtkBtns();
         setMainText(defaultQuestion);
          }, 4000)
