@@ -343,7 +343,7 @@ export default function Battle() {
         let enemyMove = currEnemy.attacks[Math.floor(Math.random() * currEnemy.attacks.length)];
         let taunt = currEnemy.taunts[Math.floor(Math.random() * currEnemy.taunts.length)];
         setTimeout(function () {
-            setMainText(`${currEnemy.enemyName} attacked with ${enemyMove} and dealt ${enemyAtk - player.def}`);
+            setMainText(`${currEnemy.enemyName} attacked with ${enemyMove} and dealt ${enemyAtk - player.def}!`);
             heroExplosion();
             setHeroHp(heroHp + (player.def - currEnemy.atk));
             setTimeout(function () {
@@ -402,7 +402,7 @@ export default function Battle() {
         }
 
         setEnemyHp((enemyHp + currEnemy.def) - player.atk);
-        setMainText(`${player.name} dealt ${player.atk - currEnemy.def}`);
+        setMainText(`${player.name} dealt ${player.atk - currEnemy.def}!`);
         explosionFunction();
         hideAtkBtns();
         enemyIsALive();
@@ -418,7 +418,7 @@ export default function Battle() {
             if (dmg <= 0) {
                 isLastHit = 1;
             }
-            setMainText(`${player.name} dealt ${(player.atk * 2) - currEnemy.def}`);
+            setMainText(`${player.name} dealt ${(player.atk * 2) - currEnemy.def}!`);
             explosionFunction();
             setEnemyHp((enemyHp + currEnemy.def) - attack);
         } else {
@@ -449,7 +449,7 @@ export default function Battle() {
     const quizAtk = () => {
 
         if (bool) {
-            setMainText(`${player.name} dealt ${(player.atk * 2) - currEnemy.def}`);
+            setMainText(`${player.name} dealt ${(player.atk * 2) - currEnemy.def}!`);
             explosionFunction();
             setEnemyHp((enemyHp + currEnemy.def) - (player.atk * 2));
             let dmg = ((enemyHp + currEnemy.def) - player.atk * 2);
@@ -482,7 +482,7 @@ export default function Battle() {
 
     const healAtk = () => {
         if (bool) {
-            setMainText(`${player.name} healed ${player.hp / 5} hp`);
+            setMainText(`${player.name} healed ${player.hp / 5} hp!`);
             setHeroHp(heroHp + (player.hp / 5));
             currEnemy.atk = currEnemy.atk / 2;
             // heal function gif here
@@ -490,7 +490,7 @@ export default function Battle() {
             healthBar()
             option2();
         } else {
-            setMainText(`${player.name} dropped the potion`);
+            setMainText(`${player.name} dropped the potion!`);
             option1();
         }
         bool = 2;

@@ -32,20 +32,20 @@ There is a separate API component which we also developed, and it hosts all enem
 
 It's easy to begin playing! Once you've loaded up the game, you will want to click 'Sign Up' at the top right. You'll be prompted to create a unique username and password for your account. Your username will become the name for your character, so choose wisely! Once you're signed in, close the popup and click 'Play' to be taken to the character creation page.
 
-    ```md
-    ![start page signup](assets/images/screenshot.png)
-    ```
+
+![start page signup](public/ss1.PNG)
+
 
 On the character creation page, you'll be prompted to answer questions pertaining to your coding skills and preferences. Your character will be generated based on your inputs! There are currently four classes existing in the game. Sign up and see which class your coding skills will get you!
 
-    ```md
-    ![creation page](assets/images/screenshot.png)
-    ```
+
+![creation page](public/ss2.PNG)
+
 Once your character has been generated, you'll be taken to the tavern screen. This is the central hub for the player and currently provides three options for navigation. The user can click on 'Character' to be taken to the shop, wherein they can view their stats and purchase items using currency gained from battle to buff their character further. The user can also click on 'Story' to be taken to the main battle sequence, where they'll endure a gauntlet of tough boss enemies that'll test their skills as developers and gamers! The third option, 'Dungeon,' is currently in development, and will be the main source of EXP and currency for our game. Since this feature has not yet been implemented, we have given new players plenty of currency to buy all the items necessary to defeat all the bosses in the 'Story' mode.
 
-    ```md
-    ![tavern page](assets/images/screenshot.png)
-    ```
+
+![tavern page](public/ss3.PNG)
+
 
     ```md
     ![battle page](assets/images/screenshot.png)
