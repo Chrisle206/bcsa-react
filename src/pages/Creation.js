@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import track from '../assets/sounds/creation.mp3'
 import back from '../assets/images/back.png'
@@ -8,6 +8,7 @@ import assassin from '../assets/images/characters/assassin.png'
 import warrior from '../assets/images/characters/warrior.png'
 import ranger from '../assets/images/characters/ranger.png'
 import master from '../assets/images/characters/routeMaster.png'
+import getCharacter from '../Javascript/getCharacter.js'
 
 // const mongoose = require('mongoose')
 
@@ -265,7 +266,6 @@ export default function Creation() {
                 chosenChar = characters[3];
                 return createCharacter(sendToAPI);
             };
-
             //Assign state here?
             // const data = selectClass();
             //Evaluate state to see if data will match body necessary for POST request.
