@@ -23,7 +23,8 @@ import LoadingScreen from './Loading'
 var isLastHit = 0;
 var delayInMilliseconds = 3000;
 var bool = 2;
-var boss = 3;
+
+// var arr = ['622fd42a2b1a504c5c187cb3','622fd42a2b1a504c5c187cb5','622fd42a2b1a504c5c187cb7','622fd42a2b1a504c5c187cb1'];
 let enemyHpBar= {
     backgroundColor: 'green',
     width: '100%',
@@ -36,14 +37,7 @@ let heroHpBar= {
 }
 export default function Battle() {
 
-    function startBat() {
-        document.getElementById('start').classList.add('hide');
-        setHeroHp(player.hp);
-        console.log('starting...')
-        setMainText(introEnemy);
 
-        intro()
-    }
     // console.log(data);
 
     const [loading, isLoading] = useState(true)
@@ -67,17 +61,17 @@ useEffect(() => {
 const [enemyData, setenemyData] = useState(
     []
 );
-
+let currEnemy = enemyData;
 useEffect(() => {
-getEnemy().then(function (result) {
+getEnemy('622fd42a2b1a504c5c187cb3').then(function (result) {
     console.log(result);
     setenemyData(result)
     return;
 });
 },[]);
 
-const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = charData;
-const arr = enemyData;
+const { characterName, currency, def, hp, level, atk, image } = charData;
+
 
     const [currChar, setCurrChar] = useState();
 
@@ -119,40 +113,32 @@ const arr = enemyData;
 
 
     class Character {
-        constructor(attacks, name, level, hp, atk, def) {
+        constructor(attacks, name, level, hp, atk, def, idles, taunts, introEnemy, outroEnemy) {
             this.attacks = attacks;
             this.name = name;
             this.level = level;
             this.hp = hp;
             this.atk = atk;
             this.def = def;
+            this.idles = idles;
+            this.taunts = taunts;
+            this.intro = introEnemy;
+            this.outro = outroEnemy;
         }
 
     }
-    let             enemy = new Character(["Console Crash",
-    "null",
-    "undefined"],
-        'Frantz',
-        level,
-        1000,
-        200,
-        20
-    );
 
 
-    const idles = ['insert idle'];
-    const taunts = [ "insert taunt"]
-    const atks = ["insert attack"];
-    const introEnemy = "enemy intro";
-    const outroEnemy = "enemy outro";
+
+
 
     const player = new Character(['Basic Attack', 'Dice Attack', 'Quiz Attack', 'Quiz Heal'], characterName, level, hp, atk, def);
     const [heroHp, setHeroHp] = useState(0);
-    const [enemyHp, setEnemyHp] = useState(enemy.hp);
+    const [enemyHp, setEnemyHp] = useState(0);
 
     //hp styling effect
     function healthBar() {
-        const enemyHealth = 1000 * (enemyHp / enemy.hp)
+        const enemyHealth = 1000 * (enemyHp / currEnemy.hp)
         
         const enemyPercentage =  enemyHealth / 10
 
@@ -161,27 +147,27 @@ const arr = enemyData;
         const myPercentage = myHealth / 10
 
         console.log(myPercentage)
-        if (enemyHealth === enemy.hp) {
+        if (enemyHealth === currEnemy.hp) {
             enemyHpBar = {
                 backgroundColor: 'green',
                 width: `100%`,
                 height: '20px'
             }
-        } else if (enemyHealth > (enemy.hp / 2)) {
+        } else if (enemyHealth > (currEnemy.hp / 2)) {
             console.log('enemy health is high')
             enemyHpBar = {
                 backgroundColor: 'green',
                 width: `${enemyPercentage}%`,
                 height: '20px'
             }
-        } else if (enemyHealth > (enemy.hp / 4) && enemyHealth <(enemy.hp / 2)) {
+        } else if (enemyHealth > (currEnemy.hp / 4) && enemyHealth <(currEnemy.hp / 2)) {
             console.log('enemy health is middle')
             enemyHpBar = {
                 backgroundColor: 'yellow',
                 width: `${enemyPercentage}%`,
                 height: '20px'
             }
-        } else if (enemyHealth < (enemy.hp / 4) || enemyHealth <= 0) {
+        } else if (enemyHealth < (currEnemy.hp / 4) || enemyHealth <= 0) {
             console.log('enemy health is low')
             enemyHpBar = {
                 backgroundColor: 'red',
@@ -197,7 +183,7 @@ const arr = enemyData;
             }
         }
 
-        if (enemyHealth === enemy.hp) {
+        if (enemyHealth === currEnemy.hp) {
             enemyHpBar = {
                 backgroundColor: 'green',
                 width: `100%`,
@@ -243,7 +229,7 @@ const arr = enemyData;
     let defaultQuestion = "What is your next move?"
     const [mainText, setMainText] = useState();
 
-    var enemyAtk = enemy.atk;
+    var enemyAtk = currEnemy.atk;
 
     // explosion
     let explosionEffect = document.getElementById('explosion');
@@ -291,6 +277,19 @@ const moveEffect =() =>{
 ///////////////////////////////////////////////////////
 
 
+function startBat() {
+    document.getElementById('start').classList.add('hide');
+    setHeroHp(player.hp);
+    setEnemyHp(currEnemy.hp);
+    console.log('starting...')
+
+    setMainText(currEnemy.enemyIntro);
+
+    intro()
+}
+
+
+
     function intro() {
         setTimeout(function () { 
             console.log('timeout')
@@ -326,40 +325,40 @@ const moveEffect =() =>{
     // If enemy attacks hero, attack only or attack and taunt
     const option1 = () => {
         let num2 = Math.floor(Math.random() * (3 - 1)) + 1;
-        let enemyMove = atks[Math.floor(Math.random() * atks.length)];
+        let enemyMove = currEnemy.attacks[Math.floor(Math.random() * currEnemy.attacks.length)];
         if (num2 === 1) {
-            setMainText(`${enemy.name} attacked with ${enemyMove} and dealt ${enemyAtk - player.def}`);
             setTimeout(function () {
-                setHeroHp(heroHp + (player.def - enemy.atk));
+                setMainText(`${currEnemy.enemyName} attacked with ${enemyMove} and dealt ${enemyAtk - player.def}`);
+                heroExplosion();
+                setHeroHp(heroHp + (player.def - currEnemy.atk));
+                healthBar()
+            }, 2000);
+            setTimeout(function () {
                 setMainText(defaultQuestion);
                 showAtkBtns();
-                enemy.atk = enemyAtk;
-                healthBar()
-            }, 1000);
-            // here goes hero explosion
-            moveEffect();;
-            heroExplosion();
+                currEnemy.atk = enemyAtk;
+            }, 2000);
+            
         } else if (num2 === 2) {
-            let taunt = taunts[Math.floor(Math.random() * taunts.length)];
-            setMainText(`${enemy.name} attacked with ${enemyMove} and dealt ${enemyAtk - player.def}`);
+            let taunt = currEnemy.taunts[Math.floor(Math.random() * currEnemy.taunts.length)];
+            setMainText(`${currEnemy.enemyName} attacked with ${enemyMove} and dealt ${enemyAtk - player.def}`);
             setTimeout(function () {
-                setHeroHp(heroHp + (player.def - enemy.atk));
+                heroExplosion();
+                setHeroHp(heroHp + (player.def - currEnemy.atk));
                 setMainText(taunt);
                 healthBar()
-            }, 1000);
-            //heroexplosion
-            moveEffect();
-            heroExplosion();
+            }, 2000);
+            
             setTimeout(function () {
                 setMainText(defaultQuestion);
                 showAtkBtns();
-                enemy.atk = enemyAtk;
+                currEnemy.atk = enemyAtk;
             }, 2000);
         }
     }
 
     const option2 = () => {
-        let idle = idles[Math.floor(Math.random() * idles.length)];
+        let idle = currEnemy.idles[Math.floor(Math.random() * currEnemy.idles.length)];
                 setTimeout(function () {
                     setMainText(idle);
                     healthBar()
@@ -367,7 +366,7 @@ const moveEffect =() =>{
                 setTimeout(function () {
                     setMainText(defaultQuestion);
                     showAtkBtns();
-                    enemy.atk = enemyAtk;
+                    currEnemy.atk = enemyAtk;
                 }, delayInMilliseconds);
     }
     
@@ -375,13 +374,12 @@ const moveEffect =() =>{
     const enemyIsALive = () => {
         console.log(isLastHit);
             if(isLastHit) {
-                setMainText(outroEnemy);
+                setMainText(currEnemy.enemyOutro);
                 setEnemyHp(0);
                 hideAtkBtns();
-
                 setTimeout(function () {
                 document.getElementById('opp').classList.add('hide');
-                setMainText(`${enemy.name} has fallen!`);
+                setMainText(`${currEnemy.enemyName} has fallen!`);
                 document.getElementById('backBtn').classList.remove('hide');
                 document.getElementById('contBtn').classList.remove('hide'); 
                 }, 1500);
@@ -393,12 +391,13 @@ const moveEffect =() =>{
 
     /////////////////////////////////////////// ATTACK1 FUNCTIONALITY
     const atk1 = () => {
-        let dmg = ((enemyHp + enemy.def) - player.atk);
+        let dmg = ((enemyHp + currEnemy.def) - player.atk);
         if(dmg <= 0) {
             isLastHit = 1;
         }
-        setEnemyHp((enemyHp + enemy.def) - player.atk);
-        setMainText(`${player.name} dealt ${player.atk - enemy.def}`);
+        setEnemyHp((enemyHp + currEnemy.def) - player.atk);
+        setMainText(`${player.name} dealt ${player.atk - currEnemy.def}`);
+        moveEffect();
         explosionFunction();
         hideAtkBtns();
         enemyIsALive();
@@ -410,13 +409,14 @@ const moveEffect =() =>{
     const atk2 = () => {
         let attack = Math.floor(Math.random() * 2) * (player.atk * 2);
         if(attack === (player.atk*2)){
-            let dmg = ((enemyHp + enemy.def) - player.atk*2);
+            let dmg = ((enemyHp + currEnemy.def) - player.atk*2);
         if(dmg <= 0) {
             isLastHit = 1;
         }
-        setMainText(`${player.name} dealt ${(player.atk*2) - enemy.def}`);
+        setMainText(`${player.name} dealt ${(player.atk*2) - currEnemy.def}`);
+        moveEffect();
         explosionFunction();
-        setEnemyHp((enemyHp + enemy.def) - attack);
+        setEnemyHp((enemyHp + currEnemy.def) - attack);
         } else {
             setMainText('Attack Missed!')
         }
@@ -446,10 +446,11 @@ const moveEffect =() =>{
     const quizAtk = () => {
 
         if(bool) {
-            setMainText(`${player.name} dealt ${(player.atk*2) - enemy.def}`);
+            setMainText(`${player.name} dealt ${(player.atk*2) - currEnemy.def}`);
+            moveEffect();
             explosionFunction();
-            setEnemyHp((enemyHp + enemy.def) - (player.atk * 2));
-            let dmg = ((enemyHp + enemy.def) - player.atk*2);
+            setEnemyHp((enemyHp + currEnemy.def) - (player.atk * 2));
+            let dmg = ((enemyHp + currEnemy.def) - player.atk*2);
             healthBar()
         if(dmg <= 0) {
             isLastHit = 1;
@@ -482,7 +483,7 @@ const moveEffect =() =>{
         if(bool) {
             setMainText(`${player.name} healed ${player.hp / 5} hp`);
             setHeroHp(heroHp + (player.hp / 5));
-            enemy.atk = enemy.atk/2;
+            currEnemy.atk = currEnemy.atk/2;
             // heal function gif here
             heroHeal();
             healthBar()
@@ -556,8 +557,8 @@ const moveEffect =() =>{
                     <div className="enemyRow">
                         <div className="StatBox pixel-border">
                             <div className='statRow'>
-                                <h3 className='smallFont'>{enemy.name}</h3>
-                                <h3 className='smallFont'>Lvl: {enemy.level}</h3>
+                                <h3 className='smallFont'>{currEnemy.enemyName}</h3>
+                                <h3 className='smallFont'>Lvl: {currEnemy.level}</h3>
                             </div>
                          
                                     <div className='healthcontainer'>
@@ -565,7 +566,7 @@ const moveEffect =() =>{
 
                                         </div>
                             </div>
-                                    <h3 className='hp smallFont'>HP:{enemyHp}/{enemy.hp}</h3>
+                                    <h3 className='hp smallFont'>HP:{enemyHp}/{currEnemy.hp}</h3>
                         </div>
                         <div className='effectcont1'>
                         <img className="enemyPic" src={enemyPic} id='opp' alt="Enemy" />
@@ -621,7 +622,7 @@ const moveEffect =() =>{
                         <div className="attackRow2">
                             <button className='attack' id='start' onClick={startBat}>Start</button>
                             <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'white'}} className="attack hide" id='backBtn'>Back </Link>
-                            <button className="attack hide" id='contBtn'>Continue</button>
+                            <button className="attack hide" id='contBtn' >Continue</button>
                         </div>
                     </div>
                 </div>
