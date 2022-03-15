@@ -8,8 +8,9 @@ import speakeron from '../assets/images/speaker-on.png'
 import speakeroff from '../assets/images/speaker-off.png'
 
 
+
 export default function Start() {
-    // let history = useNavigate();
+    const loginFail = document.querySelector('.login-fail');
 
     const [speaker, setStatus] = useState(false)
     const audioRef = useRef()
@@ -56,18 +57,24 @@ export default function Start() {
             headers: { 'Content-Type': 'application/json' },
           });
       
-          const user = await response.json();
-          console.log(user);
+          if (response.ok) {
+              const user = await response.json();
+              console.log(user);
+              setToken(user.token);
+              localStorage.setItem("token", user.token);
+              localStorage.setItem("characterId", user.characters[0]._id);
+              localStorage.setItem("username", user.username);
+              setUserData({
+                  username:user.username,
+                  id:user._id,
+                  characters:user.characters,
+                });
+
+          } else {
+            loginFail.textContent = "Incorrect Email and/or Password";      
+            loginFail.setAttribute("style", "color: red;", "font-size:8px;");
+          }
     
-          setToken(user.token);
-          localStorage.setItem("token", user.token);
-          localStorage.setItem("characterId", user.characters[0]._id);
-          localStorage.setItem("username", user.username);
-          setUserData({
-              username:user.username,
-              id:user._id,
-              characters:user.characters,
-            });
     
     };    
 
@@ -142,6 +149,7 @@ export default function Start() {
                                                 <h5 for="logPassword" class="form-label">Password</h5>
                                                 <input type="password" class="form-control" id="logPassword" value={formState.password} onChange={e => setFormState({ ...formState, password: e.target.value })} />
                                             </div>
+                                                <p className="login-fail"></p>
                                             <div className="modal-footer">
                                                 {userData.username ? (
                                                     <>
