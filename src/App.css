@@ -484,7 +484,7 @@ justify-content: space-between;
 }
 .question{
   font-size: 24px;
-  margin: 0 0 10px;
+  margin: 0 0 10px 40px;
 }
 
 .coverBlackBar{
@@ -495,6 +495,7 @@ justify-content: space-between;
   bottom: 0px;
 }
 .statfont{
+  display:flex;
   margin: 0;
   font-size: 24px;
 }
@@ -667,7 +668,7 @@ height: 20vh;
   width: 800px;
 }
 .attackList{
-  margin: 0 240px 0 200px;
+  margin: 0 200px 0 200px;
   display: flex;
   flex-direction: column;
 }
@@ -948,15 +949,12 @@ visibility: visible;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 90%;
-  margin: 0 60px 10px;
+  margin: 0 auto;
 }
 .statfont{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   font-size: 18px;
-  width: 50%;
 }
 #statBtn{
   height: 150px;
@@ -1283,7 +1281,7 @@ display: block;
 }
 .question{
   font-size: 24px;
-  margin: 0;
+  margin: 0 40px;
 }
 .iconhover{
   display: none;
