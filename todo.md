@@ -25,3 +25,7 @@ rip
 or we could just remove it so we don't have to deal with another asynchronous get request
 
 # we need a favicon
+
+# add more questions to quiz heal and quiz attack
+
+# buff joe hp 
