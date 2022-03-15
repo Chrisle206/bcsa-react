@@ -54,7 +54,7 @@ export default function Tavern() {
             <div className="mainContainer">
             <div className="topNavContainer">
                 <button className="logbutton"onClick={logout}>Logout</button>                   
-                    <h3 className="coinContainer"> <img className="coinImg" src={coins} alt="Coins" /> 200</h3>
+                    {/* <h3 className="coinContainer"> <img className="coinImg" src={coins} alt="Coins" /> 200</h3> */}
                 </div>
                 <div className="widthContainer">
                     <h1 className="TavernTitle">Tavern<img className="TavernBeer" src={beer} alt="Beer" /></h1>
