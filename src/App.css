@@ -163,6 +163,22 @@
 .diedBtn:hover{
 
 }
+.deadcontainer{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+  height: 70vh;
+  background: url('./assets/images/campfire2.gif') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.4);
+  background-blend-mode: multiply;
+  z-index: 1;
+}
 /* pixelated borders */
 
 .pixel-border {
@@ -285,12 +301,14 @@
   font-size: 32px;
   opacity: 0.7;
   background-color: #000000;
-  height: 180px;
-  width: 220px;
+  height: 170px;
+  width: 190px;
   --pixel: .2rem;
 }
 .TavernMenuCard:hover{
   background: url('./assets/images/magic3.gif') no-repeat center center;
+  background-color: black;
+  background-size: 120%;
   opacity: 1;
   --pixel-border-2: goldenrod;
   cursor: pointer; 
@@ -478,7 +496,7 @@ justify-content: space-between;
 }
 .statfontbig{
   margin: 0 0 10px 0;
-  font-size: 24px;
+  font-size: 18px;
 }
 
 /* Battle Page */
@@ -622,7 +640,6 @@ height: 20vh;
 }
 
 .healthcontainer{
-  border: solid white 2px;
   background-color: white;
   width: 100%;
   height: 20px;
@@ -883,12 +900,20 @@ visibility: visible;
   font-size: 24px;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  width: 90%;
   margin: 0 60px 10px;
+}
+.statfont{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 18px;
+  width: 50%;
 }
 .plus{
   font-size: 24px;
-  margin: 0 0 0 30px;
+  margin: auto;
   color: white;
   padding: 0;
   border: none;
@@ -1048,7 +1073,7 @@ visibility: visible;
 .description{
   font-size: 18px;
   max-width: 80vw;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 .PlayCard{
   font-size: 24px;
@@ -1074,6 +1099,9 @@ visibility: visible;
 }
 .TavernBeer{
   width:32px;
+}
+.TavernTitle{
+  margin-top: 40px;
 }
 .TavernMenuContainer{
   max-width: 65vw;
@@ -1122,9 +1150,6 @@ margin: 40px auto;
   margin: 0;
 }
 .statbottom{
-  font-size: 18px;
-}
-.stats{
   font-size: 18px;
 }
 .shopitem{
@@ -1205,18 +1230,19 @@ display: block;
 .creationTitle{
   font-size: 32px;
 }
-.stats{
-  margin: 0;
-}
-.statfont{
-  font-size: 18px;
-}
+
 /* Loading */
 .loading{
   font-size: 32px;
 }
 .died{
   font-size: 48px;
+}
+.description{
+  margin: 0 0 30px;
+}
+.deadcontainer{
+  height: 100vh;
 }
 
 /* end */
