@@ -24,6 +24,7 @@ export default function Dead() {
     }
     return (
         <div className="pageContainer creationBg">
+        <div className="deadcontainer">
             <h1 className='died'>You Died!</h1>
             <button className="diedBtn pixel-border">Continue</button>
             <div className="bottomNavContainer">
@@ -37,6 +38,7 @@ export default function Dead() {
                                 </>
                         )}                   
                     </> 
+            </div>
             </div>
         </div>
     )
