@@ -137,7 +137,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
         
         const myPercentage = myHealth / 10
 
-        console.log(enemy.hp / 8)
+        console.log(myHealth)
         if (enemyHealth === enemy.hp) {
             enemyHpBar = {
                 backgroundColor: 'green',
@@ -158,35 +158,49 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                 width: `${enemyPercentage}%`,
                 height: '20px'
             }
-        } else if (enemyHealth < (enemy.hp / 4)) {
+        } else if (enemyHealth < (enemy.hp / 4) || enemyHealth <= 0) {
             console.log('enemy health is low')
             enemyHpBar = {
                 backgroundColor: 'red',
                 width: `${enemyPercentage}%`,
                 height: '20px'
             }
+        } else if (enemyHealth <= 0) {
+            console.log('I have fainted')
+            heroHpBar = {
+                backgroundColor: 'red',
+                width: `'0px'`,
+                height: '0px'
+            }
         }
 
         if (myHealth > (player.hp / 2)) {
-            console.log('enemy health is high')
+            console.log('my health is high')
             heroHpBar = {
                 backgroundColor: 'green',
                 width: `${myPercentage}`,
                 height: '20px'
             }
         } else if (myHealth > (player.hp / 4) && enemyHealth <(player.hp / 2)) {
-            console.log('enemy health is middle')
+            console.log('my health is middle')
             heroHpBar = {
                 backgroundColor: 'yellow',
                 width: `${myPercentage}`,
                 height: '20px'
             }
-        } else if (myHealth < (player.hp / 4)) {
-            console.log('enemy health is low')
+        } else if (myHealth < (player.hp / 4) && myHealth > 0) {
+            console.log('my health is low')
             heroHpBar = {
                 backgroundColor: 'red',
                 width: `'${myPercentage}%'`,
                 height: '20px'
+            }
+        } else if (myHealth <= 0) {
+            console.log('I have fainted')
+            heroHpBar = {
+                backgroundColor: 'red',
+                width: `'0px'`,
+                height: '0px'
             }
         }
         console.log('checking health...')
@@ -274,18 +288,23 @@ const moveEffect =() =>{
         switch (num) {
             case 1:
                 option1();
+                healthBar()
                 break;
             case 2:
                 option1();
+                healthBar()
                 break;
             case 3:
                 option1();
+                healthBar()
                 break;
             case 4:
                 option1();
+                healthBar()
                 break;
             case 5:
                 option2();
+                healthBar()
                 break;
             default:
                 setMainText(defaultQuestion);
@@ -366,6 +385,7 @@ const moveEffect =() =>{
         explosionFunction();
         hideAtkBtns();
         enemyIsALive();
+        healthBar()
     };
     ///////////////////////////////////////////
 
@@ -385,6 +405,7 @@ const moveEffect =() =>{
         }
         hideAtkBtns();
         enemyIsALive();
+        healthBar()
     };
     /////////////////////////////////////////// 
 
@@ -412,6 +433,7 @@ const moveEffect =() =>{
             explosionFunction();
             setEnemyHp((enemyHp + enemy.def) - (player.atk * 2));
             let dmg = ((enemyHp + enemy.def) - player.atk*2);
+            healthBar()
         if(dmg <= 0) {
             isLastHit = 1;
         }
@@ -446,6 +468,7 @@ const moveEffect =() =>{
             enemy.atk = enemy.atk/2;
             // heal function gif here
             heroHeal();
+            healthBar()
         } else {
             setMainText(`${player.name} dropped the potion`);
         }
