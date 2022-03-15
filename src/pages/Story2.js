@@ -8,7 +8,7 @@ import speakeron from '../assets/images/speaker-on.png'
 import speakeroff from '../assets/images/speaker-off.png'
 
 
-export default function Introduction() {
+export default function StoryTwo() {
     const [speaker, setStatus] = useState(false)
     const audioRef = useRef()
 
@@ -37,10 +37,10 @@ export default function Introduction() {
                 <div className="widthContainer">
                     <h1 className="TavernTitle">Long ago...</h1>
                     <div className='description'>
-                    <div className='line1'>Once upon a time, many cohorts ago…</div>
-                    <div className='line2'>A group of four ambitious students set out to create the ultimate coding bootcamp application…</div>
-                    <div className='line3'>Little did they know… the path ahead… would be fraught with danger.</div>
-                    <div className='line4'>Behold, the story of BCS Adventures!</div>
+                    <div className='line1'>The second evil TA peers up at you, weakly brandishing his skis...</div>
+                    <div className='line2'>"No more... please... you've freed me from his wrath... please... save the others..."</div>
+                    <div className='line3'>Brett gathers himself and then skis away... He looks happy as he speeds off into the distance.</div>
+                    <div className='line4'>You press on, but detect an even greater evil not far from here...</div>
                     </div>
                     <div className="TavernMenuContainer">
                         <Link to={'/Battle'} style={{textDecoration: 'none', color: 'inherit'}} className="PlayCard pixel-border">Continue<img className="PlayButton" src={play} alt="Story" /></Link>
@@ -62,4 +62,4 @@ export default function Introduction() {
             </div>
         </div>
     )
-}
+};

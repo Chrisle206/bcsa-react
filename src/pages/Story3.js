@@ -8,7 +8,7 @@ import speakeron from '../assets/images/speaker-on.png'
 import speakeroff from '../assets/images/speaker-off.png'
 
 
-export default function Introduction() {
+export default function StoryThree() {
     const [speaker, setStatus] = useState(false)
     const audioRef = useRef()
 
@@ -37,10 +37,11 @@ export default function Introduction() {
                 <div className="widthContainer">
                     <h1 className="TavernTitle">Long ago...</h1>
                     <div className='description'>
-                    <div className='line1'>Once upon a time, many cohorts ago…</div>
-                    <div className='line2'>A group of four ambitious students set out to create the ultimate coding bootcamp application…</div>
-                    <div className='line3'>Little did they know… the path ahead… would be fraught with danger.</div>
-                    <div className='line4'>Behold, the story of BCS Adventures!</div>
+                    <div className='line1'>Frantz smiles at you, looking unbothered by his defeat.</div>
+                    <div className='line2'>"You've done well, but it's about to get a lot harder from here..."</div>
+                    <div className='line3'>Frantz seems contemplative as he coolly walks away, his mind evidently on other matters now...</div>
+                    <div className='line4'>You seem to be nearing the end of your journey, but a presence more powerful than you've ever felt seems to lie ahead...</div>
+                    <div className='line5'>As you draw near, you begin to hear cats meowing... There is the faint but familiar voice of a certain manatee enthusiast around the corner...</div>
                     </div>
                     <div className="TavernMenuContainer">
                         <Link to={'/Battle'} style={{textDecoration: 'none', color: 'inherit'}} className="PlayCard pixel-border">Continue<img className="PlayButton" src={play} alt="Story" /></Link>
@@ -62,4 +63,4 @@ export default function Introduction() {
             </div>
         </div>
     )
-}
+};
