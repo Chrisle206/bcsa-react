@@ -53,4 +53,4 @@ const editCharacter = async (sendToAPI)=>{
     }
 };
   
-  module.exports = editCharacter;
+export default editCharacter;

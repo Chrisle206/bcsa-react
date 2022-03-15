@@ -43,7 +43,7 @@ export default function StoryTwo() {
                     <div className='line4'>You press on, but detect an even greater evil not far from here...</div>
                     </div>
                     <div className="TavernMenuContainer">
-                        <Link to={'/Battle'} style={{textDecoration: 'none', color: 'inherit'}} className="PlayCard pixel-border">Continue<img className="PlayButton" src={play} alt="Story" /></Link>
+                        <Link to={'/BattleF'} style={{textDecoration: 'none', color: 'inherit'}} className="PlayCard pixel-border">Continue<img className="PlayButton" src={play} alt="Story" /></Link>
 
                     </div>
                 </div>

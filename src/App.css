@@ -138,6 +138,10 @@
 .logbutton:hover{
   opacity: 1;
 }
+
+.start {
+  margin: auto;
+}
 /*Loading CSS*/
 .loading {
   font-size: 75px;
