@@ -17,11 +17,13 @@ import heal1 from '../assets/images/heal1.png'
 import explosion from '../assets/images/explosion.gif'
 import healgif from '../assets/images/heal.gif'
 import getCharacter from '../Javascript/getCharacter.js';
+import getEnemy from '../Javascript/getEnemy.js'
 import LoadingScreen from './Loading'
 
 var isLastHit = 0;
 var delayInMilliseconds = 3000;
 var bool = 2;
+var boss = 3;
 let enemyHpBar= {
     backgroundColor: 'green',
     width: '100%',
@@ -33,6 +35,15 @@ let heroHpBar= {
     height: '20px'
 }
 export default function Battle() {
+
+    function startBat() {
+        document.getElementById('start').classList.add('hide');
+        setHeroHp(player.hp);
+        console.log('starting...')
+        setMainText(introEnemy);
+
+        intro()
+    }
     // console.log(data);
 
     const [loading, isLoading] = useState(true)
@@ -53,7 +64,20 @@ useEffect(() => {
     });
 },[]);
 
+const [enemyData, setenemyData] = useState(
+    []
+);
+
+useEffect(() => {
+getEnemy().then(function (result) {
+    console.log(result);
+    setenemyData(result)
+    return;
+});
+},[]);
+
 const { characterName, characterClass, currency, def, exp, hp, level, items, atk, image } = charData;
+const arr = enemyData;
 
     const [currChar, setCurrChar] = useState();
 
@@ -105,9 +129,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
         }
 
     }
-
-    // Create unique characters using the "character" constructor
-    const enemy = new Character(["Console Crash",
+    let             enemy = new Character(["Console Crash",
     "null",
     "undefined"],
         'Frantz',
@@ -116,6 +138,8 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
         200,
         20
     );
+
+
     const idles = ['insert idle'];
     const taunts = [ "insert taunt"]
     const atks = ["insert attack"];
@@ -266,12 +290,6 @@ const moveEffect =() =>{
 } 
 ///////////////////////////////////////////////////////
 
-    function startBat() {
-        console.log('starting...')
-        setMainText(introEnemy);
-
-        intro()
-    }
 
     function intro() {
         setTimeout(function () { 
@@ -279,19 +297,8 @@ const moveEffect =() =>{
         showAtkBtns();
         setMainText(defaultQuestion);
          }, 4000)
+        }
     
-    }
-    function refresh() {
-        setHeroHp(player.hp);
-    }
-
-    useEffect(() => {
-        refresh()
-    })
-
-    useEffect(() => {
-        startBat()
-    }, [])
 
     // Enemy's turn, 20% chance to idle, 80% chance to attack
     const enemyTurn = () => {
@@ -383,6 +390,7 @@ const moveEffect =() =>{
                 <button className='attack' id='start' onClick={intro}>Start</button>
             }
     }
+
     /////////////////////////////////////////// ATTACK1 FUNCTIONALITY
     const atk1 = () => {
         let dmg = ((enemyHp + enemy.def) - player.atk);
@@ -478,12 +486,13 @@ const moveEffect =() =>{
             // heal function gif here
             heroHeal();
             healthBar()
+            option2();
         } else {
             setMainText(`${player.name} dropped the potion`);
+            option1();
         }
         bool = 2;
         addElements2();
-        option2();
     }
     ///////////////////////////////////////////
 
@@ -610,7 +619,7 @@ const moveEffect =() =>{
                             <button className="attack hide" id='hT1' onClick={quiz2False}>False</button>
                         </div>
                         <div className="attackRow2">
-                            <button className="attack" id='startBtn'>Start </button>
+                            <button className='attack' id='start' onClick={startBat}>Start</button>
                             <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'white'}} className="attack hide" id='backBtn'>Back </Link>
                             <button className="attack hide" id='contBtn'>Continue</button>
                         </div>
