@@ -933,8 +933,49 @@ visibility: visible;
   border: solid green 2px;
   cursor: pointer;
 }
+.rotate{
+  display: none;
+}
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1024px) and (orientation:portrait) {
+  .rotate{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+    background-color: black;
+    overflow: hidden;
+    color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    animation: grow-and-shrink3 2000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+
+}
+@keyframes grow-and-shrink3 {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+  }
+  .mainContainer{
+    display: none;
+  }
+}
+@media screen and (max-width: 1024px) and (orientation:landscape) {
+  .rotate{
+    display: none;
+  }
   .topNavContainer{
     position: fixed;
     justify-content: flex-end;
