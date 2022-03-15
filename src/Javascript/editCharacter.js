@@ -1,13 +1,11 @@
 //Logic for updating character's currency/exp upon victory, stats upon level up, and updating the react state to reflect those changes.
-const editCharacter = async ()=>{
+const editCharacter = async (sendToAPI)=>{
 
     const token = localStorage.getItem("token");
     const characterId = localStorage.getItem("characterId");
 
     //State for handling a user's character's data, used for saving stats in state for easy access
-    const [charData, setcharData] = useState({
-        characterName: "",
-    });
+
 
     //Character edits go here
     // var sendToAPI = {

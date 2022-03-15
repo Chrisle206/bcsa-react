@@ -1,14 +1,14 @@
-const getEnemy = async ()=>{
+const getEnemy = async (id)=>{
     const token = localStorage.getItem("token");
     //Replace 'null' with whatever is grabbing the input for the request. You can get enemy ID's by going to https://bcsa-api.herokuapp.com/api/enemies
-
+    
         //State for handling an enemy's data, used for saving stats in state for easy access
         // const [enemyData, setenemyData] = useState({
         //     enemyName: "",
         // });
     
   
-    const response = await fetch(`https://bcsa-api.herokuapp.com/api/enemies`, {
+    const response = await fetch(`https://bcsa-api.herokuapp.com/api/enemy/${id}`, {
         method: "GET",
         headers: {
           "Content-Type":"application/json",
