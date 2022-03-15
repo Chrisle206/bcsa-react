@@ -181,7 +181,7 @@ const moveEffect =() =>{
             console.log('timeout')
         showAtkBtns();
         setMainText(defaultQuestion);
-         }, 8000)
+         }, 4000)
     
     }
 
