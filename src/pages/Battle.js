@@ -610,12 +610,8 @@ const moveEffect =() =>{
                             <button className="attack hide" id='hT1' onClick={quiz2False}>False</button>
                         </div>
                         <div className="attackRow2">
-<<<<<<< HEAD
                             <button className="attack" id='startBtn'>Start </button>
-                            <button className="attack hide" id='backBtn'>Back </button>
-=======
                             <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'white'}} className="attack hide" id='backBtn'>Back </Link>
->>>>>>> d2222e37a21c76d420d474ffe3694cf14462ea0a
                             <button className="attack hide" id='contBtn'>Continue</button>
                         </div>
                     </div>
