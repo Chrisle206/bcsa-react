@@ -29,6 +29,7 @@ export default function Introduction() {
     }
     return (
         <div className="pageContainer creationBg">
+            <div className='rotate'>Rotate to play</div>
             <div className="mainStartContainer mainIntroContainer">
                 <div className="topNavContainer">
                     <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'inherit'}} className="backbutton"><img className='backbuttonimg'src={back} alt="Back_Button" /> Back</Link>                    
@@ -36,7 +37,11 @@ export default function Introduction() {
                 <div className="widthContainer">
                     <h1 className="TavernTitle">Long ago...</h1>
                     <div className='description'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dapibus in erat eu vestibulum. Donec id arcu erat. Nulla viverra semper arcu, tincidunt sodales lorem vestibulum id. Sed fringilla tincidunt mollis. Suspendisse quis metus facilisis, ultricies orci ac, fringilla eros. Aliquam aliquam lectus felis, vehicula sollicitudin nisi consectetur sed. Pellentesque dui tortor, faucibus id leo vel, blandit aliquet nibh.
+                    <div className='line1'>Line fades in, fades out, next line fades in, etc.</div>
+                    <div className='line2'>Once upon a time, many cohorts ago…</div>
+                    <div className='line3'>A group of four ambitious students set out to create the ultimate coding bootcamp application…</div>
+                    <div className='line4'>Little did they know… the path ahead… would be fraught with danger.</div>
+                    <div className='line5'>Behold, the story of BCS Adventures</div>
                     </div>
                     <div className="TavernMenuContainer">
                         <Link to={'/Battle'} style={{textDecoration: 'none', color: 'inherit'}} className="PlayCard pixel-border">Continue<img className="PlayButton" src={play} alt="Story" /></Link>

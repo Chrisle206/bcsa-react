@@ -136,7 +136,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
         
         const myPercentage = myHealth / 10
 
-        console.log(enemy.hp / 8)
+        console.log(myPercentage)
         if (enemyHealth === enemy.hp) {
             enemyHpBar = {
                 backgroundColor: 'green',
@@ -157,35 +157,55 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                 width: `${enemyPercentage}%`,
                 height: '20px'
             }
-        } else if (enemyHealth < (enemy.hp / 4)) {
+        } else if (enemyHealth < (enemy.hp / 4) || enemyHealth <= 0) {
             console.log('enemy health is low')
             enemyHpBar = {
                 backgroundColor: 'red',
                 width: `${enemyPercentage}%`,
                 height: '20px'
             }
+        } else if (enemyHealth <= 0) {
+            console.log('I have fainted')
+            heroHpBar = {
+                backgroundColor: 'red',
+                width: `'0px'`,
+                height: '0px'
+            }
         }
 
-        if (myHealth > (player.hp / 2)) {
-            console.log('enemy health is high')
+        if (enemyHealth === enemy.hp) {
+            enemyHpBar = {
+                backgroundColor: 'green',
+                width: `100%`,
+                height: '20px'
+            }
+        } else if (myHealth > (player.hp / 2)) {
+            console.log('my health is high')
             heroHpBar = {
                 backgroundColor: 'green',
-                width: `${myPercentage}`,
+                width: `${myPercentage}%`,
                 height: '20px'
             }
         } else if (myHealth > (player.hp / 4) && enemyHealth <(player.hp / 2)) {
-            console.log('enemy health is middle')
+            console.log('my health is middle')
             heroHpBar = {
                 backgroundColor: 'yellow',
-                width: `${myPercentage}`,
+                width: `${myPercentage}%`,
                 height: '20px'
             }
-        } else if (myHealth < (player.hp / 4)) {
-            console.log('enemy health is low')
+        } else if (myHealth < (player.hp / 4) && myHealth > 0) {
+            console.log('my health is low')
             heroHpBar = {
                 backgroundColor: 'red',
                 width: `'${myPercentage}%'`,
                 height: '20px'
+            }
+        } else if (myHealth <= 0) {
+            console.log('I have fainted')
+            heroHpBar = {
+                backgroundColor: 'red',
+                width: `'0px'`,
+                height: '0px'
             }
         }
         console.log('checking health...')
@@ -307,6 +327,7 @@ const moveEffect =() =>{
                 setMainText(defaultQuestion);
                 showAtkBtns();
                 enemy.atk = enemyAtk;
+                healthBar()
             }, 1000);
             // here goes hero explosion
             moveEffect();;
@@ -317,6 +338,7 @@ const moveEffect =() =>{
             setTimeout(function () {
                 setHeroHp(heroHp + (player.def - enemy.atk));
                 setMainText(taunt);
+                healthBar()
             }, 1000);
             //heroexplosion
             moveEffect();
@@ -333,6 +355,7 @@ const moveEffect =() =>{
         let idle = idles[Math.floor(Math.random() * idles.length)];
                 setTimeout(function () {
                     setMainText(idle);
+                    healthBar()
                 }, 1000);
                 setTimeout(function () {
                     setMainText(defaultQuestion);
@@ -371,6 +394,7 @@ const moveEffect =() =>{
         explosionFunction();
         hideAtkBtns();
         enemyIsALive();
+        healthBar()
     };
     ///////////////////////////////////////////
 
@@ -390,6 +414,7 @@ const moveEffect =() =>{
         }
         hideAtkBtns();
         enemyIsALive();
+        healthBar()
     };
     /////////////////////////////////////////// 
 
@@ -417,6 +442,7 @@ const moveEffect =() =>{
             explosionFunction();
             setEnemyHp((enemyHp + enemy.def) - (player.atk * 2));
             let dmg = ((enemyHp + enemy.def) - player.atk*2);
+            healthBar()
         if(dmg <= 0) {
             isLastHit = 1;
         }
@@ -451,6 +477,7 @@ const moveEffect =() =>{
             enemy.atk = enemy.atk/2;
             // heal function gif here
             heroHeal();
+            healthBar()
         } else {
             setMainText(`${player.name} dropped the potion`);
         }
@@ -510,6 +537,7 @@ const moveEffect =() =>{
         <>
     {loading === false ? (
         <div className="pageContainer creationBg">
+            <div className='rotate'>Rotate to play</div>
             <div className="MainBattleContainer">
             <div className="topNavContainer">
                     {/* TODO: When battle is over, display a continue button. During battle display escape option, which prompts user that battle will not have rewards.*/}
@@ -582,8 +610,12 @@ const moveEffect =() =>{
                             <button className="attack hide" id='hT1' onClick={quiz2False}>False</button>
                         </div>
                         <div className="attackRow2">
+<<<<<<< HEAD
                             <button className="attack" id='startBtn'>Start </button>
                             <button className="attack hide" id='backBtn'>Back </button>
+=======
+                            <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'white'}} className="attack hide" id='backBtn'>Back </Link>
+>>>>>>> d2222e37a21c76d420d474ffe3694cf14462ea0a
                             <button className="attack hide" id='contBtn'>Continue</button>
                         </div>
                     </div>

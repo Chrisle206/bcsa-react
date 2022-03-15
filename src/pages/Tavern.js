@@ -49,6 +49,8 @@ export default function Tavern() {
     return (
         
         <div className="pageContainer creationBg">
+            <div className='rotate'>Rotate to play</div>
+
             <div className="mainContainer">
             <div className="topNavContainer">
                 <button className="logbutton"onClick={logout}>Logout</button>                   
@@ -60,13 +62,12 @@ export default function Tavern() {
                         <Link to={'/character'} style={{textDecoration: 'none', color: 'inherit'}} className="TavernMenuCard pixel-border charCard"><img className="TavernMenuItem" src={charIcon} alt="Character" />Character <h2 className="chardesc">View your character, update your stats, and shop for items.</h2></Link>
                         <Link to={'/Introduction'} style={{textDecoration: 'none', color: 'inherit'}} className="TavernMenuCard pixel-border storyCard"><img className="TavernMenuItem" src={book} alt="Story" />Story <h2 className='storydesc'>Take on a gauntlet of bosses and try to reach the end!</h2></Link>
                         <div className="TavernMenuCard pixel-border dungeonCard"><img className="TavernMenuItem" src={cage} alt="Dungeon" />Dungeon <h2 className='dungeondesc'>Face random enemies and grind for currency and exp!</h2></div>
-                    </div>
                 </div>
                 <div className="bottomNavContainer">
                     <>
                         <audio autoPlay loop ref={audioRef} src={track}/>
                         {speaker ? (
-                                <button onClick={volOn} className="backbutton"><img className='soundbuttonimg'src={speakeroff} alt="speaker" /></button>                    
+                            <button onClick={volOn} className="backbutton"><img className='soundbuttonimg'src={speakeroff} alt="speaker" /></button>                    
                             ) : (
                                 <>
                                 <button onClick={volOff} className="backbutton"><img className='soundbuttonimg'src={speakeron} alt="speaker" /></button> 
@@ -76,6 +77,7 @@ export default function Tavern() {
                 </div>
             </div>
             
+                        </div>
         </div>
     )
 }
