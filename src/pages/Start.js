@@ -93,10 +93,21 @@ export default function Start() {
               id:newUser._id,
             })
     };
+
+       //Logout should redirect to Start page
+       const logout = () =>{
+        localStorage.removeItem("token");
+        localStorage.removeItem("characterId");
+        localStorage.removeItem("id");
+        localStorage.removeItem("username");
+        setToken("");
+        document.location.replace('/');
+    }
     
 
     return (
         <div className="pageContainer creationBg">
+            <div className='rotate'>Rotate to play</div>
             <div className="mainStartContainer">
                 <div className="logNavCont">
                     <h3 className="logContainer">
@@ -105,9 +116,14 @@ export default function Start() {
                         <Link to={'./Signup'} style={{ textDecoration: 'none', color: 'inherit' }} className='logbutton pixel-border'>Signup</Link> */}
 
                         {/* Login Button */}
+                        {userData.username ? (
+                            <>  <button className="logbutton"onClick={logout}>Logout</button>    </>
+                         ) :
+                                                    <>
                         <button type="button" className="logbutton" data-bs-toggle="modal" data-bs-target="#loginModal">
                             Login
                         </button>
+                                                    </>}
                         <div className="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
                             <div className="modal-dialog">
                                 <div className="modal-content">
@@ -141,10 +157,15 @@ export default function Start() {
                                 </div>
                             </div>
                         </div>
+                        {userData.username ? (
+                            <></>
+                         ) :
+                                                    <>
                         {/* Signup Button */}
                         <button type="button" className="logbutton" data-bs-toggle="modal" data-bs-target="#signupModal">
                             Signup
                         </button>
+                                                    </>}
                         <div className="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
                             <div className="modal-dialog">
                                 <div className="modal-content">

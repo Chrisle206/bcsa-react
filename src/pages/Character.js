@@ -445,6 +445,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
         {loading === false ? (
 
         <div className="pageContainer creationBg">
+            <div className='rotate'>Rotate to play</div>
             <div className="mainCharContainer">
                 <div className="topNavContainer">
                     <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'white'}} className="backbutton"><img className='backbuttonimg' src={back} alt="Back_Button" /> Back</Link>
@@ -484,7 +485,7 @@ const { characterName, characterClass, currency, def, exp, hp, level, items, atk
                             Shop
                         </h1>
                         <div className='shoprow'>
-                            <button className='shopitem' onClick={currentItem}><img className="itemimg" src={flask} alt="Flask" />
+                            <button className='shopitem bought' onClick={currentItem}><img className="itemimg" src={flask} alt="Flask" />
                                 <div className='itemdescbox pixel-border'>
                                     <div className='textbox'>
                                         <h4 id='shopitem1'>Potion of Postponement</h4>

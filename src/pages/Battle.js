@@ -505,6 +505,7 @@ const moveEffect =() =>{
         <>
     {loading === false ? (
         <div className="pageContainer creationBg">
+            <div className='rotate'>Rotate to play</div>
             <div className="MainBattleContainer">
             <div className="topNavContainer">
                     {/* TODO: When battle is over, display a continue button. During battle display escape option, which prompts user that battle will not have rewards.*/}
