@@ -35,7 +35,7 @@ export default function StoryOne() {
                     <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'inherit'}} className="backbutton"><img className='backbuttonimg'src={back} alt="Back_Button" /> Back</Link>                    
                 </div>
                 <div className="widthContainer">
-                    <h1 className="TavernTitle">Long ago...</h1>
+                    <h1 className="TavernTitle">Louis Defeated...</h1>
                     <div className='description'>
                     <div className='line1'>Louis, the first evil TA to be felled, seems to bid you well as he retreats into the darkness...</div>
                     <div className='line2'>"Good luck... you're gonna need it."</div>

@@ -35,7 +35,7 @@ export default function StoryTwo() {
                     <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'inherit'}} className="backbutton"><img className='backbuttonimg'src={back} alt="Back_Button" /> Back</Link>                    
                 </div>
                 <div className="widthContainer">
-                    <h1 className="TavernTitle">Long ago...</h1>
+                    <h1 className="TavernTitle">Brett Defeated...</h1>
                     <div className='description'>
                     <div className='line1'>The second evil TA peers up at you, weakly brandishing his skis...</div>
                     <div className='line2'>"No more... please... you've freed me from his wrath... please... save the others..."</div>

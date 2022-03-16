@@ -5,7 +5,7 @@ import song from '../assets/sounds/battle.mp3'
 import back from '../assets/images/back.png'
 import speakeron from '../assets/images/speaker-on.png'
 import speakeroff from '../assets/images/speaker-off.png'
-import enemyPic from '../assets/images/characters/brett.png'
+import enemyPic from '../assets/images/characters/joefinal.png'
 import Warrior from '../assets/images/characters/warrior.png'
 import Assassin from '../assets/images/characters/assassin.png'
 import Master from '../assets/images/characters/routeMaster.png'
@@ -40,9 +40,9 @@ export default function Battle() {
         sendToAPI = {
             currency: currency + currEnemy.hp
         }
-
+        
     }
-
+    
     var isLastHit = 0;
     var iLive = 0;
     // console.log(data);
@@ -70,7 +70,7 @@ export default function Battle() {
     );
     let currEnemy = enemyData;
     useEffect(() => {
-        getEnemy('6231062ccd3d032403dd3659').then(function (result) {
+        getEnemy('6231062ccd3d032403dd365d').then(function (result) {
             console.log(result);
             setenemyData(result)
             return;
@@ -190,7 +190,7 @@ export default function Battle() {
                 width: `'0px'`,
                 height: '0px'
             }
-        }
+        } 
 
         if (heroHp >= player.hp) {
             heroHpBar = {
@@ -226,7 +226,7 @@ export default function Battle() {
     }
 
 
-    healthBar();
+        healthBar();
 
     const questions = ["Snake-case is the preferred case style when naming databases.", "MongoDB stores data records as BSON documents."];
     let defaultQuestion = "What is your next move?"
@@ -245,9 +245,9 @@ export default function Battle() {
     const showExplosion = () => {
         explosionEffect.classList.remove("explosion1");
         moveEffect();
-
-        healthBar()
-
+       
+            healthBar()
+        
     }
     const explosionFunction = () => {
         showExplosion();
@@ -261,8 +261,8 @@ export default function Battle() {
     }
     const showExplosion2 = () => {
         explosionEffect2.classList.remove("explosion1");
-
-        healthBar()
+        
+            healthBar()
     }
     const heroExplosion = () => {
         showExplosion2();
@@ -359,27 +359,27 @@ export default function Battle() {
                 document.getElementById('contBtn').classList.remove('hide');
             }, 1500);
         } else {
-            let enemyMove = currEnemy.attacks[Math.floor(Math.random() * currEnemy.attacks.length)];
-            let taunt = currEnemy.taunts[Math.floor(Math.random() * currEnemy.taunts.length)];
+        let enemyMove = currEnemy.attacks[Math.floor(Math.random() * currEnemy.attacks.length)];
+        let taunt = currEnemy.taunts[Math.floor(Math.random() * currEnemy.taunts.length)];
+        setTimeout(function () {
+            setMainText(`${currEnemy.enemyName} attacked with ${enemyMove} and dealt ${enemyAtk - player.def}!`);
+            heroExplosion();
+            setHeroHp(heroHp + (player.def - currEnemy.atk));
             setTimeout(function () {
-                setMainText(`${currEnemy.enemyName} attacked with ${enemyMove} and dealt ${enemyAtk - player.def}!`);
-                heroExplosion();
-                setHeroHp(heroHp + (player.def - currEnemy.atk));
-                setTimeout(function () {
 
-                }, 0);
-            }, 2000);
-            setTimeout(function () {
-                setMainText(taunt);
+        }, 0);
+        }, 2000);
+        setTimeout(function () {
+            setMainText(taunt);
 
-            }, 4000)
+        }, 4000)
 
-            setTimeout(function () {
-                setMainText(defaultQuestion);
-                showAtkBtns();
-                currEnemy.atk = enemyAtk;
-            }, 6000);
-        }
+        setTimeout(function () {
+            setMainText(defaultQuestion);
+            showAtkBtns();
+            currEnemy.atk = enemyAtk;
+        }, 6000);
+    }
     }
 
 
@@ -431,7 +431,7 @@ export default function Battle() {
         explosionFunction();
         hideAtkBtns();
         enemyIsALive();
-
+        
     };
     ///////////////////////////////////////////
 
@@ -648,10 +648,7 @@ export default function Battle() {
                                 <div className="attackRow2">
                                     <button className='attack start' id='start' onClick={startBat}>Begin Battle</button>
                                     <Link to={'/Tavern'} style={{ textDecoration: 'none', color: 'white' }} onClick={apiSend} className="attack hide" id='backBtn'>Back </Link>
-                                    <Link to={'/Story2'} style={{ textDecoration: 'none', color: 'white' }} onClick={apiSend} className="attack hide" id='contBtn' >Continue</Link>
-
-
-
+                                    <Link to={'/Dead'} style={{ textDecoration: 'none', color: 'white' }} onClick={apiSend}className="attack hide" id='contBtn' >Continue</Link>
 
                                 </div>
                             </div>
