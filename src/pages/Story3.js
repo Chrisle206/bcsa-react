@@ -35,7 +35,7 @@ export default function StoryThree() {
                     <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'inherit'}} className="backbutton"><img className='backbuttonimg'src={back} alt="Back_Button" /> Back</Link>                    
                 </div>
                 <div className="widthContainer">
-                    <h1 className="TavernTitle">Frantz Defeated...</h1>
+                    <h1 className="joetitle">Frantz Defeated...</h1>
                     <div className='description'>
                     <div className='line1'>Frantz smiles at you, looking unbothered by his defeat.</div>
                     <div className='line2'>"You've done well, but it's about to get a lot harder from here..."</div>
@@ -43,10 +43,8 @@ export default function StoryThree() {
                     <div className='line4'>You seem to be nearing the end of your journey, but a presence more powerful than you've ever felt seems to lie ahead...</div>
                     <div className='line5'>As you draw near, you begin to hear cats meowing... There is the faint but familiar voice of a certain manatee enthusiast around the corner...</div>
                     </div>
-                    <div className="TavernMenuContainer">
-                        <Link to={'/BattleJ'} style={{textDecoration: 'none', color: 'inherit'}} className="PlayCard pixel-border">Continue<img className="PlayButton" src={play} alt="Story" /></Link>
-
-                    </div>
+                    
+                        <Link to={'/BattleJ'} style={{textDecoration: 'none', color: 'inherit'}} className="contbutton">Continue</Link>
                 </div>
                 <div className="bottomNavContainer">
                 <>

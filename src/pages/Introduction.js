@@ -35,17 +35,17 @@ export default function Introduction() {
                     <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'inherit'}} className="backbutton"><img className='backbuttonimg'src={back} alt="Back_Button" /> Back</Link>                    
                 </div>
                 <div className="widthContainer">
-                    <h1 className="TavernTitle">Long ago...</h1>
+                    <h1 className="joetitle">Long ago...</h1>
                     <div className='description'>
                     <div className='line1'>Once upon a time, many cohorts ago…</div>
                     <div className='line2'>A group of four ambitious students set out to create the ultimate coding bootcamp application…</div>
                     <div className='line3'>Little did they know… the path ahead… would be fraught with danger.</div>
                     <div className='line4'>Behold, the story of BCS Adventures!</div>
                     </div>
-                    <div className="TavernMenuContainer">
-                        <Link to={'/Battle'} style={{textDecoration: 'none', color: 'inherit'}} className="PlayCard pixel-border">Continue<img className="PlayButton" src={play} alt="Story" /></Link>
+ 
+                        <Link to={'/Battle'} style={{textDecoration: 'none', color: 'inherit'}} className="contbutton">Continue</Link>
 
-                    </div>
+                   
                 </div>
                 <div className="bottomNavContainer">
                 <>

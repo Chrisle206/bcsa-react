@@ -35,17 +35,17 @@ export default function StoryTwo() {
                     <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'inherit'}} className="backbutton"><img className='backbuttonimg'src={back} alt="Back_Button" /> Back</Link>                    
                 </div>
                 <div className="widthContainer">
-                    <h1 className="TavernTitle">Brett Defeated...</h1>
+                    <h1 className="joetitle">Brett Defeated...</h1>
                     <div className='description'>
                     <div className='line1'>The second evil TA peers up at you, weakly brandishing his skis...</div>
                     <div className='line2'>"No more... please... you've freed me from his wrath... please... save the others..."</div>
                     <div className='line3'>Brett gathers himself and then skis away... He looks happy as he speeds off into the distance.</div>
                     <div className='line4'>You press on, but detect an even greater evil not far from here...</div>
                     </div>
-                    <div className="TavernMenuContainer">
-                        <Link to={'/BattleF'} style={{textDecoration: 'none', color: 'inherit'}} className="PlayCard pixel-border">Continue<img className="PlayButton" src={play} alt="Story" /></Link>
 
-                    </div>
+                        <Link to={'/BattleF'} style={{textDecoration: 'none', color: 'inherit'}} className="contbutton">Continue</Link>
+
+               
                 </div>
                 <div className="bottomNavContainer">
                 <>
