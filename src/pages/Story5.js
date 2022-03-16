@@ -32,20 +32,21 @@ export default function StoryFour() {
     return (
         <div className="pageContainer creationBg">
             <div className='rotate'>Rotate to play</div>
-            <div className="mainStartContainer mainIntroContainer">
+            <div className="mainStartContainer mainIntroContainer3">
                 <div className="topNavContainer">
                     <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'inherit'}} className="backbutton"><img className='backbuttonimg'src={back} alt="Back_Button" /> Back</Link>                    
                 </div>
                 <div className="widthContainer">
-                    <h1 className="TavernTitle">Joe Reborn! Joins The Battle!</h1>
+                    <h1 className="joetitle">Joe Reborn! Joins The Battle!</h1>
                     <div className='description'>
                     <div className='line1'>"...You may have killed my mortal person"</div>
                     <div className='line2'>But you shall soon know,</div>
                     <div className='line3'>My code spirit is immortal!</div>
-                    <img className='line4' src={joefinal}/>
+                    <Link to={'/BattleJ2'} style={{textDecoration: 'none', color: 'inherit'}} ><img className='line4 joe' src={joefinal}/></Link>
+                    
                     </div>
                     <div className="TavernMenuContainer">
-                        <Link to={'/BattleJ2'} style={{textDecoration: 'none', color: 'inherit'}} className="PlayCard pixel-border">Continue<img className="PlayButton" src={play} alt="Story" /></Link>
+                        <Link to={'/BattleJ2'} style={{textDecoration: 'none', color: 'inherit'}} className="logbutton">Continue</Link>
 
                     </div>
                 </div>
