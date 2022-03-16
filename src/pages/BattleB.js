@@ -580,7 +580,7 @@ export default function Battle() {
                                         <>
                 <div className="pageContainer creationBg">
                     <div className='rotate'>Rotate to play</div>
-                    <div className="MainBattleContainer">
+                    <div className="MainBattleContainer2">
                         <div className="topNavContainer">
                             {/* TODO: When battle is over, display a continue button. During battle display escape option, which prompts user that battle will not have rewards.*/}
                             <Link to='/Tavern' style={{ textDecoration: 'none', color: 'white' }} className="backbutton"><img className='backbuttonimg' src={back} alt="Back_Button" /> Back</Link>
