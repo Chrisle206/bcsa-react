@@ -17,6 +17,9 @@ import getCharacter from '../Javascript/getCharacter.js'
 
 let choice;
 let chosenChar;
+var newHp;
+var newAtk;
+var newDef;
 
 let values = [
     { id: 'assassin', val: 0 },
@@ -41,7 +44,6 @@ export default function Creation() {
 
 
     var sendToAPI = {};
-
     const character = characters[Math.floor(Math.random() * characters.length)]
 
     const questions = [
@@ -212,6 +214,9 @@ export default function Creation() {
                     atk: 105,
                     def: 15,
                 };
+                newHp = 80;
+                newDef = 15;
+                newAtk = 105;
                 // setdisplayChar(sendToAPI);
                 chosenChar = characters[0];
                 return createCharacter(sendToAPI);
@@ -229,6 +234,9 @@ export default function Creation() {
                     level: 1,
                     image: 'master'
                 };
+                newHp = 120;
+                newDef = 30;
+                newAtk = 40;
                 // setdisplayChar(sendToAPI);
                 chosenChar = characters[1];
                 return createCharacter(sendToAPI);
@@ -246,6 +254,9 @@ export default function Creation() {
                     level: 1,
                     image: 'ranger'
                 };
+                newHp = 100;
+                newDef = 40;
+                newAtk = 60;
                 // setdisplayChar(sendToAPI);
                 chosenChar = characters[2];
                 return createCharacter(sendToAPI);
@@ -263,6 +274,9 @@ export default function Creation() {
                     level: 1,
                     image: 'warrior'
                 };
+                newHp = 110;
+                newDef = 30;
+                newAtk = 60;
                 // setdisplayChar(sendToAPI);
                 chosenChar = characters[3];
                 return createCharacter(sendToAPI);
@@ -304,10 +318,16 @@ export default function Creation() {
             }
         })
         const newChar = await response.json();
+        console.log(JSON.stringify(newChar));
+        console.log(newChar.atk);
+        console.log(newChar.characterClass);
+
+        newHp = newChar.hp;
+        newAtk = newChar.atk;
+        newDef = newChar.def;
         console.log(`This is the return from the POST request: ${newChar}`);
         localStorage.setItem("characterId", newChar._id);
     };
-
 
 
     const darkChar = {
@@ -336,17 +356,18 @@ export default function Creation() {
                     <div className="choicesContainer pixel-border">
                         {showChar ? (
                             <>
-                                <div className="question">Your character is {choice}</div>
+                                <div className="question">Welcome to BCS Adventures, {username}!</div>
+                                <div className="question">Your class is: {choice}</div>
 
                                 <div className='statcontainer'>
                                 <div className='stats'>
-                                    <h3 className='statfont'> Health: 100</h3>
+                                    <h3 className='statfont'> Health: {newHp}</h3>
                                 </div >
                                 <div className='stats'>
-                                    <h3 className='statfont'>Attack: 50</h3>
+                                    <h3 className='statfont'>Attack: {newAtk}</h3>
                                 </div >
                                 <div className='stats'>
-                                    <h3 className='statfont'> Defense: 60</h3>
+                                    <h3 className='statfont'> Defense: {newDef}</h3>
                                 </div >
                             </div>
 

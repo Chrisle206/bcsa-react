@@ -519,6 +519,7 @@ export default function Character() {
                                     <div className='statusbox'>
                                         <div className='statbottom'>
                                             <h3 className='statfontbig'>Level: {level}</h3>
+                                            <h3 className='statfontbig'>Class: {characterClass}</h3>
 
                                         </div>
                                         <img className="characterEmpty2" src={currChar} alt="Empty_character" />
