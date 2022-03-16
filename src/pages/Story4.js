@@ -36,7 +36,7 @@ export default function StoryFour() {
                     <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'inherit'}} className="backbutton"><img className='backbuttonimg'src={back} alt="Back_Button" /> Back</Link>                    
                 </div>
                 <div className="widthContainer">
-                    <h1 className="TavernTitle">Long ago...</h1>
+                    <h1 className="TavernTitle">Joe Defeated?...</h1>
                     <div className='description'>
                     <div className='line1'>"So it ends like this... the student surpasses the master... Pretty, pretty cool..."</div>
                     <div className='line2'>Joe's parting words are filled with contempt as his soul is shredded into binary data by the infinite JavaScript loop...</div>
@@ -44,7 +44,7 @@ export default function StoryFour() {
                     <div className='line4'>"{username}, YOU HAVE LIBERATED THE LAND OF CODE FROM JOE'S VIOLENT TYRANNY. TAKE THIS CERTIFICATE OF COMPLETION, AND CONTINUE TO PURIFY THESE LANDS."</div>
                     </div>
                     <div className="TavernMenuContainer">
-                        <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'inherit'}} className="PlayCard pixel-border">Continue<img className="PlayButton" src={play} alt="Story" /></Link>
+                        <Link to={'/Story5'} style={{textDecoration: 'none', color: 'inherit'}} className="PlayCard pixel-border">Continue<img className="PlayButton" src={play} alt="Story" /></Link>
 
                     </div>
                 </div>

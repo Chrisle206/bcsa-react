@@ -19,8 +19,9 @@ import healgif from '../assets/images/heal.gif'
 import getCharacter from '../Javascript/getCharacter.js';
 import getEnemy from '../Javascript/getEnemy.js'
 import LoadingScreen from './Loading'
+import editCharacter from '../Javascript/editCharacter';
 
-var isLastHit = 0;
+var sendToAPI = {};
 var delayInMilliseconds = 3000;
 var bool = 2;
 
@@ -35,8 +36,15 @@ let heroHpBar = {
     height: '20px'
 }
 export default function Battle() {
-    var isLastHit = 0;
+    function apiSend() {
+        sendToAPI = {
+            currency: currency + currEnemy.hp
+        }
 
+    }
+
+    var isLastHit = 0;
+    var iLive = 0;
     // console.log(data);
 
     const [loading, isLoading] = useState(true)
@@ -62,7 +70,7 @@ export default function Battle() {
     );
     let currEnemy = enemyData;
     useEffect(() => {
-        getEnemy('6230e474b4cc7f2ae25129b5').then(function (result) {
+        getEnemy('6231062ccd3d032403dd3657').then(function (result) {
             console.log(result);
             setenemyData(result)
             return;
@@ -70,7 +78,13 @@ export default function Battle() {
     }, []);
 
     const { characterName, currency, def, hp, level, atk, image } = charData;
-
+    useEffect(() => {
+        editCharacter(sendToAPI).then(function (result) {
+            console.log(result);
+            setcharData(result);
+            return;
+        });
+    }, []);
 
     const [currChar, setCurrChar] = useState();
 
@@ -145,83 +159,74 @@ export default function Battle() {
 
         const myPercentage = myHealth / 10
 
-        console.log(myPercentage)
-        if (enemyHealth >= currEnemy.hp) {
+        console.log(enemyHp, enemyHealth, currEnemy.hp)
+        if (enemyHp >= currEnemy.hp) {
             enemyHpBar = {
                 backgroundColor: 'green',
                 width: `100%`,
                 height: '20px'
             }
-        } else if (enemyHealth > (currEnemy.hp / 2)) {
-            console.log('enemy health is high')
+        } else if (enemyHp > (currEnemy.hp / 2)) {
             enemyHpBar = {
                 backgroundColor: 'green',
                 width: `${enemyPercentage}%`,
                 height: '20px'
             }
-        } else if (enemyHealth > (currEnemy.hp / 4) && enemyHealth < (currEnemy.hp / 2)) {
-            console.log('enemy health is middle')
+        } else if (enemyHp > (currEnemy.hp / 4) && enemyHp < (currEnemy.hp / 2)) {
             enemyHpBar = {
                 backgroundColor: 'yellow',
                 width: `${enemyPercentage}%`,
                 height: '20px'
             }
-        } else if (enemyHealth < (currEnemy.hp / 4) || enemyHealth <= 0) {
-            console.log('enemy health is low')
+        } else if (enemyHp < (currEnemy.hp / 4) || enemyHp <= 0) {
             enemyHpBar = {
                 backgroundColor: 'red',
                 width: `${enemyPercentage}%`,
                 height: '20px'
             }
-        } else if (enemyHealth <= 0) {
-            console.log('I have fainted')
-            heroHpBar = {
-                backgroundColor: 'red',
-                width: `'0px'`,
-                height: '0px'
-            }
-        } 
-
-        if (myHealth >= player.hp) {
-            heroHpBar = {
-                backgroundColor: 'green',
-                width: `100%`,
-                height: '20px'
-            }
-        } else if (myHealth > (player.hp / 2)) {
-            console.log('my health is high')
-            heroHpBar = {
-                backgroundColor: 'green',
-                width: `${myPercentage}%`,
-                height: '20px'
-            }
-        } else if (myHealth > (player.hp / 4) && enemyHealth < (player.hp / 2)) {
-            console.log('my health is middle')
-            heroHpBar = {
-                backgroundColor: 'yellow',
-                width: `${myPercentage}%`,
-                height: '20px'
-            }
-        } else if (myHealth < (player.hp / 4) && myHealth > 0) {
-            console.log('my health is low')
-            heroHpBar = {
-                backgroundColor: 'red',
-                width: `'${myPercentage}%'`,
-                height: '20px'
-            }
-        } else if (myHealth <= 0) {
-            console.log('I have fainted')
+        } else if (enemyHp <= 0) {
             heroHpBar = {
                 backgroundColor: 'red',
                 width: `'0px'`,
                 height: '0px'
             }
         }
-        console.log('checking health...')
+
+        if (heroHp >= player.hp) {
+            heroHpBar = {
+                backgroundColor: 'green',
+                width: `100%`,
+                height: '20px'
+            }
+        } else if (heroHp > (player.hp / 2)) {
+            heroHpBar = {
+                backgroundColor: 'green',
+                width: `${myPercentage}%`,
+                height: '20px'
+            }
+        } else if (heroHp > (player.hp / 4) && heroHp < (player.hp / 2)) {
+            heroHpBar = {
+                backgroundColor: 'yellow',
+                width: `${myPercentage}%`,
+                height: '20px'
+            }
+        } else if (heroHp < (player.hp / 4) && heroHp > 0) {
+            heroHpBar = {
+                backgroundColor: 'red',
+                width: `${myPercentage}%`,
+                height: '20px'
+            }
+        } else if (heroHp <= 0) {
+            heroHpBar = {
+                backgroundColor: 'red',
+                width: `'0px'`,
+                height: '0px'
+            }
+        }
     }
 
 
-        healthBar();
+    healthBar();
 
     const questions = ["Snake-case is the preferred case style when naming databases.", "MongoDB stores data records as BSON documents."];
     let defaultQuestion = "What is your next move?"
@@ -240,9 +245,9 @@ export default function Battle() {
     const showExplosion = () => {
         explosionEffect.classList.remove("explosion1");
         moveEffect();
-       
-            healthBar()
-        
+
+        healthBar()
+
     }
     const explosionFunction = () => {
         showExplosion();
@@ -256,8 +261,8 @@ export default function Battle() {
     }
     const showExplosion2 = () => {
         explosionEffect2.classList.remove("explosion1");
-        
-            healthBar()
+
+        healthBar()
     }
     const heroExplosion = () => {
         showExplosion2();
@@ -293,7 +298,7 @@ export default function Battle() {
         document.getElementById('start').classList.add('hide');
         setHeroHp(player.hp);
         setEnemyHp(currEnemy.hp);
-        console.log('starting...')
+        console.log(currency);
         healthBar()
         setTimeout(function () {
 
@@ -339,26 +344,42 @@ export default function Battle() {
     }
     // If enemy attacks hero, attack only or attack and taunt
     const option1 = () => {
-        let enemyMove = currEnemy.attacks[Math.floor(Math.random() * currEnemy.attacks.length)];
-        let taunt = currEnemy.taunts[Math.floor(Math.random() * currEnemy.taunts.length)];
-        setTimeout(function () {
-            setMainText(`${currEnemy.enemyName} attacked with ${enemyMove} and dealt ${enemyAtk - player.def}!`);
-            heroExplosion();
-            setHeroHp(heroHp + (player.def - currEnemy.atk));
+        let dmg = ((heroHp + player.def) - currEnemy.atk);
+        if (dmg <= 0) {
+            iLive = 1;
+        }
+        if (iLive) {
+            setMainText('***Surrounded by Darkness***');
+            setHeroHp(0);
+            hideAtkBtns();
             setTimeout(function () {
+                document.getElementById('hero').classList.add('hide');
+                setMainText(`${player.name} has fainted!`);
+                document.getElementById('backBtn').classList.remove('hide');
+                document.getElementById('contBtn').classList.remove('hide');
+            }, 1500);
+        } else {
+            let enemyMove = currEnemy.attacks[Math.floor(Math.random() * currEnemy.attacks.length)];
+            let taunt = currEnemy.taunts[Math.floor(Math.random() * currEnemy.taunts.length)];
+            setTimeout(function () {
+                setMainText(`${currEnemy.enemyName} attacked with ${enemyMove} and dealt ${enemyAtk - player.def}!`);
+                heroExplosion();
+                setHeroHp(heroHp + (player.def - currEnemy.atk));
+                setTimeout(function () {
 
-        }, 0);
-        }, 2000);
-        setTimeout(function () {
-            setMainText(taunt);
+                }, 0);
+            }, 2000);
+            setTimeout(function () {
+                setMainText(taunt);
 
-        }, 4000)
+            }, 4000)
 
-        setTimeout(function () {
-            setMainText(defaultQuestion);
-            showAtkBtns();
-            currEnemy.atk = enemyAtk;
-        }, 6000);
+            setTimeout(function () {
+                setMainText(defaultQuestion);
+                showAtkBtns();
+                currEnemy.atk = enemyAtk;
+            }, 6000);
+        }
     }
 
 
@@ -387,6 +408,11 @@ export default function Battle() {
                 document.getElementById('backBtn').classList.remove('hide');
                 document.getElementById('contBtn').classList.remove('hide');
             }, 1500);
+            setTimeout(function () {
+                setMainText(`You earned ${currEnemy.hp} coins!`);
+                apiSend();
+                console.log(currency);
+            }, 2500);
         } else {
             setTimeout(function () { enemyTurn() }, 1000);
             <button className='attack' id='start' onClick={intro}>Start</button>
@@ -405,7 +431,7 @@ export default function Battle() {
         explosionFunction();
         hideAtkBtns();
         enemyIsALive();
-        
+
     };
     ///////////////////////////////////////////
 
@@ -548,7 +574,7 @@ export default function Battle() {
             {loading === false ? (
                 <div className="pageContainer creationBg">
                     <div className='rotate'>Rotate to play</div>
-                    <div className="MainBattleContainer3">
+                    <div className="MainBattleContainer">
                         <div className="topNavContainer">
                             {/* TODO: When battle is over, display a continue button. During battle display escape option, which prompts user that battle will not have rewards.*/}
                             <Link to='/Tavern' style={{ textDecoration: 'none', color: 'white' }} className="backbutton"><img className='backbuttonimg' src={back} alt="Back_Button" /> Back</Link>
@@ -575,7 +601,7 @@ export default function Battle() {
                             </div>
                             <div className="heroRow">
                                 <div className='effectcont'>
-                                    <img className="heroPic" src={currChar} alt="Hero" />
+                                    <img className="heroPic" src={currChar} id='hero' alt="Hero" />
                                     <img className="explosion explosion1" id='explosion2' src={explosion} alt="explosion" />
                                     <img className="explosion explosion1" id='healExp' src={healgif} alt="heal" />
                                 </div>
@@ -621,8 +647,11 @@ export default function Battle() {
                                 </div>
                                 <div className="attackRow2">
                                     <button className='attack start' id='start' onClick={startBat}>Begin Battle</button>
-                                    <Link to={'/Tavern'} style={{ textDecoration: 'none', color: 'white' }} className="attack hide" id='backBtn'>Back </Link>
-                                    <Link to={'/Story3'} className="attack hide" id='contBtn' >Continue</Link>
+                                    <Link to={'/Tavern'} style={{ textDecoration: 'none', color: 'white' }} onClick={apiSend} className="attack hide" id='backBtn'>Back </Link>
+                                    <Link to={'/Story3'} style={{ textDecoration: 'none', color: 'white' }} onClick={apiSend} className="attack hide" id='contBtn' >Continue</Link>
+
+
+
                                 </div>
                             </div>
                         </div>
