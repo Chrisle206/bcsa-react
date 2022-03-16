@@ -138,6 +138,10 @@
 .logbutton:hover{
   opacity: 1;
 }
+
+.start {
+  margin: auto;
+}
 /*Loading CSS*/
 .loading {
   font-size: 75px;
@@ -162,6 +166,22 @@
 }
 .diedBtn:hover{
 
+}
+.deadcontainer{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+  height: 70vh;
+  background: url('./assets/images/campfire2.gif') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.4);
+  background-blend-mode: multiply;
+  z-index: 1;
 }
 /* pixelated borders */
 
@@ -285,12 +305,14 @@
   font-size: 32px;
   opacity: 0.7;
   background-color: #000000;
-  height: 180px;
-  width: 220px;
+  height: 170px;
+  width: 190px;
   --pixel: .2rem;
 }
 .TavernMenuCard:hover{
   background: url('./assets/images/magic3.gif') no-repeat center center;
+  background-color: black;
+  background-size: 120%;
   opacity: 1;
   --pixel-border-2: goldenrod;
   cursor: pointer; 
@@ -462,7 +484,7 @@ justify-content: space-between;
 }
 .question{
   font-size: 24px;
-  margin: 0 0 10px;
+  margin: 0 0 10px 40px;
 }
 
 .coverBlackBar{
@@ -473,12 +495,13 @@ justify-content: space-between;
   bottom: 0px;
 }
 .statfont{
+  display:flex;
   margin: 0;
   font-size: 24px;
 }
 .statfontbig{
   margin: 0 0 10px 0;
-  font-size: 24px;
+  font-size: 18px;
 }
 
 /* Battle Page */
@@ -489,6 +512,62 @@ justify-content: space-between;
   margin: auto;
   height: 70vh;
   background: url('./assets/images/newbattlebg3.gif') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+}
+.MainBattleContainer2{
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  margin: auto;
+  height: 70vh;
+  background: url('./assets/images/bg2.gif') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+}
+.MainBattleContainer3{
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  margin: auto;
+  height: 70vh;
+  background: url('./assets/images/blossom.gif') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: rgb(0, 0, 0, 0.4);
+  background-blend-mode: multiply;
+  position: relative;
+}
+.MainBattleContainer4{
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  margin: auto;
+  height: 70vh;
+  background: url('./assets/images/matrix2.gif') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+  background-color: rgb(0, 0, 0, 0.6);
+  background-blend-mode: multiply;
+}
+.MainBattleContainer5{
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  margin: auto;
+  height: 70vh;
+  background: url('./assets/images/jbg4.gif') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -604,7 +683,7 @@ height: 20vh;
   width: 800px;
 }
 .attackList{
-  margin: 0 240px 0 200px;
+  margin: 0 200px 0 200px;
   display: flex;
   flex-direction: column;
 }
@@ -622,22 +701,11 @@ height: 20vh;
 }
 
 .healthcontainer{
-  border: solid white 2px;
   background-color: white;
   width: 100%;
   height: 20px;
 }
-.healthBarEnemy{
-  width: 100%;
-  height: 20px;
-  background-color: red;
 
-}
-.healthBarHero{
-  width: 100%;
-  height: 20px;
-  background-color: green;
-}
 .hp{
   color: white;
   margin: 0;
@@ -687,6 +755,89 @@ height: 20vh;
   background-color: rgb(0, 0, 0, 0.3);
   background-blend-mode: multiply;
 }
+.mainIntroContainer2{
+  background: url('./assets/images/jbg6.gif') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: rgb(0, 0, 0, 0.3);
+  background-blend-mode: multiply;
+}
+.mainIntroContainer3{
+  background: url('./assets/images/jbg5.gif') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: rgb(0, 0, 0, 0.3);
+  background-blend-mode: multiply;
+}
+.joe{
+  width: 40%;
+  position: fixed;
+  display: block;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 1;
+  opacity: 0;
+  animation: joe 2s forwards;
+  animation-delay: 12s;
+}
+@keyframes joe {
+  from {
+     opacity: 0;
+  }
+  to {
+    opacity: 1;
+}
+}
+.joetitle2{
+  margin-top: 30px;
+  font-size: 48px;
+  text-align: center;
+  animation: disappear 2s forwards;
+  animation-delay: 14s;
+}
+@keyframes disappear{
+  from{
+    opacity: 1
+  }
+  to {
+    opacity: 0;
+  }
+}
+.joetitle{
+  margin-top: 30px;
+  font-size: 48px;
+  text-align: center;
+
+}
+.finaldesc{
+  animation: disappear 2s forwards;
+  animation-delay: 14s;
+  font-size: 24px;
+  margin: 0px auto;
+  text-align: center;
+}
+.contbutton{
+  border: 0;
+  padding: 0 24px;
+  font-size: 32px;
+  margin: auto;
+  font-family: inherit;
+  background-color: inherit;
+  color: white;
+  --pixel: 0.1rem;
+  opacity: 0.5;
+  z-index: 2;
+}
+.contbutton:hover{
+opacity: 1;
+}
 .wingedsword{
     width: 80px;
     margin: 20px;
@@ -697,7 +848,7 @@ height: 20vh;
   align-items: center;
   justify-content: space-between;
   font-size: 48px;
-  margin: 0 auto;
+  margin: auto auto;
   padding: 0 20px 0 30px;
   border: 0;
   font-family: inherit;
@@ -717,8 +868,9 @@ height: 20vh;
 }
 
 .description{
-  font-size: 24px;
-  margin: auto;
+  font-size: 32px;
+  margin: 10px auto;
+  text-align: center;
 }
 .modalBTN{
   color: white;
@@ -728,6 +880,49 @@ height: 20vh;
   text-align: center;
   border: none;
   padding: none;
+}
+.line1{
+animation: slide-in 2s 1 forwards;
+opacity: 0;
+display: block;
+}
+.line2{
+animation: slide-in 2s 1 forwards;
+animation-delay: 2s;
+opacity: 0;
+}
+.line3{
+animation: slide-in 2s 1 forwards;
+animation-delay: 4s;
+opacity: 0;
+}
+.line4{
+animation: slide-in 2s 1 forwards;
+animation-delay: 6s;
+opacity: 0;
+}
+.line5{
+animation: slide-in 2s 1 forwards;
+animation-delay: 8s;
+opacity: 0;
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-30%);
+    display: none;
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+    display: block;
+  }
+}
+
+/* ...and then apply it: */
+.box {
+  animation: slide-in 1000ms;
 }
 /* Character + Store Page */
 .mainCharContainer{
@@ -756,6 +951,8 @@ height: 20vh;
 .charboxContainer{
   display: flex;
   max-height: 65vh;
+  justify-content: center;
+  align-items: center;
 }
 .paddingbottom{
   display: none;
@@ -850,17 +1047,61 @@ visibility: visible;
   font-size: 24px;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+.statfont{
+  display: flex;
+  flex-direction: row;
+  font-size: 18px;
+}
+#statBtn{
+  height: 150px;
+  width: 300px;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  margin: 0 60px 10px;
+  font-size: 32px;
+  color: white;
+  background-color: black;
+  border: none;
+  padding: none;
+  z-index: 1;
+}
+#statusscreen{
+  visibility: hidden;
+}
+#shopBtn{
+  font-size: 32px;
+  color: white;
+  background-color: inherit;
+  border: none;
+  padding: none;
+  z-index: 1;
+}
+#shopscreen{
+  visibility: hidden;
 }
 .plus{
   font-size: 24px;
-  margin: 0 0 0 30px;
+  margin: auto;
   color: white;
   padding: 0;
   border: none;
   border-radius: 10px;
   background-color: inherit;
+}
+.bought{
+  background-color: gray;
+  border: solid 2px gray;
+}
+.bought:hover{
+  border: solid 2px gray;
+  cursor: default;
+}
+.bought:focus{
+  border: solid 2px gray;
+  background-color: gray;
 }
 .up{
   width: 25px;
@@ -933,8 +1174,48 @@ visibility: visible;
   border: solid green 2px;
   cursor: pointer;
 }
+.rotate{
+  display: none;
+}
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1024px) and (orientation:portrait) {
+  .rotate{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+    background-color: black;
+    overflow: hidden;
+    color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    animation: grow-and-shrink3 2000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+@keyframes grow-and-shrink3 {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+  }
+  .mainContainer, .creationContainerm, .mainCharContainer,.mainStartContainer,.MainBattleContainer,.loading,.creationContainer,.MainBattleContainer2,.MainBattleContainer3,.MainBattleContainer4,.MainBattleContainer5{
+    display: none;
+  }
+}
+@media screen and (max-width: 1024px) and (orientation:landscape) {
+  .rotate{
+    display: none;
+  }
   .topNavContainer{
     position: fixed;
     justify-content: flex-end;
@@ -963,7 +1244,7 @@ visibility: visible;
 .description{
   font-size: 18px;
   max-width: 80vw;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 .PlayCard{
   font-size: 24px;
@@ -989,6 +1270,9 @@ visibility: visible;
 }
 .TavernBeer{
   width:32px;
+}
+.TavernTitle{
+  margin-top: 40px;
 }
 .TavernMenuContainer{
   max-width: 65vw;
@@ -1039,9 +1323,6 @@ margin: 40px auto;
 .statbottom{
   font-size: 18px;
 }
-.stats{
-  font-size: 18px;
-}
 .shopitem{
   max-width: 60px;
   min-width: 60px;
@@ -1062,10 +1343,12 @@ width: 100vw;
 display: block;
 }
 .charboxContainer{
+  display: flex;
   height: 100vh;
   max-width: 90vw;
   margin: 0 auto;
   justify-content: space-between;
+  align-items: center;
   flex-direction: column;
 }
 .itemdescbox{
@@ -1082,13 +1365,22 @@ display: block;
 .MainBattleContainer{
   height: 100vh;
 }
+.MainBattleContainer2{
+  height: 100vh;
+}
+.MainBattleContainer3{
+  height: 100vh;
+}
+.MainBattleContainer4{
+  height: 100vh;
+}
 .BattlechoicesContainer{
   font-size: 18px;
 
 }
 .question{
   font-size: 24px;
-  margin: 0;
+  margin: 0 40px;
 }
 .iconhover{
   display: none;
@@ -1120,18 +1412,19 @@ display: block;
 .creationTitle{
   font-size: 32px;
 }
-.stats{
-  margin: 0;
-}
-.statfont{
-  font-size: 18px;
-}
+
 /* Loading */
 .loading{
   font-size: 32px;
 }
 .died{
   font-size: 48px;
+}
+.description{
+  margin: 0 0 30px;
+}
+.deadcontainer{
+  height: 100vh;
 }
 
 /* end */

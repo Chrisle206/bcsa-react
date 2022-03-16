@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import '../App.css'
 import play from '../assets/images/play-button.png'
-import track from '../assets/sounds/introduction.wav'
+import track from '../assets/sounds/introduction.mp3'
 import back from '../assets/images/back.png'
 import speakeron from '../assets/images/speaker-on.png'
 import speakeroff from '../assets/images/speaker-off.png'
@@ -15,7 +15,6 @@ export default function Introduction() {
     function volOff() {
         if (useState !== false) {
             audioRef.current.pause()
-            console.log('muting')
             setStatus(true)
         }
     }
@@ -23,25 +22,28 @@ export default function Introduction() {
     function volOn() {
         if (useState !== true) {
             audioRef.current.play()
-            console.log('unmuting')
             setStatus(false)
         }
     }
     return (
         <div className="pageContainer creationBg">
+            <div className='rotate'>Rotate to play</div>
             <div className="mainStartContainer mainIntroContainer">
                 <div className="topNavContainer">
                     <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'inherit'}} className="backbutton"><img className='backbuttonimg'src={back} alt="Back_Button" /> Back</Link>                    
                 </div>
                 <div className="widthContainer">
-                    <h1 className="TavernTitle">Long ago...</h1>
+                    <h1 className="joetitle">Long ago...</h1>
                     <div className='description'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dapibus in erat eu vestibulum. Donec id arcu erat. Nulla viverra semper arcu, tincidunt sodales lorem vestibulum id. Sed fringilla tincidunt mollis. Suspendisse quis metus facilisis, ultricies orci ac, fringilla eros. Aliquam aliquam lectus felis, vehicula sollicitudin nisi consectetur sed. Pellentesque dui tortor, faucibus id leo vel, blandit aliquet nibh.
+                    <div className='line1'>Once upon a time, many cohorts ago…</div>
+                    <div className='line2'>A group of four ambitious students set out to create the ultimate coding bootcamp application…</div>
+                    <div className='line3'>Little did they know… the path ahead… would be fraught with danger.</div>
+                    <div className='line4'>Behold, the story of BCS Adventures!</div>
                     </div>
-                    <div className="TavernMenuContainer">
-                        <Link to={'/Battle'} style={{textDecoration: 'none', color: 'inherit'}} className="PlayCard pixel-border">Continue<img className="PlayButton" src={play} alt="Story" /></Link>
+ 
+                        <Link to={'/Battle'} style={{textDecoration: 'none', color: 'inherit'}} className="contbutton">Continue</Link>
 
-                    </div>
+                   
                 </div>
                 <div className="bottomNavContainer">
                 <>

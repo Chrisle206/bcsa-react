@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import track from '../assets/sounds/creation.wav'
+import track from '../assets/sounds/creation.mp3'
 import back from '../assets/images/back.png'
 import speakeron from '../assets/images/speaker-on.png'
 import speakeroff from '../assets/images/speaker-off.png'
@@ -8,6 +8,7 @@ import assassin from '../assets/images/characters/assassin.png'
 import warrior from '../assets/images/characters/warrior.png'
 import ranger from '../assets/images/characters/ranger.png'
 import master from '../assets/images/characters/routeMaster.png'
+import getCharacter from '../Javascript/getCharacter.js'
 
 // const mongoose = require('mongoose')
 
@@ -16,6 +17,9 @@ import master from '../assets/images/characters/routeMaster.png'
 
 let choice;
 let chosenChar;
+var newHp;
+var newAtk;
+var newDef;
 
 let values = [
     { id: 'assassin', val: 0 },
@@ -26,7 +30,6 @@ let values = [
 
 export default function Creation() {
 
-    //TODO: Allow user to set a name for their character
     //TODO: New characters start with 5000 currency for testing purposes, change later
     const characters = [assassin, master, ranger, warrior]
 
@@ -34,12 +37,13 @@ export default function Creation() {
     const [charData, setcharData] = useState({
     });    
    
+    const username = localStorage.getItem("username");
+
     // const [displayChar, setdisplayChar] = useState({
     // });    
 
 
     var sendToAPI = {};
-
     const character = characters[Math.floor(Math.random() * characters.length)]
 
     const questions = [
@@ -101,7 +105,6 @@ export default function Creation() {
     function volOff() {
         if (useState !== false) {
             audioRef.current.pause()
-            console.log('muting')
             setStatus(true)
         }
     }
@@ -109,7 +112,6 @@ export default function Creation() {
     function volOn() {
         if (useState !== true) {
             audioRef.current.play()
-            console.log('unmuting')
             setStatus(false)
         }
     }
@@ -204,12 +206,15 @@ export default function Creation() {
                     currency: 5000,
                     exp: 0,
                     items: [],
-                    image: assassin,
+                    image: 'assassin',
                     hp: 80,
-                    characterName: "CSS Assassin",
+                    characterName: username,
                     atk: 105,
                     def: 15,
                 };
+                newHp = 80;
+                newDef = 15;
+                newAtk = 105;
                 // setdisplayChar(sendToAPI);
                 chosenChar = characters[0];
                 return createCharacter(sendToAPI);
@@ -217,7 +222,7 @@ export default function Creation() {
             } else if (choice === 'master') {
                 sendToAPI = {
                     atk: 40,
-                    characterName: "Route Master",
+                    characterName: username,
                     characterClass: "Route Master",
                     currency: 5000,
                     def: 30,
@@ -225,8 +230,11 @@ export default function Creation() {
                     hp: 120,
                     items: [],
                     level: 1,
-                    image: master
+                    image: 'master'
                 };
+                newHp = 120;
+                newDef = 30;
+                newAtk = 40;
                 // setdisplayChar(sendToAPI);
                 chosenChar = characters[1];
                 return createCharacter(sendToAPI);
@@ -234,7 +242,7 @@ export default function Creation() {
             } else if (choice === 'ranger') {
                 sendToAPI = {
                     atk: 60,
-                    characterName: "React Ranger",
+                    characterName: username,
                     characterClass: "React Ranger",
                     currency: 5000,
                     def: 40,
@@ -242,8 +250,11 @@ export default function Creation() {
                     hp: 100,
                     items: [],
                     level: 1,
-                    image: ranger
+                    image: 'ranger'
                 };
+                newHp = 100;
+                newDef = 40;
+                newAtk = 60;
                 // setdisplayChar(sendToAPI);
                 chosenChar = characters[2];
                 return createCharacter(sendToAPI);
@@ -251,7 +262,7 @@ export default function Creation() {
             } else if (choice === 'warrior') {
                 sendToAPI = {
                     atk: 60,
-                    characterName: "Keyboard Warrior",
+                    characterName: username,
                     characterClass: "Keyboard Warrior",
                     currency: 5000,
                     def: 30,
@@ -259,13 +270,15 @@ export default function Creation() {
                     hp: 110,
                     items: [],
                     level: 1,
-                    image: warrior
+                    image: 'warrior'
                 };
+                newHp = 110;
+                newDef = 30;
+                newAtk = 60;
                 // setdisplayChar(sendToAPI);
                 chosenChar = characters[3];
                 return createCharacter(sendToAPI);
             };
-
             //Assign state here?
             // const data = selectClass();
             //Evaluate state to see if data will match body necessary for POST request.
@@ -288,7 +301,6 @@ export default function Creation() {
         }
     }
 
-    //TODO: POST request is failing. Sending default state. Refer above
     const createCharacter = async (data) => {
         // console.log(`Log of data that is being passed into callback function: ${data}`);
         console.log(`Log of data that is being passed into callback function but stringified: ${JSON.stringify(data)}`);
@@ -304,10 +316,16 @@ export default function Creation() {
             }
         })
         const newChar = await response.json();
+        console.log(JSON.stringify(newChar));
+        console.log(newChar.atk);
+        console.log(newChar.characterClass);
+
+        newHp = newChar.hp;
+        newAtk = newChar.atk;
+        newDef = newChar.def;
         console.log(`This is the return from the POST request: ${newChar}`);
         localStorage.setItem("characterId", newChar._id);
     };
-
 
 
     const darkChar = {
@@ -319,6 +337,7 @@ export default function Creation() {
 
     return (
         <div className="pageContainer creationBg">
+            <div className='rotate'>Rotate to play</div>
             <div className="creationContainer">
                 <div className="topNavContainer">
                     <Link to={'/'} style={{textDecoration: 'none', color: 'inherit'}}className="backbutton"><img className='backbuttonimg' src={back} alt="Back_Button" /> Back</Link>
@@ -335,20 +354,18 @@ export default function Creation() {
                     <div className="choicesContainer pixel-border">
                         {showChar ? (
                             <>
-                                <div className="question">Your character is {choice}</div>
+                                <div className="question">Welcome to BCS Adventures, {username}!</div>
+                                <div className="question">Your class is: {choice}</div>
 
                                 <div className='statcontainer'>
                                 <div className='stats'>
-                                    <h3 className='statfont'> Health: 100</h3>
-                                    <button className='plus'></button>
+                                    <h3 className='statfont'> Health: {newHp}</h3>
                                 </div >
                                 <div className='stats'>
-                                    <h3 className='statfont'>Attack: 50</h3>
-                                    <button className='plus'></button>
+                                    <h3 className='statfont'>Attack: {newAtk}</h3>
                                 </div >
                                 <div className='stats'>
-                                    <h3 className='statfont'> Defense: 60</h3>
-                                    <button className='plus'></button>
+                                    <h3 className='statfont'> Defense: {newDef}</h3>
                                 </div >
                             </div>
 

@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react'
-import track from '../assets/sounds/dead.wav'
+import track from '../assets/sounds/dead.mp3'
 import speakeron from '../assets/images/speaker-on.png'
 import speakeroff from '../assets/images/speaker-off.png'
-
+import { Link } from 'react-router-dom'
 export default function Dead() {
     const [speaker, setStatus] = useState(false)
     const audioRef = useRef()
@@ -10,7 +10,6 @@ export default function Dead() {
     function volOff() {
         if (useState !== false) {
             audioRef.current.pause()
-            console.log('muting')
             setStatus(true)
         }
     }
@@ -18,14 +17,14 @@ export default function Dead() {
     function volOn() {
         if (useState !== true) {
             audioRef.current.play()
-            console.log('unmuting')
             setStatus(false)
         }
     }
     return (
         <div className="pageContainer creationBg">
+        <div className="deadcontainer">
             <h1 className='died'>You Died!</h1>
-            <button className="diedBtn pixel-border">Continue</button>
+            <Link to={'/Tavern'} style={{ textDecoration: 'none', color: 'white' }} className="diedBtn pixel-border">Continue</Link>
             <div className="bottomNavContainer">
             <>
                         <audio autoPlay loop ref={audioRef} src={track}/>
@@ -37,6 +36,7 @@ export default function Dead() {
                                 </>
                         )}                   
                     </> 
+            </div>
             </div>
         </div>
     )

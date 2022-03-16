@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# <BCS-Adventures>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Available Scripts
+## Description
+Welcome to BCS Adventures! You are about to embark on an epic journey filled with fierce battle, internal strife, evil bugs and, most importantly, triumph! Face off against evil TA's, peacock-ish devs and intelligent AI from the savage world of coding as you master the skills necessary to become a certified Fullstack Developer!
 
-In the project directory, you can run:
+As junior developers and gamers, we wanted to conclude our time in bootcamp strongly and create something that we could not only be really proud of, but would enjoy using as well. With the skills we’ve cultivated thus far we figured we’re ready enough to dive into creating our own coding/fantasy-themed RPG as both a celebration of and a testament to everything we’ve learned. The primary purpose of our game was to develop something we would enjoy both creating AND playing, and to tie together everything we've learned to end the bootcamp with a bang.
 
-### `npm start`
+We feel our game fills a certain niche appealing to bootcamp graduates and junior devs, and represents well the power of the knowledge provided by the bootcamp. We faced many challenges developing this game that tested our collective skills as developers, but we are walking away much stronger because of it and have created an app that we feel truly stands out. Using React has been a joy and gives us confidence as we transition into career-building, given how highly relevant React is in the current meta of the industry. We've also learned a lot about JWT Tokens, asynchronicity, API building, etc., as well as more abstract practices such as keeping projects manageable and within our skillsets.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+There are lots of features we didn't have time to implement due to the rigorous schedule of the bootcamp, but we may continue development after graduation. We would like to refine the battle experience with more attack options and animations, allow for more robust character customization by implementing skill points, and create shop-related unlocks that will have more significant impacts on how the user's battles will play out. We even have plans for an endless dungeon mode, where the user can continuously battle enemies and collect exp and currency to help build their character. Please come back for updates on the progress of this app!
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Table of Contents
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+There is no installation required to play BCS Adventures. You can play it now by clicking this link to the deployed site! (Please allow some time for Heroku to boot up the application):
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[https://bcs-adventures.herokuapp.com/](https://bcs-adventures.herokuapp.com/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+There is a separate API component which we also developed, and it hosts all enemy, character, and user data. You can access the repository for this API at this URL: 
 
-### `npm run eject`
+[https://github.com/Chrisle206/bcsa-api](https://github.com/Chrisle206/bcsa-api)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Usage
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+It's easy to begin playing! Once you've loaded up the game, you will want to click 'Sign Up' at the top right. You'll be prompted to create a unique username and password for your account. Your username will become the name for your character, so choose wisely! Once you're signed in, close the popup and click 'Play' to be taken to the character creation page.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![start page signup](public/ss1.PNG)
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+On the character creation page, you'll be prompted to answer questions pertaining to your coding skills and preferences. Your character will be generated based on your inputs! There are currently four classes existing in the game. Sign up and see which class your coding skills will get you!
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+![creation page](public/ss2.PNG)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Once your character has been generated, you'll be taken to the tavern screen. This is the central hub for the player and currently provides three options for navigation. The user can click on 'Character' to be taken to the shop, wherein they can view their stats and purchase items using currency gained from battle to buff their character further. The user can also click on 'Story' to be taken to the main battle sequence, where they'll endure a gauntlet of tough boss enemies that'll test their skills as developers and gamers! The third option, 'Dungeon,' is currently in development, and will be the main source of EXP and currency for our game. Since this feature has not yet been implemented, we have given new players plenty of currency to buy all the items necessary to defeat all the bosses in the 'Story' mode.
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![tavern page](public/ss5.PNG)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![battle page](public/ss4.PNG)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+![character page](public/ss3.PNG)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+## Credits
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Our talented four-member team made this application possible! Refer to their GitHub profiles below:
+
+Chris (Git Admin, React, Battle, JS): [https://github.com/Chrisle206](https://github.com/Chrisle206)
+
+Ben (React, JS, Sprites, Music): [https://github.com/zortro](https://github.com/zortro)
+
+Dat (UI, CSS, Art): [https://github.com/velkyam](https://github.com/velkyam)
+
+Shawn (Project Manager, Backend, API): [https://github.com/shnala](https://github.com/shnala)
+
+
+## How to Contribute
+
+Play our game!
+
+Wanna join the team? Contact us at [shawnanalla@gmail.com]

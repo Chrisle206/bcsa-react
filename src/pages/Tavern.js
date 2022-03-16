@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import '../App.css'
-import track from '../assets/sounds/tavern.wav'
+import track from '../assets/sounds/tavern.mp3'
 import speakeron from '../assets/images/speaker-on.png'
 import speakeroff from '../assets/images/speaker-off.png'
 import coins from '../assets/images/coins.png'
@@ -22,7 +22,6 @@ export default function Tavern() {
     function volOff() {
         if (useState !== false) {
             audioRef.current.pause()
-            console.log('muting')
             setStatus(true)
         }
     }
@@ -30,7 +29,6 @@ export default function Tavern() {
     function volOn() {
         if (useState !== true) {
             audioRef.current.play()
-            console.log('unmuting')
             setStatus(false)
         }
     }
@@ -38,6 +36,9 @@ export default function Tavern() {
     //Logout should redirect to Start page
     const logout = () =>{
         localStorage.removeItem("token");
+        localStorage.removeItem("characterId");
+        localStorage.removeItem("id");
+        localStorage.removeItem("username");
         setToken("");
         document.location.replace('/');
     }
@@ -46,10 +47,12 @@ export default function Tavern() {
     return (
         
         <div className="pageContainer creationBg">
+            <div className='rotate'>Rotate to play</div>
+
             <div className="mainContainer">
             <div className="topNavContainer">
                 <button className="logbutton"onClick={logout}>Logout</button>                   
-                    <h3 className="coinContainer"> <img className="coinImg" src={coins} alt="Coins" /> 200</h3>
+                    {/* <h3 className="coinContainer"> <img className="coinImg" src={coins} alt="Coins" /> 200</h3> */}
                 </div>
                 <div className="widthContainer">
                     <h1 className="TavernTitle">Tavern<img className="TavernBeer" src={beer} alt="Beer" /></h1>
@@ -57,13 +60,12 @@ export default function Tavern() {
                         <Link to={'/character'} style={{textDecoration: 'none', color: 'inherit'}} className="TavernMenuCard pixel-border charCard"><img className="TavernMenuItem" src={charIcon} alt="Character" />Character <h2 className="chardesc">View your character, update your stats, and shop for items.</h2></Link>
                         <Link to={'/Introduction'} style={{textDecoration: 'none', color: 'inherit'}} className="TavernMenuCard pixel-border storyCard"><img className="TavernMenuItem" src={book} alt="Story" />Story <h2 className='storydesc'>Take on a gauntlet of bosses and try to reach the end!</h2></Link>
                         <div className="TavernMenuCard pixel-border dungeonCard"><img className="TavernMenuItem" src={cage} alt="Dungeon" />Dungeon <h2 className='dungeondesc'>Face random enemies and grind for currency and exp!</h2></div>
-                    </div>
                 </div>
                 <div className="bottomNavContainer">
                     <>
                         <audio autoPlay loop ref={audioRef} src={track}/>
                         {speaker ? (
-                                <button onClick={volOn} className="backbutton"><img className='soundbuttonimg'src={speakeroff} alt="speaker" /></button>                    
+                            <button onClick={volOn} className="backbutton"><img className='soundbuttonimg'src={speakeroff} alt="speaker" /></button>                    
                             ) : (
                                 <>
                                 <button onClick={volOff} className="backbutton"><img className='soundbuttonimg'src={speakeron} alt="speaker" /></button> 
@@ -73,6 +75,7 @@ export default function Tavern() {
                 </div>
             </div>
             
+                        </div>
         </div>
     )
 }
