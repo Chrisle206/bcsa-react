@@ -91,7 +91,6 @@ export default function Character() {
     function volOff() {
         if (useState !== false) {
             audioRef.current.pause()
-            console.log('muting')
             setStatus(true)
         }
     }
@@ -99,7 +98,6 @@ export default function Character() {
     function volOn() {
         if (useState !== true) {
             audioRef.current.play()
-            console.log('unmuting')
             setStatus(false)
         }
     }
@@ -129,7 +127,6 @@ export default function Character() {
         } else if (image === 'warrior') {
             setCurrChar(Warrior)
         }
-        console.log(image)
     }
 
     /////////////////// RENDERS STATS TO PAGE

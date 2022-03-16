@@ -20,6 +20,7 @@ import getCharacter from '../Javascript/getCharacter.js';
 import getEnemy from '../Javascript/getEnemy.js'
 import LoadingScreen from './Loading'
 import editCharacter from '../Javascript/editCharacter';
+import Dead from './Dead'
 
 var sendToAPI = {};
 var delayInMilliseconds = 3000;
@@ -45,7 +46,12 @@ export default function Battle() {
     
     var isLastHit = 0;
     var iLive = 0;
-    // console.log(data);
+
+    const [isDead, setDead] = useState(false)
+
+    function checkDead() {
+        setDead(true)
+    }
 
     const [loading, isLoading] = useState(true)
 
@@ -98,7 +104,6 @@ export default function Battle() {
         } else if (image === 'warrior') {
             setCurrChar(Warrior)
         }
-        console.log(image)
     }
 
     useEffect(() => {
@@ -111,7 +116,6 @@ export default function Battle() {
     function volOff() {
         if (useState !== false) {
             audioRef.current.pause()
-            console.log('muting')
             setStatus(true)
         }
     }
@@ -119,7 +123,6 @@ export default function Battle() {
     function volOn() {
         if (useState !== true) {
             audioRef.current.play()
-            console.log('unmuting')
             setStatus(false)
         }
     }
@@ -159,7 +162,6 @@ export default function Battle() {
 
         const myPercentage = myHealth / 10
 
-        console.log(enemyHp, enemyHealth, currEnemy.hp)
         if (enemyHp >= currEnemy.hp) {
             enemyHpBar = {
                 backgroundColor: 'green',
@@ -312,7 +314,6 @@ export default function Battle() {
 
     function intro() {
         setTimeout(function () {
-            console.log('timeout')
             showAtkBtns();
             setMainText(defaultQuestion);
         }, 4000)
@@ -349,15 +350,15 @@ export default function Battle() {
             iLive = 1;
         }
         if (iLive) {
-            setMainText('***Surrounded by Darkness***');
             setHeroHp(0);
+            document.getElementById('hero').classList.add('hide');
             hideAtkBtns();
             setTimeout(function () {
-                document.getElementById('hero').classList.add('hide');
                 setMainText(`${player.name} has fainted!`);
-                document.getElementById('backBtn').classList.remove('hide');
-                document.getElementById('contBtn').classList.remove('hide');
-            }, 1500);
+            }, 1500)
+            setTimeout(function () {
+                checkDead()
+            }, 3000);
         } else {
         let enemyMove = currEnemy.attacks[Math.floor(Math.random() * currEnemy.attacks.length)];
         let taunt = currEnemy.taunts[Math.floor(Math.random() * currEnemy.taunts.length)];
@@ -572,101 +573,111 @@ export default function Battle() {
     return (
         <>
             {loading === false ? (
-                <div className="pageContainer creationBg">
-                    <div className='rotate'>Rotate to play</div>
-                    <div className="MainBattleContainer5">
-                        <div className="topNavContainer">
-                            {/* TODO: When battle is over, display a continue button. During battle display escape option, which prompts user that battle will not have rewards.*/}
-                            <Link to='/Tavern' style={{ textDecoration: 'none', color: 'white' }} className="backbutton"><img className='backbuttonimg' src={back} alt="Back_Button" /> Back</Link>
-                        </div>
-                        <div className="battleContainer">
-                            <div className="enemyRow">
-                                <div className="StatBox pixel-border">
-                                    <div className='statRow'>
-                                        <h3 className='smallFont'>{currEnemy.enemyName}</h3>
-                                        <h3 className='smallFont'>Lvl: {currEnemy.level}</h3>
+
+                <>
+                {isDead === true ? (
+                    <Dead />
+                    ) : (
+                        <>
+                            <div className="pageContainer creationBg">
+                                <div className='rotate'>Rotate to play</div>
+                                <div className="MainBattleContainer">
+                                    <div className="topNavContainer">
+                                        {/* TODO: When battle is over, display a continue button. During battle display escape option, which prompts user that battle will not have rewards.*/}
+                                        <Link to='/Tavern' style={{ textDecoration: 'none', color: 'white' }} className="backbutton"><img className='backbuttonimg' src={back} alt="Back_Button" /> Back</Link>
+
                                     </div>
+                                    <div className="battleContainer">
+                                        <div className="enemyRow">
+                                            <div className="StatBox pixel-border">
+                                                <div className='statRow'>
+                                                    <h3 className='smallFont'>{currEnemy.enemyName}</h3>
+                                                    <h3 className='smallFont'>Lvl: {currEnemy.level}</h3>
+                                                </div>
 
-                                    <div className='healthcontainer'>
-                                        <div style={enemyHpBar}>
+                                                <div className='healthcontainer'>
+                                                    <div style={enemyHpBar}>
 
+                                                    </div>
+                                                </div>
+                                                <h3 className='hp smallFont'>HP:{enemyHp}/{currEnemy.hp}</h3>
+                                            </div>
+                                            <div className='effectcont1'>
+                                                <img className="enemyPic" src={enemyPic} id='opp' alt="Enemy" />
+                                                <img className="explosion explosion1" id='explosion' src={explosion} alt="explosion" />
+                                            </div>
+                                        </div>
+                                        <div className="heroRow">
+                                            <div className='effectcont'>
+                                                <img className="heroPic" src={currChar} id='hero' alt="Hero" />
+                                                <img className="explosion explosion1" id='explosion2' src={explosion} alt="explosion" />
+                                                <img className="explosion explosion1" id='healExp' src={healgif} alt="heal" />
+                                            </div>
+                                            <div className="StatBox pixel-border">
+                                                <div className='statRow'>
+                                                    <h3 className='smallFont'>{player.name}</h3>
+                                                    <h3 className='smallFont'>Lvl: {player.level}</h3>
+                                                </div>
+
+
+                                                <div className='healthcontainer'>
+                                                    <div style={heroHpBar}>
+
+                                                    </div>
+                                                </div>
+
+                                                <h3 className='hp smallFont'>HP:{heroHp}/{player.hp}</h3>
+
+                                            </div>
                                         </div>
                                     </div>
-                                    <h3 className='hp smallFont'>HP:{enemyHp}/{currEnemy.hp}</h3>
-                                </div>
-                                <div className='effectcont1'>
-                                    <img className="enemyPic" src={enemyPic} id='opp' alt="Enemy" />
-                                    <img className="explosion explosion1" id='explosion' src={explosion} alt="explosion" />
-                                </div>
-                            </div>
-                            <div className="heroRow">
-                                <div className='effectcont'>
-                                    <img className="heroPic" src={currChar} id='hero' alt="Hero" />
-                                    <img className="explosion explosion1" id='explosion2' src={explosion} alt="explosion" />
-                                    <img className="explosion explosion1" id='healExp' src={healgif} alt="heal" />
-                                </div>
-                                <div className="StatBox pixel-border">
-                                    <div className='statRow'>
-                                        <h3 className='smallFont'>{player.name}</h3>
-                                        <h3 className='smallFont'>Lvl: {player.level}</h3>
-                                    </div>
+                                    <div className="BattlechoicesContainer pixel-border">
+                                        <p className="question">{mainText}</p>
+                                        <div className="attackList">
+                                            <div className="attackRow1">
+                                                <button className="attack hide" id='atk1' onClick={atk1}><img className="iconhover" src={sword} alt="sword" />{player.attacks[0]}</button>
+                                                <button className="attack hide" id='atk2' onClick={atk2}><img className="iconhover" src={dice} alt="dice" />{player.attacks[1]}</button>
 
+                                            </div>
+                                            <div className="attackRow2">
+                                                <button className="attack hide" id='atk3' onClick={atk3}>
+                                                    <img className="iconhover" src={quiz} alt="quiz" />
+                                                    {player.attacks[2]} </button>
+                                                <button className="attack hide" id='atk4' onClick={heal}>
+                                                    <img className="iconhover" src={heal1} alt="heal" />
+                                                    {player.attacks[3]}</button>
+                                            </div>
+                                            <div className="attackRow2">
+                                                <button className="attack hide" id='qT' onClick={quizTrue}>True </button>
+                                                <button className="attack hide" id='qT1' onClick={quizFalse}>False</button>
+                                                <button className="attack hide" id='hT' onClick={quiz2True}>True </button>
+                                                <button className="attack hide" id='hT1' onClick={quiz2False}>False</button>
+                                            </div>
+                                            <div className="attackRow2">
+                                                <button className='attack start' id='start' onClick={startBat}>Begin Battle</button>
+                                                <Link to={'/Tavern'} style={{ textDecoration: 'none', color: 'white' }} onClick={apiSend} className="attack hide" id='backBtn'>Back </Link>
+                                                <Link to={'/Dead'} style={{ textDecoration: 'none', color: 'white' }} onClick={apiSend}className="attack hide" id='contBtn' >Continue</Link>
 
-                                    <div className='healthcontainer'>
-                                        <div style={heroHpBar}>
-
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <h3 className='hp smallFont'>HP:{heroHp}/{player.hp}</h3>
-
+                                    <div className="bottomNavContainer">
+                                        <>
+                                            <audio autoPlay loop ref={audioRef} src={song} />
+                                            {speaker ? (
+                                                <button onClick={volOn} className="backbutton"><img className='soundbuttonimg' src={speakeroff} alt="speaker" /></button>
+                                            ) : (
+                                                <>
+                                                    <button onClick={volOff} className="backbutton"><img className='soundbuttonimg' src={speakeron} alt="speaker" /></button>
+                                                </>
+                                            )}
+                                        </>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="BattlechoicesContainer pixel-border">
-                            <p className="question">{mainText}</p>
-                            <div className="attackList">
-                                <div className="attackRow1">
-                                    <button className="attack hide" id='atk1' onClick={atk1}><img className="iconhover" src={sword} alt="sword" />{player.attacks[0]}</button>
-                                    <button className="attack hide" id='atk2' onClick={atk2}><img className="iconhover" src={dice} alt="dice" />{player.attacks[1]}</button>
-
-                                </div>
-                                <div className="attackRow2">
-                                    <button className="attack hide" id='atk3' onClick={atk3}>
-                                        <img className="iconhover" src={quiz} alt="quiz" />
-                                        {player.attacks[2]} </button>
-                                    <button className="attack hide" id='atk4' onClick={heal}>
-                                        <img className="iconhover" src={heal1} alt="heal" />
-                                        {player.attacks[3]}</button>
-                                </div>
-                                <div className="attackRow2">
-                                    <button className="attack hide" id='qT' onClick={quizTrue}>True </button>
-                                    <button className="attack hide" id='qT1' onClick={quizFalse}>False</button>
-                                    <button className="attack hide" id='hT' onClick={quiz2True}>True </button>
-                                    <button className="attack hide" id='hT1' onClick={quiz2False}>False</button>
-                                </div>
-                                <div className="attackRow2">
-                                    <button className='attack start' id='start' onClick={startBat}>Begin Battle</button>
-                                    <Link to={'/Tavern'} style={{ textDecoration: 'none', color: 'white' }} onClick={apiSend} className="attack hide" id='backBtn'>Back </Link>
-                                    <Link to={'/Dead'} style={{ textDecoration: 'none', color: 'white' }} onClick={apiSend}className="attack hide" id='contBtn' >Continue</Link>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div className="bottomNavContainer">
-                            <>
-                                <audio autoPlay loop ref={audioRef} src={song} />
-                                {speaker ? (
-                                    <button onClick={volOn} className="backbutton"><img className='soundbuttonimg' src={speakeroff} alt="speaker" /></button>
-                                ) : (
-                                    <>
-                                        <button onClick={volOff} className="backbutton"><img className='soundbuttonimg' src={speakeron} alt="speaker" /></button>
-                                    </>
-                                )}
-                            </>
-                        </div>
-                    </div>
-                </div>
+                        </>
+                    )}
+                </>
             ) : (
                 <LoadingScreen />
             )}
