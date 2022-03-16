@@ -10,7 +10,6 @@ export default function Dead() {
     function volOff() {
         if (useState !== false) {
             audioRef.current.pause()
-            console.log('muting')
             setStatus(true)
         }
     }
@@ -18,7 +17,6 @@ export default function Dead() {
     function volOn() {
         if (useState !== true) {
             audioRef.current.play()
-            console.log('unmuting')
             setStatus(false)
         }
     }
@@ -26,7 +24,7 @@ export default function Dead() {
         <div className="pageContainer creationBg">
         <div className="deadcontainer">
             <h1 className='died'>You Died!</h1>
-            <Link to={'/Tavern'} className="diedBtn pixel-border">Continue</Link>
+            <Link to={'/Tavern'} style={{ textDecoration: 'none', color: 'white' }} className="diedBtn pixel-border">Continue</Link>
             <div className="bottomNavContainer">
             <>
                         <audio autoPlay loop ref={audioRef} src={track}/>

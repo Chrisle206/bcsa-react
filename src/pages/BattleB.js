@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 
-import song from '../assets/sounds/battle.mp3'
+import song from '../assets/sounds/battle3.mp3'
 import back from '../assets/images/back.png'
 import speakeron from '../assets/images/speaker-on.png'
 import speakeroff from '../assets/images/speaker-off.png'
@@ -20,6 +20,7 @@ import getCharacter from '../Javascript/getCharacter.js';
 import getEnemy from '../Javascript/getEnemy.js'
 import LoadingScreen from './Loading'
 import editCharacter from '../Javascript/editCharacter';
+import Dead from './Dead'
 
 var sendToAPI = {};
 var delayInMilliseconds = 3000;
@@ -45,7 +46,12 @@ export default function Battle() {
 
     var isLastHit = 0;
     var iLive = 0;
-    // console.log(data);
+
+    const [isDead, setDead] = useState(false)
+
+    function checkDead() {
+        setDead(true)
+    }
 
     const [loading, isLoading] = useState(true)
 
@@ -98,7 +104,6 @@ export default function Battle() {
         } else if (image === 'warrior') {
             setCurrChar(Warrior)
         }
-        console.log(image)
     }
 
     useEffect(() => {
@@ -111,7 +116,6 @@ export default function Battle() {
     function volOff() {
         if (useState !== false) {
             audioRef.current.pause()
-            console.log('muting')
             setStatus(true)
         }
     }
@@ -119,7 +123,6 @@ export default function Battle() {
     function volOn() {
         if (useState !== true) {
             audioRef.current.play()
-            console.log('unmuting')
             setStatus(false)
         }
     }
@@ -159,7 +162,6 @@ export default function Battle() {
 
         const myPercentage = myHealth / 10
 
-        console.log(enemyHp, enemyHealth, currEnemy.hp)
         if (enemyHp >= currEnemy.hp) {
             enemyHpBar = {
                 backgroundColor: 'green',
@@ -312,7 +314,6 @@ export default function Battle() {
 
     function intro() {
         setTimeout(function () {
-            console.log('timeout')
             showAtkBtns();
             setMainText(defaultQuestion);
         }, 4000)
@@ -349,15 +350,15 @@ export default function Battle() {
             iLive = 1;
         }
         if (iLive) {
-            setMainText('***Surrounded by Darkness***');
             setHeroHp(0);
+            document.getElementById('hero').classList.add('hide');
             hideAtkBtns();
             setTimeout(function () {
-                document.getElementById('hero').classList.add('hide');
                 setMainText(`${player.name} has fainted!`);
-                document.getElementById('backBtn').classList.remove('hide');
-                document.getElementById('contBtn').classList.remove('hide');
-            }, 1500);
+            }, 1500)
+            setTimeout(function () {
+                checkDead()
+            }, 3000);
         } else {
             let enemyMove = currEnemy.attacks[Math.floor(Math.random() * currEnemy.attacks.length)];
             let taunt = currEnemy.taunts[Math.floor(Math.random() * currEnemy.taunts.length)];
@@ -572,6 +573,11 @@ export default function Battle() {
     return (
         <>
             {loading === false ? (
+                                <>
+                                {isDead === true ? (
+                                    <Dead />
+                                    ) : (
+                                        <>
                 <div className="pageContainer creationBg">
                     <div className='rotate'>Rotate to play</div>
                     <div className="MainBattleContainer">
@@ -670,6 +676,9 @@ export default function Battle() {
                         </div>
                     </div>
                 </div>
+                </>
+                )}
+            </>
             ) : (
                 <LoadingScreen />
             )}
