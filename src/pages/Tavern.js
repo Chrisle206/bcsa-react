@@ -22,7 +22,6 @@ export default function Tavern() {
     function volOff() {
         if (useState !== false) {
             audioRef.current.pause()
-            console.log('muting')
             setStatus(true)
         }
     }
@@ -30,7 +29,6 @@ export default function Tavern() {
     function volOn() {
         if (useState !== true) {
             audioRef.current.play()
-            console.log('unmuting')
             setStatus(false)
         }
     }
