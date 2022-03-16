@@ -16,7 +16,6 @@ export default function StoryFour() {
     function volOff() {
         if (useState !== false) {
             audioRef.current.pause()
-            console.log('muting')
             setStatus(true)
         }
     }
@@ -24,14 +23,13 @@ export default function StoryFour() {
     function volOn() {
         if (useState !== true) {
             audioRef.current.play()
-            console.log('unmuting')
             setStatus(false)
         }
     }
     return (
         <div className="pageContainer creationBg">
             <div className='rotate'>Rotate to play</div>
-            <div className="mainStartContainer mainIntroContainer">
+            <div className="mainStartContainer mainIntroContainer2">
                 <div className="topNavContainer">
                     <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'inherit'}} className="backbutton"><img className='backbuttonimg'src={back} alt="Back_Button" /> Back</Link>                    
                 </div>
