@@ -848,7 +848,7 @@ opacity: 1;
   align-items: center;
   justify-content: space-between;
   font-size: 48px;
-  margin: 0 auto;
+  margin: auto auto;
   padding: 0 20px 0 30px;
   border: 0;
   font-family: inherit;
