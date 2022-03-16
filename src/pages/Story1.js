@@ -33,17 +33,16 @@ export default function StoryOne() {
                     <Link to={'/Tavern'} style={{textDecoration: 'none', color: 'inherit'}} className="backbutton"><img className='backbuttonimg'src={back} alt="Back_Button" /> Back</Link>                    
                 </div>
                 <div className="widthContainer">
-                    <h1 className="TavernTitle">Louis Defeated...</h1>
+                    <h1 className="joetitle">Louis Defeated...</h1>
                     <div className='description'>
                     <div className='line1'>Louis, the first evil TA to be felled, seems to bid you well as he retreats into the darkness...</div>
                     <div className='line2'>"Good luck... you're gonna need it."</div>
                     <div className='line3'>Louis cackles as you hear keys clacking rapidly in his cave... He seems to be playing FFXIV.</div>
                     <div className='line4'>You press on, but it is not long before you encounter a new foe...</div>
                     </div>
-                    <div className="TavernMenuContainer">
-                        <Link to={'/BattleB'} style={{textDecoration: 'none', color: 'inherit'}} className="PlayCard pixel-border">Continue<img className="PlayButton" src={play} alt="Story" /></Link>
 
-                    </div>
+                        <Link to={'/BattleB'} style={{textDecoration: 'none', color: 'inherit'}} className="contbutton">Continue</Link>
+
                 </div>
                 <div className="bottomNavContainer">
                 <>

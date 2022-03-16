@@ -15,6 +15,7 @@ import sword from '../assets/images/sword.png'
 import dice from '../assets/images/dice-fire.png'
 import heal1 from '../assets/images/heal1.png'
 import explosion from '../assets/images/explosion.gif'
+import aura from '../assets/images/aura.gif'
 import healgif from '../assets/images/heal.gif'
 import getCharacter from '../Javascript/getCharacter.js';
 import getEnemy from '../Javascript/getEnemy.js'
@@ -581,7 +582,7 @@ export default function Battle() {
                         <>
                             <div className="pageContainer creationBg">
                                 <div className='rotate'>Rotate to play</div>
-                                <div className="MainBattleContainer">
+                                <div className="MainBattleContainer5">
                                     <div className="topNavContainer">
                                         {/* TODO: When battle is over, display a continue button. During battle display escape option, which prompts user that battle will not have rewards.*/}
                                         <Link to='/Tavern' style={{ textDecoration: 'none', color: 'white' }} className="backbutton"><img className='backbuttonimg' src={back} alt="Back_Button" /> Back</Link>
@@ -602,10 +603,11 @@ export default function Battle() {
                                                 </div>
                                                 <h3 className='hp smallFont'>HP:{enemyHp}/{currEnemy.hp}</h3>
                                             </div>
-                                            <div className='effectcont1'>
-                                                <img className="enemyPic" src={enemyPic} id='opp' alt="Enemy" />
-                                                <img className="explosion explosion1" id='explosion' src={explosion} alt="explosion" />
-                                            </div>
+                                            <div className='effectcont1 auraeffect'>
+                                    <img className="enemyPic" src={enemyPic} id='opp' alt="Enemy" />
+                                    <img className="explosion explosion1" id='explosion' src={explosion} alt="explosion" />
+                                    <img className="explosion" src={aura} alt="aura" />
+                                </div>
                                         </div>
                                         <div className="heroRow">
                                             <div className='effectcont'>
