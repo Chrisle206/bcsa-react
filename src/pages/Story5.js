@@ -39,9 +39,10 @@ export default function StoryFour() {
                 <div className="widthContainer">
                     <h1 className="joetitle">Joe Reborn! Joins The Battle!</h1>
                     <div className='description'>
-                    <div className='line1'>"...You may have killed my mortal person"</div>
-                    <div className='line2'>But you shall soon know,</div>
-                    <div className='line3'>My code spirit is immortal!</div>
+                    <div className='line1'>Suddenly, a powerful quake disbalances you… the shrill cries of Joe's cats, Shiva and Bahamut, rip through the air...</div>
+                    <div className='line2'>From the pits of the binary abyss arise the thousand voices of Joe's scattered soul, vocalizing in unison:</div>
+                    <div className='line3'>"I NEED NOT THIS PRISON OF FLESH TO DISPENSE OF THEE! MY CODE SHALL MAKE ME ETERNAL!"</div>
+                    <div className='line4'>Joe appears again before you, shrouded in a salmon-colored aura... the pieces of his soul have coalesced, and his wrathful spirit bids you to combat...</div>
                     <Link to={'/BattleJ2'} style={{textDecoration: 'none', color: 'inherit'}} ><img className='line4 joe' src={joefinal}/></Link>
                     
                     </div>
